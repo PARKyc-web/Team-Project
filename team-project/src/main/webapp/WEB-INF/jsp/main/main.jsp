@@ -14,6 +14,17 @@
 
 <!-- Section-->
 <section class="py-5">
+
+	<div class="search-block">
+		<form action="main.do" class="search-form">
+			<input type="text" name="search" placeholder="Search.......... something">
+			<input type="submit" value="Search">
+		</form>
+	</div>
+	<hr>
+	<div class="recommend-hotel">
+	<i><h4> == Recommend Hotel List == </h4></i>
+	</div>
 	<div class="container px-4 px-lg-5 mt-5">
 		<div
 			class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">

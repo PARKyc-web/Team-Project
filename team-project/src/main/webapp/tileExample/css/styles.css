@@ -11284,5 +11284,49 @@ textarea.form-control-lg {
 
   .d-print-none {
     display: none !important;
-  }
+  }  
 }
+			.search-block{
+				text-align:center;
+				margin-bottom: 30px;
+			}
+			
+			form.search-form{	
+				display:inline-block;
+				width: 60%;
+			}
+			
+			form.search-form input{
+				border:none;
+				box-sizing: border-box;
+			}
+			
+			form.search-form input[type=text]{
+				background-color: #fff;
+				width: 65%;
+				padding:10px;
+				border-radius: 25px 0px 0px 25px;
+				border: 1px solid #bdc1c6;
+				text-align:center;				
+			}
+			
+			form.search-form input[type=submit]{
+				background-color:orange;
+				color:#fff;
+				width:10%;
+				padding:10px;
+				border-radius: 0px 25px 25px 0px;
+				margin-left:-10px;
+				border: 1px solid #bdc1c6;
+				font-weight:bold;				
+			}
+			
+			form.search-form input[type=text]::placeholder{
+				font-size: 18px;
+				text-align:center;
+			}
+			
+			.recommend-hotel{
+				margin-top:40px;
+				text-align:center;
+			}
