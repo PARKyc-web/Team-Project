@@ -23,7 +23,7 @@ public class HotelDAO extends DAO{
 			if(rs.next()) {
 				vo.setHotelId(rs.getInt("hotel_id"));
 				vo.setMemberId(rs.getString("member_id"));
-				vo.setHotelName(rs.getString("hotelName"));
+				vo.setHotelName(rs.getString("hotel_name"));
 				vo.setHotelLocation(rs.getString("hotel_location"));
 				vo.setHotelPrice(rs.getInt("hotel_price"));
 				vo.setHotelType(rs.getString("hotel_type"));

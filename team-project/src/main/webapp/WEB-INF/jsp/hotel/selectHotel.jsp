@@ -52,11 +52,10 @@
 					<!-- Post header-->
 					<header class="mb-4">
 						<!-- Post title 숙소명-->
-						<h3 class="fw-bolder mb-1">[독채민박] 제주 바닷마을, 호젓한 둘만의 안식처 -
-							스테이호재</h3>
+						<h3 class="fw-bolder mb-1">${hotelInfo.hotelName }</h3>
 						<!-- Post meta content-->
 						<div class="text-muted fst-italic mb-2">⭐ 4.95 · 후기 114개 ·
-							❣️ 슈퍼호스트 · 구좌읍, 제주시, 제주도, 한국</div>
+							❣️ 슈퍼호스트 · ${hotelInfo.hotelLocation }</div>
 
 						<!-- Post categories-->
 						<a class="badge bg-secondary text-decoration-none link-light"
