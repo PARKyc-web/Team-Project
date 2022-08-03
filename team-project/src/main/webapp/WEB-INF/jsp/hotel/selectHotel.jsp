@@ -14,6 +14,8 @@
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/selectHotel.css" rel="stylesheet" />
+<script type="text/javascript"
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=i425jj3mki&callback=initMap"></script>
 </head>
 <body>
 	<!-- Responsive navbar-->
@@ -54,8 +56,8 @@
 						<!-- Post title 숙소명-->
 						<h3 class="fw-bolder mb-1">${hotelInfo.hotelName }</h3>
 						<!-- Post meta content-->
-						<div class="text-muted fst-italic mb-2">⭐ 4.95 · 후기 ${countReview }개 ·
-							❣️ 슈퍼호스트 · ${hotelInfo.hotelLocation }</div>
+						<div class="text-muted fst-italic mb-2">⭐ ${avgStar} · 후기
+							${countReview }개 · ❣️ 슈퍼호스트 · ${hotelInfo.hotelLocation }</div>
 
 						<!-- Post categories-->
 						<a class="badge bg-secondary text-decoration-none link-light"
@@ -79,12 +81,81 @@
 						<p class="fs-5 mb-4">평상형 마루에 올라앉아 마당의 귤나무를 바라보거나 야외 데크의 릴랙스
 							체어에 누워 하늘을 올려다보며 도시의 피로를 씻어 버리세요.</p>
 						<hr>
+						<!-- 숙소 편의 시설 여부에 따라 취소선을 나타내었습니다. -->
 						<h4 class="fw-bolder mb-4 mt-5">숙소 편의시설</h4>
-						<p class="fs-5 mb-4">무선 인터넷</p>
-						<p class="fs-5 mb-4">주방</p>
+						<!-- WIFI -->
+						<c:choose>
+							<c:when test="${0 eq hotelInfo.hotelOptionWifi }">
+								<p class="fs-5 mb-4">
+									🌐
+									<del>무선 인터넷</del>
+								</p>
+							</c:when>
+							<c:otherwise>
+								<p class="fs-5 mb-4">🌐 무선 인터넷</p>
+							</c:otherwise>
+						</c:choose>
+						<!-- SWIM -->
+						<c:choose>
+							<c:when test="${0 eq hotelInfo.hotelOptionSwim }">
+								<p class="fs-5 mb-4">
+									🏊
+									<del>수영장</del>
+								</p>
+							</c:when>
+							<c:otherwise>
+								<p class="fs-5 mb-4">🏊 수영장</p>
+							</c:otherwise>
+						</c:choose>
+						<!-- KITCHEN -->
+						<c:choose>
+							<c:when test="${0 eq hotelInfo.hotelOptionKitchen }">
+								<p class="fs-5 mb-4">
+									🍽️
+									<del>주방</del>
+								</p>
+							</c:when>
+							<c:otherwise>
+								<p class="fs-5 mb-4" id="kitchen">🍽️ 주방</p>
+							</c:otherwise>
+						</c:choose>
+						<!-- PARKING -->
+						<c:choose>
+							<c:when test="${0 eq hotelInfo.hotelOptionParking }">
+								<p class="fs-5 mb-4">
+									🚗
+									<del>무료 주차</del>
+								</p>
+							</c:when>
+							<c:otherwise>
+								<p class="fs-5 mb-4" id="parking">🚗 무료 주차</p>
+							</c:otherwise>
+						</c:choose>
+						<!-- PET -->
+						<c:choose>
+							<c:when test="${0 eq hotelInfo.hotelOptionWpet }">
+								<p class="fs-5 mb-4">
+									🐶
+									<del>반려동물 입실 가능</del>
+								</p>
+							</c:when>
+							<c:otherwise>
+								<p class="fs-5 mb-4" id="pet">🐶 반려동물 입실 가능</p>
+							</c:otherwise>
+						</c:choose>
+
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">호스팅 지역</h4>
-						<p class="fs-5 mb-4">⭐⭐⭐여기에 지도⭐⭐⭐</p>
+						<div id="map" style="width: 100%; height: 400px;"></div>
+						<script>
+							var mapOptions = {
+								center : new naver.maps.LatLng(37.3595704,
+										127.105399),
+								zoom : 15
+							};
+
+							var map = new naver.maps.Map('map', mapOptions);
+						</script>
 						<p class="fs-5 mb-4">${hotelInfo.hotelLocation }</p>
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">호스트: 호재님</h4>
@@ -113,9 +184,9 @@
 											alt="..." />
 									</div>
 									<div class="ms-3">
-										<div class="fw-bold">게스트 이름: ${vo.memberId } </div>
-										리뷰 일자: ${vo.reviewDate }<br>
-										<b>⭐ ${vo.reviewRate }</b> ${vo.reviewContents }
+										<div class="fw-bold">게스트 이름: ${vo.memberId }</div>
+										리뷰 일자: ${vo.reviewDate }<br> <b>⭐ ${vo.reviewRate }</b>
+										${vo.reviewContents }
 									</div>
 								</div>
 							</c:forEach>

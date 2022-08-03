@@ -24,4 +24,8 @@ public class ReviewService {
 	public int countHotelReview(int hotelId) {
 		return dao.countHotelReview(hotelId);
 	}
+	
+	public float avgHotelReview(int hotelId) {
+		return dao.avgHotelReview(hotelId);
+	}
 }

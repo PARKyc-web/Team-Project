@@ -59,7 +59,28 @@ public class ReviewDAO extends DAO {
 			disconnect();
 		}
 		
-		System.out.println(result);
 		return result;
+	}
+	
+	// 특정 호텔(hotelId)의 별점의 평균을 구하는 함수입니다.
+	public float avgHotelReview(int hotelId) {
+		float avg = 0;
+		
+		String sql = "select avg(review_rate) from review where hotel_id = ?";
+		connect();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, hotelId);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				avg = rs.getFloat("avg(review_rate)");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return avg;
 	}
 }
