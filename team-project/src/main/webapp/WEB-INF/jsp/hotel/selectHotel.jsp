@@ -72,9 +72,7 @@
 					</figure>
 					<!-- Post content-->
 					<section class="mb-5">
-						<p class="fs-5 mb-4">⭐숙소 설명란⭐ 제주의 한적한 바닷마을 김녕리에 위치한 프라이빗 렌탈
-							하우스입니다. 하루 한 팀, 성인 두 분만 머무시는 독채형 숙소로 타인과 마주칠 일 없이 프라이빗한 휴식을 만끽할 수
-							있습니다.</p>
+						<p class="fs-5 mb-4">⭐숙소 설명란⭐ ${hotelInfo.hotelDesc }</p>
 						<p class="fs-5 mb-4">화이트&우드 톤으로 꾸며진 내부는 편안한 휴식을 도와드립니다. 호스트의
 							취향이 담긴 CD들과, CD 플레이어 겸 블루투스 스피커가 비치되어 호스트의 취향을 엿보거나, 나의 취향을 재생하기
 							모두 가능합니다.</p>
@@ -87,7 +85,7 @@
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">호스팅 지역</h4>
 						<p class="fs-5 mb-4">⭐⭐⭐여기에 지도⭐⭐⭐</p>
-						<p class="fs-5 mb-4">구좌읍, 제주시, 제주도, 한국</p>
+						<p class="fs-5 mb-4">${hotelInfo.hotelLocation }</p>
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">호스트: 호재님</h4>
 						<p class="fs-5 mb-4">⭐ 후기 114개 본인 인증 완료 ❣️ 슈퍼호스트</p>
@@ -115,9 +113,24 @@
 											alt="..." />
 									</div>
 									<div class="ms-3">
-										<div class="fw-bold">게스트 ${i }</div>
-										${i }번째 리뷰 : 일단 숙소 위치 너무 좋았어요. 관광객 위주 느낌보다는 제주 감성 잔뜩 입은 김녕읍이구요, 앞에 바로 바닷가
-									산책로가 있어서 너무 좋았어요 숙소 자체는 인테리어 부터 청결도, 가구 가전 모두 흠잡을데 없이 좋았습니다!!!!
+										<div class="fw-bold">게스트${i } </div>
+										${i }번째 리뷰 : 일단 숙소 위치 너무 좋았어요. 관광객 위주 느낌보다는 제주 감성 잔뜩 입은
+										김녕읍이구요, 앞에 바로 바닷가 산책로가 있어서 너무 좋았어요 숙소 자체는 인테리어 부터 청결도, 가구 가전
+										모두 흠잡을데 없이 좋았습니다!!!!
+									</div>
+								</div>
+							</c:forEach>
+
+							<c:forEach var="vo" items="${reviewList }">
+								<div class="d-flex">
+									<div class="flex-shrink-0">
+										<img class="rounded-circle"
+											src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
+											alt="..." />
+									</div>
+									<div class="ms-3">
+										<div class="fw-bold">게스트 </div>
+										리뷰
 									</div>
 								</div>
 							</c:forEach>
@@ -168,7 +181,8 @@
 				<div class="card mb-4">
 					<div class="card-header">숙소가 마음에 드시나요?</div>
 					<div class="card-body">
-						<p>₩248,000 /박 ₩248,000/박 4.95 · 후기 114개</p>
+						<p>₩${hotelInfo.hotelPrice } /박 ₩${hotelInfo.hotelPrice }/박
+							4.95 · 후기 114개</p>
 						<p>⭐⭐⭐여기에 달력⭐⭐⭐</p>
 						<button type="button">예약하기</button>
 						<p style="text-align: center;">예약 확정 전에는 요금이 청구되지 않습니다.</p>
@@ -215,8 +229,8 @@
 	<!-- Footer-->
 	<footer class="py-5 bg-dark">
 		<div class="container">
-			<p class="m-0 text-center text-white">여긴 원래 나의 Copyright &copy; Your
-				Website 2022</p>
+			<p class="m-0 text-center text-white">여긴 원래 나의 Copyright &copy;
+				Your Website 2022</p>
 		</div>
 	</footer>
 	<!-- Bootstrap core JS-->

@@ -1,5 +1,7 @@
 package com.dev.vo;
 
+import java.sql.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,11 +9,11 @@ import lombok.Setter;
 @Setter
 public class ReviewVO {
 
-	String reviewId;
+	int reviewId;
 	String memberId;
-	String hotelId;
+	int hotelId;
 	String reviewContents;
-	String reviewDate;
-	String reviewRate;
+	Date reviewDate;
+	float reviewRate;
 	
 }

@@ -44,8 +44,8 @@ public class MemberDAO extends DAO {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				vo.setHotelId(rs.getString("hotelId"));
-				vo.setReviewDate(rs.getString("reviewDate"));
+//				vo.setHotelId(rs.getString("hotelId"));
+//				vo.setReviewDate(rs.getString("reviewDate"));
 				vo.setReviewContents(rs.getString("reviewContent"));
 
 				list.add(vo);

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dev.common.Controller;
 import com.dev.common.Utils;
 import com.dev.service.HotelService;
+import com.dev.service.ReviewService;
 
 public class SelectHotelController implements Controller{
 	
@@ -18,8 +19,13 @@ public class SelectHotelController implements Controller{
 //		RequestDispatcher rd = req.getRequestDispatcher("hotel/selectHotel.tiles");		
 //		rd.forward(req, resp);
 		
-		HotelService service = HotelService.getInstance();
-		req.setAttribute("hotelInfo", service.getHotelInfo(113));
+		int hotelId = 113;
+		
+		HotelService hotelService = HotelService.getInstance();
+		req.setAttribute("hotelInfo", hotelService.getHotelInfo(hotelId));
+		
+		ReviewService rvService = ReviewService.getInstance();
+		req.setAttribute("reviewList", rvService.selectHotelReview(hotelId));
 		
 		Utils.forward(req, resp, "hotel/selectHotel.tiles");
 	}

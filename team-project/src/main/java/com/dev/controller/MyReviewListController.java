@@ -20,8 +20,8 @@ public class MyReviewListController implements Controller {
 		String reContent = req.getParameter("reviewContent");
 		
 		ReviewVO vo = new ReviewVO();
-		vo.setHotelId(hotId);
-		vo.setReviewDate(reDate);
+//		vo.setHotelId(hotId);
+//		vo.setReviewDate(reDate);
 		vo.setReviewContents(reContent);
 		
 		MemberService service = MemberService.getInstance();
