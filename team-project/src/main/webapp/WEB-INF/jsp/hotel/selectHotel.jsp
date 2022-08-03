@@ -54,7 +54,7 @@
 						<!-- Post title 숙소명-->
 						<h3 class="fw-bolder mb-1">${hotelInfo.hotelName }</h3>
 						<!-- Post meta content-->
-						<div class="text-muted fst-italic mb-2">⭐ 4.95 · 후기 114개 ·
+						<div class="text-muted fst-italic mb-2">⭐ 4.95 · 후기 ${countReview }개 ·
 							❣️ 슈퍼호스트 · ${hotelInfo.hotelLocation }</div>
 
 						<!-- Post categories-->
@@ -105,22 +105,6 @@
 									placeholder="리뷰를 작성해주세요. 이 textarea는 숙박을 완료한 게스트에게만 보이거나(아니면 hidden) 예약 내역에서 바로 리뷰를 작성할 수 있도록 만들면 좋을듯?"></textarea>
 							</form>
 							<!-- 리뷰 list로 저장해서 foreach로 여러개 가져올 예정-->
-							<c:forEach var="i" begin="1" end="3">
-								<div class="d-flex">
-									<div class="flex-shrink-0">
-										<img class="rounded-circle"
-											src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
-											alt="..." />
-									</div>
-									<div class="ms-3">
-										<div class="fw-bold">게스트${i } </div>
-										${i }번째 리뷰 : 일단 숙소 위치 너무 좋았어요. 관광객 위주 느낌보다는 제주 감성 잔뜩 입은
-										김녕읍이구요, 앞에 바로 바닷가 산책로가 있어서 너무 좋았어요 숙소 자체는 인테리어 부터 청결도, 가구 가전
-										모두 흠잡을데 없이 좋았습니다!!!!
-									</div>
-								</div>
-							</c:forEach>
-
 							<c:forEach var="vo" items="${reviewList }">
 								<div class="d-flex">
 									<div class="flex-shrink-0">
@@ -129,8 +113,9 @@
 											alt="..." />
 									</div>
 									<div class="ms-3">
-										<div class="fw-bold">게스트 </div>
-										리뷰
+										<div class="fw-bold">게스트 이름: ${vo.memberId } </div>
+										리뷰 일자: ${vo.reviewDate }<br>
+										<b>⭐ ${vo.reviewRate }</b> ${vo.reviewContents }
 									</div>
 								</div>
 							</c:forEach>

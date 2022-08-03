@@ -26,6 +26,7 @@ public class SelectHotelController implements Controller{
 		
 		ReviewService rvService = ReviewService.getInstance();
 		req.setAttribute("reviewList", rvService.selectHotelReview(hotelId));
+		req.setAttribute("countReview", rvService.countHotelReview(hotelId));
 		
 		Utils.forward(req, resp, "hotel/selectHotel.tiles");
 	}

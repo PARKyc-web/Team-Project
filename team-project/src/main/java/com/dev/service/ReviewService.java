@@ -20,4 +20,8 @@ public class ReviewService {
 	public List<ReviewVO> selectHotelReview(int hotelId) {
 		return dao.selectHotelReview(hotelId);
 	}
+	
+	public int countHotelReview(int hotelId) {
+		return dao.countHotelReview(hotelId);
+	}
 }
