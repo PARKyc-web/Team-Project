@@ -1,15 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix ="c" %>
-<!-- Header-->
-<header class="bg-dark py-5">
-	<div class="container px-4 px-lg-5 my-5" id="mainPage">
-		<div class="text-center text-white">
-			<h1 class="display-4 fw-bolder">TEAM AirBnB</h1>
-			<p class="lead fw-normal text-white-50 mb-0">have fun with TEAM AirBnB</p>
-		</div>
-	</div>
-</header>
 
 <!-- Section-->
 <section class="py-5">
@@ -18,27 +9,41 @@
 			<input type="text" name="search" placeholder="Search.......... something">
 			<input type="submit" value="Search">
 		</form>
+		
+		<form action="main.do" class="filter-form">
+			<input type="text" name="option-loc" placeholder="Search..Option-loc">
+			<input type="text" name="option-price" placeholder="Search..Option-price">
+			<input type="text" name="option" placeholder="Search..Option-">
+			<button id="filter-btn">Filter</button>
+		</form>
 	</div>
+	
+		
+
+	
 	<hr>
+	
 	<div class="recommend-hotel">
-	<h4><i> == Recommend Hotel List == </i></h4>
+	<h4><i> == Search Hotel List == </i></h4>
+	<small><b>(∞Àªˆµ» º˜º“ N∞≥)</b></small>	
 	</div>
+	
 	<div class="container px-4 px-lg-5 mt-5">
 		<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-			<!--  Ïπ¥Îìú Î∞òÎ≥µ ÏãúÏûë -->
-			<c:forEach var="i" begin="0" end="7" step ="1" >
+			<!--  ƒ´µÂ π›∫π Ω√¿€ -->
+			<c:forEach var="i" begin="0" end="11" step ="1" >
 			<div class="col mb-5">
 				<div class="card h-100">
 					<!-- Product image-->
 					<img class="card-img-top"
-						src="${pic_list[i].path}${pic_list[i].name}" width="450px" height="180px" alt="..." />
+						src="tileExample/image/111.webp" width="450px" height="180px" alt="..." />
 					<!-- Product details-->
 					<div class="card-body p-4">
 						<div class="text-center">
 							<!-- Product name-->
-							<h5 class="fw-bolder">${random_list[i].hotelName }</h5>
+							<h5 class="fw-bolder">∞Àªˆµ» »£≈⁄¿« ¿Ã∏ß</h5>
 							<!-- Product price-->
-							${random_list[i].hotelPrice}Ïõê
+							75,000ø¯
 						</div>
 					</div>
 					<!-- Product actions-->

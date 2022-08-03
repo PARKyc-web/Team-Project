@@ -19,6 +19,7 @@ import com.dev.controller.MyPageController;
 import com.dev.controller.MyPageModiController;
 import com.dev.controller.MyReviewListController;
 import com.dev.controller.MyWishListController;
+import com.dev.controller.SearchHotelController;
 import com.dev.controller.SelectHotelController;
 
 public class FrontController extends HttpServlet{
@@ -34,9 +35,9 @@ public class FrontController extends HttpServlet{
 		mappings = new HashMap<>();
 		// Part of parkyc
 		mappings.put("/main.do", new MainController());
+		mappings.put("/searchHotel.do", new SearchHotelController());
 		
 		// Part of YJ
-		mappings.put("/main.do", new MainController());	//메인
 		mappings.put("/myPage.do", new MyPageController());//마이페이지
 		mappings.put("/myPageModi.do", new MyPageModiController());//마이페이지 - 수정
 		mappings.put("/myReview.do", new MyReviewListController());//마이페이지 - 내가쓴리뷰
