@@ -7,10 +7,9 @@ import com.dev.vo.HotelVO;
 
 public class HotelDAO extends DAO{	
 
-	public HotelVO getHotelInfo(int hotelId) {
+	public HotelVO getHotelInfo(int hotelId) {		
 		
 		HotelVO vo = new HotelVO();
-		
 		connect();		
 		try {
 			String sql = "SELECT * FROM hotel where hotel_id = ?";
@@ -20,10 +19,10 @@ public class HotelDAO extends DAO{
 			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
+			if(rs.next()) {			
 				vo.setHotelId(rs.getInt("hotel_id"));
 				vo.setMemberId(rs.getString("member_id"));
-				vo.setHotelName(rs.getString("hotelName"));
+				vo.setHotelName(rs.getString("hotel_name"));
 				vo.setHotelLocation(rs.getString("hotel_location"));
 				vo.setHotelPrice(rs.getInt("hotel_price"));
 				vo.setHotelType(rs.getString("hotel_type"));
@@ -35,7 +34,7 @@ public class HotelDAO extends DAO{
 				vo.setHotelOptionSwim(rs.getInt("hotel_option_swim"));
 				vo.setHotelOptionWpet(rs.getInt("hotel_option_wpet"));
 				vo.setHotelOptionKitchen(rs.getInt("hotel_option_kitchen"));
-				vo.setHotelOptionParking(rs.getInt("hotel_option_parking"));
+				vo.setHotelOptionParking(rs.getInt("hotel_option_parking"));				
 			}			
 			
 		}catch(SQLException e) {
@@ -46,6 +45,30 @@ public class HotelDAO extends DAO{
 		}		
 		
 		return vo;
+	}
+	
+	public int getHotelTableSize() {
+		
+		int result = 0;		
+		connect();
+		try {
+			
+			String sql = "SELECT count(*) FROM hotel";
+			pstmt = conn.prepareStatement(sql);			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt("count(*)");
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+			
+		}finally {
+			disconnect();
+		}
+		
+		return result;
 	}
 	
 }

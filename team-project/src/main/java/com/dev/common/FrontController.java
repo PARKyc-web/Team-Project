@@ -32,6 +32,7 @@ public class FrontController extends HttpServlet{
 		enc = config.getInitParameter("charset");		
 		
 		mappings = new HashMap<>();
+		// Part of parkyc
 		mappings.put("/main.do", new MainController());
 		
 		// Part of YJ
