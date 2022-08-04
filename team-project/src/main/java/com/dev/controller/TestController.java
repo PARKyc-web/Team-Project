@@ -9,13 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.dev.common.Controller;
 import com.dev.common.Utils;
 
-public class MapController implements Controller{
+public class TestController implements Controller{
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		req.setAttribute("hotelAddr", "대구광역시 중구 중앙대로 403");
-		Utils.forward(req, resp, "main/map.tiles");
+		Utils.forward(req, resp, "main/upload.tiles");
 	}
 	
 }
