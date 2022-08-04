@@ -7,10 +7,11 @@ import lombok.Setter;
 @Setter
 public class ReservationVO {
 	
-	String reservId;
-	String memberId;
-	String inDate;
-	String outDate;
-	int totalPrice;
-	String inReserv;		
+	private String reservId;
+	private String memberId;
+	private String hotelId;
+	private String inDate;
+	private String outDate;
+	private int totalPrice;
+	private String inReserv;		
 }

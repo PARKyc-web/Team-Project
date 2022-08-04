@@ -6,15 +6,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MyPageVO {
-	String hotelId;
-	String reviewContents;
-	String reviewDate;
+	private String hotelId;
+	private String reviewContents;
+	private String reviewDate;
 	
-	String hotelName;
-	int hotelPrice;
+	private String hotelName;
+	private int hotelPrice;
 	
-	String inDate;
-	String outDate;
-	
-	//String hotelId;
+	private String inDate;
+	private String outDate;
 }

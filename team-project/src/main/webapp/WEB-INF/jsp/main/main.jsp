@@ -33,8 +33,8 @@
 <!-- Section-->
 <section class="py-5">
 	<div class="search-block">
-		<form action="main.do" class="search-form">
-			<input type="text" name="search" placeholder="Search.......... something">
+		<form action="searchHotel.do" class="search-form">
+			<input type="text" name="search_word" placeholder="Search.......... something">
 			<input type="submit" value="Search">
 		</form>
 	</div>
@@ -71,7 +71,7 @@
 					<!-- Product actions-->
 					<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 						<div class="text-center">
-							<a class="btn btn-outline-dark mt-auto" href="#">View options</a>
+							<a class="btn btn-outline-dark mt-auto" href="selectHotel.do?hotelId=${random_list[i].hotelId }">View options</a>
 						</div>
 					</div>
 					

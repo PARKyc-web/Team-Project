@@ -30,8 +30,8 @@ public class DAO {
 		oracle_driver = "oracle.jdbc.driver.OracleDriver";
 		oracle_url = "jdbc:oracle:thin:@localhost:1521:xe";
 					// "jdbc:oracle:thin:@192.168.0.13:1521:xe";
-		id = "teamdb";
-		pwd = "teamdb";
+		id = "hr"; //hr teamdb
+		pwd = "hr"; //hr teamdb
 	}
 	
 	// DB에 접속하는 메소드

@@ -17,15 +17,12 @@
 			<button id="filter-btn">Filter</button>
 		</form>
 	</div>
-	
 		
-
-	
 	<hr>
 	
 	<div class="recommend-hotel">
 	<h4><i> == Search Hotel List == </i></h4>
-	<small><b>(검색된 숙소 N개)</b></small>	
+	<small><b>(검색된 숙소 ${count}개)</b></small>
 	</div>
 	
 	<div class="container px-4 px-lg-5 mt-5">

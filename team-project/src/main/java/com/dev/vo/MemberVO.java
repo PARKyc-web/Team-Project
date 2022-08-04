@@ -14,6 +14,6 @@ public class MemberVO {
 	private String email;
 	private String memberType;
 	private String memberAble;
-	private String singInDate;
+	private String signInDate;
 	private String memberPic;
 }

@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.dev.common.Controller;
 import com.dev.common.Utils;
 
-public class MemberJoinController implements Controller {
+public class MemberSignUpFormController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Utils.forward(req, resp, "member/memberJoin.tiles");
+		Utils.forward(req, resp, "member/memberSignUpForm.tiles");
 	}
 
 }

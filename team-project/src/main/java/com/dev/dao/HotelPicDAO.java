@@ -11,8 +11,7 @@ import com.dev.vo.HotelVO;
 public class HotelPicDAO extends DAO{
 
 	
-	public HotelPicVO getHotelPicPath(HotelVO hotelInfo){
-		
+	public HotelPicVO getHotelPicPath(HotelVO hotelInfo){		
 		HotelPicVO vo = new HotelPicVO();		
 		connect();
 		try {
@@ -38,8 +37,7 @@ public class HotelPicDAO extends DAO{
 		return vo;		
 	}
 	
-	public List<HotelPicVO> getAllHotelPicPath(int hotelId){
-		
+	public List<HotelPicVO> getAllHotelPicPath(int hotelId){		
 		List<HotelPicVO> list = new ArrayList<>();
 		connect();
 		try {

@@ -11,23 +11,25 @@ import com.dev.common.Utils;
 import com.dev.service.HotelService;
 import com.dev.service.ReviewService;
 
-public class SelectHotelController implements Controller{
-	
+public class DoReservationController implements Controller {
+
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		RequestDispatcher rd = req.getRequestDispatcher("hotel/selectHotel.tiles");		
-//		rd.forward(req, resp);
-		
+		// TODO Auto-generated method stub
 		int hotelId = 113;
-		
 		HotelService hotelService = HotelService.getInstance();
 		req.setAttribute("hotelInfo", hotelService.getHotelInfo(hotelId));
 		
 		ReviewService rvService = ReviewService.getInstance();
-		req.setAttribute("reviewList", rvService.selectHotelReview(hotelId));
 		req.setAttribute("countReview", rvService.countHotelReview(hotelId));
 		req.setAttribute("avgStar", rvService.avgHotelReview(hotelId));
 		
-		Utils.forward(req, resp, "hotel/selectHotel.tiles");	
+		String checkInOut = req.getParameter("datefilter");
+		String guestNum = req.getParameter("guestNum");
+		req.setAttribute("checkInOut", checkInOut);
+		req.setAttribute("guestNum", guestNum);
+		
+		Utils.forward(req, resp, "reservation/doReservation.tiles");
 	}
+
 }

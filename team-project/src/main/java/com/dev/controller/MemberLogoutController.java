@@ -5,15 +5,20 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dev.common.Controller;
 import com.dev.common.Utils;
 
-public class MemberJoinController implements Controller {
+public class MemberLogoutController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Utils.forward(req, resp, "member/memberJoin.tiles");
+		HttpSession session = req.getSession();
+		session.invalidate();
+		
+		Utils.forward(req, resp, "member/memberLogout.tiles");
+		
 	}
 
 }

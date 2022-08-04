@@ -12,6 +12,7 @@
 		아이디 <input type="text" name="member_id"><br><br>
 		비밀번호 <input type="password" name="member_password"><br><br>
 		<a href="index.jsp"><input type="submit" value="로그인"></a> <input type="reset" value="취소">
+		<p><a href="memberJoin.do">뒤로가기</a></p>
 	</form>
 	</div>
 </body>

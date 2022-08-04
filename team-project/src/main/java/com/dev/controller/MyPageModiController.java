@@ -32,9 +32,9 @@ public class MyPageModiController implements Controller {
 		service.modifyMember(vo);
 
 		// 공유
-		req.setAttribute("memberInfo", vo);
+		req.setAttribute("memberModi", vo);
 		
 	
-		Utils.forward(req, resp, "myPage/myPageModi.tiles");
+		Utils.forward(req, resp, "myPage/myPageModiOutput.tiles");
 	}
 }

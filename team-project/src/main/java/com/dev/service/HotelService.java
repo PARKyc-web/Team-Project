@@ -50,4 +50,12 @@ public class HotelService {
 		return outList;
 	}
 	
+	public List<HotelVO> getSearchedHotelInfo(String keyword){
+		return dao.getSearchHotelInfo(keyword);
+	}
+	
+	public int getSearchedHotelCount(String keyword) {
+		return dao.getSearchHotelCount(keyword);
+	}
+	
 }
