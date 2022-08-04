@@ -1,6 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix ="c" %>
+
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.slider').bxSlider({
+   	    auto: true,
+  		speed: 500,
+  		pause: 4000,
+  		mode:'fade',
+  		pager:true,    	  
+      });
+    });
+  </script>
+  
+</head>
+
 <!-- Header-->
 <header class="bg-dark py-5">
 	<div class="container px-4 px-lg-5 my-5" id="mainPage">
@@ -29,9 +48,16 @@
 			<c:forEach var="i" begin="0" end="7" step ="1" >
 			<div class="col mb-5">
 				<div class="card h-100">
+				
 					<!-- Product image-->
-					<img class="card-img-top"
-						src="${pic_list[i].path}${pic_list[i].name}" width="450px" height="180px" alt="..." />
+					<div class="slider">
+						<c:forEach var="inner" items="${pic_list[i]}">
+							<img class="card-img-top" 
+							src="${inner.path}${inner.name}" width="450px" height="200px" alt="main-page-image" />
+							
+						</c:forEach>						
+					</div>
+					
 					<!-- Product details-->
 					<div class="card-body p-4">
 						<div class="text-center">
@@ -41,12 +67,14 @@
 							${random_list[i].hotelPrice}원
 						</div>
 					</div>
+					
 					<!-- Product actions-->
 					<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 						<div class="text-center">
 							<a class="btn btn-outline-dark mt-auto" href="#">View options</a>
 						</div>
 					</div>
+					
 				</div>
 			</div>
 			</c:forEach>			

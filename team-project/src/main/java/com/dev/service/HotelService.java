@@ -40,13 +40,12 @@ public class HotelService {
 		return list;
 	}
 	
-	public List<HotelPicVO> getMainHotelPic(List<HotelVO> inList){
-	
-		List<HotelPicVO> outList = new ArrayList<>();
+	public List<List<HotelPicVO>> getMainHotelPic(List<HotelVO> inList){		
+		List<List<HotelPicVO>> outList = new ArrayList<>();
 		
 		for(int i=0; i<inList.size(); i++) {
-			outList.add(picDAO.getHotelPicPath(inList.get(i)));			
-		}		
+			outList.add(picDAO.getAllHotelPicPath(inList.get(i).getHotelId()));
+		}
 		
 		return outList;
 	}

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dev.controller.MainController;
+import com.dev.controller.MapController;
 import com.dev.controller.MemberJoinController;
 import com.dev.controller.MemberSignInController;
 import com.dev.controller.MemberSignUpController;
@@ -36,6 +37,7 @@ public class FrontController extends HttpServlet{
 		// Part of parkyc
 		mappings.put("/main.do", new MainController());
 		mappings.put("/searchHotel.do", new SearchHotelController());
+		mappings.put("/map.do", new MapController());
 		
 		// Part of YJ
 		mappings.put("/myPage.do", new MyPageController());//마이페이지

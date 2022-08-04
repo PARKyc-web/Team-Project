@@ -38,4 +38,36 @@ public class HotelPicDAO extends DAO{
 		return vo;		
 	}
 	
+	public List<HotelPicVO> getAllHotelPicPath(int hotelId){
+		
+		List<HotelPicVO> list = new ArrayList<>();
+		connect();
+		try {
+			String sql = "SELECT * FROM hotel_pic WHERE hotel_id = ? ORDER BY name";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, hotelId);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {				
+				HotelPicVO vo = new HotelPicVO();
+				
+				vo.setHotelId(rs.getInt("hotel_id"));
+				vo.setPath(rs.getString("path"));
+				vo.setName(rs.getString("name"));
+				
+				list.add(vo);
+			}			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			disconnect();
+		}
+		
+		return list;
+	}
+	
 }
