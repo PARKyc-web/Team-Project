@@ -30,7 +30,6 @@ public class MyPageController implements Controller {
 		vo.setHotelName(hotName);
 		vo.setHotelPrice(hotPrice);
 		vo.setInDate(reserInDate);
-		vo.setOutDate(reserOutDate);
-	
+		vo.setOutDate(reserOutDate);	
 	}
 }
