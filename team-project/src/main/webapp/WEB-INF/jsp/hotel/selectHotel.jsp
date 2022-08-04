@@ -15,7 +15,17 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/selectHotel.css" rel="stylesheet" />
 <script type="text/javascript"
-	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=i425jj3mki&callback=initMap"></script>
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=yfntmtqunm&submodules=geocoder"></script>
+
+<!-- jQuery 달력 -->
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 <body>
 	<!-- Responsive navbar-->
@@ -147,34 +157,118 @@
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">호스팅 지역</h4>
 						<div id="map" style="width: 100%; height: 400px;"></div>
+						<input type='hidden' id="hotelAddress"
+							value="${hotelInfo.hotelLocation}">
 						<script>
+							let hotelAddr = document
+									.getElementById('hotelAddress').value;
+
 							var mapOptions = {
 								center : new naver.maps.LatLng(37.3595704,
-										127.105399),
-								zoom : 15
+										127.105399), //경도와 위도
+								zoom : 15,
+								mapTypeControl : true
 							};
 
-							var map = new naver.maps.Map('map', mapOptions);
+							var map = new naver.maps.Map('map', mapOptions); // id and mapOption
+							// 맵 만드는 부분
+
+							var marker = new naver.maps.Marker({
+								position : new naver.maps.LatLng(37.3, 127.1),
+								map : map
+							});
+
+							var infoWindow = new naver.maps.InfoWindow({
+								anchorSkew : true
+							});
+
+							function searchAddressToCoordinate(address) {
+								naver.maps.Service
+										.geocode(
+												{
+													query : address
+												},
+												function(status, response) {
+													if (status === naver.maps.Service.Status.ERROR) {
+														return alert('Something Wrong!');
+													}
+
+													if (response.v2.meta.totalCount === 0) {
+														return alert('totalCount'
+																+ response.v2.meta.totalCount);
+													}
+
+													var htmlAddresses = [], item = response.v2.addresses[0], point = new naver.maps.Point(
+															item.x, item.y);
+
+													if (item.roadAddress) {
+														htmlAddresses
+																.push('[도로명 주소] '
+																		+ item.roadAddress);
+													}
+
+													if (item.jibunAddress) {
+														htmlAddresses
+																.push('[지번 주소] '
+																		+ item.jibunAddress);
+													}
+
+													if (item.englishAddress) {
+														htmlAddresses
+																.push('[영문명 주소] '
+																		+ item.englishAddress);
+													}
+
+													infoWindow
+															.setContent([
+																	'<div style="padding:10px;min-width:200px;line-height:150%;">',
+																	'<h4 style="margin-top:5px;">검색 주소 : '
+																			+ address
+																			+ '</h4><br />',
+																	htmlAddresses
+																			.join('<br />'),
+																	'</div>' ]
+																	.join('\n'));
+
+													map.setCenter(point);
+													marker.setPosition(point);
+													//infoWindow.open(map, point);
+												});
+							}
+
+							function hasArea(area) {
+								return !!(area && area.name && area.name !== '');
+							}
+
+							function hasData(data) {
+								return !!(data && data !== '');
+							}
+
+							function checkLastString(word, lastString) {
+								return new RegExp(lastString + '$').test(word);
+							}
+
+							function hasAddition(addition) {
+								return !!(addition && addition.value);
+							}
+
+							searchAddressToCoordinate(hotelAddr);
 						</script>
 						<p class="fs-5 mb-4">${hotelInfo.hotelLocation }</p>
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">호스트: 호재님</h4>
-						<p class="fs-5 mb-4">⭐ 후기 114개 본인 인증 완료 ❣️ 슈퍼호스트</p>
+						<p class="fs-5 mb-4">⭐ 후기 ${countReview }개 본인 인증 완료 ❣️ 슈퍼호스트</p>
 						<p class="fs-5 mb-4">2016년 봄 서울에서 제주로 이주했습니다. 제주에 와서 결혼하고 남편,
 							고양이와 살고 있어요. 제가 좋아하는 제주의 마을 김녕에서 작은 민박집을 운영합니다.</p>
 						<hr>
-						<h4 class="fw-bolder mb-4 mt-5">⭐ 4.95 · 후기 114개</h4>
+						<h4 class="fw-bolder mb-4 mt-5">⭐ ${avgStar} · 후기
+							${countReview }개</h4>
 					</section>
 				</article>
 				<!-- Comments section-->
 				<section class="mb-5">
 					<div class="card bg-light">
 						<div class="card-body">
-							<!-- Comment form 리뷰 입력란 -->
-							<form class="mb-4">
-								<textarea class="form-control" rows="3"
-									placeholder="리뷰를 작성해주세요. 이 textarea는 숙박을 완료한 게스트에게만 보이거나(아니면 hidden) 예약 내역에서 바로 리뷰를 작성할 수 있도록 만들면 좋을듯?"></textarea>
-							</form>
 							<!-- 리뷰 list로 저장해서 foreach로 여러개 가져올 예정-->
 							<c:forEach var="vo" items="${reviewList }">
 								<div class="d-flex">
@@ -190,18 +284,7 @@
 									</div>
 								</div>
 							</c:forEach>
-							<!-- Single comment-->
-							<div class="d-flex">
-								<div class="flex-shrink-0">
-									<img class="rounded-circle"
-										src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
-								</div>
-								<div class="ms-3">
-									<div class="fw-bold">Yoori(게스트)</div>
-									일단 숙소 위치 너무 좋았어요. 관광객 위주 느낌보다는 제주 감성 잔뜩 입은 김녕읍이구요, 앞에 바로 바닷가
-									산책로가 있어서 너무 좋았어요 숙소 자체는 인테리어 부터 청결도, 가구 가전 모두 흠잡을데 없이 좋았습니다!!!!
-								</div>
-							</div>
+
 							<!-- Comment with nested comments-->
 							<div class="d-flex mb-4">
 								<!-- Parent comment-->
@@ -237,12 +320,60 @@
 				<div class="card mb-4">
 					<div class="card-header">숙소가 마음에 드시나요?</div>
 					<div class="card-body">
-						<p>₩${hotelInfo.hotelPrice } /박 ₩${hotelInfo.hotelPrice }/박
-							4.95 · 후기 114개</p>
-						<p>⭐⭐⭐여기에 달력⭐⭐⭐</p>
-						<button type="button">예약하기</button>
+						<p>₩${hotelInfo.hotelPrice } /박 ⭐ ${avgStar} · 후기
+							${countReview }개</p>
+
+						<script type="text/javascript">
+							$(function() {
+
+								$('input[name="datefilter"]').daterangepicker(
+										{
+											autoUpdateInput : false,
+											locale : {
+												cancelLabel : 'Clear',
+												"separator" : " - ", // 시작일시와 종료일시 구분자
+												"format" : 'YYYY.MM.DD', // 일시 노출 포맷
+												"applyLabel" : "확인", // 확인 버튼 텍스트
+												"cancelLabel" : "취소", // 취소 버튼 텍스트
+												"daysOfWeek" : [ "일", "월", "화",
+														"수", "목", "금", "토" ],
+												"monthNames" : [ "1월", "2월",
+														"3월", "4월", "5월", "6월",
+														"7월", "8월", "9월",
+														"10월", "11월", "12월" ]
+											},
+											opens : 'center'
+										});
+
+								$('input[name="datefilter"]')
+										.on(
+												'apply.daterangepicker',
+												function(ev, picker) {
+													$(this)
+															.val(
+																	picker.startDate
+																			.format('YYYY.MM.DD')
+																			+ ' - '
+																			+ picker.endDate
+																					.format('YYYY.MM.DD'));
+												});
+
+								$('input[name="datefilter"]').on(
+										'cancel.daterangepicker',
+										function(ev, picker) {
+											$(this).val('');
+										});
+
+							});
+						</script>
+						<form action="doReservation.do" method="post">
+							<input type="text" name="datefilter" value="체크인 및 체크아웃" /><br>
+							게스트 인원 <input type="number" name="guestNum" min="1" value="1" max=${hotelInfo.maxP }>
+							<input type="submit" value="예약하기" />
+						</form>
+
 						<p style="text-align: center;">예약 확정 전에는 요금이 청구되지 않습니다.</p>
-						<p>₩248,000 x 5박 ₩1,240,000</p>
+						<p>₩${hotelInfo.hotelPrice } x 5박 ₩${hotelInfo.hotelPrice * 5}</p>
 						<p>청소비 ₩10,000</p>
 						<p>서비스 수수료 ₩176,471</p>
 						<p>숙박세와 수수료 ₩17,647</p>
@@ -253,31 +384,9 @@
 				</div>
 				<!-- Side widget-->
 				<div class="card mb-4">
-					<div class="card-header">Side Widget</div>
-					<div class="card-body">흔치 않은 기회입니다.호재님의 에어비앤비 숙소는 보통 예약이 가득 차
-						있습니다.</div>
-				</div>
-				<!-- Categories widget-->
-				<div class="card mb-4">
-					<div class="card-header">Categories</div>
-					<div class="card-body">
-						<div class="row">
-							<div class="col-sm-6">
-								<ul class="list-unstyled mb-0">
-									<li><a href="#!">Web Design</a></li>
-									<li><a href="#!">HTML</a></li>
-									<li><a href="#!">Freebies</a></li>
-								</ul>
-							</div>
-							<div class="col-sm-6">
-								<ul class="list-unstyled mb-0">
-									<li><a href="#!">JavaScript</a></li>
-									<li><a href="#!">CSS</a></li>
-									<li><a href="#!">Tutorials</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
+					<div class="card-header">❗ 알림</div>
+					<div class="card-body">흔치 않은 기회입니다! ${hotelInfo.memberId }님의
+						에어비앤비 숙소는 보통 예약이 가득 차 있습니다.</div>
 				</div>
 			</div>
 		</div>
