@@ -18,7 +18,8 @@ public class SelectHotelController implements Controller{
 //		RequestDispatcher rd = req.getRequestDispatcher("hotel/selectHotel.tiles");		
 //		rd.forward(req, resp);
 		
-		int hotelId = 113;
+		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
+		
 		
 		HotelService hotelService = HotelService.getInstance();
 		req.setAttribute("hotelInfo", hotelService.getHotelInfo(hotelId));
