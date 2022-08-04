@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	
+	<form method="post" enctype="multipart/form-data">
+		<input type="file" accept="image/*">
+		<br><input type="submit">
+	</form>
+	
+	
 </body>
 </html>

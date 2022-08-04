@@ -14,6 +14,18 @@
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/selectHotel.css" rel="stylesheet" />
+<script type="text/javascript"
+	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=yfntmtqunm&submodules=geocoder"></script>
+
+<!-- jQuery 달력 -->
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 <body>
 	<!-- Responsive navbar-->
@@ -52,11 +64,10 @@
 					<!-- Post header-->
 					<header class="mb-4">
 						<!-- Post title 숙소명-->
-						<h3 class="fw-bolder mb-1">[독채민박] 제주 바닷마을, 호젓한 둘만의 안식처 -
-							스테이호재</h3>
+						<h3 class="fw-bolder mb-1">${hotelInfo.hotelName }</h3>
 						<!-- Post meta content-->
-						<div class="text-muted fst-italic mb-2">⭐ 4.95 · 후기 114개 ·
-							❣️ 슈퍼호스트 · 구좌읍, 제주시, 제주도, 한국</div>
+						<div class="text-muted fst-italic mb-2">⭐ ${avgStar} · 후기
+							${countReview }개 · ❣️ 슈퍼호스트 · ${hotelInfo.hotelLocation }</div>
 
 						<!-- Post categories-->
 						<a class="badge bg-secondary text-decoration-none link-light"
@@ -73,52 +84,207 @@
 					</figure>
 					<!-- Post content-->
 					<section class="mb-5">
-						<p class="fs-5 mb-4">⭐숙소 설명란⭐ 제주의 한적한 바닷마을 김녕리에 위치한 프라이빗 렌탈
-							하우스입니다. 하루 한 팀, 성인 두 분만 머무시는 독채형 숙소로 타인과 마주칠 일 없이 프라이빗한 휴식을 만끽할 수
-							있습니다.</p>
+						<p class="fs-5 mb-4">⭐숙소 설명란⭐ ${hotelInfo.hotelDesc }</p>
 						<p class="fs-5 mb-4">화이트&우드 톤으로 꾸며진 내부는 편안한 휴식을 도와드립니다. 호스트의
 							취향이 담긴 CD들과, CD 플레이어 겸 블루투스 스피커가 비치되어 호스트의 취향을 엿보거나, 나의 취향을 재생하기
 							모두 가능합니다.</p>
 						<p class="fs-5 mb-4">평상형 마루에 올라앉아 마당의 귤나무를 바라보거나 야외 데크의 릴랙스
 							체어에 누워 하늘을 올려다보며 도시의 피로를 씻어 버리세요.</p>
 						<hr>
+						<!-- 숙소 편의 시설 여부에 따라 취소선을 나타내었습니다. -->
 						<h4 class="fw-bolder mb-4 mt-5">숙소 편의시설</h4>
-						<p class="fs-5 mb-4">무선 인터넷</p>
-						<p class="fs-5 mb-4">주방</p>
+						<!-- WIFI -->
+						<c:choose>
+							<c:when test="${0 eq hotelInfo.hotelOptionWifi }">
+								<p class="fs-5 mb-4">
+									🌐
+									<del>무선 인터넷</del>
+								</p>
+							</c:when>
+							<c:otherwise>
+								<p class="fs-5 mb-4">🌐 무선 인터넷</p>
+							</c:otherwise>
+						</c:choose>
+						<!-- SWIM -->
+						<c:choose>
+							<c:when test="${0 eq hotelInfo.hotelOptionSwim }">
+								<p class="fs-5 mb-4">
+									🏊
+									<del>수영장</del>
+								</p>
+							</c:when>
+							<c:otherwise>
+								<p class="fs-5 mb-4">🏊 수영장</p>
+							</c:otherwise>
+						</c:choose>
+						<!-- KITCHEN -->
+						<c:choose>
+							<c:when test="${0 eq hotelInfo.hotelOptionKitchen }">
+								<p class="fs-5 mb-4">
+									🍽️
+									<del>주방</del>
+								</p>
+							</c:when>
+							<c:otherwise>
+								<p class="fs-5 mb-4" id="kitchen">🍽️ 주방</p>
+							</c:otherwise>
+						</c:choose>
+						<!-- PARKING -->
+						<c:choose>
+							<c:when test="${0 eq hotelInfo.hotelOptionParking }">
+								<p class="fs-5 mb-4">
+									🚗
+									<del>무료 주차</del>
+								</p>
+							</c:when>
+							<c:otherwise>
+								<p class="fs-5 mb-4" id="parking">🚗 무료 주차</p>
+							</c:otherwise>
+						</c:choose>
+						<!-- PET -->
+						<c:choose>
+							<c:when test="${0 eq hotelInfo.hotelOptionWpet }">
+								<p class="fs-5 mb-4">
+									🐶
+									<del>반려동물 입실 가능</del>
+								</p>
+							</c:when>
+							<c:otherwise>
+								<p class="fs-5 mb-4" id="pet">🐶 반려동물 입실 가능</p>
+							</c:otherwise>
+						</c:choose>
+
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">호스팅 지역</h4>
-						<p class="fs-5 mb-4">⭐⭐⭐여기에 지도⭐⭐⭐</p>
-						<p class="fs-5 mb-4">구좌읍, 제주시, 제주도, 한국</p>
+						<div id="map" style="width: 100%; height: 400px;"></div>
+						<input type='hidden' id="hotelAddress"
+							value="${hotelInfo.hotelLocation}">
+						<script>
+							let hotelAddr = document
+									.getElementById('hotelAddress').value;
+
+							var mapOptions = {
+								center : new naver.maps.LatLng(37.3595704,
+										127.105399), //경도와 위도
+								zoom : 15,
+								mapTypeControl : true
+							};
+
+							var map = new naver.maps.Map('map', mapOptions); // id and mapOption
+							// 맵 만드는 부분
+
+							var marker = new naver.maps.Marker({
+								position : new naver.maps.LatLng(37.3, 127.1),
+								map : map
+							});
+
+							var infoWindow = new naver.maps.InfoWindow({
+								anchorSkew : true
+							});
+
+							function searchAddressToCoordinate(address) {
+								naver.maps.Service
+										.geocode(
+												{
+													query : address
+												},
+												function(status, response) {
+													if (status === naver.maps.Service.Status.ERROR) {
+														return alert('Something Wrong!');
+													}
+
+													if (response.v2.meta.totalCount === 0) {
+														return alert('totalCount'
+																+ response.v2.meta.totalCount);
+													}
+
+													var htmlAddresses = [], item = response.v2.addresses[0], point = new naver.maps.Point(
+															item.x, item.y);
+
+													if (item.roadAddress) {
+														htmlAddresses
+																.push('[도로명 주소] '
+																		+ item.roadAddress);
+													}
+
+													if (item.jibunAddress) {
+														htmlAddresses
+																.push('[지번 주소] '
+																		+ item.jibunAddress);
+													}
+
+													if (item.englishAddress) {
+														htmlAddresses
+																.push('[영문명 주소] '
+																		+ item.englishAddress);
+													}
+
+													infoWindow
+															.setContent([
+																	'<div style="padding:10px;min-width:200px;line-height:150%;">',
+																	'<h4 style="margin-top:5px;">검색 주소 : '
+																			+ address
+																			+ '</h4><br />',
+																	htmlAddresses
+																			.join('<br />'),
+																	'</div>' ]
+																	.join('\n'));
+
+													map.setCenter(point);
+													marker.setPosition(point);
+													//infoWindow.open(map, point);
+												});
+							}
+
+							function hasArea(area) {
+								return !!(area && area.name && area.name !== '');
+							}
+
+							function hasData(data) {
+								return !!(data && data !== '');
+							}
+
+							function checkLastString(word, lastString) {
+								return new RegExp(lastString + '$').test(word);
+							}
+
+							function hasAddition(addition) {
+								return !!(addition && addition.value);
+							}
+
+							searchAddressToCoordinate(hotelAddr);
+						</script>
+						<p class="fs-5 mb-4">${hotelInfo.hotelLocation }</p>
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">호스트: 호재님</h4>
-						<p class="fs-5 mb-4">⭐ 후기 114개 본인 인증 완료 ❣️ 슈퍼호스트</p>
+						<p class="fs-5 mb-4">⭐ 후기 ${countReview }개 본인 인증 완료 ❣️ 슈퍼호스트</p>
 						<p class="fs-5 mb-4">2016년 봄 서울에서 제주로 이주했습니다. 제주에 와서 결혼하고 남편,
 							고양이와 살고 있어요. 제가 좋아하는 제주의 마을 김녕에서 작은 민박집을 운영합니다.</p>
 						<hr>
-						<h4 class="fw-bolder mb-4 mt-5">⭐ 4.95 · 후기 114개</h4>
+						<h4 class="fw-bolder mb-4 mt-5">⭐ ${avgStar} · 후기
+							${countReview }개</h4>
 					</section>
 				</article>
 				<!-- Comments section-->
 				<section class="mb-5">
 					<div class="card bg-light">
 						<div class="card-body">
-							<!-- Comment form 리뷰 입력란 -->
-							<form class="mb-4">
-								<textarea class="form-control" rows="3"
-									placeholder="리뷰를 작성해주세요. 이 textarea는 숙박을 완료한 게스트에게만 보이거나(아니면 hidden) 예약 내역에서 바로 리뷰를 작성할 수 있도록 만들면 좋을듯?"></textarea>
-							</form>
-							<!-- Single comment-->
-							<div class="d-flex">
-								<div class="flex-shrink-0">
-									<img class="rounded-circle"
-										src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
+							<!-- 리뷰 list로 저장해서 foreach로 여러개 가져올 예정-->
+							<c:forEach var="vo" items="${reviewList }">
+								<div class="d-flex">
+									<div class="flex-shrink-0">
+										<img class="rounded-circle"
+											src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
+											alt="..." />
+									</div>
+									<div class="ms-3">
+										<div class="fw-bold">게스트 이름: ${vo.memberId }</div>
+										리뷰 일자: ${vo.reviewDate }<br> <b>⭐ ${vo.reviewRate }</b>
+										${vo.reviewContents }
+									</div>
 								</div>
-								<div class="ms-3">
-									<div class="fw-bold">Yoori(게스트)</div>
-									일단 숙소 위치 너무 좋았어요. 관광객 위주 느낌보다는 제주 감성 잔뜩 입은 김녕읍이구요, 앞에 바로 바닷가
-									산책로가 있어서 너무 좋았어요 숙소 자체는 인테리어 부터 청결도, 가구 가전 모두 흠잡을데 없이 좋았습니다!!!!
-								</div>
-							</div>
+							</c:forEach>
+
 							<!-- Comment with nested comments-->
 							<div class="d-flex mb-4">
 								<!-- Parent comment-->
@@ -154,11 +320,60 @@
 				<div class="card mb-4">
 					<div class="card-header">숙소가 마음에 드시나요?</div>
 					<div class="card-body">
-						<p>₩248,000 /박 ₩248,000/박 4.95 · 후기 114개</p>
-						<p>⭐⭐⭐여기에 달력⭐⭐⭐</p>
-						<button type="button">예약하기</button>
+						<p>₩${hotelInfo.hotelPrice } /박 ⭐ ${avgStar} · 후기
+							${countReview }개</p>
+
+						<script type="text/javascript">
+							$(function() {
+
+								$('input[name="datefilter"]').daterangepicker(
+										{
+											autoUpdateInput : false,
+											locale : {
+												cancelLabel : 'Clear',
+												"separator" : " - ", // 시작일시와 종료일시 구분자
+												"format" : 'YYYY.MM.DD', // 일시 노출 포맷
+												"applyLabel" : "확인", // 확인 버튼 텍스트
+												"cancelLabel" : "취소", // 취소 버튼 텍스트
+												"daysOfWeek" : [ "일", "월", "화",
+														"수", "목", "금", "토" ],
+												"monthNames" : [ "1월", "2월",
+														"3월", "4월", "5월", "6월",
+														"7월", "8월", "9월",
+														"10월", "11월", "12월" ]
+											},
+											opens : 'center'
+										});
+
+								$('input[name="datefilter"]')
+										.on(
+												'apply.daterangepicker',
+												function(ev, picker) {
+													$(this)
+															.val(
+																	picker.startDate
+																			.format('YYYY.MM.DD')
+																			+ ' - '
+																			+ picker.endDate
+																					.format('YYYY.MM.DD'));
+												});
+
+								$('input[name="datefilter"]').on(
+										'cancel.daterangepicker',
+										function(ev, picker) {
+											$(this).val('');
+										});
+
+							});
+						</script>
+						<form action="doReservation.do" method="post">
+							<input type="text" name="datefilter" value="체크인 및 체크아웃" /><br>
+							게스트 인원 <input type="number" name="guestNum" min="1" value="1" max=${hotelInfo.maxP }>
+							<input type="submit" value="예약하기" />
+						</form>
+
 						<p style="text-align: center;">예약 확정 전에는 요금이 청구되지 않습니다.</p>
-						<p>₩248,000 x 5박 ₩1,240,000</p>
+						<p>₩${hotelInfo.hotelPrice } x 5박 ₩${hotelInfo.hotelPrice * 5}</p>
 						<p>청소비 ₩10,000</p>
 						<p>서비스 수수료 ₩176,471</p>
 						<p>숙박세와 수수료 ₩17,647</p>
@@ -169,31 +384,9 @@
 				</div>
 				<!-- Side widget-->
 				<div class="card mb-4">
-					<div class="card-header">Side Widget</div>
-					<div class="card-body">흔치 않은 기회입니다.호재님의 에어비앤비 숙소는 보통 예약이 가득 차
-						있습니다.</div>
-				</div>
-				<!-- Categories widget-->
-				<div class="card mb-4">
-					<div class="card-header">Categories</div>
-					<div class="card-body">
-						<div class="row">
-							<div class="col-sm-6">
-								<ul class="list-unstyled mb-0">
-									<li><a href="#!">Web Design</a></li>
-									<li><a href="#!">HTML</a></li>
-									<li><a href="#!">Freebies</a></li>
-								</ul>
-							</div>
-							<div class="col-sm-6">
-								<ul class="list-unstyled mb-0">
-									<li><a href="#!">JavaScript</a></li>
-									<li><a href="#!">CSS</a></li>
-									<li><a href="#!">Tutorials</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
+					<div class="card-header">❗ 알림</div>
+					<div class="card-body">흔치 않은 기회입니다! ${hotelInfo.memberId }님의
+						에어비앤비 숙소는 보통 예약이 가득 차 있습니다.</div>
 				</div>
 			</div>
 		</div>
@@ -201,8 +394,8 @@
 	<!-- Footer-->
 	<footer class="py-5 bg-dark">
 		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your
-				Website 2022</p>
+			<p class="m-0 text-center text-white">여긴 원래 나의 Copyright &copy;
+				Your Website 2022</p>
 		</div>
 	</footer>
 	<!-- Bootstrap core JS-->
@@ -212,18 +405,3 @@
 	<script src="js/scripts.js"></script>
 </body>
 </html>
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-You have no unread notifications

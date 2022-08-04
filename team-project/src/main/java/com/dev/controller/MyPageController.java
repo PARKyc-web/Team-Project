@@ -7,30 +7,46 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dev.common.Controller;
-import com.dev.vo.MyPageVO;
+import com.dev.common.Utils;
+import com.dev.service.MemberService;
+import com.dev.vo.MemberVO;
 
 public class MyPageController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 파라메터
-		String hotId = req.getParameter("hotelId");
-		String reDate = req.getParameter("reviewDate");
-		String reContent = req.getParameter("reviewContent");
-		String hotName = req.getParameter("hotelName");
-		int hotPrice = (Integer.parseInt(req.getParameter("hotelPrice")));
-		String reserInDate = req.getParameter("inDate");
-		String reserOutDate = req.getParameter("outDate");
+		String memberId = req.getParameter("id");
+		String memberPassword = req.getParameter("password");
+		String memberName = req.getParameter("name");
+		int memberAge = Integer.parseInt(req.getParameter("age"));
+		String phone = req.getParameter("phone");
+		String email = req.getParameter("email");
 		
-	
-		MyPageVO vo = new MyPageVO();
-		vo.setHotelId(hotId);
-		vo.setInDate(reDate);
-		vo.setReviewContents(reContent);
-		vo.setHotelName(hotName);
-		vo.setHotelPrice(hotPrice);
-		vo.setInDate(reserInDate);
-		vo.setOutDate(reserOutDate);
-	
+		String memberType = req.getParameter("type");
+		String memberAble = req.getParameter("able");
+		String signInDate = req.getParameter("signInDate");
+		String memberPic = req.getParameter("pic");
+		
+		
+		MemberVO vo = new MemberVO();
+		vo.setMemberId(memberId);
+		vo.setMemberPassword(memberPassword);
+		vo.setMemberName(memberName);
+		vo.setMemberAge(memberAge);
+		vo.setPhone(phone);
+		vo.setEmail(email);
+		vo.setMemberType(memberType);
+		vo.setMemberAble(memberAble);
+		vo.setSignInDate(signInDate);
+		vo.setMemberPic(memberPic);
+
+		MemberService service = MemberService.getInstance();
+		service.infoMember(memberId);
+
+		// 공유
+		req.setAttribute("memberInfo", vo);
+
+		Utils.forward(req, resp, "myPage/myPage.tiles");
 	}
 }

@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class WishListVO {
-	String hotelId;
-	String memberID;
-	String onOff;
+	private int hotelId;
+	private String memberId;
+	private int onOff;
 }

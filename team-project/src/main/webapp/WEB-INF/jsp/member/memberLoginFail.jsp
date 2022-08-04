@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>LoginFail</title>
 </head>
 <body>
-
+	<h3>로그인실패</h3>
 </body>
 </html>

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix ="c" %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container px-4 px-lg-5">
-		<a class="navbar-brand" href="#!">AirBnB</a>
+		<a class="navbar-brand" href="main.do">AirBnB</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -24,6 +24,16 @@
 						<li><a class="dropdown-item" href="#!">Popular Items</a></li>
 						<li><a class="dropdown-item" href="#!">New Arrivals</a></li>
 					</ul></li>
+					
+				<c:choose>
+					<c:when test="${empty member}">
+						<li class="nav-item"><a class="nav-link" href="memberJoin.do">Login/SignUp</a></li>
+					</c:when>
+					
+					<c:when test="${!empty member}">
+						<li class="nav-item"><a class="nav-link" href="memberLogout.do">Logout</a></li>
+					</c:when>
+				</c:choose>				
 			</ul>
 			
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4"></ul>
@@ -42,7 +52,16 @@
 					class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
 					role="button" data-bs-toggle="dropdown" aria-expanded="false">MY-INFO</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<li><a class="dropdown-item" href="#!">Info</a></li>
+						<c:choose>
+							<c:when test="${!empty member}">
+								<li><a class="dropdown-item" href="myPageMain.do">마이페이지</a></li>
+							</c:when>
+							
+							<c:when test="${empty member}">
+								<li><a class="dropdown-item" href="memberJoin.do">마이페이지</a></li>
+							</c:when>
+						</c:choose>
+						
 						<li><hr class="dropdown-divider" /></li>
 						<li><a class="dropdown-item" href="#!">Info Info</a></li>
 						<li><a class="dropdown-item" href="#!">Info Info Info</a></li>

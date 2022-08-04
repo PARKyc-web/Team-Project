@@ -10,16 +10,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dev.controller.DoReservationController;
 import com.dev.controller.MainController;
 import com.dev.controller.MemberJoinController;
+import com.dev.controller.MemberLogoutController;
 import com.dev.controller.MemberSignInController;
+import com.dev.controller.MemberSignInFormController;
 import com.dev.controller.MemberSignUpController;
-import com.dev.controller.MyHotelListController;
+import com.dev.controller.MemberSignUpFormController;
 import com.dev.controller.MyPageController;
+import com.dev.controller.MyPageMainController;
 import com.dev.controller.MyPageModiController;
+import com.dev.controller.MyReservationController;
 import com.dev.controller.MyReviewListController;
 import com.dev.controller.MyWishListController;
+import com.dev.controller.SearchHotelController;
 import com.dev.controller.SelectHotelController;
+import com.dev.controller.TestController;
 
 public class FrontController extends HttpServlet{
 
@@ -32,23 +39,34 @@ public class FrontController extends HttpServlet{
 		enc = config.getInitParameter("charset");		
 		
 		mappings = new HashMap<>();
+		// Part of parkyc
 		mappings.put("/main.do", new MainController());
+		mappings.put("/searchHotel.do", new SearchHotelController());
+		mappings.put("/testCont.do", new TestController());
+		
 		
 		// Part of YJ
-		mappings.put("/main.do", new MainController());	//메인
-		mappings.put("/myPage.do", new MyPageController());//마이페이지
-		mappings.put("/myPageModi.do", new MyPageModiController());//마이페이지 - 수정
+		mappings.put("/myPageMain.do", new MyPageMainController());//마이페이지 메인! 
+		mappings.put("/myPage.do", new MyPageController());//마이페이지 - 내정보
+		mappings.put("/myPageModi.do", new MyPageModiController());//마이페이지 - 내정보 - 수정
 		mappings.put("/myReview.do", new MyReviewListController());//마이페이지 - 내가쓴리뷰
-		mappings.put("/myHotel.do", new MyHotelListController());//마이페이지 - 나의 숙박내역
-		mappings.put("/myWish.do", new MyWishListController());//마이페이지 - 나의 위시리스트
+		mappings.put("/myReservation.do", new MyReservationController());//마이페이지 - 나의숙박내역
+		mappings.put("/myWishList.do", new MyWishListController());//마이페이지 - 나의 위시리스트
+		
 		
 		// Part of joha
-		mappings.put("/memberSignUp.do", new MemberSignUpController());
-		mappings.put("/memberSignIn.do", new MemberSignInController());
-		mappings.put("/memberJoin.do", new MemberJoinController());
+		mappings.put("/memberJoin.do", new MemberJoinController()); //로그인.회원가입 선택
+		mappings.put("/memberSignIn.do", new MemberSignInController()); //로그인
+		mappings.put("/memberSignInForm.do", new MemberSignInFormController()); //로그인 폼
+		mappings.put("/memberLogout.do", new MemberLogoutController()); //로그아웃
+		mappings.put("/memberSignUp.do", new MemberSignUpController()); //회원가입
+		mappings.put("/memberSignUpForm.do", new MemberSignUpFormController()); // 회원가입 폼
+		
 		
 		// Part of YR
 		mappings.put("/selectHotel.do", new SelectHotelController());
+		// selectHotel.do에서 예약하기를 누른 후 이동하는 페이지
+		mappings.put("/doReservation.do", new DoReservationController()); 
 	}
 
 	
