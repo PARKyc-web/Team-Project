@@ -64,10 +64,11 @@ public class ReviewDAO extends DAO {
 	}
 	
 	// 특정 호텔(hotelId)의 별점의 평균을 구하는 함수입니다.
+	// 소수점 둘째 자리에서 반올림됩니다.
 	public float avgHotelReview(int hotelId) {
 		float avg = 0;
 		
-		String sql = "select avg(review_rate) from review where hotel_id = ?";
+		String sql = "select round(avg(review_rate), 2) AS star from review where hotel_id = ?";
 		connect();
 		
 		try {
@@ -76,7 +77,7 @@ public class ReviewDAO extends DAO {
 			
 			rs = pstmt.executeQuery();
 			if(rs.next())
-				avg = rs.getFloat("avg(review_rate)");
+				avg = rs.getFloat("star");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

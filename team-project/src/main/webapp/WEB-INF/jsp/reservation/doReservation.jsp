@@ -15,6 +15,25 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/selectHotel.css" rel="stylesheet" />
 <link href="css/payDropdown.css" rel="stylesheet" />
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.slider').bxSlider({
+			auto : true,
+			speed : 500,
+			pause : 4000,
+			mode : 'fade',
+			pager : true,
+		});
+	});
+</script>
+
 </head>
 <body>
 	<!-- Page content-->
@@ -37,77 +56,6 @@
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">결제 수단</h4>
 						
-						<script>
-						window.onload=()=>{
-						      document.querySelector('.dropbtn_click').onclick = ()=>{
-						        dropdown();
-						      }
-						      document.getElementsByClassName('fastfood').onclick = ()=>{
-						        showMenu(value);
-						      };
-						      dropdown = () => {
-						        var v = document.querySelector('.dropdown-content');
-						        var dropbtn = document.querySelector('.dropbtn')
-						        v.classList.toggle('show');
-						        dropbtn.style.borderColor = 'rgb(94, 94, 94)';
-						      }
-
-						      showMenu=(value)=>{
-						        var dropbtn_icon = document.querySelector('.dropbtn_icon');
-						        var dropbtn_content = document.querySelector('.dropbtn_content');
-						        var dropbtn_click = document.querySelector('.dropbtn_click');
-						        var dropbtn = document.querySelector('.dropbtn');
-
-						        dropbtn_icon.innerText = '';
-						        dropbtn_content.innerText = value;
-						        dropbtn_content.style.color = '#252525';
-						        dropbtn.style.borderColor = '#3992a8';
-						      }
-						    }
-						    window.onclick= (e)=>{
-						      if(!e.target.matches('.dropbtn_click')){
-						        var dropdowns = document.getElementsByClassName("dropdown-content");
-
-						        var dropbtn_icon = document.querySelector('.dropbtn_icon');
-						        var dropbtn_content = document.querySelector('.dropbtn_content');
-						        var dropbtn_click = document.querySelector('.dropbtn_click');
-						        var dropbtn = document.querySelector('.dropbtn');
-
-						        var i;
-						        for (i = 0; i < dropdowns.length; i++) {
-						          var openDropdown = dropdowns[i];
-						          if (openDropdown.classList.contains('show')) {
-						            openDropdown.classList.remove('show');
-						          }
-						        }
-						      }
-						    }
-						</script>
-						<div class="dropdown-label">
-							Lunch Menus <span style="font-family: Material Icons;">restaurant</span>
-						</div>
-						<div class="dropdown">
-							<button class="dropbtn">
-								<span class="dropbtn_icon">more_horiz</span> <span
-									class="dropbtn_content">Select a menu...</span> <span
-									class="dropbtn_click"
-									style="font-family: Material Icons; font-size: 16px; color: #3b3b3b; float: right;"
-									onclick="dropdown()">arrow_drop_down</span>
-							</button>
-							<div class="dropdown-content">
-								<div class="fastfood" onclick="showMenu(this.innerText)">Burgerking</div>
-								<div class="fastfood" onclick="showMenu(this.innerText)">Mcdonals</div>
-								<div class="fastfood" onclick="showMenu(this.innerText)">Lotteria</div>
-								<div class="fastfood" onclick="showMenu(this.innerText)">Mom's
-									touch</div>
-								<div class="fastfood" onclick="showMenu(this.innerText)">In
-									n out</div>
-								<div class="fastfood" onclick="showMenu(this.innerText)">Subway</div>
-								<div class="fastfood" onclick="showMenu(this.innerText)">Shake
-									shack</div>
-							</div>
-						</div>
-
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">환불 정책</h4>
 						<p class="fs-5 mb-4">환불 금액을 알고 싶다면 예약 취소 절차를 시작하세요. 그러면 상세 내역이
@@ -117,10 +65,10 @@
 							상황으로 간주되어 환불이 가능할 수 있습니다.</p>
 					</section>
 
-					<form action="#" method="post" onsubmit="alert('예약이 완료되었습니다.')">
+					<form action="myReservation.do" method="post" onsubmit="alert('예약이 완료되었습니다.')">
 						날짜 <input type="text" name="datefilter" value=${checkInOut } /><br>
 						게스트 게스트<input type="text" name="guestNum" value=${guestNum } />명<br>
-						<input type="submit" value="예약 요청 누르면 마이 페이지 내 예약 내역 란으로.." />
+						<input type="submit" value="예약 요청" />
 					</form>
 				</article>
 
@@ -128,9 +76,15 @@
 			<!-- Side widget-->
 			<div class="col-lg-4">
 				<div class="card mb-4">
-					<div class="card-header">Side Widget</div>
+					<div class="card-header" style="text-align: center">요금 안내</div>
 					<div class="card-body">
-						<p>⭐⭐⭐ 여기에 대표 사진⭐⭐⭐</p>
+						<div class="slider">
+						<c:forEach var="inner" items="${picList}">
+							<img class="card-img-top" src="${inner.path}${inner.name}"
+								width="900px" height="200px" alt="selected-hotel-image" />
+
+						</c:forEach>
+					</div>
 						${hotelInfo.hotelName }
 						<div class="text-muted fst-italic mb-2">⭐ ${avgStar}
 							(${countReview }) · ❣️ 슈퍼호스트</div>

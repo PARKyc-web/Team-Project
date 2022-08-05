@@ -19,6 +19,7 @@ public class DoReservationController implements Controller {
 		int hotelId = 113;
 		HotelService hotelService = HotelService.getInstance();
 		req.setAttribute("hotelInfo", hotelService.getHotelInfo(hotelId));
+		req.setAttribute("picList", hotelService.getSelectedHotelImage(hotelId));
 		
 		ReviewService rvService = ReviewService.getInstance();
 		req.setAttribute("countReview", rvService.countHotelReview(hotelId));
