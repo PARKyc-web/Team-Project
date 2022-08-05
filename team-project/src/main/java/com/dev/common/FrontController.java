@@ -18,6 +18,8 @@ import com.dev.controller.MemberSignInController;
 import com.dev.controller.MemberSignInFormController;
 import com.dev.controller.MemberSignUpController;
 import com.dev.controller.MemberSignUpFormController;
+import com.dev.controller.MyMemberDeleteController;
+import com.dev.controller.MyMemberDeleteOutput;
 import com.dev.controller.MyPageController;
 import com.dev.controller.MyPageMainController;
 import com.dev.controller.MyPageModiController;
@@ -26,6 +28,7 @@ import com.dev.controller.MyReviewListController;
 import com.dev.controller.MyWishListController;
 import com.dev.controller.SearchHotelController;
 import com.dev.controller.SelectHotelController;
+import com.dev.controller.Test;
 import com.dev.controller.TestController;
 import com.dev.controller.MyPageModiInfoContoller;
 
@@ -54,7 +57,9 @@ public class FrontController extends HttpServlet{
 		mappings.put("/myReview.do", new MyReviewListController());//마이페이지 - 내가쓴리뷰
 		mappings.put("/myReservation.do", new MyReservationController());//마이페이지 - 나의숙박내역
 		mappings.put("/myWishList.do", new MyWishListController());//마이페이지 - 나의 위시리스트
-				
+		mappings.put("/myMemberDeleteOutput.do", new MyMemberDeleteOutput());//회원탈퇴
+		mappings.put("/myMemberDelete.do", new MyMemberDeleteController());
+
 		
 		// Part of joha
 		mappings.put("/memberJoin.do", new MemberJoinController()); //로그인.회원가입 선택
@@ -63,8 +68,8 @@ public class FrontController extends HttpServlet{
 		mappings.put("/memberLogout.do", new MemberLogoutController()); //로그아웃
 		mappings.put("/memberSignUp.do", new MemberSignUpController()); //회원가입
 		mappings.put("/memberSignUpForm.do", new MemberSignUpFormController()); // 회원가입 폼
-		
-		
+		mappings.put("/idCheck.do", new Test());
+				
 		// Part of YR
 		mappings.put("/selectHotel.do", new SelectHotelController()); // 호텔 상세 페이지
 		// selectHotel.do에서 예약하기를 누른 후 이동하는 페이지

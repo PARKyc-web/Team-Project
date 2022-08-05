@@ -37,6 +37,15 @@ public class MemberService {
 		return dao.searchLoginMember(id);
 	}
 	
+	//회원탈퇴(하영)
+	public void deleteMember(String id) {
+		dao.deleteMember(id);
+	}
+	
+	//아이디중복체크(하영)
+	public void checkId(String id) {
+		dao.checkId(id);
+	}
 
 	
 }

@@ -27,6 +27,7 @@ public class MemberSignInController implements Controller {
 	
 		MemberVO vo = service.searchMember(id);
 		
+		
 		if(vo == null || !pw.equals(vo.getMemberPassword())) {
 			Utils.forward(req, resp, "member/memberLoginFail.tiles");
 		} else {

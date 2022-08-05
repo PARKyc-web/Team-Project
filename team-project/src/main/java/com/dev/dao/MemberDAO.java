@@ -16,6 +16,7 @@ public class MemberDAO extends DAO {
 	// 마이페이지 - 개인정보수정 : yj
 	public void updateMember(MemberVO vo) {
 		System.out.println("run updateMember");
+
 		String sql = "UPDATE member_info SET phone = ?, email = ?, member_pic = ? "
 				   + "WHERE member_id = ?"; 
 
@@ -26,6 +27,61 @@ public class MemberDAO extends DAO {
 			pstmt.setString(2, vo.getEmail());
 			pstmt.setString(3, vo.getMemberPic());
 			pstmt.setString(4, vo.getMemberId());
+			int r = pstmt.executeUpdate();
+			System.out.println(r + "님의 정보가 수정되었습니다.");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+	}
+
+	//회원탈퇴 (member_able만 1로수정)
+	public void deleteMember(String id) {
+		System.out.println("run deleteMember");
+		String sql = "UPDATE member_login SET member_able=1 WHERE member_id = ?"; 
+
+		connect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			int r = pstmt.executeUpdate();
+			System.out.println(r + "님이 탈퇴되었습니다.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+	}
+	
+	//탈퇴회원 로그인 제한 
+	public void searchDeleteMember(String id) {
+		System.out.println("run deleteMember");
+		String sql = "select * from member_login where member_able=1"; 
+
+		connect();
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+	}
+
+	// 내가 쓴 리뷰 조회
+	public List<ReviewVO> getReviewList(ReviewVO vo) {
+		String sql = "select hotel_id, review_date, review_content from review order by 1";
+		List<ReviewVO> list = new ArrayList<>();
+		connect();
+		try {
+			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				System.out.println(vo.getMemberId()+ "님의 정보가 수정되었습니다.");
@@ -131,5 +187,29 @@ public class MemberDAO extends DAO {
 			}
 			return null;
 		}
+		
+		//아이디 중복체크 ,,보류
+		public int checkId(String id) {
+			String sql = "select * from member_login where member_id=?";
+			int result = 0;
+			connect();
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					result = 1;
+				}
+		
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				disconnect();
+			}
+			return result;
+		}
+	
 		
 }

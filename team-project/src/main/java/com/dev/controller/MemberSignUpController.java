@@ -46,6 +46,7 @@ public class MemberSignUpController extends HttpServlet implements Controller {
 		System.out.println(vo);
 		req.setAttribute("member", vo);
 	
-		Utils.forward(req, resp, "member/memberSignUpForm.tiles");
+	
+		Utils.forward(req, resp, "member/memberSignUpSuccess.tiles");
 	}
 }
