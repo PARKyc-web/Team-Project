@@ -25,15 +25,6 @@ public class MainController implements Controller{
 		req.setAttribute("pic_list", picList);
 		req.setAttribute("random_list", list);		
 		
-		/*for(List<HotelPicVO> outerList : picList) {
-			System.out.println(outerList);
-			for(HotelPicVO vo : outerList) {
-				System.out.println("inner value : " + vo);
-			}						
-		}*/
-		
 		Utils.forward(req, resp, "main/main.tiles");
-//		RequestDispatcher rd = req.getRequestDispatcher("main/main.tiles");
-//		rd.forward(req, resp);		
 	}	
 }

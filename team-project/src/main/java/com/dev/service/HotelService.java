@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.dev.dao.HotelDAO;
 import com.dev.dao.HotelPicDAO;
+import com.dev.vo.Criteria;
 import com.dev.vo.HotelPicVO;
 import com.dev.vo.HotelVO;
 
@@ -31,7 +32,7 @@ public class HotelService {
 		
 		List<HotelVO> list = new ArrayList<>();
 		int size = dao.getHotelTableSize();
-		int rand = (int) ((Math.random()*100)%size)+101;
+		long rand = (long) ((Math.random()*100)%size)+101;
 		
 		for(int i=0; i<8; i++) {	
 			list.add(dao.getHotelInfo((rand+i)%(size)+101));
@@ -50,8 +51,8 @@ public class HotelService {
 		return outList;
 	}
 	
-	public List<HotelVO> getSearchedHotelInfo(String keyword){
-		return dao.getSearchHotelInfo(keyword);
+	public List<HotelVO> getSearchedHotelInfo(String keyword, Criteria cri){
+		return dao.getSearchHotelInfo(keyword, cri);
 	}
 	
 	public int getSearchedHotelCount(String keyword) {
