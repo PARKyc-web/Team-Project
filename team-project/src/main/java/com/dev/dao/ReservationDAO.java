@@ -10,15 +10,14 @@ import com.dev.vo.ReservationJoinHotelVO;
 public class ReservationDAO extends DAO{
 	
 	// 숙박리스트 출력 : yj
-		public List<ReservationJoinHotelVO> getReservationList(ReservationJoinHotelVO vo) {
-			System.out.println(vo);
+		public List<ReservationJoinHotelVO> getReservationList(String memberId) {
 			String sql = "select * from hotel h FULL OUTER JOIN reservation rn "
 					+ "ON (h.hotel_id = rn.hotel_id) where h.member_id = ? ";
 			List<ReservationJoinHotelVO> list = new ArrayList<>();
 			connect();
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, vo.getMemberId());
+				pstmt.setString(1, memberId);
 				rs = pstmt.executeQuery();
 				
 				while (rs.next()) {
@@ -86,4 +85,8 @@ public class ReservationDAO extends DAO{
 //				}
 //				return hvo;
 //			}
+	
+	
+	//예약취소 : yj
+	
 }

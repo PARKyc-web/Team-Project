@@ -87,7 +87,7 @@ public class ReviewDAO extends DAO {
 	}
 	
 	// 내가 쓴 리뷰 조회 : yj
-	public List<ReviewJoinReservationJoinHotelVO> getReviewList(ReviewJoinReservationJoinHotelVO vo) {
+	public List<ReviewJoinReservationJoinHotelVO> getReviewList(String memberId) {
 		String sql = "select * from review r JOIN hotel h ON  r.member_id = h.member_id "
 				+ "                                JOIN reservation rv ON h.member_id = rv.member_id "
 				+ "                                WHERE r.member_id = ? ";
@@ -95,7 +95,7 @@ public class ReviewDAO extends DAO {
 		connect();
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getMemberId());
+			pstmt.setString(1, memberId);
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -110,7 +110,6 @@ public class ReviewDAO extends DAO {
 				
 				list.add(rrhvo);
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

@@ -17,8 +17,8 @@ public class WishListService {
 		return instance;
 	}
 	//나의 숙박위시리스트
-	public List<WishListJoinHotelVO> JoinWishListHotel(WishListJoinHotelVO jwhvo) {
-		return dao.getWishList(jwhvo);
+	public List<WishListJoinHotelVO> ListWishList(String memberId) {
+		return dao.getWishList(memberId);
 	}
 
 
