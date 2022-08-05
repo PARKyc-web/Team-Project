@@ -5,10 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dev.common.DAO;
-import com.dev.vo.HotelVO;
 import com.dev.vo.MemberVO;
 import com.dev.vo.ReviewVO;
-import com.dev.vo.WishListVO;
 
 public class MemberDAO extends DAO {
 
@@ -92,6 +90,7 @@ public class MemberDAO extends DAO {
 		} finally {
 			disconnect();
 		}
+		return list;
 	}
 
 	

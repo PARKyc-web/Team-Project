@@ -23,6 +23,7 @@ import com.dev.controller.MyMemberDeleteOutput;
 import com.dev.controller.MyPageController;
 import com.dev.controller.MyPageMainController;
 import com.dev.controller.MyPageModiController;
+import com.dev.controller.MyPageModiInfoContoller;
 import com.dev.controller.MyReservationController;
 import com.dev.controller.MyReviewListController;
 import com.dev.controller.MyWishListController;
@@ -30,7 +31,6 @@ import com.dev.controller.SearchHotelController;
 import com.dev.controller.SelectHotelController;
 import com.dev.controller.Test;
 import com.dev.controller.TestController;
-import com.dev.controller.MyPageModiInfoContoller;
 
 public class FrontController extends HttpServlet{
 
