@@ -30,7 +30,9 @@ public class ReviewService {
 		return dao.avgHotelReview(hotelId);
 	}
 
-	public List<ReviewJoinReservationJoinHotelVO> ReviewList(ReviewJoinReservationJoinHotelVO rrhvo) {
-		return dao.getReviewList(rrhvo);
+	
+	public List<ReviewJoinReservationJoinHotelVO> ReviewList(String memberId) {
+		return dao.getReviewList(memberId);
+
 	}
 }

@@ -13,9 +13,14 @@
 	<table>
 	 <c:forEach var="vo" items="${review }">
          <tr>
-         <td>${vo.hotelId }</td>
+         <td>${vo.hotelName }</td>
          <td>${vo.reviewDate }</td>
+         <td>${vo.reviewRate }</td>
+         <td>${vo.inDate }</td>
+         <td>${vo.outDate }</td>
          <td>${vo.reviewContents }</td>
+           
+            <td>${vo.hotelId }</td>
          </tr>
       </c:forEach>
 	</table>

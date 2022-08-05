@@ -19,8 +19,8 @@ public class ReservationService {
 	}
 
 	// 나의 숙박내역
-	public List<ReservationJoinHotelVO> ReservationList(ReservationJoinHotelVO rhvo) {
-		return dao.getReservationList(rhvo);
+	public List<ReservationJoinHotelVO> ReservationList(String memberId) {
+		return dao.getReservationList(memberId);
 	}
 
 	public List<Date> invalidDate(int hotelId) {

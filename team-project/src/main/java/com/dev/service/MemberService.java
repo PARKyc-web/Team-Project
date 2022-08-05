@@ -21,20 +21,6 @@ public class MemberService {
 		dao.updateMember(vo);		
 	}
 	
-	//내가 쓴 리뷰 조회
-	public void ReviewList(ReviewVO vo) {
-		dao.getReviewList(vo);
-	}
-	//나의 숙박내역
-	public void HotelList(HotelVO vo) {
-		dao.getHotelList(vo);
-	}
-			
-	//나의 숙박위시리스트
-	public void WishList(WishListVO vo) {
-		dao.getWishList(vo);
-	}
-	
 	//개인정보전체보기
 	public MemberVO infoMember(String memberId) {
 		return dao.searchMember(memberId);
