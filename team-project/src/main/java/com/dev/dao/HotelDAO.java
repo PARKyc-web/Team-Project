@@ -24,8 +24,6 @@ public class HotelDAO extends DAO{
 				vo.setHotelId(rs.getInt("hotel_id"));
 				vo.setMemberId(rs.getString("member_id"));
 				vo.setHotelName(rs.getString("hotel_name"));
-<<<<<<< HEAD
-=======
 				vo.setHotelLocation(rs.getString("hotel_location"));
 				vo.setHotelPrice(rs.getInt("hotel_price"));
 				vo.setHotelType(rs.getString("hotel_type"));
@@ -93,7 +91,6 @@ public class HotelDAO extends DAO{
 				vo.setHotelId(rs.getInt("hotel_id"));
 				vo.setMemberId(rs.getString("member_id"));
 				vo.setHotelName(rs.getString("hotel_name"));
->>>>>>> refs/remotes/origin/main
 				vo.setHotelLocation(rs.getString("hotel_location"));
 				vo.setHotelPrice(rs.getInt("hotel_price"));
 				vo.setHotelType(rs.getString("hotel_type"));

@@ -64,11 +64,7 @@ public class FrontController extends HttpServlet{
 		
 		
 		// Part of YR
-<<<<<<< HEAD
 		mappings.put("/selectHotel.do", new SelectHotelController()); // 호텔 상세 페이지
-=======
-		mappings.put("/selectHotel.do", new SelectHotelController());
->>>>>>> refs/remotes/origin/main
 		// selectHotel.do에서 예약하기를 누른 후 이동하는 페이지
 		mappings.put("/doReservation.do", new DoReservationController()); 
 	}
