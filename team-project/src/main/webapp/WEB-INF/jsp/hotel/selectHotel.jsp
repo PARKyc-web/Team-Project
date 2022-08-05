@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang='ko'>
 <head>
@@ -26,23 +27,26 @@
 	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-	
+
 <!-- 여기서 부터 이미지 슬라이드 하는 거 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-  <script>
-    $(document).ready(function(){
-      $('.slider').bxSlider({
-   	    auto: true,
-  		speed: 500,
-  		pause: 4000,
-  		mode:'fade',
-  		pager:true,    	  
-      });
-    });
-  </script>
-  <!-- 여기까지 슬라이드하는 코드 -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<!-- <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+<script
+	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('.slider').bxSlider({
+			auto : true,
+			speed : 500,
+			pause : 4000,
+			mode : 'fade',
+			pager : true,
+		});
+	});
+</script>
+<!-- 여기까지 슬라이드하는 코드 -->
 </head>
 <body>
 	<!-- Responsive navbar-->
@@ -83,8 +87,11 @@
 						<!-- Post title 숙소명-->
 						<h3 class="fw-bolder mb-1">${hotelInfo.hotelName }</h3>
 						<!-- Post meta content-->
-						<div class="text-muted fst-italic mb-2">⭐ ${avgStar} · 후기
-							${countReview }개 · ❣️ 슈퍼호스트 · ${hotelInfo.hotelLocation }</div>
+						<div class="text-muted fst-italic mb-2">
+							⭐ ${avgStar} · <a href="#review" style="color: gray">후기
+								${countReview }개</a> · ❣️ 슈퍼호스트 · <a href="#location"
+								style="color: gray">${hotelInfo.hotelLocation }</a>
+						</div>
 
 						<!-- Post categories-->
 						<a class="badge bg-secondary text-decoration-none link-light"
@@ -95,21 +102,15 @@
 							href="#!">#Super Host</a>
 					</header>
 					<!-- Preview image figure-->
-					
+
 					<div class="slider">
 						<c:forEach var="inner" items="${picList}">
-							<img class="card-img-top" 
-							src="${inner.path}${inner.name}" width="900px" height="400px" alt="selected-hotel-image" />
-							
+							<img class="card-img-top" src="${inner.path}${inner.name}"
+								width="900px" height="400px" alt="selected-hotel-image" />
+
 						</c:forEach>
 					</div>
-					<!-- 이부분이 원래 이미지 나타내는 부분입니다
-					<figure class="mb-4">
-						<img class="img-fluid rounded"
-							src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." />
-					</figure>
-					 	여기까지가 원래 이미지 나타내는 부분
-					 -->
+
 					<!-- Post content-->
 					<section class="mb-5">
 						<p class="fs-5 mb-4">⭐숙소 설명란⭐ ${hotelInfo.hotelDesc }</p>
@@ -181,9 +182,11 @@
 								<p class="fs-5 mb-4" id="pet">🐶 반려동물 입실 가능</p>
 							</c:otherwise>
 						</c:choose>
+						<a class="badge bg-secondary text-decoration-none link-light"
+							href="#!">더보기</a>
 
 						<hr>
-						<h4 class="fw-bolder mb-4 mt-5">호스팅 지역</h4>
+						<h4 class="fw-bolder mb-4 mt-5" id="location">호스팅 지역</h4>
 						<div id="map" style="width: 100%; height: 400px;"></div>
 						<input type='hidden' id="hotelAddress"
 							value="${hotelInfo.hotelLocation}">
@@ -194,7 +197,7 @@
 							var mapOptions = {
 								center : new naver.maps.LatLng(37.3595704,
 										127.105399), //경도와 위도
-								zoom : 15,
+								zoom : 16,
 								mapTypeControl : true
 							};
 
@@ -284,12 +287,42 @@
 						</script>
 						<p class="fs-5 mb-4">${hotelInfo.hotelLocation }</p>
 						<hr>
-						<h4 class="fw-bolder mb-4 mt-5">호스트: 호재님</h4>
-						<p class="fs-5 mb-4">⭐ 후기 ${countReview }개 본인 인증 완료 ❣️ 슈퍼호스트</p>
+						<h4 class="fw-bolder mb-4 mt-5">호스트: ${hostName }님</h4>
+						<p class="fs-5 mb-4">⭐ 후기 ${countReview }개 · ✅ 본인 인증 완료 · ❣️
+							슈퍼호스트</p>
 						<p class="fs-5 mb-4">2016년 봄 서울에서 제주로 이주했습니다. 제주에 와서 결혼하고 남편,
 							고양이와 살고 있어요. 제가 좋아하는 제주의 마을 김녕에서 작은 민박집을 운영합니다.</p>
 						<hr>
-						<h4 class="fw-bolder mb-4 mt-5">⭐ ${avgStar} · 후기
+						<h4 class="fw-bolder mb-4 mt-5">알아두어야 할 사항</h4>
+						<table>
+							<thead>
+								<tr>
+									<th style="width: 300px;">숙소 이용규칙</th>
+									<th style="width: 300px;">건강과 안전</th>
+									<th style="width: 300px;">환불 정책</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>체크인: 오후 4:00 이후</td>
+									<td>코로나19 방역 수칙을 준수하셔야 합니다.</td>
+									<td>8월 7일 전까지 무료로 취소하실 수 있습니다.</td>
+								</tr>
+								<tr>
+									<td>체크아웃 시간: 오후 10:00</td>
+									<td>일산화탄소 경보기</td>
+								</tr>
+								<tr>
+									<td>열쇠 보관함(으)로 셀프 체크인</td>
+									<td>화재경보기</td>
+								</tr>
+								<tr>
+									<td>흡연 금지</td>
+								</tr>
+							</tbody>
+						</table>
+						<hr>
+						<h4 class="fw-bolder mb-4 mt-5" id="review">⭐ ${avgStar} · 후기
 							${countReview }개</h4>
 					</section>
 				</article>
@@ -313,31 +346,6 @@
 								</div>
 							</c:forEach>
 
-							<!-- Comment with nested comments-->
-							<div class="d-flex mb-4">
-								<!-- Parent comment-->
-								<div class="flex-shrink-0">
-									<img class="rounded-circle"
-										src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." />
-								</div>
-								<div class="ms-3">
-									<div class="fw-bold">Mingyeong(게스트)</div>
-									편안하고 따뜻함이 가득한 스테이 호재에서 하루동안 잘 머물다 갑니다😊 호스트님께서 체크인도 일찍 도와주신 덕분에
-									여유롭게 누릴수 있었습니다~!
-									<!-- Child comment 1-->
-									<div class="d-flex mt-4">
-										<div class="flex-shrink-0">
-											<img class="rounded-circle"
-												src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
-												alt="..." />
-										</div>
-										<div class="ms-3">
-											<div class="fw-bold">호재(호스트)</div>
-											이용해주셔서 감사합니다.
-										</div>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 				</section>
@@ -346,14 +354,17 @@
 			<div class="col-lg-4">
 				<!-- 예약 하기-->
 				<div class="card mb-4">
-					<div class="card-header">숙소가 마음에 드시나요?</div>
+					<div class="card-header" style="text-align: center">숙소가 마음에
+						드시나요?</div>
 					<div class="card-body">
-						<p>₩${hotelInfo.hotelPrice } /박 ⭐ ${avgStar} · 후기
-							${countReview }개</p>
+						<p>
+							<b style="font-size: x-large;">₩${hotelInfo.hotelPrice }</b> /박 <span
+								style="font-size: small;">⭐ <b>${avgStar}</b> · <a
+								href="#review" style="color: gray">후기 ${countReview }개</a></span>
+						</p>
 
 						<script type="text/javascript">
 							$(function() {
-
 								$('input[name="datefilter"]').daterangepicker(
 										{
 											autoUpdateInput : false,
@@ -370,7 +381,22 @@
 														"7월", "8월", "9월",
 														"10월", "11월", "12월" ]
 											},
-											opens : 'center'
+											opens : 'center',
+											
+											// 예약 불가능한 날짜 표시
+											isInvalidDate : function(
+													date) {
+												<c:set var="date", value=${invalidDate}/>
+												if (${fn:contains(date, date.format('YY/MM/DD'))}) {
+													return true;
+													}
+												
+												/* if (date.format('YY/MM/DD') == '22/07/26' || date.day() == 6) {
+													return true;
+													} */
+												
+												//return new Date(date).getDay();
+											}
 										});
 
 								$('input[name="datefilter"]')
@@ -396,8 +422,9 @@
 						</script>
 						<form action="doReservation.do" method="post">
 							<input type="text" name="datefilter" value="체크인 및 체크아웃" /><br>
-							게스트 인원 <input type="number" name="guestNum" min="1" value="1" max=${hotelInfo.maxP }>
-							<input type="submit" value="예약하기" />
+							게스트 인원 <input type="number" name="guestNum" min="1" value="1"
+								max=${hotelInfo.maxP }> <input type="submit"
+								value="예약하기" />
 						</form>
 
 						<p style="text-align: center;">예약 확정 전에는 요금이 청구되지 않습니다.</p>
@@ -411,10 +438,10 @@
 
 				</div>
 				<!-- Side widget-->
-				<div class="card mb-4">
+				<div class="card mb-4" style="text-align: center">
 					<div class="card-header">❗ 알림</div>
-					<div class="card-body">흔치 않은 기회입니다! ${hotelInfo.memberId }님의
-						에어비앤비 숙소는 보통 예약이 가득 차 있습니다.</div>
+					<div class="card-body">흔치 않은 기회입니다! ${hostName }님의 에어비앤비 숙소는
+						보통 예약이 가득 차 있습니다.</div>
 				</div>
 			</div>
 		</div>

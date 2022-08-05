@@ -62,4 +62,7 @@ public class HotelService {
 		return picDAO.getAllHotelPicPath(hotelId);
 	}
 	
+	public String getHostName(int hotelId) {
+		return dao.getHostName(hotelId);
+	}
 }

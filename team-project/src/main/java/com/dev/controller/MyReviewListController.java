@@ -11,36 +11,21 @@ import com.dev.common.Controller;
 import com.dev.common.Utils;
 import com.dev.service.ReviewService;
 import com.dev.vo.ReviewJoinReservationJoinHotelVO;
+import com.dev.vo.ReviewVO;
 
 public class MyReviewListController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		String hotelName = req.getParameter("hotelName");
-//		Date reviewDate  = Date.valueOf(req.getParameter("reviewDate"));
-//		float reviewRate = Float.valueOf(req.getParameter("reviewRate"));
-//		Date inDate = Date.valueOf(req.getParameter("inDate"));
-//		Date outDate = Date.valueOf(req.getParameter("outDate"));
-//		String reviewContents = req.getParameter("reviewContents");
 		String memberId = req.getParameter("memberId");
-		
+
+		ReviewVO vo = new ReviewVO();
+
 		ReviewJoinReservationJoinHotelVO rrhvo = new ReviewJoinReservationJoinHotelVO();
-//		rrhvo.setHotelName(hotelName);
-//		rrhvo.setReviewDate(reviewDate);
-//		rrhvo.setReviewRate(reviewRate);
-//		rrhvo.setInDate(inDate);
-//		rrhvo.setOutDate(outDate);
-//		rrhvo.setReviewContents(reviewContents);
 		rrhvo.setMemberId(memberId);
-		
 		
 		ReviewService service = ReviewService.getInstance();
 		List<ReviewJoinReservationJoinHotelVO>list = service.ReviewList(rrhvo);
-		
-		
-//		for(ReviewJoinReservationJoinHotelVO v1o : list) {
-//			System.out.println(v1o);
-//		}
 		
 		req.setAttribute("review", list);
 		Utils.forward(req, resp, "myPage/myReview.tiles");
