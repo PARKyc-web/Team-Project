@@ -13,11 +13,13 @@ import com.dev.common.Utils;
 import com.dev.service.ReviewService;
 import com.dev.vo.MemberVO;
 import com.dev.vo.ReviewJoinReservationJoinHotelVO;
+import com.dev.vo.ReviewVO;
 
 public class MyReviewListController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		// 파라메터
 		HttpSession session = req.getSession();
 		MemberVO mvo = (MemberVO) session.getAttribute("member"); // Id password

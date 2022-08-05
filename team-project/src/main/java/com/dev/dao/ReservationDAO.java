@@ -1,11 +1,17 @@
 package com.dev.dao;
 
+import java.util.Calendar;
+
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.dev.common.DAO;
 import com.dev.vo.ReservationJoinHotelVO;
+import com.dev.vo.ReservationVO;
 
 public class ReservationDAO extends DAO{
 	
@@ -49,44 +55,43 @@ public class ReservationDAO extends DAO{
 
 		}
 		
-		//hotelId -> hotelName 불러오기 : yj
-//			public HotelVO getHotelListMyPage(int hotelId){
-//				String sql = "select * from hotel where hotel_id = ? ";
-//				HotelVO hvo = new HotelVO();
-//				connect();
-//				try {
-//					pstmt = conn.prepareStatement(sql);
-//					pstmt.setInt(1, hotelId);
-//					rs = pstmt.executeQuery();
-//					
-//					if(rs.next()) {
-//						hvo.setHotelId(rs.getInt("hotel_id"));
-//						hvo.setMemberId(rs.getString("member_id"));
-//						hvo.setHotelName(rs.getString("hotelName"));
-//						hvo.setHotelLocation(rs.getString("hotel_location"));
-//						hvo.setHotelPrice(rs.getInt("hotel_price"));
-//						hvo.setHotelType(rs.getString("hotel_type"));
-//						hvo.setHotelDesc(rs.getString("hotel_desc"));
-//						
-//						hvo.setMaxP(rs.getInt("max_p"));
-//						
-//						hvo.setHotelOptionWifi(rs.getInt("hotel_option_wifi"));
-//						hvo.setHotelOptionSwim(rs.getInt("hotel_option_swim"));
-//						hvo.setHotelOptionWpet(rs.getInt("hotel_option_wpet"));
-//						hvo.setHotelOptionKitchen(rs.getInt("hotel_option_kitchen"));
-//						hvo.setHotelOptionParking(rs.getInt("hotel_option_parking"));
-//					
-//						return hvo;
-//					}
-//				}catch(SQLException e) {
-//					e.printStackTrace();
-//				}finally {
-//					disconnect();
-//				}
-//				return hvo;
-//			}
-	
-	
-	//예약취소 : yj
-	
+
+		// 특정 호텔의 예약된 날짜를 반환하는 함수입니다.
+		public List<Date> invalidDate(int hotelId) {
+			List<Date> invalidDateList = new ArrayList<Date>();
+			Date startDate;
+			int day = 0;
+			
+			String sql = "select in_date, (TRUNC(out_date) - TRUNC(in_date))AS day from reservation where hotel_id=?";
+			connect();
+			
+			List<ReservationVO> dateList = new ArrayList<>();
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, hotelId);
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					startDate = rs.getDate("in_date");
+					day = rs.getInt("day");
+					
+					invalidDateList.add(startDate);
+					Calendar cal = Calendar.getInstance();
+					cal.setTime(startDate);
+					for(int i=0; i<day; i++) {
+						cal.add(Calendar.DATE, 1);
+						
+						DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+						invalidDateList.add(Date.valueOf(df.format(cal.getTime())));
+					}
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				disconnect();
+			}
+			return invalidDateList;
+		}
 }

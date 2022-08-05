@@ -10,11 +10,10 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ReviewVO {
-
-	private int reviewId;
-	private int hotelId;
-	private String memberId;
-	private String reviewContents;
-	private Date reviewDate;
-	private float reviewRate;
+	int reviewId;
+	String memberId;
+	int hotelId;
+	String reviewContents;
+	Date reviewDate;
+	float reviewRate;
 }

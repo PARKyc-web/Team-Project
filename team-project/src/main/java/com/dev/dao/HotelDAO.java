@@ -143,5 +143,27 @@ public class HotelDAO extends DAO{
 		return 0;
 	}
 	
+	public String getHostName(int hotelId) {
+		String hostName = "";
+		
+		String sql = "select member_name from member_info NATURAL JOIN hotel where hotel_id = ?";
+		connect();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, hotelId);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				hostName = rs.getString("member_name");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+		}
+		
+		return hostName;
+	}
 	
 }

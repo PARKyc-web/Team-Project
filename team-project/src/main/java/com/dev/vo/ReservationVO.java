@@ -16,4 +16,5 @@ public class ReservationVO {
 	private Date outDate;
 	private int totalPrice;
 	private int inReserv;
+
 }
