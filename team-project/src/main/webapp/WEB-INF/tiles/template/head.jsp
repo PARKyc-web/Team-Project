@@ -33,7 +33,7 @@
 					<c:when test="${!empty member}">
 						<li class="nav-item"><a class="nav-link" href="memberLogout.do">Logout</a></li>
 					</c:when>
-				</c:choose>				
+				</c:choose>	
 			</ul>
 			
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4"></ul>
@@ -41,12 +41,27 @@
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4"></ul>
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4"></ul>
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4"></ul>
-						<form class="d-flex">
+						<!-- <form class="d-flex">
 				<button class="btn btn-outline-dark" type="submit">
 					<i class="bi-cart-fill me-1"></i> Cart <span
 						class="badge bg-dark text-white ms-1 rounded-pill">0</span>
 				</button>
-			</form>
+			</form> -->
+			
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+			<c:choose>
+				<c:when test="${!empty member}">
+					<li class="nav-item"><a class="nav-link">${member.memberId }님 환영합니다</a></li>
+				</c:when>
+				<c:when test="${!empty member}">
+					<li class="nav-item"><a class="nav-link" href="memberLogout.do">Logout</a></li>
+				</c:when>			
+				<c:when test="${empty member}">
+					<li class="nav-item"><a class="nav-link" href="memberJoin.do">Login/SignUp</a></li>
+				</c:when>
+			</c:choose>
+			</ul>
+			
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
 			<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
