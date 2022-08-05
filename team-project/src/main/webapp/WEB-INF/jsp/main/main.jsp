@@ -33,7 +33,7 @@
 <!-- Section-->
 <section class="py-5">
 	<div class="search-block">
-		<form action="searchHotel.do" class="search-form">
+		<form action="searchHotel.do?pageNum=1&amount=12" method="post" class="search-form">
 			<input type="text" name="search_word" placeholder="Search.......... something">
 			<input type="submit" value="Search">
 		</form>

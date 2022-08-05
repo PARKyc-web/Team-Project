@@ -38,7 +38,7 @@ public class DAO {
 	protected void connect() {
 		
 		try {
-			Class.forName(oracle_driver);
+			Class.forName(oracle_driver);						
 			conn = DriverManager.getConnection(oracle_url, id, pwd);
 			
 		}catch(ClassNotFoundException e) {
