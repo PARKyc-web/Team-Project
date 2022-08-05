@@ -1,5 +1,6 @@
 package com.dev.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.dev.dao.ReservationDAO;
@@ -18,12 +19,11 @@ public class ReservationService {
 	}
 
 	// 나의 숙박내역
-	public List<ReservationJoinHotelVO> ReservationList(ReservationJoinHotelVO rhvo) {
-		return dao.getReservationList(rhvo);
+	public List<ReservationJoinHotelVO> ReservationList(String memberId) {
+		return dao.getReservationList(memberId);
 	}
 
-//	// hotelId -> hotelName 불러오기
-//	public String searchHotelName(int hotelId) {
-//		return dao.getHotelListMyPage(hotelId).getHotelName();
-//	}
+	public List<Date> invalidDate(int hotelId) {
+		return dao.invalidDate(hotelId);
+	}
 }

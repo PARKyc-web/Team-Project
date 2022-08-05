@@ -5,11 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.dev.common.DAO;
-import com.dev.vo.ReviewJoinReservationJoinHotelVO;
 import com.dev.vo.ReviewVO;
+import com.dev.vo.ReviewJoinReservationJoinHotelVO;
 
 public class ReviewDAO extends DAO {
-	
 	// 특정 호텔의 리뷰 조회하기
 	public List<ReviewVO> selectHotelReview(int hotelId) {
 		List<ReviewVO> reviewList = new ArrayList<>();
@@ -65,10 +64,11 @@ public class ReviewDAO extends DAO {
 	}
 	
 	// 특정 호텔(hotelId)의 별점의 평균을 구하는 함수입니다.
+	// 소수점 둘째 자리에서 반올림됩니다.
 	public float avgHotelReview(int hotelId) {
 		float avg = 0;
 		
-		String sql = "select avg(review_rate) from review where hotel_id = ?";
+		String sql = "select round(avg(review_rate), 2) AS star from review where hotel_id = ?";
 		connect();
 		
 		try {
@@ -77,7 +77,7 @@ public class ReviewDAO extends DAO {
 			
 			rs = pstmt.executeQuery();
 			if(rs.next())
-				avg = rs.getFloat("avg(review_rate)");
+				avg = rs.getFloat("star");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -87,36 +87,35 @@ public class ReviewDAO extends DAO {
 	}
 	
 	// 내가 쓴 리뷰 조회 : yj
-	public List<ReviewJoinReservationJoinHotelVO> getReviewList(ReviewJoinReservationJoinHotelVO vo) {
-		String sql = "select * from review r JOIN hotel h ON  r.member_id = h.member_id "
-				+ "                                JOIN reservation rv ON h.member_id = rv.member_id "
-				+ "                                WHERE r.member_id = ? ";
-		List<ReviewJoinReservationJoinHotelVO> list = new ArrayList<>();
-		connect();
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getMemberId());
-			rs = pstmt.executeQuery();
-			
-			while (rs.next()) {
-				ReviewJoinReservationJoinHotelVO rrhvo = new ReviewJoinReservationJoinHotelVO();
+		public List<ReviewJoinReservationJoinHotelVO> getReviewList(ReviewJoinReservationJoinHotelVO vo) {
+			String sql = "select * from review r JOIN hotel h ON  r.member_id = h.member_id "
+					+ "                                JOIN reservation rv ON h.member_id = rv.member_id "
+					+ "                                WHERE r.member_id = ? ";
+			List<ReviewJoinReservationJoinHotelVO> list = new ArrayList<>();
+			connect();
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, vo.getMemberId());
+				rs = pstmt.executeQuery();
 				
-				rrhvo.setHotelName(rs.getString("hotel_name"));
-				rrhvo.setReviewDate(rs.getDate("review_date"));
-				rrhvo.setInDate(rs.getDate("in_date"));
-				rrhvo.setOutDate(rs.getDate("out_date"));
-				rrhvo.setReviewRate(rs.getFloat("review_rate"));
-				rrhvo.setReviewContents(rs.getString("review_contents"));
-				
-				list.add(rrhvo);
-			}
+				while (rs.next()) {
+					ReviewJoinReservationJoinHotelVO rrhvo = new ReviewJoinReservationJoinHotelVO();
+					
+					rrhvo.setHotelName(rs.getString("hotel_name"));
+					rrhvo.setReviewDate(rs.getDate("review_date"));
+					rrhvo.setInDate(rs.getDate("in_date"));
+					rrhvo.setOutDate(rs.getDate("out_date"));
+					rrhvo.setReviewRate(rs.getFloat("review_rate"));
+					rrhvo.setReviewContents(rs.getString("review_contents"));
+					
+					list.add(rrhvo);
+				}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			disconnect();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				disconnect();
+			}
+			return list;
 		}
-		return list;
-	}
-	
 }

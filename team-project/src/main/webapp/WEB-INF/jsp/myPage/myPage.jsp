@@ -13,7 +13,7 @@
     <ul>
         <li><label for="id" >개인정보 : </label><br><br>
        <form action="${pageContext.request.contextPath }/myPageModi.do" method="post">
-	>
+	
         <input type="text" name ="bid" value="${memberInfo.memberId }" readonly>
         <input type="submit" value ="수정"><br>
         

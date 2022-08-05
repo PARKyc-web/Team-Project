@@ -16,8 +16,9 @@ public class MemberDAO extends DAO {
 	// 마이페이지 - 개인정보수정 : yj
 	public void updateMember(MemberVO vo) {
 		System.out.println("run updateMember");
-		String sql = "UPDATE member-info SET phone = ?, email = ?, member_pic = ? "
-				   + "WHERE id = ?"; 
+
+		String sql = "UPDATE member_info SET phone = ?, email = ?, member_pic = ? "
+				   + "WHERE member_id = ?"; 
 
 		connect();
 		try {
@@ -36,6 +37,44 @@ public class MemberDAO extends DAO {
 		}
 	}
 
+	//회원탈퇴 (member_able만 1로수정)
+	public void deleteMember(String id) {
+		System.out.println("run deleteMember");
+		String sql = "UPDATE member_login SET member_able=1 WHERE member_id = ?"; 
+
+		connect();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			int r = pstmt.executeUpdate();
+			System.out.println(r + "님이 탈퇴되었습니다.");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+	}
+	
+	//탈퇴회원 로그인 제한 
+	public void searchDeleteMember(String id) {
+		System.out.println("run deleteMember");
+		String sql = "select * from member_login where member_able=1"; 
+
+		connect();
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+	}
+
 	// 내가 쓴 리뷰 조회
 	public List<ReviewVO> getReviewList(ReviewVO vo) {
 		String sql = "select hotel_id, review_date, review_content from review order by 1";
@@ -44,12 +83,8 @@ public class MemberDAO extends DAO {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			while (rs.next()) {
-//				vo.setHotelId(rs.getString("hotelId"));
-//				vo.setReviewDate(rs.getString("reviewDate"));
-				vo.setReviewContents(rs.getString("reviewContent"));
-
-				list.add(vo);
+			if (rs.next()) {
+				System.out.println(vo.getMemberId()+ "님의 정보가 수정되었습니다.");
 			}
 
 		} catch (SQLException e) {
@@ -57,54 +92,8 @@ public class MemberDAO extends DAO {
 		} finally {
 			disconnect();
 		}
-		return list;
 	}
 
-	// 숙박리스트 출력
-	public List<HotelVO> getHotelList(HotelVO vo) {
-		String sql = "select * from reservation order by 1";
-		List<HotelVO> list = new ArrayList<>();
-		connect();
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				vo.setHotelId(rs.getInt("hotelId"));				
-				vo.setHotelPrice(rs.getInt("hotelPrice"));
-
-				list.add(vo);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			disconnect();
-		}
-		return list;
-
-	}
-
-	// 나의 숙박위시리스트
-	public List<WishListVO> getWishList(WishListVO vo) {
-		String sql = "select hotel_id, hotel_name from hotel order by 1";
-		List<WishListVO> list = new ArrayList<>();
-		connect();
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				vo.setHotelId(rs.getInt("hotel_id"));
-
-				list.add(vo);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			disconnect();
-		}
-		return list;
-	}
 	
 	//마이페이지 정보 전체조회 : yj
 		public MemberVO searchMember(String memberId) {
@@ -116,13 +105,14 @@ public class MemberDAO extends DAO {
 				rs = pstmt.executeQuery();
 				if (rs.next()) {
 					MemberVO vo = new MemberVO();
-					vo.setMemberId(rs.getString("memberId"));
-					vo.setMemberName(rs.getString("memberName"));
-					vo.setMemberAge(rs.getInt("memberAge"));
+					vo.setMemberId(rs.getString("member_id"));
+					vo.setMemberName(rs.getString("member_name"));
+					vo.setMemberAge(rs.getInt("member_age"));
 					vo.setPhone(rs.getString("phone"));
 					vo.setEmail(rs.getString("email"));
-					vo.setSignInDate(rs.getString("signInDate"));
-					vo.setMemberPic(rs.getString("memberPic"));
+					vo.setMemberType(rs.getString("member_type"));
+					vo.setSignInDate(rs.getString("sign_in_date"));
+					vo.setMemberPic(rs.getString("member_pic"));
 
 					return vo;
 				}
@@ -197,5 +187,29 @@ public class MemberDAO extends DAO {
 			}
 			return null;
 		}
+		
+		//아이디 중복체크 ,,보류
+		public int checkId(String id) {
+			String sql = "select * from member_login where member_id=?";
+			int result = 0;
+			connect();
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					result = 1;
+				}
+		
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				disconnect();
+			}
+			return result;
+		}
+	
 		
 }

@@ -7,7 +7,7 @@
 <title>회원정보 수정결과(myPageModiOutput.jsp)</title>
 </head>
 <body>
-	<h3>${member.name }님의 정보가 수정되었습니다.</h3>
-	<jsp:include page = "myPage.jsp"></jsp:include>
+	<h3>${member.memberId }님의 정보가 수정되었습니다.</h3>
+	<jsp:include page = "myPageMain.jsp"></jsp:include>
 </body>
 </html>

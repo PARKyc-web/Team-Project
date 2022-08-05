@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dev.common.Controller;
 import com.dev.common.Utils;
@@ -15,26 +16,16 @@ public class MyPageModiController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		String memberId = req.getParameter("id");
-		String phone = req.getParameter("phone");
-		String email = req.getParameter("email");
-		String memberPic = req.getParameter("pic");
-
-		MemberVO vo = new MemberVO();
-		vo.setMemberId(memberId);
-		vo.setPhone(phone);
-		vo.setEmail(email);
-		vo.setMemberPic(memberPic);
-
-		MemberService service = MemberService.getInstance();
-		service.modifyMember(vo);
-
+		// 파라메터		
+		HttpSession session = req.getSession();	
+		MemberVO vo = (MemberVO) session.getAttribute("member"); //Id password
+						
+		// DB에 접근해서 정보를 가져오는 부분이 있어야함.
+		MemberVO memberModi = MemberService.getInstance().infoMember(vo.getMemberId());	
+		MemberService.getInstance().modifyMember(vo);
+						
 		// 공유
-		req.setAttribute("memberModi", vo);
-		
-	
-		Utils.forward(req, resp, "myPage/myPageModiOutput.tiles");
+		req.setAttribute("memberModi", memberModi);
+		Utils.forward(req, resp, "myPage/myPageModi.tiles");		
 	}
 }
