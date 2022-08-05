@@ -19,15 +19,17 @@ public class SelectHotelController implements Controller{
 //		rd.forward(req, resp);
 		
 		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
-		
-		
+						
 		HotelService hotelService = HotelService.getInstance();
 		req.setAttribute("hotelInfo", hotelService.getHotelInfo(hotelId));
+		req.setAttribute("picList", hotelService.getSelectedHotelImage(hotelId));
 		
 		ReviewService rvService = ReviewService.getInstance();
 		req.setAttribute("reviewList", rvService.selectHotelReview(hotelId));
 		req.setAttribute("countReview", rvService.countHotelReview(hotelId));
 		req.setAttribute("avgStar", rvService.avgHotelReview(hotelId));
+		
+		
 		
 		Utils.forward(req, resp, "hotel/selectHotel.tiles");	
 	}

@@ -57,5 +57,9 @@ public class HotelService {
 	public int getSearchedHotelCount(String keyword) {
 		return dao.getSearchHotelCount(keyword);
 	}
+
+	public List<HotelPicVO> getSelectedHotelImage(int hotelId){
+		return picDAO.getAllHotelPicPath(hotelId);
+	}
 	
 }

@@ -26,6 +26,23 @@
 	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+	
+<!-- 여기서 부터 이미지 슬라이드 하는 거 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.slider').bxSlider({
+   	    auto: true,
+  		speed: 500,
+  		pause: 4000,
+  		mode:'fade',
+  		pager:true,    	  
+      });
+    });
+  </script>
+  <!-- 여기까지 슬라이드하는 코드 -->
 </head>
 <body>
 	<!-- Responsive navbar-->
@@ -78,10 +95,21 @@
 							href="#!">#Super Host</a>
 					</header>
 					<!-- Preview image figure-->
+					
+					<div class="slider">
+						<c:forEach var="inner" items="${picList}">
+							<img class="card-img-top" 
+							src="${inner.path}${inner.name}" width="900px" height="400px" alt="selected-hotel-image" />
+							
+						</c:forEach>
+					</div>
+					<!-- 이부분이 원래 이미지 나타내는 부분입니다
 					<figure class="mb-4">
 						<img class="img-fluid rounded"
 							src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." />
 					</figure>
+					 	여기까지가 원래 이미지 나타내는 부분
+					 -->
 					<!-- Post content-->
 					<section class="mb-5">
 						<p class="fs-5 mb-4">⭐숙소 설명란⭐ ${hotelInfo.hotelDesc }</p>
