@@ -3,8 +3,8 @@ package com.dev.service;
 import java.util.List;
 
 import com.dev.dao.ReviewDAO;
-import com.dev.vo.ReviewJoinReservationJoinHotelVO;
 import com.dev.vo.ReviewVO;
+import com.dev.vo.ReviewJoinReservationJoinHotelVO;
 
 public class ReviewService {
 	private static ReviewService service = null;
@@ -29,8 +29,10 @@ public class ReviewService {
 	public float avgHotelReview(int hotelId) {
 		return dao.avgHotelReview(hotelId);
 	}
+
 	
-	public List<ReviewJoinReservationJoinHotelVO> ReviewList(ReviewJoinReservationJoinHotelVO rrhvo) {
-		return dao.getReviewList(rrhvo);
+	public List<ReviewJoinReservationJoinHotelVO> ReviewList(String memberId) {
+		return dao.getReviewList(memberId);
+
 	}
 }

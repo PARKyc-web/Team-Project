@@ -30,7 +30,7 @@ public class MyHotelListController implements Controller {
 //		rvo.setOutDate(reserOutDate);
 //	
 		MemberService service = MemberService.getInstance();
-		service.HotelList(vo);
+		
 		//
 		
 		req.setAttribute("hotel", vo);

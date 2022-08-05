@@ -30,6 +30,7 @@ import com.dev.controller.SearchHotelController;
 import com.dev.controller.SelectHotelController;
 import com.dev.controller.Test;
 import com.dev.controller.TestController;
+import com.dev.controller.MyPageModiInfoContoller;
 
 public class FrontController extends HttpServlet{
 
@@ -50,13 +51,15 @@ public class FrontController extends HttpServlet{
 		
 		// Part of YJ
 		mappings.put("/myPageMain.do", new MyPageMainController());//마이페이지 메인! 
-		mappings.put("/myPage.do", new MyPageController());//마이페이지 - 내정보
-		mappings.put("/myPageModi.do", new MyPageModiController());//마이페이지 - 내정보 - 수정
+		mappings.put("/myPage.do", new MyPageController());		   //마이페이지 - 내정보
+		mappings.put("/myPageModi.do", new MyPageModiController());//마이페이지 - 내정보 - 수정화면으로 넘기기
+		mappings.put("/myPageInfoModify.do", new MyPageModiInfoContoller());//마이페이지- 내정보- 수정받은 정보 DB에 보내기
 		mappings.put("/myReview.do", new MyReviewListController());//마이페이지 - 내가쓴리뷰
 		mappings.put("/myReservation.do", new MyReservationController());//마이페이지 - 나의숙박내역
 		mappings.put("/myWishList.do", new MyWishListController());//마이페이지 - 나의 위시리스트
 		mappings.put("/myMemberDeleteOutput.do", new MyMemberDeleteOutput());//회원탈퇴
 		mappings.put("/myMemberDelete.do", new MyMemberDeleteController());
+
 		
 		// Part of joha
 		mappings.put("/memberJoin.do", new MemberJoinController()); //로그인.회원가입 선택
@@ -68,7 +71,7 @@ public class FrontController extends HttpServlet{
 		mappings.put("/idCheck.do", new Test());
 				
 		// Part of YR
-		mappings.put("/selectHotel.do", new SelectHotelController());
+		mappings.put("/selectHotel.do", new SelectHotelController()); // 호텔 상세 페이지
 		// selectHotel.do에서 예약하기를 누른 후 이동하는 페이지
 		mappings.put("/doReservation.do", new DoReservationController()); 
 	}

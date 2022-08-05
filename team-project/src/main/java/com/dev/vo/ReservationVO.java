@@ -1,5 +1,7 @@
 package com.dev.vo;
 
+import java.sql.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,11 +9,12 @@ import lombok.Setter;
 @Setter
 public class ReservationVO {
 	
-	private String reservId;
+	private int reservId;
 	private String memberId;
-	private String hotelId;
-	private String inDate;
-	private String outDate;
+	private int hotelId;
+	private Date inDate;
+	private Date outDate;
 	private int totalPrice;
-	private String inReserv;		
+	private int inReserv;
+
 }
