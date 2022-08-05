@@ -14,7 +14,6 @@ public class MemberJoinController implements Controller {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Utils.forward(req, resp, "member/memberJoin.tiles");
-
 	}
 
 }

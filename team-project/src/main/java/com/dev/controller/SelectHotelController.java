@@ -2,7 +2,6 @@ package com.dev.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +18,7 @@ public class SelectHotelController implements Controller{
 //		RequestDispatcher rd = req.getRequestDispatcher("hotel/selectHotel.tiles");		
 //		rd.forward(req, resp);
 		
+<<<<<<< HEAD
 		int hotelId = 113;
 		
 		HotelService hotelService = HotelService.getInstance();
@@ -30,5 +30,21 @@ public class SelectHotelController implements Controller{
 		req.setAttribute("avgStar", rvService.avgHotelReview(hotelId));
 		
 		Utils.forward(req, resp, "hotel/selectHotel.tiles");
+=======
+		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
+						
+		HotelService hotelService = HotelService.getInstance();
+		req.setAttribute("hotelInfo", hotelService.getHotelInfo(hotelId));
+		req.setAttribute("picList", hotelService.getSelectedHotelImage(hotelId));
+		
+		ReviewService rvService = ReviewService.getInstance();
+		req.setAttribute("reviewList", rvService.selectHotelReview(hotelId));
+		req.setAttribute("countReview", rvService.countHotelReview(hotelId));
+		req.setAttribute("avgStar", rvService.avgHotelReview(hotelId));
+		
+		
+		
+		Utils.forward(req, resp, "hotel/selectHotel.tiles");	
+>>>>>>> refs/remotes/origin/main
 	}
 }

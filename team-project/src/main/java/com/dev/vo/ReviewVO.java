@@ -4,11 +4,14 @@ import java.sql.Date;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class ReviewVO {
 
+<<<<<<< HEAD
 	int reviewId;
 	String memberId;
 	int hotelId;
@@ -16,4 +19,12 @@ public class ReviewVO {
 	Date reviewDate;
 	float reviewRate;
 	
+=======
+	private int reviewId;
+	private int hotelId;
+	private String memberId;
+	private String reviewContents;
+	private Date reviewDate;
+	private float reviewRate;
+>>>>>>> refs/remotes/origin/main
 }

@@ -4516,8 +4516,10 @@ textarea.form-control-lg {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border-radius: 0.25rem;  
+  
 }
+
 .card > hr {
   margin-right: 0;
   margin-left: 0;
@@ -11284,5 +11286,73 @@ textarea.form-control-lg {
 
   .d-print-none {
     display: none !important;
-  }
+  }  
 }
+			.search-block{
+				text-align:center;
+				margin-bottom: 30px;
+			}
+			
+			form.search-form{	
+				display:inline-block;
+				width: 60%;
+			}
+			
+			form.search-form input{
+				border:none;
+				box-sizing: border-box;
+				box-shadow: 3px 3px 5px #888888;
+			}
+			
+			form.search-form input[type=text]{
+				background-color: #fff;
+				width: 65%;
+				padding:10px;
+				border-radius: 25px 0px 0px 25px;
+				border: 1px solid #bdc1c6;
+				text-align:center;
+			}
+			
+			form.search-form input[type=submit]{
+				background-color:orange;
+				color:#fff;
+				width:10%;
+				padding:10px;
+				border-radius: 0px 25px 25px 0px;
+				margin-left:-10px;
+				border: 1px solid #bdc1c6;
+				font-weight:bold;
+			}
+			
+			form.search-form input[type=text]::placeholder{
+				font-size: 18px;
+				text-align:center;
+			}
+			
+			.recommend-hotel{
+				margin-top:40px;
+				text-align:center;
+			}
+			.card{
+				box-shadow: 3px 3px 10px #888888;
+			}
+			/*  여기서 부터 새로 추가한 내용들 옵션 창
+				1. 내일 정현이형한테 필터 눌렀을때, 팝업창 뜨면서 선택하는거 어떻게 하는지 물어보기
+				2. 팝업창 완성하고, 확인 눌렀을때, 정보바로 넘겨주기 fetch로 넘겨주
+				   안에 정보만 바로 변경하기? 안되면 컨트롤러로
+				3. 메인 페이지에 사진 여러장 할 수 있도록 변경하기(슬라이드 이미지) >> 카톡 참고
+			*/
+			form.filter-form{				
+				margin-top:20px;				
+				display:inline-block;
+				width: 60%;
+			}
+			
+			form.filter-form input[type=text]{				
+				background-color: #fff;
+				width: 20%;
+				padding:10px;				
+				border: 1px solid #bdc1c6;
+				text-align:center;
+				margin: 10px 10px 10px 10px;
+			}

@@ -2,9 +2,11 @@ package com.dev.vo;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Setter
 @Getter
+@ToString
 public class HotelVO {	
 	private int hotelId;
 	private String memberId;
