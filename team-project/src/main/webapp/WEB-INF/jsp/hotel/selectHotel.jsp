@@ -386,15 +386,14 @@
 											// 예약 불가능한 날짜 표시
 											isInvalidDate : function(
 													date) {
-												<c:set var="date", value=${invalidDate}/>
-												if (${fn:contains(date, date.format('YY/MM/DD'))}) {
+												if (${invalidDate}.contains(date.format('yyyy-MM-dd'))) {
 													return true;
-													}
-												
-												/* if (date.format('YY/MM/DD') == '22/07/26' || date.day() == 6) {
+													} 
+												/* 
+												if (date.format('YY/MM/DD') == '22/07/26' || date.day() == 6) {
 													return true;
-													} */
-												
+													} 
+												 */
 												//return new Date(date).getDay();
 											}
 										});

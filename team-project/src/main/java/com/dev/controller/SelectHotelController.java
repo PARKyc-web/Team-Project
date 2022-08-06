@@ -19,7 +19,8 @@ public class SelectHotelController implements Controller{
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
+//		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
+		int hotelId = 113;
 						
 		HotelService hotelService = HotelService.getInstance();
 		req.setAttribute("hotelInfo", hotelService.getHotelInfo(hotelId));
