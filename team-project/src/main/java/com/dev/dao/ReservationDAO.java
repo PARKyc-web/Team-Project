@@ -76,14 +76,13 @@ public class ReservationDAO extends DAO{
 					startDate = rs.getDate("in_date");
 					day = rs.getInt("day");
 					
-					invalidDateList.add(startDate);
 					Calendar cal = Calendar.getInstance();
 					cal.setTime(startDate);
 					for(int i=0; i<day; i++) {
-						cal.add(Calendar.DATE, 1);
-						
 						DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 						invalidDateList.add(Date.valueOf(df.format(cal.getTime())));
+
+						cal.add(Calendar.DATE, 1);
 					}
 				}
 				
@@ -92,6 +91,7 @@ public class ReservationDAO extends DAO{
 			} finally {
 				disconnect();
 			}
+			System.out.println(invalidDateList);
 			return invalidDateList;
 		}
 }

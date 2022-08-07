@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
@@ -365,6 +366,13 @@
 
 						<script type="text/javascript">
 							$(function() {
+								var invalid = "${invalidDate}";
+								invalid = invalid.substring(1, invalid.length-1);
+								var some_date_range = invalid.split(", ");
+								
+								console.log(some_date_range);
+								console.log(some_date_range.length);
+								
 								$('input[name="datefilter"]').daterangepicker(
 										{
 											autoUpdateInput : false,
@@ -382,19 +390,14 @@
 														"10월", "11월", "12월" ]
 											},
 											opens : 'center',
-											
 											// 예약 불가능한 날짜 표시
 											isInvalidDate : function(
 													date) {
-												if (${invalidDate}.contains(date.format('yyyy-MM-dd'))) {
-													return true;
-													} 
-												/* 
-												if (date.format('YY/MM/DD') == '22/07/26' || date.day() == 6) {
-													return true;
-													} 
-												 */
-												//return new Date(date).getDay();
+												  for(var ii = 0; ii < some_date_range.length; ii++){
+												    if (date.format('YYYY-MM-DD') == some_date_range[ii]){
+												      return true;
+												    }
+												  }
 											}
 										});
 
