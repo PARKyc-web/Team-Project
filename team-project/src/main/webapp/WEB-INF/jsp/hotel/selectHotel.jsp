@@ -48,6 +48,17 @@
 	});
 </script>
 <!-- 여기까지 슬라이드하는 코드 -->
+<style>
+#heart {
+font-size: xx-large;
+background-color: white;
+border: none;
+transition: all ease 1s;
+}
+#heart:hover {
+ transform: rotateY( 180deg );
+}
+</style>
 </head>
 <body>
 	<!-- Responsive navbar-->
@@ -353,6 +364,23 @@
 			</div>
 			<!-- Side widgets-->
 			<div class="col-lg-4">
+				<!-- Side widget-->
+				<div class="card mb-4" style="text-align: center">
+					<div class="card-header">위시리스트에 담기</div>
+					<div class="card-body"><button id="heart" >
+					<c:choose>
+							<c:when test="${0 eq heartColor }">
+								❤️
+							</c:when>
+							<c:otherwise>
+								🤍
+							</c:otherwise>
+						</c:choose>
+					</button>
+					<p>click me!</p>
+					
+					</div>
+				</div>
 				<!-- 예약 하기-->
 				<div class="card mb-4">
 					<div class="card-header" style="text-align: center">숙소가 마음에

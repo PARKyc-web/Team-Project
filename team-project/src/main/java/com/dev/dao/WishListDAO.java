@@ -38,4 +38,27 @@ public class WishListDAO extends DAO{
 		}
 		return list;
 	}
+	
+	// 호텔 상세 페이지 내 위시리스트(하트)의 상태를 나타내는 함수입니다.
+	public int heartColor(String memberId, int hotelId) {
+		String sql = "select onOff from wish_list where member_id = ? and hotel_id = ?";
+		connect();
+		
+		int result = 1;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			pstmt.setInt(2, hotelId);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt("onOff");
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return result;
+	}
 }
