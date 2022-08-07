@@ -17,6 +17,21 @@
         <link href="tileExample/css/styles.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
    
+   		<style>
+   			#profile_image{
+   				border-radius:50%;
+   			}
+   			
+   			.uploadImageDiv{
+   				width:300px;
+   				height:300px;
+   			}
+   			#user_image{
+				width:100%;
+				height:100%;
+   				object-fit:cover;
+   			}
+   		</style>   
     </head>
     
     <body>

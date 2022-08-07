@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dev.controller.DoReservationController;
+import com.dev.controller.HotelManageFormController;
+import com.dev.controller.HotelUploadController;
+import com.dev.controller.HotelUploadFormController;
 import com.dev.controller.MainController;
 import com.dev.controller.MemberJoinController;
 import com.dev.controller.MemberLogoutController;
@@ -30,7 +33,6 @@ import com.dev.controller.MyWishListController;
 import com.dev.controller.SearchHotelController;
 import com.dev.controller.SelectHotelController;
 import com.dev.controller.Test;
-import com.dev.controller.TestController;
 
 public class FrontController extends HttpServlet{
 
@@ -45,8 +47,11 @@ public class FrontController extends HttpServlet{
 		mappings = new HashMap<>();
 		// Part of parkyc
 		mappings.put("/main.do", new MainController());
-		mappings.put("/searchHotel.do", new SearchHotelController());
-		mappings.put("/testCont.do", new TestController());
+		mappings.put("/searchHotel.do", new SearchHotelController());		
+		mappings.put("/hotelUploadForm.do", new HotelUploadFormController());;
+		mappings.put("/hotelUpload.do", new HotelUploadController());
+		mappings.put("/hotelManageForm.do", new HotelManageFormController());
+		
 		
 		
 		// Part of YJ

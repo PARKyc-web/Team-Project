@@ -63,9 +63,19 @@
 			</ul>
 			
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-			<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
-					role="button" data-bs-toggle="dropdown" aria-expanded="false">MY-INFO</a>
+			<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+					   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					
+					<c:if test="${empty member }">
+						<img src="image/default_pro.jpg" width="32px" height="32px" id="profile_image">
+					</c:if>
+					
+					<c:if test="${!empty member }">
+						<img src="${member.memberPic }" width="32px" height="32px" id="profile_image">
+					</c:if>
+					
+					</a>
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<c:choose>
 							<c:when test="${!empty member}">
@@ -78,8 +88,8 @@
 						</c:choose>
 						
 						<li><hr class="dropdown-divider" /></li>
-						<li><a class="dropdown-item" href="#!">Info Info</a></li>
-						<li><a class="dropdown-item" href="#!">Info Info Info</a></li>
+						<li><a class="dropdown-item" href="hotelUploadForm.do">숙소 등록</a></li>
+						<li><a class="dropdown-item" href="hotelManageForm.do">숙소 관리</a></li>
 					</ul></li>
 			</ul>
 		</div>
