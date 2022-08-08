@@ -28,13 +28,17 @@ public class MyMemberDeleteController implements Controller {
 		resp.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = resp.getWriter();
 
+
 		out.println("<script language='javascript'>");
-		out.println("alert('탈퇴 완료')");
+		out.println("alert('정상적으로 탈퇴되었습니다')");
+		out.println("window.location.href ='http://localhost:8088/teamProject/main.do'");
 		out.println("</script>");
 
 		out.flush();
 		
-		Utils.forward(req, resp, "main/main.tiles");
+		session.invalidate();
+		
+//		Utils.forward(req, resp, "main/main.tiles");
 
 	}
 }

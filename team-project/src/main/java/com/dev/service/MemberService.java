@@ -1,5 +1,12 @@
 package com.dev.service;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.dev.common.Utils;
 import com.dev.dao.MemberDAO;
 import com.dev.vo.HotelVO;
 import com.dev.vo.MemberVO;
@@ -43,8 +50,12 @@ public class MemberService {
 	}
 	
 	//아이디중복체크(하영)
-	public void checkId(String id) {
-		dao.checkId(id);
+	public void checkId(String id, MemberVO vo) {
+		if(dao.checkId(id) != 1) {
+			addMember(vo);
+		}else{
+			System.out.println("중복아이디");
+		};
 	}
 
 	

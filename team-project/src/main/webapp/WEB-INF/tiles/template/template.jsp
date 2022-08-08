@@ -5,12 +5,14 @@
 
 <!DOCTYPE html>
 <html lang="ko">
+
     <head>
+    
         <meta charset="utf-8" />
         <title>AirBnB</title>
         
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" href="image/logo.png" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
