@@ -24,4 +24,17 @@ public class HotelVO {
 	private int hotelOptionWpet;
 	private int hotelOptionKitchen;
 	private int hotelOptionParking;
+	
+	@Override
+	public boolean equals(Object obj) {		
+		if(obj instanceof HotelVO) {
+			return ((HotelVO) obj).getHotelId() == this.hotelId;
+		}		
+		return false;		
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.hotelId + this.memberId.hashCode();
+	}	
 }

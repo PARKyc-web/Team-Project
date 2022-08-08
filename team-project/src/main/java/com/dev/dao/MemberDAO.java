@@ -95,7 +95,7 @@ public class MemberDAO extends DAO {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, vo.getMemberId());
 				pstmt.setString(2, vo.getMemberPassword());
-				pstmt.setString(3, vo.getMemberType());
+				pstmt.setInt(3, vo.getMemberType());
 				
 				int r = pstmt.executeUpdate();
 				System.out.println(r + "건 입력");
@@ -139,6 +139,7 @@ public class MemberDAO extends DAO {
 					MemberVO vo = new MemberVO();
 					vo.setMemberId(rs.getString("member_id"));
 					vo.setMemberPassword(rs.getString("member_password"));
+					vo.setMemberType(rs.getInt("member_type"));
 					return vo;
 				}	
 			} catch (SQLException e) {

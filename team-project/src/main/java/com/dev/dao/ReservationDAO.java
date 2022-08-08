@@ -16,6 +16,7 @@ import com.dev.vo.ReservationVO;
 public class ReservationDAO extends DAO {
 
 	// 숙박리스트 출력 : yj
+
 	public List<ReservationJoinHotelVO> getReservationList(String memberId) {
 		String sql = "select * from hotel h FULL OUTER JOIN reservation rn "
 				+ "ON (h.hotel_id = rn.hotel_id) where rn.member_id = ? order by in_date desc";
@@ -25,7 +26,7 @@ public class ReservationDAO extends DAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memberId);
 			rs = pstmt.executeQuery();
-
+      
 			while (rs.next()) {
 				System.out.println("rs.next RUN!!");
 				ReservationJoinHotelVO rhvo = new ReservationJoinHotelVO();

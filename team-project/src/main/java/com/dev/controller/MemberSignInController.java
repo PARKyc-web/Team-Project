@@ -20,25 +20,27 @@ public class MemberSignInController implements Controller {
 		MemberService service = MemberService.getInstance();
 		HttpSession session = req.getSession();
 		
+    resp.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = resp.getWriter();
+    
 		String id = req.getParameter("member_id");
 		String pw = req.getParameter("member_password");
 		
 		System.out.println(id);
 		System.out.println(pw);
+
+			
+		MemberVO vvo = service.searchMember(id);		
+		MemberVO vo = service.infoMember(id);
+		vo.setMemberPassword(pw);
+		vo.setMemberType(vvo.getMemberType());	
 	
-		MemberVO vo = service.searchMember(id);
-		
-		resp.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = resp.getWriter();
-		
-		if(vo == null || !pw.equals(vo.getMemberPassword())) {
+		if(vvo == null || !pw.equals(vo.getMemberPassword())) {
 			out.println("<script language='javascript'>");
 			out.println("window.location.href ='http://localhost:8088/teamProject/memberSignInForm.do'");
 			out.println("alert('로그인 실패.')");
 			out.println("</script>");
-
 			out.flush();
-//			Utils.forward(req, resp, "member/memberSignInFail.tiles");
 		} else {
 			session.setAttribute("member", vo);
 
@@ -47,13 +49,7 @@ public class MemberSignInController implements Controller {
 			out.println("alert('로그인 성공했습니다.')");
 			out.println("</script>");
 			
-//			out.println("<script language='javascript'src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'>");
-//			out.println("window.location.href ='http://localhost:8088/teamProject/main.do'");
-//			out.println("swal('로그인', '로그인 성공하였습니다!', 'success')");
-//			out.println("</script>");
-			
 			out.flush();
-//			Utils.forward(req, resp, "member/memberSignInSuccess.tiles");
 		}
 	}
 
