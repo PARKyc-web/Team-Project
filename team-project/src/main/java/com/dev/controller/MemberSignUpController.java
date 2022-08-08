@@ -22,7 +22,7 @@ public class MemberSignUpController extends HttpServlet implements Controller {
 		System.out.println("run2");
 		String id = req.getParameter("member_id");
 		String pw = req.getParameter("member_password");
-		String type = req.getParameter("member_type");
+		int type = Integer.parseInt(req.getParameter("member_type"));
 		String able = req.getParameter("member_able");
 		System.out.println("run3");
 		String name = req.getParameter("member_name");

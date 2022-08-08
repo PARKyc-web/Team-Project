@@ -12,7 +12,7 @@ public class MemberVO {
 	private int memberAge;
 	private String phone;
 	private String email;
-	private String memberType;
+	private int memberType;
 	private String memberAble;
 	private String signInDate;
 	private String memberPic;

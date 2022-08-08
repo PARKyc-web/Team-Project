@@ -11,6 +11,33 @@ import com.dev.vo.HotelVO;
 public class HotelPicDAO extends DAO{
 
 	
+	public int insertNewHotelPic(HotelPicVO pvo) {
+		
+		int result =0;
+		try {
+			connect();
+			
+			String sql = "INSERT INTO hotel_pic "
+					   + "VALUES(?, ?, ?)";
+			
+			pstmt = conn.prepareStatement(sql);			
+			pstmt.setInt(1, pvo.getHotelId());
+			pstmt.setString(2, pvo.getPath());
+			pstmt.setString(3, pvo.getName());
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			disconnect();
+		}
+		
+		return result;
+	}
+	
+	
 	public HotelPicVO getHotelPicPath(HotelVO hotelInfo){		
 		HotelPicVO vo = new HotelPicVO();		
 		connect();

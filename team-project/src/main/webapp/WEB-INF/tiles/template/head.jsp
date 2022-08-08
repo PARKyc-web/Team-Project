@@ -72,7 +72,7 @@
 					</c:if>
 					
 					<c:if test="${!empty member }">
-						<img src="${member.memberPic }" width="32px" height="32px" id="profile_image">
+						<img src="${member.memberPic}" width="32px" height="32px" id="profile_image">
 					</c:if>
 					
 					</a>
@@ -88,8 +88,10 @@
 						</c:choose>
 						
 						<li><hr class="dropdown-divider" /></li>
-						<li><a class="dropdown-item" href="hotelUploadForm.do">숙소 등록</a></li>
-						<li><a class="dropdown-item" href="hotelManageForm.do">숙소 관리</a></li>
+						<c:if test="${member.memberType eq 1}">
+							<li><a class="dropdown-item" href="hotelUploadForm.do">숙소 등록</a></li>
+							<li><a class="dropdown-item" href="hotelManageForm.do">숙소 관리</a></li>
+						</c:if>						
 					</ul></li>
 			</ul>
 		</div>

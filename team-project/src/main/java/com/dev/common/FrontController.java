@@ -48,7 +48,7 @@ public class FrontController extends HttpServlet{
 		// Part of parkyc
 		mappings.put("/main.do", new MainController());
 		mappings.put("/searchHotel.do", new SearchHotelController());		
-		mappings.put("/hotelUploadForm.do", new HotelUploadFormController());;
+		mappings.put("/hotelUploadForm.do", new HotelUploadFormController());
 		mappings.put("/hotelUpload.do", new HotelUploadController());
 		mappings.put("/hotelManageForm.do", new HotelManageFormController());
 		

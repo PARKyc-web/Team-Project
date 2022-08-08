@@ -1,7 +1,9 @@
 package com.dev.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.dev.dao.HotelDAO;
 import com.dev.dao.HotelPicDAO;
@@ -28,15 +30,26 @@ public class HotelService {
 		return dao.getHotelInfo(hotelId);
 	}
 	
+	public int getHotelTableSize() {
+		return dao.getHotelTableSize();
+	}
+	
 	public List<HotelVO> getRandomTenHotel(){
 		
+		Set<HotelVO> set = new HashSet();
 		List<HotelVO> list = new ArrayList<>();
-		int size = dao.getHotelTableSize();
-		long rand = (long) ((Math.random()*100)%size)+101;
+		int size = dao.getHotelTableSize();		
 		
-		for(int i=0; i<8; i++) {	
-			list.add(dao.getHotelInfo((rand+i)%(size)+101));
-		}
+		while(set.size() < 8) {
+			long rand = (long) ((Math.random()*1000)%size)+101;
+			HotelVO vo = dao.getHotelInfo(rand);
+						
+			if(vo == null ||set.contains(vo)) {
+				continue;
+			}			
+			set.add(vo);
+			list.add(vo);
+		}		
 		
 		return list;
 	}
@@ -65,5 +78,15 @@ public class HotelService {
 	
 	public String getHostName(int hotelId) {
 		return dao.getHostName(hotelId);
+	}
+	
+	
+	public void insertNewHotel(HotelVO hvo, HotelPicVO pvo) {
+		dao.insertNewHotel(hvo);
+		picDAO.insertNewHotelPic(pvo);
+	}
+	
+	public int getCurrentSequence() {
+		return dao.sequenceCurval();
 	}
 }

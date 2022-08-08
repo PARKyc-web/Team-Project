@@ -24,12 +24,15 @@ public class MemberSignInController implements Controller {
 		
 		System.out.println(id);
 		System.out.println(pw);
-	
-		MemberVO vo = service.searchMember(id);
-		
+			
+		MemberVO vvo = service.searchMember(id);		
+		MemberVO vo = service.infoMember(id);
+		vo.setMemberPassword(pw);
+		vo.setMemberType(vvo.getMemberType());	
 		
 		if(vo == null || !pw.equals(vo.getMemberPassword())) {
 			Utils.forward(req, resp, "member/memberLoginFail.tiles");
+			
 		} else {
 			session.setAttribute("member", vo);
 			Utils.forward(req, resp, "member/memberLoginSuccess.tiles");

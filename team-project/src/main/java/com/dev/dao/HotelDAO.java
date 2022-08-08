@@ -10,8 +10,81 @@ import com.dev.vo.HotelVO;
 
 public class HotelDAO extends DAO{	
 
+	
+	public int sequenceCurval() {		
+		int result = 0;		
+		try {
+			connect();
+
+			
+			String sql = "SELECT hotel_seq.nextval FROM dual";
+			
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			sql = "SELECT hotel_seq.currval seq "
+					   + "FROM DUAL";
+			
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+					
+			if(rs.next()) {
+				result = rs.getInt("seq");
+			}
+						
+		}catch(SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			disconnect();
+		}
+		
+		return result;
+	}
+	
+	public int insertNewHotel(HotelVO vo) {
+		
+		int result = 0;
+		
+		try {
+			connect();
+			
+			String sql = "INSERT INTO hotel "
+					   + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, vo.getHotelId());
+			pstmt.setString(2, vo.getMemberId());
+			pstmt.setString(3, vo.getHotelName());
+			pstmt.setString(4, vo.getHotelLocation());
+			pstmt.setInt(5, vo.getHotelPrice());
+			pstmt.setString(6, vo.getHotelType());
+			pstmt.setString(7, vo.getHotelDesc());
+			
+			pstmt.setInt(8,  vo.getMaxP());
+			
+			pstmt.setInt(9, vo.getHotelOptionWifi());
+			pstmt.setInt(10,  vo.getHotelOptionSwim());
+			pstmt.setInt(11, vo.getHotelOptionWpet());
+			pstmt.setInt(12, vo.getHotelOptionKitchen());
+			pstmt.setInt(13, vo.getHotelOptionParking());			
+			
+			result = pstmt.executeUpdate();	
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			disconnect();
+		}
+		
+		return result;
+	}
+	
+	
 	public HotelVO getHotelInfo(long hotelId) {		
-		HotelVO vo = new HotelVO();
+		HotelVO vo = null;
 		connect();		
 		try {
 			String sql = "SELECT * FROM hotel where hotel_id = ?";
@@ -22,6 +95,8 @@ public class HotelDAO extends DAO{
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {			
+				vo = new HotelVO();
+				
 				vo.setHotelId(rs.getInt("hotel_id"));
 				vo.setMemberId(rs.getString("member_id"));
 				vo.setHotelName(rs.getString("hotel_name"));
