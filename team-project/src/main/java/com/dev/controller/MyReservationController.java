@@ -33,7 +33,6 @@ public class MyReservationController implements Controller {
 		
 		
 		ReservationService reservationService = ReservationService.getInstance();
-//		reservationService.insertReservation("memberId", "hotelId", "checkIn", "checkOut", "totalPrice");
 		reservationService.insertReservation(req.getParameter("memberId"), Integer.parseInt(req.getParameter("hotelId")), req.getParameter("checkIn"), req.getParameter("checkOut"), Integer.parseInt(req.getParameter("totalPrice")));
 		
 		Utils.forward(req, resp, "myPage/myReservation.tiles");
