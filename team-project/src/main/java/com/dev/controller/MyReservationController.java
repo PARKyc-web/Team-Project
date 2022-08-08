@@ -23,18 +23,19 @@ public class MyReservationController implements Controller {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 파라메터		
 		HttpSession session = req.getSession();	
-//		MemberVO mvo = (MemberVO) session.getAttribute("member"); //Id password
+		
+		System.out.println((MemberVO)session.getAttribute("member"));
+		MemberVO mvo = (MemberVO) session.getAttribute("member"); //Id password
 		
 		// DB에 접근해서 정보를 가져오는 부분이 있어야함.
-//		List<ReservationJoinHotelVO> reservation = ReservationService.getInstance().ReservationList(mvo.getMemberId());						
+		List<ReservationJoinHotelVO> reservation = ReservationService.getInstance().ReservationList(mvo.getMemberId());						
 		
 		// 공유
-//		req.setAttribute("reservation", reservation);
+		req.setAttribute("reservation", reservation);
 		
-		
-		ReservationService reservationService = ReservationService.getInstance();
-		reservationService.insertReservation(req.getParameter("memberId"), Integer.parseInt(req.getParameter("hotelId")), req.getParameter("checkIn"), req.getParameter("checkOut"), Integer.parseInt(req.getParameter("totalPrice")));
-		
+//		ReservationService reservationService = ReservationService.getInstance();
+//		reservationService.insertReservation(req.getParameter("memberId"), Integer.parseInt(req.getParameter("hotelId")), req.getParameter("checkIn"), req.getParameter("checkOut"), Integer.parseInt(req.getParameter("totalPrice")));
+
 		Utils.forward(req, resp, "myPage/myReservation.tiles");
 	}
 }
