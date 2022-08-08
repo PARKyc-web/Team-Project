@@ -11,6 +11,7 @@ import lombok.ToString;
 @ToString
 public class ReservationJoinHotelVO {
 	private String hotelName;
+	private int hotelId;
 	private String memberId;	//공통
 	private Date inDate;
 	private Date outDate;

@@ -6,8 +6,47 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+
+ 	  font-family: Georgia, "맑은 고딕", serif;
+ 	 #container{
+        width: 600px;
+        margin: 0 auto;
+    }
+    h3{
+        text-align: center;
+        font-family: Georgia, "맑은 고딕", serif;
+    }
+    ul{
+        list-style: none;
+    }
+    ul li {
+        clear: both;
+        text-align: center;
+    }
+       input[type="text"],[type="tel"],[type="email"]{
+       
+        width: 350px;
+        height: 40px;
+        border: 2px solid #fc777b;
+        border-radius: 20px;
+        padding: 5px;
+        margin: 10px 0;
+
+
+    }
+    input[type="submit"]{
+    	float : center;
+    	
+    jsp:include.class{
+     text-align: center;
+    }
+    	
+    
+</style>
 </head>
 <body>
+<div id="container">
 
 	<h3>회원정보 수정</h3>
 	
@@ -20,15 +59,12 @@
           <input name="call" id ="call" type="tel" value = "${memberModi.phone }"></li>
         <li><label for="mail">이메일 : </label>
           <input name="mail" id="mail" type="email" value = "${memberModi.email }"></li>
-    <%--     <li><label for ="date">가입날짜 : </label>
-          <input size="date" type="text" value = "${memberModi.signInDate }"></li> --%>
         <li><label for="pic">사진 : </label>
           <input name="pic" id="pic" type="text"  value = "${memberModi.memberPic }"></li>
-      
       	<li><input type ="submit" value = "수정"></li>
       </ul>
        </form>
-	
+	</div>
 	
 </body>
 </html>

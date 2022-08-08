@@ -73,25 +73,6 @@ public class MemberDAO extends DAO {
 		}
 	}
 
-	// 내가 쓴 리뷰 조회
-	public List<ReviewVO> getReviewList(ReviewVO vo) {
-		String sql = "select hotel_id, review_date, review_content from review order by 1";
-		List<ReviewVO> list = new ArrayList<>();
-		connect();
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				System.out.println(vo.getMemberId()+ "님의 정보가 수정되었습니다.");
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			disconnect();
-		}
-		return list;
-	}
 
 	
 	//마이페이지 정보 전체조회 : yj
@@ -109,7 +90,6 @@ public class MemberDAO extends DAO {
 					vo.setMemberAge(rs.getInt("member_age"));
 					vo.setPhone(rs.getString("phone"));
 					vo.setEmail(rs.getString("email"));
-					vo.setMemberType(rs.getString("member_type"));
 					vo.setSignInDate(rs.getString("sign_in_date"));
 					vo.setMemberPic(rs.getString("member_pic"));
 

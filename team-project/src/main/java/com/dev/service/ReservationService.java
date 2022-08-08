@@ -23,6 +23,13 @@ public class ReservationService {
 		return dao.getReservationList(memberId);
 	}
 
+	//예약내역
+//	public List<ReservationJoinHotelVO> ReservationList1(String memberId){
+//		return dao.getHotelName(memberId);
+//	}
+//	public List<ReservationJoinHotelVO> ReservationList2(String memberId){
+//		return dao.getReserList(memberId);
+//	}
 	public List<Date> invalidDate(int hotelId) {
 		return dao.invalidDate(hotelId);
 	}

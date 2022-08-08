@@ -29,10 +29,19 @@ public class ReviewService {
 	public float avgHotelReview(int hotelId) {
 		return dao.avgHotelReview(hotelId);
 	}
-
 	
-	public List<ReviewJoinReservationJoinHotelVO> ReviewList(String memberId) {
+	public List<ReviewJoinReservationJoinHotelVO> reviewList(String memberId) {
 		return dao.getReviewList(memberId);
-
 	}
+	
+	public List<ReviewJoinReservationJoinHotelVO> reviewList1(String memberId){
+		return dao.hotelReservationList(memberId);
+	}
+	public List<ReviewJoinReservationJoinHotelVO> reviewList2(String memberId){
+		return dao.reviewList(memberId);
+	}
+
+//	public void reviewWrite(String memberId) {
+//		dao.insertReview(memberId);
+//	}
 }

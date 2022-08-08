@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ReviewJoinReservationJoinHotelVO {
+	private int hotelId;
 	private String hotelName;
 	private String memberId;	//공통
 	private Date reviewDate;
