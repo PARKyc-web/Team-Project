@@ -367,18 +367,29 @@ transition: all ease 1s;
 				<!-- Side widget-->
 				<div class="card mb-4" style="text-align: center">
 					<div class="card-header">위시리스트에 담기</div>
-					<div class="card-body"><button id="heart" >
+					<div class="card-body">
+					<form action="#" method="post">
+					<button id="heart" onclick="clickHeart()" name="heartColor">
+					<script>
+					function clickHeart() {
+						if("${heartColor}" == 1) {
+							alert("위시리스트에 등록되었습니다.");
+						} else {
+							alert("위시리스트에서 삭제되었습니다.");
+						}
+					}
+					</script>
 					<c:choose>
 							<c:when test="${0 eq heartColor }">
-								❤️
+								❤
 							</c:when>
 							<c:otherwise>
 								🤍
 							</c:otherwise>
 						</c:choose>
 					</button>
+					</form>
 					<p>click me!</p>
-					
 					</div>
 				</div>
 				<!-- 예약 하기-->
@@ -452,18 +463,18 @@ transition: all ease 1s;
 						</script>
 						<form action="doReservation.do" method="post">
 							<input type="text" name="datefilter" value="체크인 및 체크아웃" /><br>
-							게스트 인원 <input type="number" name="guestNum" min="1" value="1"
-								max=${hotelInfo.maxP }> <input type="submit"
-								value="예약하기" />
+							게스트 인원 <input type="number" name="guestNum" min="1" value="1" max=${hotelInfo.maxP }>
+							<input type="submit" value="예약하기" />
+								
+							<p style="text-align: center;">예약 확정 전에는 요금이 청구되지 않습니다.</p>
+							<p>₩${hotelInfo.hotelPrice } x 5박 ₩${hotelInfo.hotelPrice * 5}</p>
+							<p>청소비 ₩10,000</p>
+							<p>서비스 수수료 ₩176,471</p>
+							<p>숙박세와 수수료 ₩17,647</p>
+							<hr>
+							<p>총 합계 ₩1,444,118</p>
 						</form>
 
-						<p style="text-align: center;">예약 확정 전에는 요금이 청구되지 않습니다.</p>
-						<p>₩${hotelInfo.hotelPrice } x 5박 ₩${hotelInfo.hotelPrice * 5}</p>
-						<p>청소비 ₩10,000</p>
-						<p>서비스 수수료 ₩176,471</p>
-						<p>숙박세와 수수료 ₩17,647</p>
-						<hr>
-						<p>총 합계 ₩1,444,118</p>
 					</div>
 
 				</div>

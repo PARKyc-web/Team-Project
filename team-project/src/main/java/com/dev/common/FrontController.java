@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dev.controller.AjaxHeartColor;
 import com.dev.controller.DoReservationController;
 import com.dev.controller.MainController;
 import com.dev.controller.MemberJoinController;
@@ -73,7 +74,8 @@ public class FrontController extends HttpServlet{
 		// Part of YR
 		mappings.put("/selectHotel.do", new SelectHotelController()); // 호텔 상세 페이지
 		// selectHotel.do에서 예약하기를 누른 후 이동하는 페이지
-		mappings.put("/doReservation.do", new DoReservationController()); 
+		mappings.put("/doReservation.do", new DoReservationController());
+		mappings.put("/ajaxHeartColor.do", new AjaxHeartColor());
 	}
 
 	

@@ -25,6 +25,11 @@ public class WishListService {
 	public int heartColor(String memberId, int hotelId) {
 		return dao.heartColor(memberId, hotelId);
 	}
+	
+	// wish_list의 onOff 값을 update합니다.
+	public int changeOnOff(String memberId, int hotelId, int onOff) {
+		return dao.changeOnOff(memberId, hotelId, onOff);
+	}
 
 
 }

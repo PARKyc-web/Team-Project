@@ -61,4 +61,27 @@ public class WishListDAO extends DAO{
 		}
 		return result;
 	}
+	
+	public int changeOnOff(String memberId, int hotelId, int onOff) {
+		String sql = "update wish_list set onOff=? where member_id=? and hotel_id=?";
+		connect();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, onOff);
+			pstmt.setString(2, memberId);
+			pstmt.setInt(3, hotelId);
+			
+			int r = pstmt.executeUpdate();
+			if(r > 0) {
+				return onOff;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		
+		return -1;
+	}
 }

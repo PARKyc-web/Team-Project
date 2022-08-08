@@ -26,4 +26,9 @@ public class ReservationService {
 	public List<Date> invalidDate(int hotelId) {
 		return dao.invalidDate(hotelId);
 	}
+	
+	public void insertReservation(String memberId, int hotelId, String checkIn, String checkOut, int totalPrice) {
+		dao.insertReservation(memberId, hotelId, checkIn, checkOut, totalPrice);
+	}
+	
 }

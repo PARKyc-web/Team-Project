@@ -94,4 +94,27 @@ public class ReservationDAO extends DAO{
 			System.out.println(invalidDateList);
 			return invalidDateList;
 		}
+		
+		public void insertReservation(String memberId, int hotelId, String checkIn, String checkOut, int totalPrice) {
+			String sql = "insert into reservation(reserv_id, member_id, hotel_id, in_date, out_date, total_price) values(hotel_seq.nextval, ?, ?, ?, ?, ?)";
+			connect();
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, memberId);
+				pstmt.setInt(2, hotelId);
+				pstmt.setString(3, checkIn);
+				pstmt.setString(4, checkOut);
+				pstmt.setInt(5, totalPrice);
+				
+				int result = pstmt.executeUpdate();
+				if(result > 0) {
+					System.out.println("예약이 정상적으로 등록되었습니다.");
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				disconnect();
+			}
+		}
 }
