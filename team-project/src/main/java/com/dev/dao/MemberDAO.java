@@ -53,25 +53,7 @@ public class MemberDAO extends DAO {
 		}
 	}
 	
-	//탈퇴회원 로그인 제한 
-	public void searchDeleteMember(String id) {
-		System.out.println("run deleteMember");
-		String sql = "select * from member_login where member_able=1"; 
 
-		connect();
-		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			while(rs.next()) {
-				
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			disconnect();
-		}
-	}
 
 
 	
@@ -148,7 +130,7 @@ public class MemberDAO extends DAO {
 		
 		//멤버 검색(하영)
 		public MemberVO searchLoginMember(String id) {
-			String sql = "select * from member_login where member_id = '" + id + "'";
+			String sql = "select * from member_login where member_id = '" + id + "'and member_able=0";
 			connect();
 			try {
 				stmt = conn.createStatement();
@@ -167,6 +149,28 @@ public class MemberDAO extends DAO {
 			return null;
 		}
 		
+//		//탈퇴회원(member_able=1) 로그인 제한 
+//		public MemberVO searchDeleteMember(String id) {
+//			String sql = "select member_able from member_login where member_id = '" + id + "'";
+//			connect();
+//			try {
+//				stmt = conn.createStatement();
+//				rs = stmt.executeQuery(sql);
+//				if(rs.next()) {
+//					MemberVO vo = new MemberVO();
+//					vo.setMemberId(rs.getString("member_id"));
+//					vo.setMemberPassword(rs.getString("member_password"));
+//					return vo;
+//				}	
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			} finally {
+//				disconnect();
+//			}
+//			return null;
+//		}
+//		
+//		
 		//아이디 중복체크 ,,보류
 		public int checkId(String id) {
 			String sql = "select * from member_login where member_id=?";
