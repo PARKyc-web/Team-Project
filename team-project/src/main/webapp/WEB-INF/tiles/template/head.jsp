@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix ="c" %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container px-4 px-lg-5">
+		<img src="image/logo.png" width="35px;">
 		<a class="navbar-brand" href="main.do">AirBnB</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarSupportedContent"
@@ -55,7 +56,7 @@
 				</c:when>
 				<c:when test="${!empty member}">
 					<li class="nav-item"><a class="nav-link" href="memberLogout.do">Logout</a></li>
-				</c:when>			
+				</c:when>		
 				<c:when test="${empty member}">
 					<li class="nav-item"><a class="nav-link" href="memberJoin.do">Login/SignUp</a></li>
 				</c:when>

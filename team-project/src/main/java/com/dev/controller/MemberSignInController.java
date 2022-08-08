@@ -1,6 +1,7 @@
 package com.dev.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,12 +28,32 @@ public class MemberSignInController implements Controller {
 	
 		MemberVO vo = service.searchMember(id);
 		
+		resp.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = resp.getWriter();
 		
 		if(vo == null || !pw.equals(vo.getMemberPassword())) {
-			Utils.forward(req, resp, "member/memberLoginFail.tiles");
+			out.println("<script language='javascript'>");
+			out.println("window.location.href ='http://localhost:8088/teamProject/memberSignInForm.do'");
+			out.println("alert('로그인 실패.')");
+			out.println("</script>");
+
+			out.flush();
+//			Utils.forward(req, resp, "member/memberSignInFail.tiles");
 		} else {
 			session.setAttribute("member", vo);
-			Utils.forward(req, resp, "member/memberLoginSuccess.tiles");
+
+			out.println("<script language='javascript'>");
+			out.println("window.location.href ='http://localhost:8088/teamProject/main.do'");
+			out.println("alert('로그인 성공했습니다.')");
+			out.println("</script>");
+			
+//			out.println("<script language='javascript'src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'>");
+//			out.println("window.location.href ='http://localhost:8088/teamProject/main.do'");
+//			out.println("swal('로그인', '로그인 성공하였습니다!', 'success')");
+//			out.println("</script>");
+			
+			out.flush();
+//			Utils.forward(req, resp, "member/memberSignInSuccess.tiles");
 		}
 	}
 

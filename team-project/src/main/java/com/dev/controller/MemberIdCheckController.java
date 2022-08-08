@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dev.common.Controller;
 import com.dev.common.Utils;
 import com.dev.service.MemberService;
+import com.dev.vo.MemberVO;
 
 public class MemberIdCheckController implements Controller {
 
@@ -16,8 +17,9 @@ public class MemberIdCheckController implements Controller {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id = req.getParameter("member_id");
 		MemberService service = MemberService.getInstance();
+		MemberVO vo = new MemberVO();
 		
-		service.checkId(id);
+		service.checkId(id, vo);
 	}
 
 }

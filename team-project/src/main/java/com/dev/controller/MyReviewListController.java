@@ -25,10 +25,11 @@ public class MyReviewListController implements Controller {
 		MemberVO mvo = (MemberVO) session.getAttribute("member"); // Id password
 
 		// DB에 접근해서 정보를 가져오는 부분이 있어야함.
-		List<ReviewJoinReservationJoinHotelVO> review = ReviewService.getInstance().ReviewList(mvo.getMemberId());
-
+		List<ReviewJoinReservationJoinHotelVO> review1 = ReviewService.getInstance().reviewList1(mvo.getMemberId());
+		List<ReviewJoinReservationJoinHotelVO> review2 = ReviewService.getInstance().reviewList2(mvo.getMemberId());
 		// 공유
-		req.setAttribute("review", review);
+		req.setAttribute("review1", review1);
+		req.setAttribute("review2", review2);
 
 		Utils.forward(req, resp, "myPage/myReview.tiles");
 	}
