@@ -11308,7 +11308,7 @@ textarea.form-control-lg {
 			form.search-form input[type=text]{
 				background-color: #fff;
 				width: 65%;
-				padding:10px;
+				padding:15px;
 				border-radius: 25px 0px 0px 25px;
 				border: 1px solid #bdc1c6;
 				text-align:center;
@@ -11318,7 +11318,7 @@ textarea.form-control-lg {
 				background-color:orange;
 				color:#fff;
 				width:10%;
-				padding:10px;
+				padding:15px;
 				border-radius: 0px 25px 25px 0px;
 				margin-left:-10px;
 				border: 1px solid #bdc1c6;

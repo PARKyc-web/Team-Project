@@ -19,7 +19,7 @@
   </script>  
 </head>
 
-<!-- Header-->
+<!-- Header
 <header class="bg-dark py-5">
 	<div class="container px-4 px-lg-5 my-5" id="mainPage">
 		<div class="text-center text-white">
@@ -27,7 +27,7 @@
 			<p class="lead fw-normal text-white-50 mb-0">have fun with TEAM AirBnB</p>
 		</div>
 	</div>
-</header>
+</header>-->
 
 <!-- Section-->
 <section class="py-5">

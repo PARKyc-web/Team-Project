@@ -44,6 +44,7 @@ public class MemberSignUpController extends HttpServlet implements Controller {
 		vo.setMemberAge(age);
 		vo.setPhone(phone);
 		vo.setEmail(email);
+		vo.setMemberPic("user_image/Default_pro.jpg");
 		service.addMember(vo);
 		System.out.println(vo);
 		req.setAttribute("member", vo);
