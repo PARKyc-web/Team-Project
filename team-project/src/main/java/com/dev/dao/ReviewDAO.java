@@ -88,9 +88,12 @@ public class ReviewDAO extends DAO {
 	
 	// 내가 쓴 리뷰 조회 : yj
 		public List<ReviewJoinReservationJoinHotelVO> getReviewList(String memberId) {
-			String sql = "select * from review r JOIN hotel h ON  r.member_id = h.member_id "
-					+ "                                JOIN reservation rv ON h.member_id = rv.member_id "
-					+ "                                WHERE r.member_id = ? ";
+			String sql = "SELECT re.member_id, re.review_date, re.review_rate, re.review_contents, hr.in_date, hr.out_date, hr.hotel_name "
+					+ "FROM review re JOIN (SELECT h.hotel_id, h.hotel_name, in_date, out_date "
+					+ "                    FROM hotel h JOIN reservation r "
+					+ "                    ON h.hotel_id = r.hotel_id) hr "
+					+ "ON (hr.hotel_id = re.hotel_id) "
+					+ "where member_id = ?";
 			List<ReviewJoinReservationJoinHotelVO> list = new ArrayList<>();
 			connect();
 			try {
@@ -117,5 +120,85 @@ public class ReviewDAO extends DAO {
 				disconnect();
 			}
 			return list;
+		}
+		//호텔+예약정보
+		public List<ReviewJoinReservationJoinHotelVO> hotelReservationList(String memberId) {
+			List<ReviewJoinReservationJoinHotelVO> list = new ArrayList<>();
+
+			String sql = "SELECT h.hotel_id, h.hotel_name, in_date, out_date, r.member_id "
+					+ "FROM hotel h JOIN reservation r  "
+					+ "ON h.hotel_id = r.hotel_id "
+					+ "WHERE r.member_id = ? ";
+			connect();
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, memberId);
+
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					ReviewJoinReservationJoinHotelVO vo = new ReviewJoinReservationJoinHotelVO();
+					vo.setMemberId(rs.getString("member_id"));
+					vo.setHotelId(rs.getInt("hotel_id"));
+					vo.setHotelName(rs.getString("hotel_name"));
+					vo.setInDate(rs.getDate("in_date"));
+					vo.setOutDate(rs.getDate("out_date"));
+
+					list.add(vo);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				disconnect();
+			}
+			return list;
+		}
+		
+		//호텔+예약정보에다가  +할 리뷰의 내용들!
+		public List<ReviewJoinReservationJoinHotelVO> reviewList(String memberId) {
+			List<ReviewJoinReservationJoinHotelVO> list = new ArrayList<>();
+
+			String sql = "SELECT * FROM review WHERE member_id = ? order by review_date desc";
+			connect();
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, memberId);
+
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					ReviewJoinReservationJoinHotelVO vo = new ReviewJoinReservationJoinHotelVO();
+					vo.setMemberId(rs.getString("member_id"));
+					vo.setReviewRate(rs.getFloat("review_rate"));
+					vo.setReviewDate(rs.getDate("review_date"));
+					vo.setReviewContents(rs.getString("review_contents"));
+					list.add(vo);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				disconnect();
+			}
+			return list;
+		}
+
+		//리뷰쓰기 : yj
+		public void insertReview(ReviewVO vo) {
+			String sql = "insert into review values(hotel_seq.nextval, ?, ?, ?, sysdate, ?) ";
+			connect();
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, vo.getMemberId());
+				pstmt.setInt(2, vo.getHotelId());
+				pstmt.setString(3, vo.getReviewContents());
+				pstmt.setFloat(4, vo.getReviewRate());
+				int r = pstmt.executeUpdate();
+				System.out.println(r + "건 입력됨");
+			
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				disconnect();
+			}
 		}
 }

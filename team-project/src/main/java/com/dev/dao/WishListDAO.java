@@ -23,6 +23,7 @@ public class WishListDAO extends DAO{
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				WishListJoinHotelVO whvo = new WishListJoinHotelVO();
+				whvo.setHotelId(rs.getInt("hotel_id"));
 				whvo.setHotelName(rs.getString("hotel_name"));
 				whvo.setMemberId(rs.getString("member_id"));
 				whvo.setOnOff(rs.getInt("onOff"));

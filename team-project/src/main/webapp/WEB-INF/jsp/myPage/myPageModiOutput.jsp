@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h3>${member.memberId }님의 정보가 수정되었습니다.</h3>
-	<jsp:include page = "myPageMain.jsp"></jsp:include>
+	<jsp:include page = "myHome.jsp"></jsp:include>
 </body>
 </html>
