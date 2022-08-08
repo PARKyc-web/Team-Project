@@ -32,6 +32,7 @@ import com.dev.controller.MyReservationController;
 import com.dev.controller.MyReviewListController;
 import com.dev.controller.MyReviewWriterController;
 import com.dev.controller.MyWishListController;
+import com.dev.controller.ReservationSuccessController;
 import com.dev.controller.SearchHotelController;
 import com.dev.controller.SelectHotelController;
 import com.dev.controller.Test;
@@ -82,6 +83,8 @@ public class FrontController extends HttpServlet{
 		mappings.put("/selectHotel.do", new SelectHotelController()); // 호텔 상세 페이지
 		// selectHotel.do에서 예약하기를 누른 후 이동하는 페이지
 		mappings.put("/doReservation.do", new DoReservationController());
+		mappings.put("/reservationSuccess.do", new ReservationSuccessController());
+		
 		mappings.put("/ajaxHeartColor.do", new AjaxHeartColor());
 	}
 

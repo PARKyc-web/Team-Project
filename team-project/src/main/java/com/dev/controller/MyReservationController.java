@@ -33,9 +33,6 @@ public class MyReservationController implements Controller {
 		// 공유
 		req.setAttribute("reservation", reservation);
 		
-//		ReservationService reservationService = ReservationService.getInstance();
-//		reservationService.insertReservation(req.getParameter("memberId"), Integer.parseInt(req.getParameter("hotelId")), req.getParameter("checkIn"), req.getParameter("checkOut"), Integer.parseInt(req.getParameter("totalPrice")));
-
 		Utils.forward(req, resp, "myPage/myReservation.tiles");
 	}
 }

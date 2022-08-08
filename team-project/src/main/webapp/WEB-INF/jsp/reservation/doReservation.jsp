@@ -64,7 +64,7 @@
 						<p class="fs-5 mb-4">긴급 상황이나 자연재해로 인해 예약에 지장이 있었다면, 정상참작이 가능한
 							상황으로 간주되어 환불이 가능할 수 있습니다.</p>
 					</section>
-					<form action="myReservation.do" name="rvForm" method="post" onsubmit="alert('예약이 완료되었습니다.')">
+					<form action="reservationSuccess.do" name="rvForm" method="post" onsubmit="alert('예약이 완료되었습니다.')">
 						<input type="hidden" name="checkIn" id="checkIn" value="" />
 						<input type="hidden" name="checkOut" id="checkOut" value="" />
 						<input type="hidden" name="totalPrice" id="totalPrice" value="" />

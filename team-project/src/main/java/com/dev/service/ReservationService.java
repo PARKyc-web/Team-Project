@@ -34,8 +34,8 @@ public class ReservationService {
 		return dao.invalidDate(hotelId);
 	}
 	
-	public void insertReservation(String memberId, int hotelId, String checkIn, String checkOut, int totalPrice) {
-		dao.insertReservation(memberId, hotelId, checkIn, checkOut, totalPrice);
+	public int insertReservation(String memberId, int hotelId, String checkIn, String checkOut, int totalPrice) {
+		return dao.insertReservation(memberId, hotelId, checkIn, checkOut, totalPrice);
 	}
 	
 }
