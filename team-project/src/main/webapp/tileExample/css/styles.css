@@ -4053,6 +4053,8 @@ textarea.form-control-lg {
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
   font-size: 1.25rem;
+  font-weight:bold;
+  color:#fc777b;
   text-decoration: none;
   white-space: nowrap;
 }
