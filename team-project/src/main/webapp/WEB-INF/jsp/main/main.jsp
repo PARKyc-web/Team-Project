@@ -70,7 +70,7 @@
 					<!-- Product actions-->
 					<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 						<div class="text-center">
-							<a class="btn btn-outline-dark mt-auto" href="selectHotel.do?hotelId=${random_list[i].hotelId }">View options</a>
+							<a class="btn btn-outline-dark mt-auto" href="selectHotel.do?hotelId=${random_list[i].hotelId }&memberId=${member.memberId}">자세히보기</a>
 						</div>
 					</div>
 					

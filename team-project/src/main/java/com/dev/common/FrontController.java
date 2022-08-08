@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dev.controller.AjaxHeartColor;
 import com.dev.controller.DoReservationController;
 import com.dev.controller.HotelManageFormController;
 import com.dev.controller.HotelUploadController;
@@ -29,6 +30,7 @@ import com.dev.controller.MyPageModiController;
 import com.dev.controller.MyPageModiInfoContoller;
 import com.dev.controller.MyReservationController;
 import com.dev.controller.MyReviewListController;
+import com.dev.controller.MyReviewWriterController;
 import com.dev.controller.MyWishListController;
 import com.dev.controller.SearchHotelController;
 import com.dev.controller.SelectHotelController;
@@ -61,6 +63,7 @@ public class FrontController extends HttpServlet{
 		mappings.put("/myPageInfoModify.do", new MyPageModiInfoContoller());//마이페이지- 내정보- 수정받은 정보 DB에 보내기
 		mappings.put("/myReview.do", new MyReviewListController());//마이페이지 - 내가쓴리뷰
 		mappings.put("/myReservation.do", new MyReservationController());//마이페이지 - 나의숙박내역
+		mappings.put("/myReviveWriter.do", new MyReviewWriterController());	//마이페이지 - 나의 숙박내역 -> outdate지난애들 리뷰쓰기가능! -> 내가쓴리뷰로 이동
 		mappings.put("/myWishList.do", new MyWishListController());//마이페이지 - 나의 위시리스트
 		mappings.put("/myMemberDeleteOutput.do", new MyMemberDeleteOutput());//회원탈퇴
 		mappings.put("/myMemberDelete.do", new MyMemberDeleteController());
@@ -78,7 +81,8 @@ public class FrontController extends HttpServlet{
 		// Part of YR
 		mappings.put("/selectHotel.do", new SelectHotelController()); // 호텔 상세 페이지
 		// selectHotel.do에서 예약하기를 누른 후 이동하는 페이지
-		mappings.put("/doReservation.do", new DoReservationController()); 
+		mappings.put("/doReservation.do", new DoReservationController());
+		mappings.put("/ajaxHeartColor.do", new AjaxHeartColor());
 	}
 
 	

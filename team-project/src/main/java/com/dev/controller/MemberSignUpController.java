@@ -1,11 +1,13 @@
 package com.dev.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dev.common.Controller;
 import com.dev.common.Utils;
@@ -45,8 +47,21 @@ public class MemberSignUpController extends HttpServlet implements Controller {
 		service.addMember(vo);
 		System.out.println(vo);
 		req.setAttribute("member", vo);
-	
-	
-		Utils.forward(req, resp, "member/memberSignUpSuccess.tiles");
+		
+		HttpSession session = req.getSession();
+		session.setAttribute("member", vo);
+
+		resp.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = resp.getWriter();
+		
+		out.println("<script language='javascript'>");
+		out.println("window.location.href ='http://localhost:8088/teamProject/main.do'");
+		out.println("alert('회원가입이 완료되었습니다.')");
+		out.println("</script>");
+
+		out.flush();
+		
+		
+//		Utils.forward(req, resp, "member/memberSignUpSuccess.tiles");
 	}
 }

@@ -20,6 +20,16 @@ public class WishListService {
 	public List<WishListJoinHotelVO> ListWishList(String memberId) {
 		return dao.getWishList(memberId);
 	}
+	
+	// 호텔 상세 페이지 내 위시리스트(하트)의 상태를 나타내는 함수입니다.
+	public int heartColor(String memberId, int hotelId) {
+		return dao.heartColor(memberId, hotelId);
+	}
+	
+	// wish_list의 onOff 값을 update합니다.
+	public int changeOnOff(String memberId, int hotelId, int onOff) {
+		return dao.changeOnOff(memberId, hotelId, onOff);
+	}
 
 
 }

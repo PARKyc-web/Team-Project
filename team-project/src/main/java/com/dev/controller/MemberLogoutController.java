@@ -1,6 +1,7 @@
 package com.dev.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,18 @@ public class MemberLogoutController implements Controller {
 		HttpSession session = req.getSession();
 		session.invalidate();
 		
-		Utils.forward(req, resp, "member/memberLogout.tiles");
+		resp.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = resp.getWriter();
+
+		out.println("<script language='javascript'>");
+		out.println("alert('로그아웃 완료되었습니다.')");
+		out.println("window.location.href ='http://localhost:8088/teamProject/main.do'");
+		out.println("</script>");
+
+		out.flush();
+		
+		
+//		Utils.forward(req, resp, "member/memberLogout.tiles");
 		
 	}
 
