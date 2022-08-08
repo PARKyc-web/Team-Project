@@ -7,6 +7,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dev.common.Controller;
 import com.dev.common.Utils;
@@ -18,6 +19,8 @@ public class MainController implements Controller{
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
+		HttpSession session = req.getSession();
+		req.setAttribute("member", session.getAttribute("member"));
 		
 		List<HotelVO> list = HotelService.getInstance().getRandomTenHotel();		
 		List<List<HotelPicVO>> picList = HotelService.getInstance().getMainHotelPic(list);		

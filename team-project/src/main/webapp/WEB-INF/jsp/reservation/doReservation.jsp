@@ -52,7 +52,7 @@
 					<section class="mb-5">
 						<h4 class="fw-bolder mb-4 mt-5">예약 정보</h4>
 						<p class="fs-5 mb-4">날짜 ${checkInOut }</p>
-						<p class="fs-5 mb-4">게스트 게스트 ${guestNum }명</p>
+						<p class="fs-5 mb-4">게스트 ${guestNum }명</p>
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">결제 수단</h4>
 						
@@ -64,12 +64,15 @@
 						<p class="fs-5 mb-4">긴급 상황이나 자연재해로 인해 예약에 지장이 있었다면, 정상참작이 가능한
 							상황으로 간주되어 환불이 가능할 수 있습니다.</p>
 					</section>
-
-					<form action="myReservation.do" method="post" onsubmit="alert('예약이 완료되었습니다.')">
-						날짜 <input type="text" name="datefilter" value=${checkInOut } /><br>
-						게스트 게스트<input type="text" name="guestNum" value=${guestNum } />명<br>
+					<form action="myReservation.do" name="rvForm" method="post" onsubmit="alert('예약이 완료되었습니다.')">
+						<input type="hidden" name="checkIn" id="checkIn" value="" />
+						<input type="hidden" name="checkOut" id="checkOut" value="" />
+						<input type="hidden" name="totalPrice" id="totalPrice" value="" />
+						<input type="hidden" name="memberId" value="${member.memberId }" />
+						<input type="hidden" name="hotelId" value="${hotelInfo.hotelId }" />
 						<input type="submit" value="예약 요청" />
 					</form>
+					
 				</article>
 
 			</div>
@@ -90,15 +93,39 @@
 							(${countReview }) · ❣️ 슈퍼호스트</div>
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">요금 세부 정보</h4>
-						<p>₩${hotelInfo.hotelPrice } x 5박 ₩${hotelInfo.hotelPrice * 5}</p>
-						<p>청소비 ₩10,000</p>
+						<form name=>
+						<p>₩${hotelInfo.hotelPrice } x <span id="day"></span>박 ₩<span id ="totalPrice2"></span></p>
+						<p>청소비 ₩10,000</p> 
 						<p>서비스 수수료 ₩176,471</p>
 						<p>숙박세와 수수료 ₩17,647</p>
 						<hr>
 						<p>총 합계 ₩1,444,118</p>
+						</form>
 					</div>
 				</div>
 			</div>
+			<script type="text/javascript">
+						var checkInOut = "${checkInOut }".split(" - ");
+						var checkIn = checkInOut[0].substring(0, checkInOut[0].length);
+						var checkOut = checkInOut[1].substring(0, checkInOut[1].length);
+						
+						const getDateDiff = (d1, d2) => {
+							  const date1 = new Date(d1);
+							  const date2 = new Date(d2);
+							  
+							  const diffDate = date2.getTime() - date1.getTime();
+							  
+							  return Math.abs(diffDate / (1000 * 60 * 60 * 24)); // 밀리세컨 * 초 * 분 * 시 = 일
+							}
+
+						var day = getDateDiff(checkIn, checkOut);
+						
+						document.getElementById('checkIn').value = checkIn;
+						document.getElementById('checkOut').value = checkOut;
+						document.getElementById('totalPrice').value = ${hotelInfo.hotelPrice } * day;
+						document.getElementById('totalPrice2').innerHTML = ${hotelInfo.hotelPrice } * day;
+						document.getElementById('day').innerHTML = day;
+					</script>
 
 		</div>
 	</div>

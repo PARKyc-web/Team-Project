@@ -51,107 +51,69 @@ public class ReservationDAO extends DAO {
 		} finally {
 			disconnect();
 		}
-
-		return list;
+    
+    return list;
 
 	}
+  // 특정 호텔의 예약된 날짜를 반환하는 함수입니다.
+		public List<Date> invalidDate(int hotelId) {
+			List<Date> invalidDateList = new ArrayList<Date>();
+			Date startDate;
+			int day = 0;
+			
+			String sql = "select in_date, (TRUNC(out_date) - TRUNC(in_date))AS day from reservation where hotel_id=?";
+			connect();
+			
+			List<ReservationVO> dateList = new ArrayList<>();
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, hotelId);
+				
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					startDate = rs.getDate("in_date");
+					day = rs.getInt("day");
+					
+					Calendar cal = Calendar.getInstance();
+					cal.setTime(startDate);
+					for(int i=0; i<day; i++) {
+						DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+						invalidDateList.add(Date.valueOf(df.format(cal.getTime())));
 
-//	// 숙박리스트 출력 -1.호텔이름가져오기 : yj
-//	public List<ReservationJoinHotelVO> getHotelName(String memberId) {
-//		String sql = "select * from hotel where member_id = ? ";
-//		List<ReservationJoinHotelVO> list = new ArrayList<>();
-//		connect();
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, memberId);
-//			rs = pstmt.executeQuery();
-//
-//			while (rs.next()) {
-//
-//				ReservationJoinHotelVO vo = new ReservationJoinHotelVO();
-//				// 출력값
-//				vo.setHotelName(rs.getString("hotel_name"));
-//
-//				list.add(vo);
-//			}
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			disconnect();
-//		}
-//
-//		return list;
-//
-//	}
-//
-//	// 숙박리스트 출력 -2.예약내가져오기: yj
-//	public List<ReservationJoinHotelVO> getReserList(String memberId) {
-//		String sql = "select * from reservation where member_id = ? ";
-//		List<ReservationJoinHotelVO> list = new ArrayList<>();
-//		connect();
-//		try {
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, memberId);
-//			rs = pstmt.executeQuery();
-//
-//			while (rs.next()) {
-//				ReservationJoinHotelVO vo = new ReservationJoinHotelVO();
-//				// 출력값
-//				vo.setInDate(rs.getDate("in_date"));
-//				vo.setOutDate(rs.getDate("out_date"));
-//				vo.setTotalPrice(rs.getInt("total_price"));
-//				vo.setMemberId(rs.getString("member_id"));
-//
-//				list.add(vo);
-//
-//			}
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			disconnect();
-//		}
-//
-//		return list;
-//	}
-
-	// 특정 호텔의 예약된 날짜를 반환하는 함수입니다.
-	public List<Date> invalidDate(int hotelId) {
-		List<Date> invalidDateList = new ArrayList<Date>();
-		Date startDate;
-		int day = 0;
-
-		String sql = "select in_date, (TRUNC(out_date) - TRUNC(in_date))AS day from reservation where hotel_id=?";
-		connect();
-
-		List<ReservationVO> dateList = new ArrayList<>();
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, hotelId);
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				startDate = rs.getDate("in_date");
-				day = rs.getInt("day");
-
-				invalidDateList.add(startDate);
-				Calendar cal = Calendar.getInstance();
-				cal.setTime(startDate);
-				for (int i = 0; i < day; i++) {
-					cal.add(Calendar.DATE, 1);
-
-					DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-					invalidDateList.add(Date.valueOf(df.format(cal.getTime())));
+						cal.add(Calendar.DATE, 1);
+					}
 				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				disconnect();
 			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			disconnect();
+			System.out.println(invalidDateList);
+			return invalidDateList;
 		}
-		return invalidDateList;
-	}
+		
+		public void insertReservation(String memberId, int hotelId, String checkIn, String checkOut, int totalPrice) {
+			String sql = "insert into reservation(reserv_id, member_id, hotel_id, in_date, out_date, total_price) values(hotel_seq.nextval, ?, ?, ?, ?, ?)";
+			connect();
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, memberId);
+				pstmt.setInt(2, hotelId);
+				pstmt.setString(3, checkIn);
+				pstmt.setString(4, checkOut);
+				pstmt.setInt(5, totalPrice);
+				
+				int result = pstmt.executeUpdate();
+				if(result > 0) {
+					System.out.println("예약이 정상적으로 등록되었습니다.");
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				disconnect();
+			}
+		}
 }

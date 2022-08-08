@@ -13,6 +13,7 @@ import com.dev.common.Utils;
 import com.dev.service.HotelService;
 import com.dev.service.ReservationService;
 import com.dev.service.ReviewService;
+import com.dev.service.WishListService;
 
 public class SelectHotelController implements Controller{
 	
@@ -20,6 +21,8 @@ public class SelectHotelController implements Controller{
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
+//		int hotelId = 113;
+		String memberId = req.getParameter("memberId");
 						
 		HotelService hotelService = HotelService.getInstance();
 		req.setAttribute("hotelInfo", hotelService.getHotelInfo(hotelId));
@@ -33,6 +36,9 @@ public class SelectHotelController implements Controller{
 		
 		ReservationService rvService = ReservationService.getInstance();
 		req.setAttribute("invalidDate", rvService.invalidDate(hotelId));
+		
+		WishListService wlService = WishListService.getInstance();
+		req.setAttribute("heartColor", wlService.heartColor(memberId, hotelId));
 		
 		Utils.forward(req, resp, "hotel/selectHotel.tiles");	
 	}

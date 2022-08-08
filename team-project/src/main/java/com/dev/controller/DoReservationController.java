@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dev.common.Controller;
 import com.dev.common.Utils;
@@ -17,6 +18,11 @@ public class DoReservationController implements Controller {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int hotelId = 113;
+		
+		HttpSession session = req.getSession();
+		req.setAttribute("member", session.getAttribute("member"));
+//		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
+		
 		HotelService hotelService = HotelService.getInstance();
 		req.setAttribute("hotelInfo", hotelService.getHotelInfo(hotelId));
 		req.setAttribute("picList", hotelService.getSelectedHotelImage(hotelId));
