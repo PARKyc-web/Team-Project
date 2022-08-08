@@ -7845,7 +7845,7 @@ textarea.form-control-lg {
 
 .bg-dark {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+  background-color: #e8e8e8; /*rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;*/
 }
 
 .bg-black {
@@ -11300,28 +11300,30 @@ textarea.form-control-lg {
 			}
 			
 			form.search-form input{
-				border:none;
+				border:2px solid #fc777b;
 				box-sizing: border-box;
-				box-shadow: 3px 3px 5px #888888;
+				/*box-shadow: 3px 3px 5px #888888;*/
 			}
 			
 			form.search-form input[type=text]{
+				border:4px solid #fc777b;
 				background-color: #fff;
 				width: 65%;
 				padding:10px;
 				border-radius: 25px 0px 0px 25px;
-				border: 1px solid #bdc1c6;
+				/*border: 1px solid #bdc1c6;*/
 				text-align:center;
 			}
 			
 			form.search-form input[type=submit]{
-				background-color:orange;
+				background-color: #fc777b;
 				color:#fff;
 				width:10%;
 				padding:10px;
 				border-radius: 0px 25px 25px 0px;
 				margin-left:-10px;
-				border: 1px solid #bdc1c6;
+				/*border: 1px solid #bdc1c6;*/
+				border:4px solid #fc777b;
 				font-weight:bold;
 			}
 			
