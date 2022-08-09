@@ -19,7 +19,12 @@ public class DoReservationController implements Controller {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		MemberVO vo = (MemberVO)session.getAttribute("member");
-		String memberId = vo.getMemberId();
+		String memberId;
+		try {
+			memberId = vo.getMemberId();
+		} catch(Exception e) {
+			memberId = null;
+		}
 		req.setAttribute("memberId", memberId);
 		
 		int hotelId = Integer.parseInt(req.getParameter("hotelId"));

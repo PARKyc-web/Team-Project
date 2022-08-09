@@ -30,6 +30,10 @@ public class WishListService {
 	public int changeOnOff(String memberId, int hotelId, int onOff) {
 		return dao.changeOnOff(memberId, hotelId, onOff);
 	}
+	
+	public void insertWishList(String memberId, int hotelId) {
+		dao.insertWishList(memberId, hotelId);
+	}
 
 
 }
