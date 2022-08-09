@@ -47,7 +47,7 @@
 					</c:when>
 				</c:choose>
 			</ul>
-
+			<c:if test="${!empty member }">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
@@ -90,7 +90,8 @@
 							<li class="nav-item"><a class="nav-link" href="memberLogout.do">LogOut</a></li>
 						</c:if>
 					</ul></li>
-			</ul>
+				</ul>
+			</c:if>
 		</div>
 	</div>
 </nav>

@@ -19,7 +19,7 @@ public class ReservationDAO extends DAO {
 
 	public List<ReservationJoinHotelVO> getReservationList(String memberId) {
 		String sql = "select * from hotel h FULL OUTER JOIN reservation rn "
-				+ "ON (h.hotel_id = rn.hotel_id) where rn.member_id = ? order by in_date desc";
+				+ "ON (h.hotel_id = rn.hotel_id) where rn.member_id = ? order by reserv_id desc";
 		List<ReservationJoinHotelVO> list = new ArrayList<>();
 		connect();
 		try {

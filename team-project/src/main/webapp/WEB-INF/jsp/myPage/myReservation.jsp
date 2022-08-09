@@ -15,13 +15,13 @@
 		
 			<c:forEach var="vo" items="${reservation}">
 			
-				$(document).ready(function () {
+			<%-- 	$(document).ready(function () {
 						<c:if test="${vo.get eq '1'}">
           				  $("#sub_app_condition").show();
       					  </c:if>
 						<c:if test="${app.APP_CONDITION ne '1'}">
           				  $("#sub_app_condition").hide();                 // 아니면 거절 사유 숨김
-        				</c:if>
+        				</c:if> --%>
 				<form action="${pageContext.request.contextPath }/myReviewWriter.do"
 					method="post">
 					<ul>
@@ -38,8 +38,8 @@
 						<li><input type="submit" value="리뷰작성"></li>
 
 
-						<input type="button" value="Disable me" disabled>
-
+					<!-- 	<input type="button" value="Disable me" disabled>
+ -->
 
 					
 					</ul>
