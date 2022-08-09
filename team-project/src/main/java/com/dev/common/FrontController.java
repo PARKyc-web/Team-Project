@@ -16,6 +16,7 @@ import com.dev.controller.HotelManageFormController;
 import com.dev.controller.HotelUploadController;
 import com.dev.controller.HotelUploadFormController;
 import com.dev.controller.MainController;
+import com.dev.controller.MemberIdCheckController;
 import com.dev.controller.MemberJoinController;
 import com.dev.controller.MemberLogoutController;
 import com.dev.controller.MemberSignInController;
@@ -76,7 +77,7 @@ public class FrontController extends HttpServlet{
 		mappings.put("/memberLogout.do", new MemberLogoutController()); //로그아웃
 		mappings.put("/memberSignUp.do", new MemberSignUpController()); //회원가입
 		mappings.put("/memberSignUpForm.do", new MemberSignUpFormController()); // 회원가입 폼
-		mappings.put("/idCheck.do", new Test());
+		mappings.put("/memberIdCheck.do", new MemberIdCheckController());
 				
 		// Part of YR
 		mappings.put("/selectHotel.do", new SelectHotelController()); // 호텔 상세 페이지
