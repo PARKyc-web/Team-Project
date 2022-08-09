@@ -345,9 +345,8 @@ transition: all ease 1s;
 					<div class="card-header">위시리스트에 담기</div>
 					<div class="card-body">
 					<form action="ajaxHeartColor.do" method="get">
-					<input type="text" name="hotelId" value="${hotelInfo.hotelId }">
-					<%-- <input type="text" name="memberId" value="${memberId }"> --%>
-					<input type="text" name="heartColor" value="${heartColor}">
+					<input type="hidden" name="hotelId" value="${hotelInfo.hotelId }">
+					<input type="hidden" name="heartColor" value="${heartColor}">
 					<button type="submit" id="heart">
 					<c:choose>
 							<c:when test="${0 eq heartColor }">
