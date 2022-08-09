@@ -43,7 +43,7 @@
 							href="memberLogout.do">Logout</a></li>
 					</c:when>
 					<c:when test="${empty member}">
-						<li class="nav-item"><a class="nav-link" href="memberJoin.do">LOGIN / SIGNUP</a></li>
+						<li class="nav-item"><a class="nav-link" href="memberJoin.do">로그인·회원가입</a></li>
 					</c:when>
 				</c:choose>
 			</ul>
@@ -87,7 +87,7 @@
 						</c:if>
 
 						<c:if test="${!empty member}">
-							<li class="nav-item"><a class="nav-link" href="memberLogout.do">LogOut</a></li>
+							<li class="nav-item"><a class="dropdown-item" href="memberLogout.do">로그아웃</a></li>
 						</c:if>
 					</ul></li>
 				</ul>

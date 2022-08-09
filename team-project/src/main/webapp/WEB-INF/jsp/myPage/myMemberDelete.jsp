@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 <style>
 #container{
-width: 800px;
+width: 100%;
 margin: 0 auto;
-padding: 10%;
+padding: 10% 20% 20% 20%;
 text-align: center;
 }
 </style>
@@ -20,6 +20,8 @@ text-align: center;
 <form action="myMemberDelete.do">
 <input type="submit" value="네">&nbsp;<button type="button" onclick="location.href='myPageMain.do'">아니오</button>
 </form>
+
+
 </div>
 </body>
 </html>
