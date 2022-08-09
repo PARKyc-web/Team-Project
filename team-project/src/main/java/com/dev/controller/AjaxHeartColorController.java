@@ -24,6 +24,7 @@ public class AjaxHeartColorController implements Controller{
 		} catch(Exception e) {
 			memberId = null;
 		}
+		req.setAttribute("memberId", memberId);
 		
 		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
 		int heartColor  = Integer.parseInt(req.getParameter("heartColor"));

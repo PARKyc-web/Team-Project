@@ -346,7 +346,7 @@ transition: all ease 1s;
 					<div class="card-body">
 					<form action="ajaxHeartColor.do" method="get">
 					<input type="text" name="hotelId" value="${hotelInfo.hotelId }">
-					<input type="text" name="memberId" value="${memberId }">
+					<%-- <input type="text" name="memberId" value="${memberId }"> --%>
 					<input type="text" name="heartColor" value="${heartColor}">
 					<button type="submit" id="heart">
 					<c:choose>
