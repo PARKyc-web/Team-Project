@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dev.common.Controller;
 import com.dev.common.Utils;
@@ -14,15 +15,19 @@ import com.dev.service.HotelService;
 import com.dev.service.ReservationService;
 import com.dev.service.ReviewService;
 import com.dev.service.WishListService;
+import com.dev.vo.MemberVO;
 
 public class SelectHotelController implements Controller{
 	
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		MemberVO vo = (MemberVO)session.getAttribute("member");
+		String memberId = vo.getMemberId();
+		req.setAttribute("memberId", memberId);
 		
 		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
 //		int hotelId = 113;
-		String memberId = req.getParameter("memberId");
 						
 		HotelService hotelService = HotelService.getInstance();
 		req.setAttribute("hotelInfo", hotelService.getHotelInfo(hotelId));

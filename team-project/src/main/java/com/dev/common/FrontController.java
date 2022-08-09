@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dev.controller.AjaxHeartColor;
+import com.dev.controller.AjaxHeartColorController;
 import com.dev.controller.DoReservationController;
 import com.dev.controller.HotelManageFormController;
 import com.dev.controller.HotelUploadController;
@@ -85,7 +85,7 @@ public class FrontController extends HttpServlet{
 		mappings.put("/doReservation.do", new DoReservationController());
 		mappings.put("/reservationSuccess.do", new ReservationSuccessController());
 		
-		mappings.put("/ajaxHeartColor.do", new AjaxHeartColor());
+		mappings.put("/ajaxHeartColor.do", new AjaxHeartColorController());
 	}
 
 	

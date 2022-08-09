@@ -102,7 +102,6 @@ public class ReservationDAO extends DAO {
 				pstmt.setInt(5, totalPrice);
 				
 				result = pstmt.executeUpdate();
-				System.out.println(result);
 				if(result > 0) {
 					return result;
 				}

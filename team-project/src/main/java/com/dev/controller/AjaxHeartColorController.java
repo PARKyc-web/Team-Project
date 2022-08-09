@@ -10,18 +10,18 @@ import com.dev.common.Controller;
 import com.dev.common.Utils;
 import com.dev.service.WishListService;
 
-public class AjaxHeartColor implements Controller{
+public class AjaxHeartColorController implements Controller{
 	
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String memberId = "testuser";
+		String memberId = req.getParameter("memberId");
 		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
-		int heartColor  = Integer.parseInt(req.getParameter("onOff"));
+		int heartColor  = Integer.parseInt(req.getParameter("heartColor"));
 		
 		WishListService wlService = WishListService.getInstance();
 		req.setAttribute("heartColor", wlService.changeOnOff(memberId, hotelId, heartColor));
 		
-		Utils.forward(req, resp, "hotel/selectHotel.tiles");
+		Utils.forward(req, resp, "wishList/heartColor.tiles");
 	}
 	
 }

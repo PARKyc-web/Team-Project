@@ -98,7 +98,7 @@ transition: all ease 1s;
 
 					<!-- Post content-->
 					<section class="mb-5">
-						<p class="fs-5 mb-4">⭐숙소 설명란⭐ ${hotelInfo.hotelDesc }</p>
+						<p class="fs-5 mb-4">${hotelInfo.hotelDesc }</p>
 						<p class="fs-5 mb-4">화이트&우드 톤으로 꾸며진 내부는 편안한 휴식을 도와드립니다. 호스트의
 							취향이 담긴 CD들과, CD 플레이어 겸 블루투스 스피커가 비치되어 호스트의 취향을 엿보거나, 나의 취향을 재생하기
 							모두 가능합니다.</p>
@@ -344,17 +344,11 @@ transition: all ease 1s;
 				<div class="card mb-4" style="text-align: center">
 					<div class="card-header">위시리스트에 담기</div>
 					<div class="card-body">
-					<form action="#" method="post">
-					<button id="heart" onclick="clickHeart()" name="heartColor">
-					<script>
-					function clickHeart() {
-						if("${heartColor}" == 1) {
-							alert("위시리스트에 등록되었습니다.");
-						} else {
-							alert("위시리스트에서 삭제되었습니다.");
-						}
-					}
-					</script>
+					<form action="ajaxHeartColor.do" method="get">
+					<input type="text" name="hotelId" value="${hotelInfo.hotelId }">
+					<input type="text" name="memberId" value="${memberId }">
+					<input type="text" name="heartColor" value="${heartColor}">
+					<button type="submit" id="heart">
 					<c:choose>
 							<c:when test="${0 eq heartColor }">
 								❤
