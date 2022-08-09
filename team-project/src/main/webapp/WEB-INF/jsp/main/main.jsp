@@ -16,7 +16,13 @@
   		pager:true,    	  
       });
     });
-  </script>  
+  </script>
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');  	 
+  .text-center{
+  	font-family: 'Secular One', sans-serif;
+  }
+  </style>  
 </head>
 
 <!-- Header-->

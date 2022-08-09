@@ -10,6 +10,8 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');  	 
+ 
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -7766,7 +7768,9 @@ textarea.form-control-lg {
 
 .text-white {
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+  color: #454545;
+  font-family: 'Secular One', sans-serif;
+  /*color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;*/
 }
 
 .text-body {
@@ -7786,7 +7790,7 @@ textarea.form-control-lg {
 
 .text-white-50 {
   --bs-text-opacity: 1;
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: #454545!important;
 }
 
 .text-reset {
@@ -7847,7 +7851,7 @@ textarea.form-control-lg {
 
 .bg-dark {
   --bs-bg-opacity: 1;
-  background-color: #e8e8e8; /*rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;*/
+  background-color: #f8f9fa; /*rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;*/
 }
 
 .bg-black {
@@ -11304,7 +11308,12 @@ textarea.form-control-lg {
 			form.search-form input{
 				border:2px solid #fc777b;
 				box-sizing: border-box;
-				/*box-shadow: 3px 3px 5px #888888;*/
+				box-shadow: 3px 3px 5px #e6e6e6;
+				
+			}
+			
+			form.search-form input:focus {
+			outline: none;
 			}
 			
 			form.search-form input[type=text]{
@@ -11312,17 +11321,18 @@ textarea.form-control-lg {
 				background-color: #fff;
 				width: 65%;
 				padding:15px;
-				border-radius: 25px 0px 0px 25px;
+				border-radius: 90px 0px 0px 90px;
 				/*border: 1px solid #bdc1c6;*/
 				text-align:center;
 			}
 			
+			
 			form.search-form input[type=submit]{
 				background-color: #fc777b;
 				color:#fff;
-				width:10%;
+				width:12%;
 				padding:15px;
-				border-radius: 0px 25px 25px 0px;
+				border-radius: 0px 90px 90px 0px;
 				margin-left:-10px;
 				/*border: 1px solid #bdc1c6;*/
 				border:4px solid #fc777b;
@@ -11339,7 +11349,7 @@ textarea.form-control-lg {
 				text-align:center;
 			}
 			.card{
-				box-shadow: 3px 3px 10px #888888;
+				box-shadow: 3px 3px 10px #e6e6e6;
 			}
 			/*  여기서 부터 새로 추가한 내용들 옵션 창
 				1. 내일 정현이형한테 필터 눌렀을때, 팝업창 뜨면서 선택하는거 어떻게 하는지 물어보기
