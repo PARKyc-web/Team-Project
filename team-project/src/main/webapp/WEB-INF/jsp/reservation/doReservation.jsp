@@ -36,6 +36,12 @@
 
 </head>
 <body>
+<c:if test="${empty memberId }">
+<script type="text/javascript">
+	alert("로그인이 필요한 기능입니다.");
+	location.href = '/teamProject/memberJoin.do';
+</script>
+</c:if>
 	<!-- Page content-->
 	<div class="container mt-5">
 		<div class="row">

@@ -351,7 +351,7 @@ transition: all ease 1s;
 					<button type="submit" id="heart">
 					<c:choose>
 							<c:when test="${0 eq heartColor }">
-								❤
+								💗							
 							</c:when>
 							<c:otherwise>
 								🤍
