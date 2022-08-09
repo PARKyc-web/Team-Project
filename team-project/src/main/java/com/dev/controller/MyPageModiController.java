@@ -26,6 +26,6 @@ public class MyPageModiController implements Controller {
 						
 		// 공유
 		req.setAttribute("memberModi", memberModi);
-		Utils.forward(req, resp, "myPage/myPageModi.tiles");		
+		Utils.forward(req, resp, "myPage/myPageModi.tiles");	
 	}
 }

@@ -19,7 +19,7 @@
   </script>  
 </head>
 
-<!-- Header-->
+<!-- Header
 <header class="bg-dark py-5">
 	<div class="container px-4 px-lg-5 my-5" id="mainPage">
 	<div class="search-block">
@@ -33,7 +33,7 @@
 		</form>
 		</div>
 	</div>
-</header>
+</header>-->
 
 <!-- Section-->
 <section class="py-5">

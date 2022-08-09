@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>마이페이지</title>
+    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 h3{
 	text-align:center;
@@ -49,4 +46,3 @@ padding:20px;
 	</div>
 			<br><h6><a href="myMemberDeleteOutput.do">회원탈퇴</a></h6><br>
 </body>
-</html>

@@ -109,7 +109,7 @@ public class MemberDAO extends DAO {
 
 		//멤버 세부정보 등록(하영)
 		public void insertInfo(MemberVO vo) {
-			String sql = "insert into member_info values(?, ?, ?, ?, ?, sysdate,'DEFAULT- AFERT MUSET CHANGE TO DEFAULT PIC PATH')";
+			String sql = "insert into member_info values(?, ?, ?, ?, ?, sysdate, ?)";
 			connect();
 			
 			try {
@@ -119,7 +119,7 @@ public class MemberDAO extends DAO {
 				pstmt.setInt(3, vo.getMemberAge());
 				pstmt.setString(4, vo.getPhone());
 				pstmt.setString(5, vo.getEmail());
-				int r = pstmt.executeUpdate();
+				pstmt.setString(6, vo.getMemberPic());			int r = pstmt.executeUpdate();
 				System.out.println("상세정보" + r + "건 입력");
 			} catch (SQLException e) {
 				e.printStackTrace();
