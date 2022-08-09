@@ -15,10 +15,6 @@
 	 <c:forEach var="vo2" items="${review2 }">
          <tr>
          <td>숙소이름 : ${vo1.hotelName }  |  리뷰 쓴 날짜 : ${vo2.reviewDate }  | 별점 : ${vo2.reviewRate } | 체크인 : ${vo1.inDate } | </td>
-  <%--         <td>리뷰 쓴 날짜 : ${vo2.reviewDate }</td> 
-         <td>별점 : ${vo2.reviewRate }</td>
-         <td>체크인 : ${vo1.inDate }</td>
-         <td>체크아웃 : ${vo1.outDate }</td> --%>
          </tr>
          <tr>
          <td>리뷰내용 : ${vo2.reviewContents }</td>
@@ -28,12 +24,5 @@
       </c:forEach>
 	</table>
 		<jsp:include page = "myHome.jsp"></jsp:include>
-	<%-- <ul>
-	 <li> <label for="id" >내가 쓴 리뷰 : </label><br><br>
-       
-        <input type="text" name ="review" value="${review.hotelId }" readonly><br>
-        <input type="text" name ="review" value="${review.reviewDate }" readonly>
-        <input type="text" name ="review" value="${review.reviewContents }" readonly><br>
-        </li></ul> --%>
 </body>
 </html>
