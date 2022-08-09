@@ -24,7 +24,7 @@ public class MainController implements Controller{
 		
 		List<HotelVO> list = HotelService.getInstance().getRandomTenHotel();		
 		List<List<HotelPicVO>> picList = HotelService.getInstance().getMainHotelPic(list);		
-
+		
 		req.setAttribute("pic_list", picList);
 		req.setAttribute("random_list", list);		
 		

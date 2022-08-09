@@ -55,7 +55,6 @@ public class FrontController extends HttpServlet{
 		mappings.put("/hotelManageForm.do", new HotelManageFormController());
 		
 		
-		
 		// Part of YJ
 		mappings.put("/myPageMain.do", new MyPageMainController());//마이페이지 메인! 
 		mappings.put("/myPage.do", new MyPageController());		   //마이페이지 - 내정보

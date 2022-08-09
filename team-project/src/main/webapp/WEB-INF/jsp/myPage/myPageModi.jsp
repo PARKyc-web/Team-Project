@@ -50,7 +50,8 @@
 
 	<h3>회원정보 수정</h3>
 	
-	<form method = "post" name = "member" action="${pageContext.request.contextPath}/myPageInfoModify.do">
+	<form method = "post" name = "member" 
+		  action="${pageContext.request.contextPath}/myPageInfoModify.do" enctype="multipart/form-data">
 	
 	      <ul>
           <li><label for="id" >아이디 : </label>
@@ -59,13 +60,12 @@
           <input name="call" id ="call" type="tel" value = "${memberModi.phone }"></li>
           <li><label for="mail">이메일 : </label>
           <input name="mail" id="mail" type="email" value = "${memberModi.email }"></li>
-          <li><img src="#" width="200px" height="200px" id="profile_image"></li>
+          <li><img src="${memberModi.memberPic}" width="200px" height="200px" id="mypage_image" 
+          	       name="mypage_image" onError="hotel_default.webp"></li>
+          <br>
           <li><label for="pic">사진 : </label>
           <input type="file" accept="image/*" name="uploadImage" id="uploadImage" onchange="PreviewImage();"></li>
-          
-          
-          <!-- <br><input name="pic" id="pic" type="text"  value = "${memberModi.memberPic }"></li> -->
-      	<li><input type ="submit" value = "수정"></li>
+          <li><input type ="submit" value = "수정"></li>
       </ul>
        </form>
 	</div>
@@ -75,7 +75,7 @@
 		var preview = new FileReader();
 
 		preview.onload = function(e) {
-			document.getElementById("profile_image").src = e.target.result;
+			document.getElementById("mypage_image").src = e.target.result;
 		};
 
 		preview.readAsDataURL(document.getElementById("uploadImage").files[0]);

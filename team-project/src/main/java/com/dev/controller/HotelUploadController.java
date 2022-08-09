@@ -31,7 +31,6 @@ public class HotelUploadController implements Controller {
 		String root = req.getSession().getServletContext().getRealPath("/");
 		
 		Map<String, String> parameter = new HashMap<>();
-
 		req.setCharacterEncoding(charset);
 
 		// Expect Result
@@ -47,7 +46,7 @@ public class HotelUploadController implements Controller {
 		
 		File uploadFolder = null;
 		String fileName = "";
-		String separator = File.separator;		
+		String separator = File.separator;
 		
 		HotelVO hvo = new HotelVO();
 		HotelPicVO pvo = new HotelPicVO(); 
@@ -87,30 +86,31 @@ public class HotelUploadController implements Controller {
 					} else { // 만약 사진을 넣지 않는다면!
 							 // 기본사진으로 세팅한다
 						
-					}
-					hvo.setHotelId(currVal);
-					hvo.setHotelName(parameter.get("hotel_name"));
-					hvo.setHotelLocation(parameter.get("hotel_location"));
-					hvo.setHotelDesc(parameter.get("hotel_desc"));
-					hvo.setHotelPrice(Integer.parseInt(parameter.get("hotel_price")));
-					hvo.setMemberId(parameter.get("member_id"));
-					hvo.setHotelType(parameter.get("hotel_type"));
-					hvo.setHotelType(parameter.get("maxP"));
-					
-					hvo.setHotelOptionKitchen(Integer.parseInt(parameter.getOrDefault("hotel_option_kitchen", "0")));
-					hvo.setHotelOptionParking(Integer.parseInt(parameter.getOrDefault("hotel_option_parking", "0")));
-					hvo.setHotelOptionSwim(Integer.parseInt(parameter.getOrDefault("hotel_option_swim", "0")));
-					hvo.setHotelOptionWifi(Integer.parseInt(parameter.getOrDefault("hotel_option_WIFI", "0")));
-					hvo.setHotelOptionWpet(Integer.parseInt(parameter.getOrDefault("hotel_option_wPet", "0")));
-										
-					pvo.setHotelId(currVal);
-					pvo.setPath("hotel_image/" + parameter.get("hotel_name") + currVal);
-					pvo.setName("/" + fileName.replace(separator, "/"));
-					
-					System.out.println(pvo.getPath());
-					System.out.println(pvo.getName());										
+					}									
 				}						
 			}
+			hvo.setHotelId(currVal);
+			hvo.setHotelName(parameter.get("hotel_name"));
+			hvo.setHotelLocation(parameter.get("hotel_location"));
+			hvo.setHotelDesc(parameter.get("hotel_desc"));
+			hvo.setHotelPrice(Integer.parseInt(parameter.get("hotel_price")));
+			hvo.setMemberId(parameter.get("member_id"));
+			hvo.setHotelType(parameter.get("hotel_type"));
+			hvo.setHotelType(parameter.get("maxP"));
+			
+			hvo.setHotelOptionKitchen(Integer.parseInt(parameter.getOrDefault("hotel_option_kitchen", "0")));
+			hvo.setHotelOptionParking(Integer.parseInt(parameter.getOrDefault("hotel_option_parking", "0")));
+			hvo.setHotelOptionSwim(Integer.parseInt(parameter.getOrDefault("hotel_option_swim", "0")));
+			hvo.setHotelOptionWifi(Integer.parseInt(parameter.getOrDefault("hotel_option_WIFI", "0")));
+			hvo.setHotelOptionWpet(Integer.parseInt(parameter.getOrDefault("hotel_option_wPet", "0")));
+								
+			pvo.setHotelId(currVal);
+			pvo.setPath("hotel_image/" + parameter.get("hotel_name") + currVal);
+			pvo.setName("/" + fileName.replace(separator, "/"));
+			
+			System.out.println(pvo.getPath());
+			System.out.println(pvo.getName());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

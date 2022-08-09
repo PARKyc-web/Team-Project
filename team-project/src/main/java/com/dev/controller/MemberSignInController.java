@@ -32,16 +32,16 @@ public class MemberSignInController implements Controller {
 			
 		MemberVO vvo = service.searchMember(id);		
 		MemberVO vo = service.infoMember(id);
-		vo.setMemberPassword(pw);
-		vo.setMemberType(vvo.getMemberType());	
-	
-		if(vvo == null || !pw.equals(vo.getMemberPassword())) {
+		
+		if(vvo == null || vo==null || !pw.equals(vvo.getMemberPassword())) {
 			out.println("<script language='javascript'>");
 			out.println("window.location.href ='http://localhost:8088/teamProject/memberSignInForm.do'");
 			out.println("alert('로그인 실패.')");
 			out.println("</script>");
 			out.flush();
 		} else {
+			vo.setMemberPassword(pw);
+			vo.setMemberType(vvo.getMemberType());
 			session.setAttribute("member", vo);
 
 			out.println("<script language='javascript'>");

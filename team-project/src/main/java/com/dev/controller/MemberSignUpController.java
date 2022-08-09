@@ -19,7 +19,7 @@ public class MemberSignUpController extends HttpServlet implements Controller {
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("run1");
-		
+			
 		MemberService service = MemberService.getInstance();
 		System.out.println("run2");
 		String id = req.getParameter("member_id");
@@ -44,7 +44,8 @@ public class MemberSignUpController extends HttpServlet implements Controller {
 		vo.setMemberAge(age);
 		vo.setPhone(phone);
 		vo.setEmail(email);
-		vo.setMemberPic("user_image/Default_pro.jpg");
+		vo.setMemberPic("user_image/default_pro.jpg");
+		
 		service.addMember(vo);
 		System.out.println(vo);
 		req.setAttribute("member", vo);
