@@ -89,6 +89,7 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  padding-top: 60px;
 }
 
 hr {
@@ -4042,7 +4043,6 @@ textarea.form-control-lg {
   padding-bottom: 0.5rem;
   z-index: 10000;
   box-shadow: 1px 1px 3px #f0f0f0;
-  margin-bottom:10%;
   
 }
 .navbar > .container,
@@ -7385,7 +7385,6 @@ textarea.form-control-lg {
 }
 
 .mb-4 {
-  margin-top:7%;
   margin-bottom: 1.5rem !important;
 }
 
@@ -7859,7 +7858,8 @@ textarea.form-control-lg {
 
 .bg-dark {
   --bs-bg-opacity: 1;
-  background-color: #f8f9fa; /*rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;*/
+  /*background-color: #f8f9fa; rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;*/
+  background-image: src('image/bg.jpg');
   box-shadow:0px 3px 5px #e6e6e6;
 }
 

@@ -24,10 +24,14 @@ h3{
 }
 .tab{
 	width:45%;
-	background-color: #f2f2f2;
+	background-color: #fff/*#f2f2f2*/;
+	border: 1px solid #e6e6e6;
+	border-radius: 5px;
+	box-shadow: 1px 1px 3px #f0f0f0;
 	margin: 1%;
 	padding: 5%;
 	flex-direction : row;
+	font-size:16px;
 }
 h6{
 text-align:center;
