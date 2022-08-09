@@ -20,7 +20,7 @@ public class MemberSignInController implements Controller {
 		MemberService service = MemberService.getInstance();
 		HttpSession session = req.getSession();
 		
-    resp.setContentType("text/html; charset=UTF-8");
+		resp.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = resp.getWriter();
     
 		String id = req.getParameter("member_id");
