@@ -29,11 +29,11 @@ public class DAO {
 //		DBconfig();
 		oracle_driver = "oracle.jdbc.driver.OracleDriver";
 
-//		oracle_url = "jdbc:oracle:thin:@localhost:1521:xe";
-		oracle_url = "jdbc:oracle:thin:@192.168.0.13:1521:xe";
+		oracle_url = "jdbc:oracle:thin:@localhost:1521:xe";
+//		oracle_url = "jdbc:oracle:thin:@192.168.0.13:1521:xe";
     
-		id = "teamdb"; 
-		pwd = "teamdb";
+		id = "hr"; 
+		pwd = "hr";
 	}
 	
 	// DB에 접속하는 메소드
@@ -71,10 +71,10 @@ public class DAO {
 //		oracle_url = propertiese.getProperty("url");
 //		id = propertiese.getProperty("id");
 //		pwd = propertiese.getProperty("password");		
-		oracle_driver = "oracle.jdbc.driver.OracleDriver";
-		oracle_url = "jdbc:oracle:thin:@localhost:1521:xe";
-		id = "hr";
-		pwd = "hr";
+//		oracle_driver = "oracle.jdbc.driver.OracleDriver";
+//		oracle_url = "jdbc:oracle:thin:@localhost:1521:xe";
+//		id = "hr";
+//		pwd = "hr";
 	}
 	
 	// DB 접속을 해제하는 메소드
