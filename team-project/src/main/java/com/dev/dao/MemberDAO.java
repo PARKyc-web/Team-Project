@@ -175,7 +175,7 @@ public class MemberDAO extends DAO {
 		//아이디 중복체크 ,,보류
 		public int checkId(String id) {
 			String sql = "select * from member_login where member_id=?";
-			int result = 0;
+			int idCheck = 0;
 			connect();
 			try {
 				pstmt = conn.prepareStatement(sql);
@@ -183,8 +183,10 @@ public class MemberDAO extends DAO {
 				
 				rs = pstmt.executeQuery();
 				
-				if(rs.next()) {
-					result = 1;
+				if(rs.next() || id.equals("")) {
+					idCheck = 0;
+				} else {
+					idCheck = 1;
 				}
 		
 			} catch (SQLException e) {
@@ -192,7 +194,7 @@ public class MemberDAO extends DAO {
 			} finally {
 				disconnect();
 			}
-			return result;
+			return idCheck;
 		}
 	
 		

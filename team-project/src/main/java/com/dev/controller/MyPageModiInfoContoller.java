@@ -2,9 +2,13 @@ package com.dev.controller;
 
 import java.io.File;
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import java.io.PrintWriter;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -103,7 +107,19 @@ public class MyPageModiInfoContoller implements Controller{
 		
 		System.out.println("세션 생성");
 		
-		Utils.forward(req, resp, "myPage/myPageModiOutput.tiles");	
+
+		resp.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = resp.getWriter();
+		
+		out.println("<script language='javascript'>");
+		out.println("window.location.href ='http://localhost:8088/teamProject/myPage.do'");
+		out.println("alert('정보 수정이 완료되었습니다.')");
+		out.println("</script>");
+
+		out.flush();
+		
+    Utils.forward(req, resp, "myPage/myPageModiOutput.tiles");		
+
 	}
 	
 }

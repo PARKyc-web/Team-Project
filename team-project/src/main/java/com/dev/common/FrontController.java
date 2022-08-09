@@ -16,6 +16,7 @@ import com.dev.controller.HotelManageFormController;
 import com.dev.controller.HotelUploadController;
 import com.dev.controller.HotelUploadFormController;
 import com.dev.controller.MainController;
+import com.dev.controller.MemberIdCheckController;
 import com.dev.controller.MemberJoinController;
 import com.dev.controller.MemberLogoutController;
 import com.dev.controller.MemberSignInController;
@@ -30,6 +31,7 @@ import com.dev.controller.MyPageModiController;
 import com.dev.controller.MyPageModiInfoContoller;
 import com.dev.controller.MyReservationController;
 import com.dev.controller.MyReviewListController;
+import com.dev.controller.MyReviewSendController;
 import com.dev.controller.MyReviewWriterController;
 import com.dev.controller.MyWishListController;
 import com.dev.controller.SearchHotelController;
@@ -62,7 +64,8 @@ public class FrontController extends HttpServlet{
 		mappings.put("/myPageInfoModify.do", new MyPageModiInfoContoller());//마이페이지- 내정보- 수정받은 정보 DB에 보내기
 		mappings.put("/myReview.do", new MyReviewListController());//마이페이지 - 내가쓴리뷰
 		mappings.put("/myReservation.do", new MyReservationController());//마이페이지 - 나의숙박내역
-		mappings.put("/myReviveWriter.do", new MyReviewWriterController());	//마이페이지 - 나의 숙박내역 -> outdate지난애들 리뷰쓰기가능! -> 내가쓴리뷰로 이동
+		mappings.put("/myReviewWriter.do", new MyReviewWriterController());	//마이페이지 - 나의 숙박내역 -> outdate지난애들 리뷰쓰기가능! -> 내가쓴리뷰로 이동
+		mappings.put("/myReviewSend.do", new MyReviewSendController());////마이페이지-나의숙박내역- 작성한 리뷰 DB에 보내기
 		mappings.put("/myWishList.do", new MyWishListController());//마이페이지 - 나의 위시리스트
 		mappings.put("/myMemberDeleteOutput.do", new MyMemberDeleteOutput());//회원탈퇴
 		mappings.put("/myMemberDelete.do", new MyMemberDeleteController());
@@ -75,7 +78,7 @@ public class FrontController extends HttpServlet{
 		mappings.put("/memberLogout.do", new MemberLogoutController()); //로그아웃
 		mappings.put("/memberSignUp.do", new MemberSignUpController()); //회원가입
 		mappings.put("/memberSignUpForm.do", new MemberSignUpFormController()); // 회원가입 폼
-		mappings.put("/idCheck.do", new Test());
+		mappings.put("/memberIdCheck.do", new MemberIdCheckController());
 				
 		// Part of YR
 		mappings.put("/selectHotel.do", new SelectHotelController()); // 호텔 상세 페이지
