@@ -16,7 +16,7 @@
 			<c:forEach var="vo" items="${reservation}">
 			
 				$(document).ready(function () {
-						<c:if test="${app.APP_CONDITION eq '1'}">
+						<c:if test="${vo.get eq '1'}">
           				  $("#sub_app_condition").show();
       					  </c:if>
 						<c:if test="${app.APP_CONDITION ne '1'}">
