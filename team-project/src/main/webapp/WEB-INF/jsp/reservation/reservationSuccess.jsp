@@ -76,7 +76,7 @@ h3 {
 		<form id="form-style">
 			<div id="forms">
 				<c:choose>
-					<c:when test="${result eq 1 }">
+					<c:when test="${success eq 1 }">
 						<h3>예약이 성공적으로 완료되었습니다.</h3>
 						<br>
 					</c:when>
