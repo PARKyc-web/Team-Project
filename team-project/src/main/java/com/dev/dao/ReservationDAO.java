@@ -28,7 +28,6 @@ public class ReservationDAO extends DAO {
 			rs = pstmt.executeQuery();
       
 			while (rs.next()) {
-				System.out.println("rs.next RUN!!");
 				ReservationJoinHotelVO rhvo = new ReservationJoinHotelVO();
 				// 출력값
 				rhvo.setHotelName(rs.getString("hotel_name"));
@@ -39,12 +38,6 @@ public class ReservationDAO extends DAO {
 				rhvo.setMemberId(rs.getString("member_id"));
 
 				list.add(rhvo);
-
-				System.out.println(rhvo.getHotelName());
-				System.out.println(rhvo.getMemberId());
-				System.out.println(rhvo.getTotalPrice());
-
-				System.out.println("LIST ADDED!!");
 			}
 
 		} catch (SQLException e) {
@@ -91,7 +84,7 @@ public class ReservationDAO extends DAO {
 			} finally {
 				disconnect();
 			}
-			System.out.println(invalidDateList);
+			System.out.println("invalidDateList: " + invalidDateList);
 			return invalidDateList;
 		}
 		
@@ -109,6 +102,7 @@ public class ReservationDAO extends DAO {
 				pstmt.setInt(5, totalPrice);
 				
 				result = pstmt.executeUpdate();
+				System.out.println(result);
 				if(result > 0) {
 					return result;
 				}

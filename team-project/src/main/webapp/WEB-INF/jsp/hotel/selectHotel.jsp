@@ -61,33 +61,6 @@ transition: all ease 1s;
 </style>
 </head>
 <body>
-	<!-- Responsive navbar-->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container">
-			<a class="navbar-brand" href="#!">⛱️airbnb(메인페이지 이동)</a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="input-group">
-				<input class="form-control" type="text"
-					placeholder="Enter search term..."
-					aria-label="Enter search term..." aria-describedby="button-search" />
-				<button class="btn btn-primary" id="button-search" type="button">검색</button>
-			</div>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="#">내 정보</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
 	<!-- Page content-->
 	<div class="container mt-5">
 		<div class="row">
@@ -357,7 +330,10 @@ transition: all ease 1s;
 									</div>
 								</div>
 							</c:forEach>
-
+							<c:if test="${empty reviewList}">
+							<br>
+							<p class="fs-5 mb-4" style="text-align: center">등록된 리뷰가 없습니다.</p>
+							</c:if>
 						</div>
 					</div>
 				</section>
@@ -461,7 +437,7 @@ transition: all ease 1s;
 
 							});
 						</script>
-						<form action="doReservation.do" method="post">
+						<form action="doReservation.do?hotelId=${hotelInfo.hotelId }" method="post">
 							<input type="text" name="datefilter" value="체크인 및 체크아웃" /><br>
 							게스트 인원 <input type="number" name="guestNum" min="1" value="1" max=${hotelInfo.maxP }>
 							<input type="submit" value="예약하기" />
@@ -487,13 +463,6 @@ transition: all ease 1s;
 			</div>
 		</div>
 	</div>
-	<!-- Footer-->
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">여긴 원래 나의 Copyright &copy;
-				Your Website 2022</p>
-		</div>
-	</footer>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
