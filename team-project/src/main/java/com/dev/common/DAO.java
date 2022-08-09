@@ -28,8 +28,10 @@ public class DAO {
 	public DAO(){
 //		DBconfig();
 		oracle_driver = "oracle.jdbc.driver.OracleDriver";
+
 //		oracle_url = "jdbc:oracle:thin:@localhost:1521:xe";
 		oracle_url = "jdbc:oracle:thin:@192.168.0.13:1521:xe";
+
 
 		id = "teamdb"; //hr teamdb
 		pwd = "teamdb"; //hr teamdb
