@@ -9,20 +9,21 @@
 </head>
 <body>
 	<h3>리뷰내역</h3>
-	
-	<table>
 	 <c:forEach var="vo1" items="${review1 }">
 	 <c:forEach var="vo2" items="${review2 }">
-         <tr>
-         <td>숙소이름 : ${vo1.hotelName }  |  리뷰 쓴 날짜 : ${vo2.reviewDate }  | 별점 : ${vo2.reviewRate } | 체크인 : ${vo1.inDate } | </td>
-         </tr>
-         <tr>
-         <td>리뷰내용 : ${vo2.reviewContents }</td>
-          </tr>
-          <tr><td>ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</td></tr>
+				<div class="card mb-4" style="text-align: center; width: 800px; margin: 0 auto">
+					<div class="card-header">
+						<p>${vo1.hotelName }</p>
+						<p>작성일자 | ${vo2.reviewDate }</p>
+					</div>
+					<div class="card-body">
+						<p>⭐ ${vo2.reviewRate } ${vo2.reviewContents }</p>
+						<button>삭제</button>
+					</div>
+				</div>
+			</c:forEach>
       </c:forEach>
-      </c:forEach>
-	</table>
+
 		<jsp:include page = "myHome.jsp"></jsp:include>
 </body>
 </html>
