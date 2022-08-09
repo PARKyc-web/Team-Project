@@ -84,10 +84,6 @@ public class WishListDAO extends DAO{
 	}
 	
 	public int changeOnOff(String memberId, int hotelId, int onOff) {
-		if (onOff == 1) {
-			insertWishList(memberId, hotelId);
-//			onOff = 0;
-		}
 		String sql = "update wish_list set onOff=? where member_id=? and hotel_id=?";
 		connect();
 		

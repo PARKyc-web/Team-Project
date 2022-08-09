@@ -24,6 +24,7 @@ public class AjaxHeartColorController implements Controller{
 		} catch(Exception e) {
 			memberId = null;
 		}
+		req.setAttribute("memberId", memberId);
 		
 		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
 		int heartColor  = Integer.parseInt(req.getParameter("heartColor"));
@@ -33,11 +34,9 @@ public class AjaxHeartColorController implements Controller{
 		if(heartColor == 0) {
 			// Update red heart to white heart
 			wlService.changeOnOff(memberId, hotelId, 1);
-//			req.setAttribute("heartColor", wlService.changeOnOff(memberId, hotelId, 1));			
 		} else if(heartColor == 1) {
 			// Update white heart to red heart
 			wlService.changeOnOff(memberId, hotelId, 0);
-//			req.setAttribute("heartColor", wlService.changeOnOff(memberId, hotelId, 0));	
 		} else {
 			// Insert white heart to red heart
 			wlService.insertWishList(memberId, hotelId);

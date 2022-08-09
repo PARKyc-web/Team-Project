@@ -116,7 +116,7 @@
 							<!-- Product name-->
 							<h5 class="fw-bolder">${hotelList[i].hotelName}</h5>
 							<!-- Product price-->
-							${hotelList[i].hotelPrice}
+							${hotelList[i].hotelPrice}¿ø
 						</div>
 					</div>
 					
