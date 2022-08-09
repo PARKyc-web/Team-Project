@@ -66,26 +66,33 @@ public class HotelUploadController implements Controller {
 
 				} else {
 					// Image가 들어오면 이 부분이 실행된다! 마지막에 이미지가 들어올거야 아마도		
+					
+					uploadFolder = new File(file + separator + parameter.get("hotel_name") + currVal);						
+					if(!uploadFolder.exists()) {
+						try {
+							uploadFolder.mkdir();
+							
+						}catch(Exception e) {
+							e.printStackTrace();
+						}							
+					}
+					
 					if (it.getSize() > 0) {						
 						int index = it.getName().lastIndexOf(separator);
 						fileName = getCurrentTime() + it.getName().substring(index + 1);
-						System.out.println(fileName);
-						
-						uploadFolder = new File(file + separator + parameter.get("hotel_name") + currVal);						
-						if(!uploadFolder.exists()) {
-							try {
-								uploadFolder.mkdir();
-								
-							}catch(Exception e) {
-								e.printStackTrace();
-							}							
-						}
+						System.out.println(fileName);						
 											
 						it.write(new File(uploadFolder + separator + fileName));
-						
+						pvo.setHotelId(currVal);
+						pvo.setPath("hotel_image/" + parameter.get("hotel_name") + currVal);
+						pvo.setName("/" + fileName.replace(separator, "/"));
 					} else { // 만약 사진을 넣지 않는다면!
 							 // 기본사진으로 세팅한다
 						
+						pvo.setHotelId(currVal);
+						pvo.setPath("hotel_image");
+						pvo.setName("/Default.png");
+
 					}									
 				}						
 			}
@@ -104,9 +111,7 @@ public class HotelUploadController implements Controller {
 			hvo.setHotelOptionWifi(Integer.parseInt(parameter.getOrDefault("hotel_option_WIFI", "0")));
 			hvo.setHotelOptionWpet(Integer.parseInt(parameter.getOrDefault("hotel_option_wPet", "0")));
 								
-			pvo.setHotelId(currVal);
-			pvo.setPath("hotel_image/" + parameter.get("hotel_name") + currVal);
-			pvo.setName("/" + fileName.replace(separator, "/"));
+
 			
 			System.out.println(pvo.getPath());
 			System.out.println(pvo.getName());

@@ -89,4 +89,16 @@ public class HotelService {
 	public int getCurrentSequence() {
 		return dao.sequenceCurval();
 	}
+	
+//	public int totalOwnHotelCount(String memberId) {
+//		
+//	}
+//	
+//	public List<HotelVO> getOwnHotel(String memberId, Criteria cri) {
+//		
+//	}
+//	
+//	public List<List<HotelPicVO>> getOwnHotelPic(List<HotelVO> list){
+//		
+//	}
 }
