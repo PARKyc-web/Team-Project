@@ -44,4 +44,7 @@ public class ReviewService {
 	public void reviewWrite(ReviewVO vo) {
 		dao.insertReview(vo);
 	}
+//	public ReviewVO getReview(int hotelId) {
+//		return dao.searchReservation(hotelId);
+//	}
 }

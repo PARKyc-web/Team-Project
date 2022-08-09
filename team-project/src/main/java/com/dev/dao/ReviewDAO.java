@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.dev.common.DAO;
 import com.dev.vo.ReviewVO;
+import com.dev.vo.MemberVO;
 import com.dev.vo.ReviewJoinReservationJoinHotelVO;
 
 public class ReviewDAO extends DAO {
@@ -200,5 +201,32 @@ public class ReviewDAO extends DAO {
 			}finally {
 				disconnect();
 			}
+		}
+		
+		//리뷰써야할 숙박내역 불러오기 : yj
+		public ReviewVO searchReservation(int hotelId) {
+			String sql = "select * from reservation where hotel_id = ? ";
+			connect();
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, hotelId);
+				rs = pstmt.executeQuery();
+			
+					ReviewVO vo = new ReviewVO();
+					vo.setHotelId(rs.getInt("hotel_id"));
+					vo.setMemberId(rs.getString("member_name"));
+					vo.setReviewContents(rs.getString("review_contents"));
+					vo.setReviewDate(rs.getDate("review_date"));
+					vo.setReviewRate(rs.getFloat("revew_rate"));
+
+					return vo;
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				disconnect();
+			}
+			return null;
+
 		}
 }
