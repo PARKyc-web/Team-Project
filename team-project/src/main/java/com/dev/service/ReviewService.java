@@ -41,7 +41,10 @@ public class ReviewService {
 		return dao.reviewList(memberId);
 	}
 
-//	public void reviewWrite(String memberId) {
-//		dao.insertReview(memberId);
+	public void reviewWrite(ReviewVO vo) {
+		dao.insertReview(vo);
+	}
+//	public ReviewVO getReview(int hotelId) {
+//		return dao.searchReservation(hotelId);
 //	}
 }

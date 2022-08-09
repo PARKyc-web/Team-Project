@@ -6,8 +6,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-    <head>
-    
+    <head>    
         <meta charset="utf-8" />
         <title>AirBnB</title>
         
@@ -24,6 +23,10 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 		
    		<style>
+   		  	*{
+   		  	  font-family: Georgia, "맑은 고딕", serif;
+   		  	}
+  		  	
    			#profile_image{
    				border-radius:50%;
    			}

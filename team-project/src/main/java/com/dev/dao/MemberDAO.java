@@ -109,7 +109,7 @@ public class MemberDAO extends DAO {
 
 		//멤버 세부정보 등록(하영)
 		public void insertInfo(MemberVO vo) {
-			String sql = "insert into member_info values(?, ?, ?, ?, ?, sysdate,'DEFAULT- AFERT MUSET CHANGE TO DEFAULT PIC PATH')";
+			String sql = "insert into member_info values(?, ?, ?, ?, ?, sysdate, ?)";
 			connect();
 			
 			try {
@@ -119,7 +119,7 @@ public class MemberDAO extends DAO {
 				pstmt.setInt(3, vo.getMemberAge());
 				pstmt.setString(4, vo.getPhone());
 				pstmt.setString(5, vo.getEmail());
-				int r = pstmt.executeUpdate();
+				pstmt.setString(6, vo.getMemberPic());			int r = pstmt.executeUpdate();
 				System.out.println("상세정보" + r + "건 입력");
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -175,7 +175,7 @@ public class MemberDAO extends DAO {
 		//아이디 중복체크 ,,보류
 		public int checkId(String id) {
 			String sql = "select * from member_login where member_id=?";
-			int result = 0;
+			int idCheck = 0;
 			connect();
 			try {
 				pstmt = conn.prepareStatement(sql);
@@ -183,8 +183,10 @@ public class MemberDAO extends DAO {
 				
 				rs = pstmt.executeQuery();
 				
-				if(rs.next()) {
-					result = 1;
+				if(rs.next() || id.equals("")) {
+					idCheck = 0;
+				} else {
+					idCheck = 1;
 				}
 		
 			} catch (SQLException e) {
@@ -192,7 +194,7 @@ public class MemberDAO extends DAO {
 			} finally {
 				disconnect();
 			}
-			return result;
+			return idCheck;
 		}
 	
 		
