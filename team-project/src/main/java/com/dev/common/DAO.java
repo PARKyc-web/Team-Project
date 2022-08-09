@@ -31,11 +31,9 @@ public class DAO {
 
 //		oracle_url = "jdbc:oracle:thin:@localhost:1521:xe";
 		oracle_url = "jdbc:oracle:thin:@192.168.0.13:1521:xe";
-
-
-		id = "teamdb"; //hr teamdb
-		pwd = "teamdb"; //hr teamdb
-
+    
+		id = "teamdb"; 
+		pwd = "teamdb";
 	}
 	
 	// DB에 접속하는 메소드

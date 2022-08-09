@@ -45,7 +45,7 @@ public class WishListDAO extends DAO{
 		String sql = "select onOff from wish_list where member_id = ? and hotel_id = ?";
 		connect();
 		
-		int result = 1;
+		int result = -1;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memberId);
@@ -63,7 +63,31 @@ public class WishListDAO extends DAO{
 		return result;
 	}
 	
+	public void insertWishList(String memberId, int hotelId) {
+		String sql = "insert into wish_list values(? , ?, 0)";
+		connect();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			pstmt.setInt(2, hotelId);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				System.out.println("INSERT wishList");
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+	}
+	
 	public int changeOnOff(String memberId, int hotelId, int onOff) {
+		if (onOff == 1) {
+			insertWishList(memberId, hotelId);
+//			onOff = 0;
+		}
 		String sql = "update wish_list set onOff=? where member_id=? and hotel_id=?";
 		connect();
 		
@@ -73,16 +97,13 @@ public class WishListDAO extends DAO{
 			pstmt.setString(2, memberId);
 			pstmt.setInt(3, hotelId);
 			
-			int r = pstmt.executeUpdate();
-			if(r > 0) {
-				return onOff;
-			}
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			disconnect();
 		}
-		
-		return -1;
+		System.out.println(onOff);
+		return onOff;
 	}
 }

@@ -61,33 +61,6 @@ transition: all ease 1s;
 </style>
 </head>
 <body>
-	<!-- Responsive navbar-->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container">
-			<a class="navbar-brand" href="#!">⛱️airbnb(메인페이지 이동)</a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="input-group">
-				<input class="form-control" type="text"
-					placeholder="Enter search term..."
-					aria-label="Enter search term..." aria-describedby="button-search" />
-				<button class="btn btn-primary" id="button-search" type="button">검색</button>
-			</div>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="#">내 정보</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
 	<!-- Page content-->
 	<div class="container mt-5">
 		<div class="row">
@@ -125,7 +98,7 @@ transition: all ease 1s;
 
 					<!-- Post content-->
 					<section class="mb-5">
-						<p class="fs-5 mb-4">⭐숙소 설명란⭐ ${hotelInfo.hotelDesc }</p>
+						<p class="fs-5 mb-4">${hotelInfo.hotelDesc }</p>
 						<p class="fs-5 mb-4">화이트&우드 톤으로 꾸며진 내부는 편안한 휴식을 도와드립니다. 호스트의
 							취향이 담긴 CD들과, CD 플레이어 겸 블루투스 스피커가 비치되어 호스트의 취향을 엿보거나, 나의 취향을 재생하기
 							모두 가능합니다.</p>
@@ -357,7 +330,10 @@ transition: all ease 1s;
 									</div>
 								</div>
 							</c:forEach>
-
+							<c:if test="${empty reviewList}">
+							<br>
+							<p class="fs-5 mb-4" style="text-align: center">등록된 리뷰가 없습니다.</p>
+							</c:if>
 						</div>
 					</div>
 				</section>
@@ -368,17 +344,11 @@ transition: all ease 1s;
 				<div class="card mb-4" style="text-align: center">
 					<div class="card-header">위시리스트에 담기</div>
 					<div class="card-body">
-					<form action="#" method="post">
-					<button id="heart" onclick="clickHeart()" name="heartColor">
-					<script>
-					function clickHeart() {
-						if("${heartColor}" == 1) {
-							alert("위시리스트에 등록되었습니다.");
-						} else {
-							alert("위시리스트에서 삭제되었습니다.");
-						}
-					}
-					</script>
+					<form action="ajaxHeartColor.do" method="get">
+					<input type="text" name="hotelId" value="${hotelInfo.hotelId }">
+					<input type="text" name="memberId" value="${memberId }">
+					<input type="text" name="heartColor" value="${heartColor}">
+					<button type="submit" id="heart">
 					<c:choose>
 							<c:when test="${0 eq heartColor }">
 								❤
@@ -461,7 +431,7 @@ transition: all ease 1s;
 
 							});
 						</script>
-						<form action="doReservation.do" method="post">
+						<form action="doReservation.do?hotelId=${hotelInfo.hotelId }" method="post">
 							<input type="text" name="datefilter" value="체크인 및 체크아웃" /><br>
 							게스트 인원 <input type="number" name="guestNum" min="1" value="1" max=${hotelInfo.maxP }>
 							<input type="submit" value="예약하기" />
@@ -487,13 +457,6 @@ transition: all ease 1s;
 			</div>
 		</div>
 	</div>
-	<!-- Footer-->
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">여긴 원래 나의 Copyright &copy;
-				Your Website 2022</p>
-		</div>
-	</footer>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

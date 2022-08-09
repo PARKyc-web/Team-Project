@@ -246,7 +246,7 @@ public class HotelDAO extends DAO{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			
+			disconnect();
 		}
 		
 		return hostName;

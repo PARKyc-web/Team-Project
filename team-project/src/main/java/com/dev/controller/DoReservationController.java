@@ -11,17 +11,19 @@ import com.dev.common.Controller;
 import com.dev.common.Utils;
 import com.dev.service.HotelService;
 import com.dev.service.ReviewService;
+import com.dev.vo.MemberVO;
 
 public class DoReservationController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		int hotelId = 113;
-		
 		HttpSession session = req.getSession();
-		req.setAttribute("member", session.getAttribute("member"));
-//		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
+		MemberVO vo = (MemberVO)session.getAttribute("member");
+		String memberId = vo.getMemberId();
+		req.setAttribute("memberId", memberId);
+		
+		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
+//		int hotelId = 113;
 		
 		HotelService hotelService = HotelService.getInstance();
 		req.setAttribute("hotelInfo", hotelService.getHotelInfo(hotelId));
