@@ -23,8 +23,9 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 		
    		<style>
+   		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
    		  	*{
-   		  	  font-family: Georgia, "맑은 고딕", serif;
+   		  	  font-family: 'Noto Sans KR', sans-serif;
    		  	}
   		  	
    			#profile_image{

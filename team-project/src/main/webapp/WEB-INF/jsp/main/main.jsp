@@ -19,7 +19,7 @@
   </script>  
 </head>
 
-<!-- Header
+<!-- Header-->
 <header class="bg-dark py-5">
 	<div class="container px-4 px-lg-5 my-5" id="mainPage">
 	<div class="search-block">
@@ -28,12 +28,12 @@
 			<h1 class="display-4 fw-bolder">TEAM AirBnB</h1>
 			<p class="lead fw-normal text-white-50 mb-0">have fun with TEAM AirBnB</p><br>
 		<form action="searchHotel.do?pageNum=1&amount=12" method="post" class="search-form">
-			<input type="text" name="search_word" placeholder="여행지를 입력하세요">
+			<input type="text" name="search_word" placeholder="어디로 떠나시나요?">
 			<input type="submit" value="GO !">
 		</form>
 		</div>
 	</div>
-</header>-->
+</header>
 
 <!-- Section-->
 <section class="py-5">

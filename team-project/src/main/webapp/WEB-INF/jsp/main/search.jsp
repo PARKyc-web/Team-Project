@@ -69,7 +69,7 @@
 		</form> -->
 	</div>
 		
-	<hr>
+
 	
 	<div class="recommend-hotel">
 	<h4><i> == Search Hotel List == </i></h4>

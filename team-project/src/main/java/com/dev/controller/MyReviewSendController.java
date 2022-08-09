@@ -17,23 +17,23 @@ public class MyReviewSendController implements Controller {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		// 디비에 진짜로 정보를 변경한 후에 보내준다
-		String contents = req.getParameter("contents");
-		Float rate = Float.valueOf((req.getParameter("rate")));
-		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
-		String memberId = req.getParameter("memberId");
-		String hotelName = req.getParameter("hotelName");
-		
-		ReviewVO vo = new ReviewVO();// 
-		vo.setReviewContents(contents);
-		vo.setReviewRate(rate);// < 삽입할 4가지의 값만 담아서
-		vo.setHotelId(hotelId);
-		vo.setMemberId(memberId);
-		
-	
-		//리스트가 아닌 리뷰 메소드를 만들어야하는지,,??
-		ReviewService.getInstance().reviewWrite(vo);// 
-		
-		Utils.forward(req, resp, "myPage/myReviewSendOutput.tiles");
+		 String contents = req.getParameter("contents");
+	      Float rate = Float.valueOf((req.getParameter("rate")));
+	      int hotelId = Integer.parseInt(req.getParameter("hotelId"));
+	      String memberId = req.getParameter("memberId");
+	      String hotelName = req.getParameter("hotelName");
+	      
+	      ReviewVO vo = new ReviewVO();// 
+	      vo.setReviewContents(contents);
+	      vo.setReviewRate(rate);// < 삽입할 4가지의 값만 담아서
+	      vo.setHotelId(hotelId);
+	      vo.setMemberId(memberId);
+	      
+	   
+	      //리스트가 아닌 리뷰 메소드를 만들어야하는지,,??
+	      ReviewService.getInstance().reviewWrite(vo);// 
+	      
+	      Utils.forward(req, resp, "myPage/myReviewSendOutput.tiles");
 	}
 
 }
