@@ -30,22 +30,4 @@ public class MyWishListController implements Controller {
 
 		Utils.forward(req, resp, "myPage/myWishList.tiles");
 	}
-		
-//		String hotelName = req.getParameter("hotelName");
-//		String memberId = req.getParameter("memberId");
-//		int onOff = Integer.parseInt(req.getParameter("onOff"));
-//		
-//		WishListJoinHotelVO jwhvo = new WishListJoinHotelVO();
-//		
-//		jwhvo.setHotelName(hotelName);
-//		jwhvo.setMemberId(memberId);
-//		jwhvo.setOnOff(onOff);
-//		
-//		WishListService service = WishListService.getInstance();
-//		List<WishListJoinHotelVO>list = service.JoinWishListHotel(jwhvo);
-//
-//		req.setAttribute("wishList", list);
-//
-//		Utils.forward(req, resp, "myPage/myWishList.tiles");
-//	}
 }

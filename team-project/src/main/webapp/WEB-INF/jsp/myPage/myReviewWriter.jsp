@@ -8,7 +8,6 @@
 </head>
 <body>
 	<h3>리뷰작성</h3>
-	<!-- .do를 실행하는 파일은 무조건 FrontController를 실행하도록 web.xml에 써놓았음 -->
 	<form action = "./myReviewSend.do" method = "post">
 		내용 : <input type="text" name="contents"><br>
 		별점 : <input type="number" step="0.1" max="5.0" min ="0.0" name="rate"><br>

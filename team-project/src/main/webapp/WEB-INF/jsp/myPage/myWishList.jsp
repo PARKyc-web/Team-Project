@@ -52,7 +52,6 @@
 				<td>예약상태 : ${wish_state }</td>
 				<td><button type="button" onclick ="location.href='${pageContext.request.contextPath }/selectHotel.do?hotelId=${vo.hotelId }'">상세보기</button></td>
 			
-			<!-- <a href="a.html#result">Go to result.</a> -->
 			</tr>
 		</c:forEach>
 	</table>
