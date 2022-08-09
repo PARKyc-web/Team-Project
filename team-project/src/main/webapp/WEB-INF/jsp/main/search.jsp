@@ -57,8 +57,8 @@
 <section class="py-5">
 	<div class="search-block">
 		<form action="searchHotel.do?pageNum=1&amount=12" method="post" class="search-form">
-			<input type="text" name="search_word" placeholder="Search.......... something">
-			<input type="submit" value="Search">
+			<input type="text" name="search_word" placeholder="어디로 떠나시나요?">
+			<input type="submit" value="GO !">
 		</form>
 		
 		<!-- <form action="main.do" class="filter-form">

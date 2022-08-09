@@ -32,21 +32,27 @@ public class MemberSignInController implements Controller {
 			
 		MemberVO vvo = service.searchMember(id);		
 		MemberVO vo = service.infoMember(id);
-		vo.setMemberPassword(pw);
-		vo.setMemberType(vvo.getMemberType());	
 	
-		if(vvo == null || !pw.equals(vo.getMemberPassword())) {
+		if(vo == null || vvo == null) {
 			out.println("<script language='javascript'>");
 			out.println("window.location.href ='http://localhost:8088/teamProject/memberSignInForm.do'");
-			out.println("alert('로그인 실패.')");
+			out.println("alert('존재하지 않는 아이디입니다')");
+			out.println("</script>");
+			out.flush();
+		} else if(!pw.equals(vvo.getMemberPassword())){
+			out.println("<script language='javascript'>");
+			out.println("window.location.href ='http://localhost:8088/teamProject/memberSignInForm.do'");
+			out.println("alert('아이디와 비밀번호를 확인하세요')");
 			out.println("</script>");
 			out.flush();
 		} else {
+			vo.setMemberPassword(pw);
+			vo.setMemberType(vvo.getMemberType());	
 			session.setAttribute("member", vo);
 
 			out.println("<script language='javascript'>");
 			out.println("window.location.href ='http://localhost:8088/teamProject/main.do'");
-			out.println("alert('로그인 성공했습니다.')");
+			out.println("alert('로그인 되었습니다.')");
 			out.println("</script>");
 			
 			out.flush();
