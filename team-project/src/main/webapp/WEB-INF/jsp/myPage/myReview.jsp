@@ -8,6 +8,7 @@
 
 </head>
 <body>
+
 		<br><br>
 		<div class="center">
 			<h3>리뷰내역</h3>
@@ -25,6 +26,7 @@
 					</div>
 				</div>
 		</c:forEach>
+
 
 	  <jsp:include page = "myHome.jsp"></jsp:include>
 </body>

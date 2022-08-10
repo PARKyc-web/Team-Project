@@ -30,4 +30,5 @@ public class MyReviewListController implements Controller {
 		req.setAttribute("list", list);
 		Utils.forward(req, resp, "myPage/myReview.tiles");
 	}
+
 }

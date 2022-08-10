@@ -104,16 +104,16 @@ public class ReviewDAO extends DAO {
 				rs = pstmt.executeQuery();
 				
 				while (rs.next()) {
-					ReviewJoinReservationJoinHotelVO rrhvo = new ReviewJoinReservationJoinHotelVO();
+					ReviewJoinReservationJoinHotelVO vo = new ReviewJoinReservationJoinHotelVO();
 					
-					rrhvo.setHotelName(rs.getString("hotel_name"));
-					rrhvo.setReviewDate(rs.getDate("review_date"));
-					rrhvo.setInDate(rs.getDate("in_date"));
-					rrhvo.setOutDate(rs.getDate("out_date"));
-					rrhvo.setReviewRate(rs.getFloat("review_rate"));
-					rrhvo.setReviewContents(rs.getString("review_contents"));
+					vo.setHotelName(rs.getString("hotel_name"));
+					vo.setReviewDate(rs.getDate("review_date"));
+					vo.setInDate(rs.getDate("in_date"));
+					vo.setOutDate(rs.getDate("out_date"));
+					vo.setReviewRate(rs.getFloat("review_rate"));
+					vo.setReviewContents(rs.getString("review_contents"));
 					
-					list.add(rrhvo);
+					list.add(vo);
 				}
 
 			} catch (SQLException e) {

@@ -1,78 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <style>
- 	  font-family: Georgia, "맑은 고딕", serif;
- 	 #container{
-        width: 800px;
+    #container{
+        width: 600px;
         margin: 0 auto;
     }
-    h2{
-    	padding-top:5%;
+
+    h3{
+
         text-align: center;
-        font-family: Georgia, "맑은 고딕", serif;
-    }
-    legend{
-    	margin: 0 auto;
+
     }
     ul{
         list-style: none;
-       
     }
     ul li {
         clear: both;
         text-align: center;
     }
-       input[type="text"]{
-       
-        width: 500px;
-        height: 40px;
+    input[type="text"]{
+        float: left;
+        width: 100px;
+        height: 20px;
         border: 2px solid #fc777b;
-        border-radius: 20px;
+        border-radius: 5px;
         padding: 5px;
         margin: 10px 0;
 
 
     }
-    input[type="submit"]{
-    	padding : right 100px;
-    	
-    jsp:include.class{
-     text-align: center;
-    }
-    	
-    
 </style>
-
+</head>
 <body>
-<div id="container">
-	<h2>마이페이지</h2>
-           
+
+	<h3>마이페이지</h3>
+	
+    <ul>
+        <li><label for="id" >개인정보 : </label><br><br>
        <form action="${pageContext.request.contextPath }/myPageModi.do" method="post">
-	       	<fieldset>
-				<legend>개인정보</legend>
-			</fieldset>		        
-       <ul>
-	        <li><label for="id"></label>  
-	        	<img src="${memberInfo.memberPic}" onError="image/hotel_default.webp"
-	        		 width="200px" height="200px" id="profile_image"></li>
-			<li><label for="id">아이디 : </label>
-	        <input type="text" name ="bid" value=" ${memberInfo.memberId }" readonly>
-	      	      
-	        <li><label for="id">이름 : </label>
-	        <input type="text" name ="name" value="${memberInfo.memberName }" readonly></li>
-	        <li><label for="id">나이 : </label>
-	        <input type="text" name ="age" value="${memberInfo.memberAge }" readonly></li>
-	        <li><label for="id">연락처 : </label>
-	        <input type="text" name ="phone" value="${memberInfo.phone }" readonly></li>
-	        <li><label for="id">이메일 : </label>
-	        <input type="text" name ="email" value="${memberInfo.email }" readonly></li>
-	        <li><label for="id">가입일 : </label>
-	        <input type="text" name ="date" value="${memberInfo.signInDate }" readonly></li>	    
-	        <li><input type="submit" value ="수정"></li>    
-        </ul>
+	
+        <input type="text" name ="bid" value="${memberInfo.memberId }" readonly>
+        <input type="submit" value ="수정"><br>
         
+        <input type="text" name ="id" value="${memberInfo.memberId }" readonly><br>
+        <input type="text" name ="name" value="${memberInfo.memberName }" readonly><br>
+        <input type="text" name ="age" value="${memberInfo.memberAge }" readonly><br>
+        <input type="text" name ="phone" value="${memberInfo.phone }" readonly><br>
+        <input type="text" name ="email" value="${memberInfo.email }" readonly><br>
+        <input type="text" name ="date" value="${memberInfo.signInDate }" readonly> <br>       
+        <input type="text" name ="pic" value="${memberInfo.memberPic }" readonly><br>
         </form>
 <%--        <li> <label for="id" >내가 쓴 리뷰 : </label><br><br>
        
@@ -96,7 +77,7 @@
       	<input type ="submit" value = "내가 쓴 리뷰">
       	<input type ="submit" value = "숙박내역">
       	<input type ="submit" value = "위시리스트"> -->
-      
+      </ul>
       <jsp:include page = "myHome.jsp"></jsp:include>
-      </div>
 </body>
+</html>

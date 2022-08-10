@@ -22,7 +22,6 @@ public class MyReviewSendController implements Controller {
 	      Float rate = Float.valueOf((req.getParameter("rate")));
 	      int hotelId = Integer.parseInt(req.getParameter("hotelId"));
 	      String memberId = req.getParameter("memberId");
-	      String hotelName = req.getParameter("hotelName");
 	      
 	      int reservationId = Integer.parseInt(req.getParameter("reservationId"));
 	      

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang='ko'>
 <head>
@@ -50,13 +50,14 @@
 <!-- 여기까지 슬라이드하는 코드 -->
 <style>
 #heart {
-font-size: xx-large;
-background-color: white;
-border: none;
-transition: all ease 1s;
+	font-size: xx-large;
+	background-color: white;
+	border: none;
+	transition: all ease 1s;
 }
+
 #heart:hover {
- transform: rotateY( 180deg );
+	transform: rotateY(180deg);
 }
 </style>
 </head>
@@ -71,7 +72,7 @@ transition: all ease 1s;
 					<!-- Post header-->
 					<header class="mb-4">
 						<!-- Post title 숙소명-->
-						<h3 class="fw-bolder mb-1">${hotelInfo.hotelName }</h3>
+						<h3 class="fw-bolder mb-1">🏡 ${hotelInfo.hotelName }</h3>
 						<!-- Post meta content-->
 						<div class="text-muted fst-italic mb-2">
 							⭐ ${avgStar} · <a href="#review" style="color: gray">후기
@@ -100,11 +101,6 @@ transition: all ease 1s;
 					<!-- Post content-->
 					<section class="mb-5">
 						<p class="fs-5 mb-4">${hotelInfo.hotelDesc }</p>
-						<p class="fs-5 mb-4">화이트&우드 톤으로 꾸며진 내부는 편안한 휴식을 도와드립니다. 호스트의
-							취향이 담긴 CD들과, CD 플레이어 겸 블루투스 스피커가 비치되어 호스트의 취향을 엿보거나, 나의 취향을 재생하기
-							모두 가능합니다.</p>
-						<p class="fs-5 mb-4">평상형 마루에 올라앉아 마당의 귤나무를 바라보거나 야외 데크의 릴랙스
-							체어에 누워 하늘을 올려다보며 도시의 피로를 씻어 버리세요.</p>
 						<hr>
 						<!-- 숙소 편의 시설 여부에 따라 취소선을 나타내었습니다. -->
 						<h4 class="fw-bolder mb-4 mt-5">숙소 편의시설</h4>
@@ -292,7 +288,7 @@ transition: all ease 1s;
 								<tr>
 									<td>체크인: 오후 4:00 이후</td>
 									<td>코로나19 방역 수칙을 준수하셔야 합니다.</td>
-									<td>8월 7일 전까지 무료로 취소하실 수 있습니다.</td>
+									<td>모든 예약은 정책에 따라 보호를 받습니다.</td>
 								</tr>
 								<tr>
 									<td>체크아웃 시간: 오후 10:00</td>
@@ -332,8 +328,9 @@ transition: all ease 1s;
 								</div>
 							</c:forEach>
 							<c:if test="${empty reviewList}">
-							<br>
-							<p class="fs-5 mb-4" style="text-align: center">등록된 리뷰가 없습니다.</p>
+								<br>
+								<p class="fs-5 mb-4" style="text-align: center">등록된 리뷰가
+									없습니다.</p>
 							</c:if>
 						</div>
 					</div>
@@ -345,21 +342,21 @@ transition: all ease 1s;
 				<div class="card mb-4" style="text-align: center">
 					<div class="card-header">위시리스트에 담기</div>
 					<div class="card-body">
-					<form action="ajaxHeartColor.do" method="get">
-					<input type="hidden" name="hotelId" value="${hotelInfo.hotelId }">
-					<input type="hidden" name="heartColor" value="${heartColor}">
-					<button type="submit" id="heart">
-					<c:choose>
-							<c:when test="${0 eq heartColor }">
+						<form action="ajaxHeartColor.do" method="get">
+							<input type="hidden" name="hotelId" value="${hotelInfo.hotelId }">
+							<input type="hidden" name="heartColor" value="${heartColor}">
+							<button type="submit" id="heart">
+								<c:choose>
+									<c:when test="${0 eq heartColor }">
 								💗							
 							</c:when>
-							<c:otherwise>
+									<c:otherwise>
 								🤍
 							</c:otherwise>
-						</c:choose>
-					</button>
-					</form>
-					<p>click me!</p>
+								</c:choose>
+							</button>
+						</form>
+						<p>click here</p>
 					</div>
 				</div>
 				<!-- 예약 하기-->
@@ -376,51 +373,76 @@ transition: all ease 1s;
 						<script type="text/javascript">
 							$(function() {
 								var invalid = "${invalidDate}";
-								invalid = invalid.substring(1, invalid.length-1);
+								invalid = invalid.substring(1,
+										invalid.length - 1);
 								var some_date_range = invalid.split(", ");
-								
+
 								console.log(some_date_range);
 								console.log(some_date_range.length);
-								
-								$('input[name="datefilter"]').daterangepicker(
-										{
-											autoUpdateInput : false,
-											locale : {
-												cancelLabel : 'Clear',
-												"separator" : " - ", // 시작일시와 종료일시 구분자
-												"format" : 'YYYY.MM.DD', // 일시 노출 포맷
-												"applyLabel" : "확인", // 확인 버튼 텍스트
-												"cancelLabel" : "취소", // 취소 버튼 텍스트
-												"daysOfWeek" : [ "일", "월", "화",
-														"수", "목", "금", "토" ],
-												"monthNames" : [ "1월", "2월",
-														"3월", "4월", "5월", "6월",
-														"7월", "8월", "9월",
-														"10월", "11월", "12월" ]
-											},
-											opens : 'center',
-											// 예약 불가능한 날짜 표시
-											isInvalidDate : function(
-													date) {
-												  for(var ii = 0; ii < some_date_range.length; ii++){
-												    if (date.format('YYYY-MM-DD') == some_date_range[ii]){
-												      return true;
-												    }
-												  }
-											}
-										});
+
+								$('input[name="datefilter"]')
+										.daterangepicker(
+												{
+													autoUpdateInput : false,
+													locale : {
+														cancelLabel : 'Clear',
+														"separator" : " - ", // 시작일시와 종료일시 구분자
+														"format" : 'YYYY.MM.DD', // 일시 노출 포맷
+														"applyLabel" : "확인", // 확인 버튼 텍스트
+														"cancelLabel" : "취소", // 취소 버튼 텍스트
+														"daysOfWeek" : [ "일",
+																"월", "화", "수",
+																"목", "금", "토" ],
+														"monthNames" : [ "1월",
+																"2월", "3월",
+																"4월", "5월",
+																"6월", "7월",
+																"8월", "9월",
+																"10월", "11월",
+																"12월" ]
+													},
+													opens : 'center',
+													minDate : new Date(),
+													// 예약 불가능한 날짜 표시
+													isInvalidDate : function(
+															date) {
+														for (var ii = 0; ii < some_date_range.length; ii++) {
+															if (date
+																	.format('YYYY-MM-DD') == some_date_range[ii]) {
+																return true;
+															}
+														}
+													}
+												});
 
 								$('input[name="datefilter"]')
 										.on(
 												'apply.daterangepicker',
 												function(ev, picker) {
-													$(this)
-															.val(
-																	picker.startDate
-																			.format('YYYY.MM.DD')
+													$(this).val(picker.startDate.format('YYYY.MM.DD')
 																			+ ' - '
-																			+ picker.endDate
-																					.format('YYYY.MM.DD'));
+																			+ picker.endDate.format('YYYY.MM.DD'));
+													
+													// total price를 위한 코드
+													var temp = document.getElementById('inputDate').value;
+													
+													temp = temp.split(" - ");
+													var checkIn = temp[0].substring(0, temp[0].length);
+													var checkOut = temp[1].substring(0, temp[1].length);
+													
+													const getDateDiff = (d1, d2) => {
+														  const date1 = new Date(d1);
+														  const date2 = new Date(d2);
+														  
+														  const diffDate = date2.getTime() - date1.getTime();
+														  
+														  return Math.abs(diffDate / (1000 * 60 * 60 * 24)); // 밀리세컨 * 초 * 분 * 시 = 일
+														}
+
+													var day = getDateDiff(checkIn, checkOut);
+													
+													document.getElementById('day').innerText = day
+													document.getElementById('totalPrice').innerText = ${hotelInfo.hotelPrice} * day;
 												});
 
 								$('input[name="datefilter"]').on(
@@ -431,20 +453,26 @@ transition: all ease 1s;
 
 							});
 						</script>
-						<form action="doReservation.do?hotelId=${hotelInfo.hotelId }" method="post">
-							<input type="text" name="datefilter" value="체크인 및 체크아웃" /><br>
-							게스트 인원 <input type="number" name="guestNum" min="1" value="1" max=${hotelInfo.maxP }>
-							<input type="submit" value="예약하기" />
-								
-							<p style="text-align: center;">예약 확정 전에는 요금이 청구되지 않습니다.</p>
-							<p>₩${hotelInfo.hotelPrice } x 5박 ₩${hotelInfo.hotelPrice * 5}</p>
-							<p>청소비 ₩10,000</p>
-							<p>서비스 수수료 ₩176,471</p>
-							<p>숙박세와 수수료 ₩17,647</p>
-							<hr>
-							<p>총 합계 ₩1,444,118</p>
-						</form>
+						<form action="doReservation.do?hotelId=${hotelInfo.hotelId }"
+							method="post">
+							
+							체크인 및 체크아웃 <input type="text" name="datefilter" id="inputDate" onchange="return changeEven()"
+								placeholder="여기를 눌러 선택하기"
+								style="width: 190px; text-align: center; border: none;" /><br>
+							인원 게스트 <input type="number" name="guestNum" min="1" value="1"
+								max=${hotelInfo.maxP }
+								style="width: 35px; border: none; text-align: right;">명<br>
 
+							<input type="submit" value="예약하기" style="margin: 0 auto" />
+							
+							<p style="text-align: center;">예약 확정 전에는 요금이 청구되지 않습니다.</p>
+							<p>₩${hotelInfo.hotelPrice } x <span id='day'></span>
+							
+							박 ₩<span id = 'totalPrice'></span></p>
+							<p>서비스 수수료 ₩0</p>
+							<hr>
+							<p>총 합계 ₩${hotelInfo.hotelPrice * 5}</p>
+						</form>
 					</div>
 
 				</div>

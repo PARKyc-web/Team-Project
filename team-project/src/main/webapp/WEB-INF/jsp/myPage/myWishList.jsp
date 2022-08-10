@@ -8,7 +8,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-font-family: Georgia, "맑은 고딕 ", serif ; #container {
+h3{
+		text-align: center;
+	}
+ #container {
+ font-family: Georgia, "맑은 고딕 ", serif ;
 	width: 600px;
 	margin: 0 auto;
 }
@@ -58,22 +62,23 @@ input[type="submit"] {
 					<c:forEach var="i" begin="0" end="${size-1}" step="1">
 						
 						<c:if test="${wishList[i].onOff eq 0}">
-							<div class="card mb-4" style="text-align: center; width: 800px; margin: 0 auto">
+
+							<div class="card mb-4" style="width: 600px; margin: 0 auto">
 								<div class="card-header">
 								<c:set var="k" value="${k + 1}" />
-								No. ${k} 수정해야함*****
+								No. ${k}
+
 								</div>
 								<div class="card-body">
 								<div class="slider">
 									<c:forEach var="inner" items="${picList[i]}">
 										<img class="card-img-top" src="${inner.path}${inner.name}"
-											width="900px" height="200px" alt="selected-hotel-image" />
-										
+
+											width="900px" height="300px" alt="selected-hotel-image" />
 									</c:forEach>
 								</div>
-								<p>${vo.hotelName}</p>
-							<button type="button" 
-									onclick="location.href='${pageContext.request.contextPath}/selectHotel.do?hotelId=${wishList[i].hotelId}'">상세보기</button>
+								<h4 class="fw-bolder mb-4 mt-5">💗 <a href='${pageContext.request.contextPath}/selectHotel.do?hotelId=${wishList[i].hotelId}'>${wishList[i].hotelName}</a></h4>
+								<p>호텔 주소 띄워주기 후기 링크도 가져오면 더 좋다.. 위시리스트 취소도 여기서 할 수 있으면,,,</p>
 								</div>
 							</div>
 						</c:if>						

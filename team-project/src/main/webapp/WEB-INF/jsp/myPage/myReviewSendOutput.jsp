@@ -7,7 +7,7 @@
 <title>리뷰작성 결과페이지(myReviewSendOutput.jsp)</title>
 </head>
 <body>
-	<h3>${reservation.hotelName }의 여행지 리뷰가 작성되었습니다.</h3>
+	<h3>여행지 리뷰가 작성되었습니다.</h3>
 	<jsp:include page = "myHome.jsp"></jsp:include>
 </body>
 </html>
