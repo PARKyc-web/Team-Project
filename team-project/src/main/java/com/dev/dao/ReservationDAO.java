@@ -142,6 +142,7 @@ public class ReservationDAO extends DAO {
 			}finally {
 				disconnect();
 			}
+		}
 
 		public ReviewVO searchReview(ReviewVO vo) {
 			String str = "select * from review where hotel_id = ? and member_id = ? and review_date LIKE ?";
