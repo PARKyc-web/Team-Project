@@ -8,7 +8,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-font-family: Georgia, "맑은 고딕 ", serif ; #container {
+h3{
+		text-align: center;
+	}
+ #container {
+ font-family: Georgia, "맑은 고딕 ", serif ;
 	width: 600px;
 	margin: 0 auto;
 }

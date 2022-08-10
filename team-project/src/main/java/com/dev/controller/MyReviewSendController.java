@@ -21,7 +21,6 @@ public class MyReviewSendController implements Controller {
 	      Float rate = Float.valueOf((req.getParameter("rate")));
 	      int hotelId = Integer.parseInt(req.getParameter("hotelId"));
 	      String memberId = req.getParameter("memberId");
-	      String hotelName = req.getParameter("hotelName");
 	      
 	      ReviewVO vo = new ReviewVO();// 
 	      vo.setReviewContents(contents);

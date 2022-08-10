@@ -12,6 +12,7 @@ import java.util.List;
 import com.dev.common.DAO;
 import com.dev.vo.ReservationJoinHotelVO;
 import com.dev.vo.ReservationVO;
+import com.dev.vo.ReviewVO;
 
 public class ReservationDAO extends DAO {
 
@@ -111,5 +112,31 @@ public class ReservationDAO extends DAO {
 				disconnect();
 			}
 			return result;
+		}
+		public ReviewVO searchReview(ReviewVO vo) {
+			String str = "select * from review where hotel_id = ? and member_id = ? and review_date LIKE ?";
+			connect();
+			try {
+				pstmt = conn.prepareStatement(str);
+				pstmt.setInt(1, vo.getHotelId());
+				pstmt.setString(2, vo.getMemberId());
+				pstmt.setDate(3, vo.getReviewDate());
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					ReviewVO rvo = new ReviewVO();
+					rvo.setHotelId(rs.getInt("hotel_id"));
+					rvo.setMemberId(rs.getString("member_id"));
+					rvo.setReviewDate(rs.getDate("review_date"));
+					rvo.setReviewId(rs.getInt("review_id"));
+					return rvo;
+				}
+				
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}finally {
+				disconnect();
+			}
+			return null;
 		}
 }
