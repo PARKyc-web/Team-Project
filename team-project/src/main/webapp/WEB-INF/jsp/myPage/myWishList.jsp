@@ -47,13 +47,13 @@ input[type="submit"] {
 <body>
 	<div id="container">
 		<h3>나의 위시 숙소 리스트</h3>
-			<c:forEach var="vo" items="${wishList }">
-				<c:when test="${vo.onOff eq 0}">
+			<c:forEach var="vo" items="${wishList}">
+				<c:if test="${vo.onOff eq 0}">
 					<div class="card mb-4"
 						style="text-align: center; width: 800px; margin: 0 auto">
 						<div class="card-header">
 							<c:set var="i" value="${i + 1}" />
-							No. ${i } 수정해야함*****
+							No. ${i} 수정해야함*****
 						</div>
 						<div class="card-body">
 							<div class="slider">
@@ -63,20 +63,15 @@ input[type="submit"] {
 
 								</c:forEach>
 							</div>
-							<p>${vo.hotelName }</p>
+							<p>${vo.hotelName}</p>
 							<button type="button"
-								onclick="location.href='${pageContext.request.contextPath }/selectHotel.do?hotelId=${vo.hotelId }'">상세보기</button>
+								onclick="location.href='${pageContext.request.contextPath}/selectHotel.do?hotelId=${vo.hotelId}'">상세보기</button>
 						</div>
 					</div>
-				</c:when>
-				<%-- <c:otherwise>
-				<c:set var="i" value="${i+1 }"/>
-				</c:otherwise> --%>
+				</c:if>
+
 			</c:forEach>
-			<%-- <c:set var="wishLength" value="${fn:length(wishList) }"></c:set>
-			<c:if test="${i eq wishLength}">
-				<p>등록된 위시리스트가 없습니다.</p>
-			</c:if> --%>
+
 
 		<jsp:include page="myHome.jsp"></jsp:include>
 	</div>
