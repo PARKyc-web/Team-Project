@@ -47,7 +47,9 @@
    				width:120px;
    			}
    			
-   			#real-body{
+
+			#real-body{
+
    				height:auto;	
 				min-height:84vh;				
 				padding-bottom:70px;
@@ -58,6 +60,8 @@
 				position : relative;
   				transform : translateY(0%);
    			}
+
+
    			
    		</style>   
     </head>
@@ -75,12 +79,12 @@
 		<div id="real-body">
         	<tiles:insertAttribute name="body"></tiles:insertAttribute>
 		</div>
-		
+
         <!-- Footer-->
         <div id="real-footer">
         	<tiles:insertAttribute name="foot"></tiles:insertAttribute>
         </div>
-        
+
         <!-- Core theme JS-->
         <script src="tileExample/js/scripts.js"></script>
     </body>

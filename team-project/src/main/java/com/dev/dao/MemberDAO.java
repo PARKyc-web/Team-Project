@@ -149,30 +149,8 @@ public class MemberDAO extends DAO {
 			}
 			return null;
 		}
-		
-//		//탈퇴회원(member_able=1) 로그인 제한 
-//		public MemberVO searchDeleteMember(String id) {
-//			String sql = "select member_able from member_login where member_id = '" + id + "'";
-//			connect();
-//			try {
-//				stmt = conn.createStatement();
-//				rs = stmt.executeQuery(sql);
-//				if(rs.next()) {
-//					MemberVO vo = new MemberVO();
-//					vo.setMemberId(rs.getString("member_id"));
-//					vo.setMemberPassword(rs.getString("member_password"));
-//					return vo;
-//				}	
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			} finally {
-//				disconnect();
-//			}
-//			return null;
-//		}
-//		
-//		
-		//아이디 중복체크 ,,보류
+
+		//아이디 중복체크 
 		public int checkId(String id) {
 			String sql = "select * from member_login where member_id=?";
 			int idCheck = 0;
@@ -197,5 +175,29 @@ public class MemberDAO extends DAO {
 			return idCheck;
 		}
 	
+		//아이디 찾기
+		public int searchId(String email) {
+			String sql = "select member_id from member_info where email=?";
+			int idCheck = 0;
+			connect();
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, email);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next() || email.equals("")) {
+					idCheck = 0;
+				} else {
+					idCheck = 1;
+				}
+		
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				disconnect();
+			}
+			return idCheck;
+		}
 		
 }

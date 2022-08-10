@@ -6,16 +6,41 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    #container{
-        width: 600px;
+
+	body{
+		background-image:url('image/bg.jpg');
+		background-repeat: no-repeat;
+  		background-position: center;
+  		background-size: cover;
+	}
+ 	#container{
+        width: 800px;
+        background-color:#fff;
+
         margin: 0 auto;
+        margin-top:4%;
+        margin-bottom:4%;
+        border: 1px solid #f2f2f2;
+    	border-radius:10px;
+    	box-shadow: 1px 1px 2px #f0f0f0;
+    	padding:2%;
     }
 
+    a{
+    	color:gray;
+    	text-decoration:none;
+    }
+    a:hover{
+    	color:gray;
+
+    }
     h3{
-
+    	padding-top:3%;
         text-align: center;
-
-    }
+	}
+	h6{
+	text-align:left;
+	}
     ul{
         list-style: none;
     }
@@ -23,29 +48,76 @@
         clear: both;
         text-align: center;
     }
+
+    #bold{
+    	font-weight:bold;
+    }
     input[type="text"]{
-        float: left;
-        width: 100px;
-        height: 20px;
-        border: 2px solid #fc777b;
-        border-radius: 5px;
+       	text-align:center;
+        width: 200px;
+        height: 40px;
+        border-top:0px; border-left:0px; border-right:0px;border-bottom: 1px solid #fff;
+
         padding: 5px;
         margin: 10px 0;
-
-
+        outline:none;
     }
+
+     input[type="text"]:hover{
+     border-bottom: 1px solid #fc777b;
+
+     }
+	
+	#submit{
+		border: 1px solid #e6e6e6;
+		padding:1.5%;
+		background-color: #fc777b;
+		color: #fff;
+		box-shadow: 1px 1px 2px #f0f0f0;
+		border-radius:5px;
+	}
+	#submit:hover{
+		background-color:#fc6d71;
+	}
+	#out{
+		border: 1px solid #e6e6e6;
+		padding:1.5%;
+		background-color: #9c9c9c;
+		color: #fff;
+		box-shadow: 1px 1px 2px #f0f0f0;
+		border-radius:5px;
+	}
+    	
+
 </style>
 </head>
 <body>
 
-	<h3>마이페이지</h3>
-	
-    <ul>
-        <li><label for="id" >개인정보 : </label><br><br>
+<div id="container">
+           
        <form action="${pageContext.request.contextPath }/myPageModi.do" method="post">
-	
-        <input type="text" name ="bid" value="${memberInfo.memberId }" readonly>
-        <input type="submit" value ="수정"><br>
+       		<h6><a href='myPageMain.do'>마이페이지</a>&nbsp; > &nbsp;<a href='#'>나의 정보</a></h6>
+       <ul>
+       		<li><h3><span id="bold">나의 정보</span></h3><br><br></li>
+	        <li><label for="id"></label>  
+	        	<img src="${memberInfo.memberPic}" onError="image/hotel_default.webp"
+	        		 width="200px" height="200px" id="profile_image"><br><br></li>
+			<li><label for="id"><span id="bold">아이디</span> </label>
+	        <input type="text" name ="bid" value=" ${memberInfo.memberId }" readonly>
+	      	      
+	        <li><label for="id"><span id="bold">이름  </span></label>
+	        <input type="text" name ="name" value="${memberInfo.memberName }" readonly></li>
+	        <li><label for="id"><span id="bold">나이  </span></label>
+	        <input type="text" name ="age" value="${memberInfo.memberAge }" readonly></li>
+	        <li><label for="id"><span id="bold">연락처  </span></label>
+	        <input type="text" name ="phone" value="${memberInfo.phone }" readonly></li>
+	        <li><label for="id"><span id="bold">이메일  </span></label>
+	        <input type="text" name ="email" value="${memberInfo.email }" readonly></li>
+	        <li><label for="id"><span id="bold">가입일  </span></label>
+	        <input type="text" name ="date" value="${memberInfo.signInDate }" readonly><br><br></li>	    
+	        <li><input id="submit" type="submit" value ="정보수정">&nbsp;<button type="button" id="out" onclick="location.href='myMemberDeleteOutput.do'">회원탈퇴</button></li>    
+        </ul>
+
         
         <input type="text" name ="id" value="${memberInfo.memberId }" readonly><br>
         <input type="text" name ="name" value="${memberInfo.memberName }" readonly><br>
@@ -77,7 +149,7 @@
       	<input type ="submit" value = "내가 쓴 리뷰">
       	<input type ="submit" value = "숙박내역">
       	<input type ="submit" value = "위시리스트"> -->
-      </ul>
-      <jsp:include page = "myHome.jsp"></jsp:include>
+      </div>
+
 </body>
 </html>

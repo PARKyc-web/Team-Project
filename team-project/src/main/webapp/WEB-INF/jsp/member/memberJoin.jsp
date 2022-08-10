@@ -36,12 +36,12 @@ h3{
 #forms{
 margin:0 auto;
 width:60%;
-background-color:rgba(255,255,255,0.5);
+background-color:rgba(255,255,255,0.8);
 padding:10%;
 border-radius:20px;
 }
 .signin-button {
-  width:80%;
+  width:60%;
   padding:20px;
   color: #fff;
   font-size:20px;

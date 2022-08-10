@@ -81,7 +81,8 @@ public class FrontController extends HttpServlet{
 		mappings.put("/memberLogout.do", new MemberLogoutController()); //로그아웃
 		mappings.put("/memberSignUp.do", new MemberSignUpController()); //회원가입
 		mappings.put("/memberSignUpForm.do", new MemberSignUpFormController()); // 회원가입 폼
-		mappings.put("/memberIdCheck.do", new MemberIdCheckController());
+		mappings.put("/memberIdCheck.do", new MemberIdCheckController()); //아이디 중복 체크
+		mappings.put("/memberIdSearch.do", new MemberIdSearchController());
 				
 		// Part of YR
 		mappings.put("/selectHotel.do", new SelectHotelController()); // 호텔 상세 페이지
