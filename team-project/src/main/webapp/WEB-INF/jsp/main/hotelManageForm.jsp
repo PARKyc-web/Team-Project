@@ -66,7 +66,7 @@
 					
 						<!-- Product image-->
 						<div class="slider">
-							<c:forEach var="inner" items="${pic_list[i]}">
+							<c:forEach var="inner" items="${picList[i]}">
 								<img class="card-img-top" 
 								src="${inner.path}${inner.name}" width="450px" height="200px" alt="main-page-image" />
 								

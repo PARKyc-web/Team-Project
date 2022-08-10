@@ -32,9 +32,9 @@
 		
 			<div class="col-md-6">			
 				<div class="slider">
-					<c:forEach var="inner" items="${hotelPic[i]}">
+					<c:forEach var="inner" items="${hotelPic}">
 						<img class="card-img-top mb-5 mb-md-0" 
-							 src="${inner.path}${inner.name}" width="450px" height="200px" alt="hotel-detail-image" />							
+							 src="${inner.path}${inner.name}" alt="hotel-detail-image" />							
 					</c:forEach>						
 				</div>
 			</div>

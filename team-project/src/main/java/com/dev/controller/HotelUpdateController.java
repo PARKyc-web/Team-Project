@@ -64,7 +64,7 @@ public class HotelUpdateController implements Controller{
 						uploadFolder = new File(file + separator + parameter.get("hotel_name") + parameter.get("hotel_id"));
 						System.out.println(fileName);						
 											
-//						it.write(new File(uploadFolder + separator + fileName));
+						it.write(new File(uploadFolder + separator + fileName));
 						pvo.setHotelId(Integer.parseInt(parameter.get("hotel_id")));
 						pvo.setPath("hotel_image/" + parameter.get("hotel_name") + parameter.get("hotel_id"));
 						pvo.setName("/" + fileName.replace(separator, "/"));
