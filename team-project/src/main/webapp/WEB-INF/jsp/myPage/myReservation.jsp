@@ -56,6 +56,7 @@
 		<tbody>
 		
 		
+
 			<c:forEach var="review" items="${review }">
 			<script>
 			console.log(${review});
@@ -78,6 +79,7 @@
 					method="post">
 					<ul>
 						<li><label for="name" class="field">숙소이름 : </label> <input name="name"
+
 							size="10" id="id" type="text" value="${vo.hotelName }" readonly></li>
 						<li><label for="in" class="field">체크인 : </label> <input name="in"
 							type="text" value="${vo.inDate }" readonly></li>
@@ -87,6 +89,7 @@
 							<input name="cost" id="pic" type="text" value="${vo.totalPrice }" readonly>
 							<input type="hidden" name="hotelId" value="${vo.hotelId}">
 							<input type="hidden" name="memberId" value="${vo.memberId}"></li>
+
 						<li><input type="submit" name="write" value="리뷰작성"></li>
 
 
@@ -94,8 +97,14 @@
  -->
 
 					
+
 					</ul>
+					</div>
+				</div>
+				
+					
 				</form>
+
 
 				<%-- <button type="button" onclick ="location.href='${pageContext.request.contextPath }/selectHotel.do?hotelId=${vo.hotelId }'">상세보기</button>
 		 --%>
@@ -110,6 +119,7 @@
 	         <tr><td type ="button" submit" value ="리뷰작성"></td>
 	         </tr> --%>
 	         
+
 			</c:forEach>
 		</tbody>
 	</table>
