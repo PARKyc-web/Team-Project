@@ -17,7 +17,7 @@
 			<div class="col-md-6">
 				<img class="card-img-top mb-5 mb-md-0" id="user_image" 
 				src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..."
-					onError="image/hotel_default.png" />
+					onError="image/hotel_default.webp" />
 			</div>
 			<div class="col-md-6">
 				<div class="small mb-1"></div>
@@ -27,13 +27,13 @@
 				</div>
 				<form action="hotelUpload.do" method="post" enctype="multipart/form-data">
 				<ul>
-					<li><label class ="uploadLabel">Member_id : </label>
+					<li><label class ="uploadLabel">숙소주인 : </label>
 					<input type="text" id="member_id" name="member_id" value="${member.memberId }" readonly></li>
-					<li><label class="uploadLabel">Hotel_name : </label><input type="text" name="hotel_name"></li>
-					<li><label class="uploadLabel">Hotel_location	: </label><input type="text" name="hotel_location"></li>
-					<li><label class="uploadLabel">Hotel_Desc : </label><input type="text" name="hotel_desc"></li>
-					<li><label class="uploadLabel">Hotel_Price : </label><input type="text" name="hotel_price"></li>  
-					<li><label class="uploadLabel">Hotel_Type : </label>  
+					<li><label class="uploadLabel">숙소명 : </label><input type="text" name="hotel_name"></li>
+					<li><label class="uploadLabel">숙소위치 : </label><input type="text" name="hotel_location"></li>
+					<li><label class="uploadLabel">숙소설명 : </label><input type="text" name="hotel_desc"></li>
+					<li><label class="uploadLabel">1박당 가격 : </label><input type="text" name="hotel_price"></li>  
+					<li><label class="uploadLabel">숙소종류 : </label>  
 					<select name="hotel_type">
 						<option value="호텔" selected>호텔</option>
 						<option value="펜션">펜션</option>
@@ -42,7 +42,7 @@
 						<option value="아파트">아파트</option>
 						<option value="오피스텔">오피스텔</option>
 					</select></li>
-					<li><label class="uploadLabel">Hotel_maxP : </label><input type="text" name="maxP"></li>
+					<li><label class="uploadLabel">최대예약 인원 : </label><input type="text" name="maxP"></li>
 					<br>					
 					<h3> == 숙소 옵션 == </h3>					
 					<li><label><input type="checkbox" name="hotel_option_WIFI" value="1">와이파이</label></li>

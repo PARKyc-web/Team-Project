@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dev.controller.AjaxHeartColorController;
 import com.dev.controller.DoReservationController;
+import com.dev.controller.HotelDetailFormController;
 import com.dev.controller.HotelManageFormController;
+import com.dev.controller.HotelUpdateController;
 import com.dev.controller.HotelUploadController;
 import com.dev.controller.HotelUploadFormController;
 import com.dev.controller.MainController;
@@ -37,7 +39,6 @@ import com.dev.controller.MyWishListController;
 import com.dev.controller.ReservationSuccessController;
 import com.dev.controller.SearchHotelController;
 import com.dev.controller.SelectHotelController;
-import com.dev.controller.Test;
 
 public class FrontController extends HttpServlet{
 
@@ -56,7 +57,8 @@ public class FrontController extends HttpServlet{
 		mappings.put("/hotelUploadForm.do", new HotelUploadFormController());
 		mappings.put("/hotelUpload.do", new HotelUploadController());
 		mappings.put("/hotelManageForm.do", new HotelManageFormController());
-		
+		mappings.put("/hotelDetailForm.do", new HotelDetailFormController());
+		mappings.put("/hotelUpdate.do", new HotelUpdateController());
 		
 		// Part of YJ
 		mappings.put("/myPageMain.do", new MyPageMainController());//마이페이지 메인! 

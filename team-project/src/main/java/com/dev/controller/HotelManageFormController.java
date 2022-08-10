@@ -12,16 +12,16 @@ import com.dev.common.Controller;
 import com.dev.common.Utils;
 import com.dev.service.HotelService;
 import com.dev.vo.Criteria;
+import com.dev.vo.HotelPicVO;
 import com.dev.vo.HotelVO;
 import com.dev.vo.MemberVO;
+import com.dev.vo.Page;
 
 public class HotelManageFormController implements Controller{
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
-		
-		System.out.println("Hotel Management Form -RUN");
-		
+	
 		HttpSession session = req.getSession();
 		MemberVO mvo = (MemberVO) session.getAttribute("member");
 		
@@ -38,10 +38,15 @@ public class HotelManageFormController implements Controller{
 			cri.setPageNum(Integer.parseInt(pageNum));
 		}
 		
-//		List<HotelVO> list = HotelService.getInstance().getOwnHotel(mvo.getMemberId(), cri);
+		List<HotelVO> list = HotelService.getInstance().getOwnHotel(mvo.getMemberId(), cri);
+		List<List<HotelPicVO>> picList = HotelService.getInstance().getMainHotelPic(list);
 		
+		int total = HotelService.getInstance().totalOwnHotelCount(mvo.getMemberId());
 		
-		
+		req.setAttribute("list", list);
+		req.setAttribute("picList", picList);
+		req.setAttribute("count", list.size());
+		req.setAttribute("page", new Page(cri, total));		
 		
 		Utils.forward(req, resp, "main/hotelManageForm.tiles");		
 	}

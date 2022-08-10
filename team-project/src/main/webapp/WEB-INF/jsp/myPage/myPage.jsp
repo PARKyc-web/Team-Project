@@ -10,9 +10,11 @@
         width: 600px;
         margin: 0 auto;
     }
+
     h3{
+
         text-align: center;
-        font-family: Georgia, "맑은 고딕", serif;
+
     }
     ul{
         list-style: none;
