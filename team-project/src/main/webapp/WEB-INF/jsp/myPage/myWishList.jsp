@@ -8,7 +8,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-font-family: Georgia, "맑은 고딕 ", serif ; #container {
+h3{
+		text-align: center;
+	}
+ #container {
+ font-family: Georgia, "맑은 고딕 ", serif ;
 	width: 600px;
 	margin: 0 auto;
 }
@@ -45,38 +49,42 @@ input[type="submit"] {
 
 </head>
 <body>
+<br><br><br>
 	<div id="container">
-		<h3>나의 위시 숙소 리스트</h3>
-			<c:forEach var="vo" items="${wishList }">
-				<c:when test="${vo.onOff eq 0}">
-					<div class="card mb-4"
-						style="text-align: center; width: 800px; margin: 0 auto">
-						<div class="card-header">
-							<c:set var="i" value="${i + 1}" />
-							No. ${i } 수정해야함*****
-						</div>
-						<div class="card-body">
-							<div class="slider">
-								<c:forEach var="inner" items="${picList}">
-									<img class="card-img-top" src="${inner.path}${inner.name}"
-										width="900px" height="200px" alt="selected-hotel-image" />
-
-								</c:forEach>
-							</div>
-							<p>${vo.hotelName }</p>
-							<button type="button"
-								onclick="location.href='${pageContext.request.contextPath }/selectHotel.do?hotelId=${vo.hotelId }'">상세보기</button>
-						</div>
-					</div>
+		<h3>나의 위시 숙소 리스트</h3>		
+			<c:choose>
+				<c:when test="${size eq 0}">
+					<h2> 즐겨찾기한 숙소가 없습니다 </h2>
+					<h3> 먼저 숙소 즐겨찾기를 해주세요!</h3>
 				</c:when>
-				<%-- <c:otherwise>
-				<c:set var="i" value="${i+1 }"/>
-				</c:otherwise> --%>
-			</c:forEach>
-			<%-- <c:set var="wishLength" value="${fn:length(wishList) }"></c:set>
-			<c:if test="${i eq wishLength}">
-				<p>등록된 위시리스트가 없습니다.</p>
-			</c:if> --%>
+				
+				<c:when test="${size ne 0}">
+					<c:forEach var="i" begin="0" end="${size-1}" step="1">
+						
+						<c:if test="${wishList[i].onOff eq 0}">
+
+							<div class="card mb-4" style="width: 600px; margin: 0 auto">
+								<div class="card-header">
+								<c:set var="k" value="${k + 1}" />
+								No. ${k}
+
+								</div>
+								<div class="card-body">
+								<div class="slider">
+									<c:forEach var="inner" items="${picList[i]}">
+										<img class="card-img-top" src="${inner.path}${inner.name}"
+
+											width="900px" height="300px" alt="selected-hotel-image" />
+									</c:forEach>
+								</div>
+								<h4 class="fw-bolder mb-4 mt-5">💗 <a href='${pageContext.request.contextPath}/selectHotel.do?hotelId=${wishList[i].hotelId}'>${wishList[i].hotelName}</a></h4>
+								<p>호텔 주소 띄워주기 후기 링크도 가져오면 더 좋다.. 위시리스트 취소도 여기서 할 수 있으면,,,</p>
+								</div>
+							</div>
+						</c:if>						
+					</c:forEach>
+				</c:when>				
+			</c:choose>
 
 		<jsp:include page="myHome.jsp"></jsp:include>
 	</div>

@@ -73,11 +73,19 @@ $(function () {
 </script>
 <script>
 	function formCheck(){
+		
+		if(member_password.value == ""){
+			alert("비밀번호를 입력하세요");
+			login.member_password.focus();
+			return false;
+		}
+		
 		if(check.member_id.value == ""){
 			alert("아이디를 입력하세요");
 			login.member_id.focus();
 			return false;
 		}
+		console.log(check.idCheck.value);
 		
 		if (check.idCheck.value == "unChecked") {
 			alert("아이디 중복체크를 하세요.");
@@ -120,11 +128,11 @@ $(function () {
 
 	<div id="idMsg"></div>
 	아이디* <input type="text" id="member_id" name="member_id">&nbsp;
-		<!-- <button type="button" id="idCheck" name="idCheck" value="unChecked">중복체크</button> --><br><br>
+		<input type="hidden" id="idCheck" name="idCheck" value="unChecked"></input><br><br>
 		<div id="idMsg"></div>
 	
-	비밀번호* <input type="password" name="member_password"><br><br>
-	비밀번호 재확인* <input type="password" name="member_password2"><br><br>
+	비밀번호* <input type="password" name="member_password" id="member_password"><br><br>
+	비밀번호 재확인* <input type="password" name="member_password2" id="member_password2"><br><br>
 	<hr>
 	이름 <input type="text" id="member_name" name="member_name"><br><br>
 	나이	<input type="text" id="member_age" name="member_age"><br><br>
@@ -132,7 +140,7 @@ $(function () {
 	이메일* <input type="email" id="email" name="email"><br><br>
 	회원유형* 
 		<div class="select">
-		<input type="radio" id="member_type" name="member_type" value="0" checked><label for=member_type">user</label>
+		<input type="radio" id="member_type" name="member_type" value="0" checked><label for="member_type">user</label>
 		<input type="radio" id="member_type2" name="member_type" value="1"><label for="member_type2">host <br><br></label>
 		</div>
 	<input type="button" value="가입" onclick="formCheck()">&nbsp;<input type="reset" value="취소">

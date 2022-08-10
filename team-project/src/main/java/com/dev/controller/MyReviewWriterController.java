@@ -25,9 +25,14 @@ public class MyReviewWriterController implements Controller {
 		int cost = Integer.parseInt(req.getParameter("cost"));
 		int hotelId = Integer.parseInt(req.getParameter("hotelId"));
 		String memberId = req.getParameter("memberId");
-
+		int reservationId = Integer.parseInt(req.getParameter("reservationId"));
+		
 		ReservationJoinHotelVO vo = new ReservationJoinHotelVO();
-
+		
+		System.out.println("MyReviewWriterController======================");
+		System.out.println(memberId);
+		
+		vo.setReservationId(reservationId);
 		vo.setInDate(in);
 		vo.setOutDate(out);
 		vo.setHotelName(name);

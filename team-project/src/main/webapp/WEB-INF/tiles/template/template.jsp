@@ -47,7 +47,9 @@
    				width:120px;
    			}
    			
+
 			#real-body{
+
    				height:auto;	
 				min-height:84vh;				
 				padding-bottom:70px;
@@ -59,6 +61,7 @@
   				transform : translateY(0%);
    			}
 
+
    			
    		</style>   
     </head>
@@ -66,6 +69,7 @@
     <body>
     
         <!-- Navigation-->
+		
 		<tiles:insertAttribute name="head"></tiles:insertAttribute>
                         
         <!-- Menu: Never USE -->
@@ -75,14 +79,12 @@
 		<div id="real-body">
         	<tiles:insertAttribute name="body"></tiles:insertAttribute>
 		</div>
-		
+
         <!-- Footer-->
         <div id="real-footer">
         	<tiles:insertAttribute name="foot"></tiles:insertAttribute>
         </div>
-		
-        <!-- Bootstrap core JS-->
-        
+
         <!-- Core theme JS-->
         <script src="tileExample/js/scripts.js"></script>
     </body>

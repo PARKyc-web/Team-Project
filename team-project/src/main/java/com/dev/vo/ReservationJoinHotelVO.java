@@ -10,10 +10,12 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ReservationJoinHotelVO {
+	private int reservationId;
 	private String hotelName;
 	private int hotelId;
 	private String memberId;	//공통
 	private Date inDate;
 	private Date outDate;
 	private int totalPrice;
+	private int isReserv;
 }

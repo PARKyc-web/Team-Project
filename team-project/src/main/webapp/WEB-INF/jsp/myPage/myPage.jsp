@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <style>
+
 	body{
 		background-image:url('image/bg.jpg');
 		background-repeat: no-repeat;
@@ -12,6 +16,7 @@
  	#container{
         width: 800px;
         background-color:#fff;
+
         margin: 0 auto;
         margin-top:4%;
         margin-bottom:4%;
@@ -20,12 +25,14 @@
     	box-shadow: 1px 1px 2px #f0f0f0;
     	padding:2%;
     }
+
     a{
     	color:gray;
     	text-decoration:none;
     }
     a:hover{
     	color:gray;
+
     }
     h3{
     	padding-top:3%;
@@ -36,12 +43,12 @@
 	}
     ul{
         list-style: none;
-       
     }
     ul li {
         clear: both;
         text-align: center;
     }
+
     #bold{
     	font-weight:bold;
     }
@@ -50,10 +57,12 @@
         width: 200px;
         height: 40px;
         border-top:0px; border-left:0px; border-right:0px;border-bottom: 1px solid #fff;
+
         padding: 5px;
         margin: 10px 0;
         outline:none;
     }
+
      input[type="text"]:hover{
      border-bottom: 1px solid #fc777b;
 
@@ -79,11 +88,11 @@
 		border-radius:5px;
 	}
     	
-    	
-    
-</style>
 
+</style>
+</head>
 <body>
+
 <div id="container">
            
        <form action="${pageContext.request.contextPath }/myPageModi.do" method="post">
@@ -108,7 +117,15 @@
 	        <input type="text" name ="date" value="${memberInfo.signInDate }" readonly><br><br></li>	    
 	        <li><input id="submit" type="submit" value ="정보수정">&nbsp;<button type="button" id="out" onclick="location.href='myMemberDeleteOutput.do'">회원탈퇴</button></li>    
         </ul>
+
         
+        <input type="text" name ="id" value="${memberInfo.memberId }" readonly><br>
+        <input type="text" name ="name" value="${memberInfo.memberName }" readonly><br>
+        <input type="text" name ="age" value="${memberInfo.memberAge }" readonly><br>
+        <input type="text" name ="phone" value="${memberInfo.phone }" readonly><br>
+        <input type="text" name ="email" value="${memberInfo.email }" readonly><br>
+        <input type="text" name ="date" value="${memberInfo.signInDate }" readonly> <br>       
+        <input type="text" name ="pic" value="${memberInfo.memberPic }" readonly><br>
         </form>
 <%--        <li> <label for="id" >내가 쓴 리뷰 : </label><br><br>
        
@@ -133,4 +150,6 @@
       	<input type ="submit" value = "숙박내역">
       	<input type ="submit" value = "위시리스트"> -->
       </div>
+
 </body>
+</html>
