@@ -49,6 +49,7 @@ input[type="submit"] {
 
 </head>
 <body>
+<br><br><br>
 	<div id="container">
 		<h3>나의 위시 숙소 리스트</h3>		
 			<c:choose>
@@ -61,15 +62,18 @@ input[type="submit"] {
 					<c:forEach var="i" begin="0" end="${size-1}" step="1">
 						
 						<c:if test="${wishList[i].onOff eq 0}">
+
 							<div class="card mb-4" style="width: 600px; margin: 0 auto">
 								<div class="card-header">
 								<c:set var="k" value="${k + 1}" />
 								No. ${k}
+
 								</div>
 								<div class="card-body">
 								<div class="slider">
 									<c:forEach var="inner" items="${picList[i]}">
 										<img class="card-img-top" src="${inner.path}${inner.name}"
+
 											width="900px" height="300px" alt="selected-hotel-image" />
 									</c:forEach>
 								</div>

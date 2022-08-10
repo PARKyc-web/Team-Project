@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>리뷰작성</title>
 <style>
+
 .star {
 	position: relative;
 	font-size: 2rem;
@@ -56,6 +57,7 @@ input[type="submit"]{
 	<form action="./myReviewSend.do" method="post">
 		<!-- 	별점 : <input type="number" step="0.5" max="5.0" min ="0.0" name="rate"><br>
 		 -->
+
 		<span class="star"> ★★★★★ <span>★★★★★</span> <input
 			type="range" oninput="drawStar(this)" name="rate" value="0"
 			step="0.5" min="0" max="5">
@@ -76,6 +78,7 @@ input[type="submit"]{
 		<input type="hidden" name="hotelId" value="${reservation.hotelId}">
 		<input type="hidden" name="memberId" value="${reservation.memberId}">
 		<input type="hidden" name="hotelName" value="${reservation.hotelName}">
+		<input type="hidden" name="reservationId" value="${reservation.reservationId}">
 		<input type="submit" value="작성완료">
 	</form>
 </div>

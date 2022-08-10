@@ -51,30 +51,11 @@
 </head>
 <body>
 	<h3>숙소 예약 내역</h3>
-	<div id ="container">
-	<table>
-		<tbody>
-		
-		
 
-			<c:forEach var="review" items="${review }">
-			<script>
-			console.log(${review});
-			</script>
-			$(document).ready(function () {
-						<c:if test = "${review.reviewId eq null}">
-          				 <c:set var="write" value="리뷰작성"></c:set>
-          				 console.log(${review.reviewId});
-          				 <!--  $("#sub_app_condition").show(); -->
-      					  </c:if>
-						<c:if test="${review.reviewId ne null}">
-          				  <c:set var="write" value="리뷰작성완료"></c:set>
-          				 console.log(value);
-          				 <!--  $("#sub_app_condition").hide();                // 아니면 거절 사유 숨김 --> 
-        				</c:if> 
-        				}
-        	</c:forEach>
-			<c:forEach var="vo" items="${reservation}">
+			<c:forEach var="vo" items="${reservation}">			
+
+	<div id ="container">
+
 				<form action="${pageContext.request.contextPath }/myReviewWriter.do"
 					method="post">
 					<ul>
@@ -90,13 +71,11 @@
 							<input type="hidden" name="hotelId" value="${vo.hotelId}">
 							<input type="hidden" name="memberId" value="${vo.memberId}"></li>
 
-						<li><input type="submit" name="write" value="리뷰작성"></li>
-
-
-					<!-- 	<input type="button" value="Disable me" disabled>
- -->
-
-					
+						<li><input type="hidden" name="reservationId" value="${vo.reservationId}"></li>
+						
+						<c:if test="${vo.isReserv ne 4}">
+							<li><input type="submit" value="리뷰작성"></li>
+						</c:if>
 
 					</ul>
 					</div>
@@ -105,24 +84,8 @@
 					
 				</form>
 
-
-				<%-- <button type="button" onclick ="location.href='${pageContext.request.contextPath }/selectHotel.do?hotelId=${vo.hotelId }'">상세보기</button>
-		 --%>
-
-
-				<%--  <tr>
-	         <td>숙소이름 : ${vo.hotelName }</td>
-	         <td>체크인 : ${vo.inDate }</td>
-	         <td>체크아웃 : ${vo.outDate }</td>
-	         <td>총비용 : ${vo.totalPrice }</td>    
-	         </tr>
-	         <tr><td type ="button" submit" value ="리뷰작성"></td>
-	         </tr> --%>
-	         
-
 			</c:forEach>
-		</tbody>
-	</table>
+
 	<jsp:include page="myHome.jsp"></jsp:include>
 </div>
 </body>

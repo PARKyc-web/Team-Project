@@ -30,9 +30,9 @@ public class MyReservationController implements Controller {
 		List<ReservationJoinHotelVO> reservation = ReservationService.getInstance().ReservationList(mvo.getMemberId());						
 		ReviewVO review = ReservationService.getInstance().getReview(vo);
 		// 공유
-		req.setAttribute("reservation", reservation);
-		req.setAttribute("review", review);
-		
+
+		req.setAttribute("reservation", reservation);		
+
 		Utils.forward(req, resp, "myPage/myReservation.tiles");
 	}
 }
