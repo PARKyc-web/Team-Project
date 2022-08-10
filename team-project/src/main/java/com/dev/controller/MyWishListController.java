@@ -40,6 +40,7 @@ public class MyWishListController implements Controller {
 		// 공유
 		req.setAttribute("wishList", wishList);
 		req.setAttribute("picList", picList);
+		req.setAttribute("size", wishList.size());
 		
 		Utils.forward(req, resp, "myPage/myWishList.tiles");
 	}
