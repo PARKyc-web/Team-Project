@@ -22,7 +22,30 @@
 					</div>
 				</div>
 			</c:forEach>
-      </c:forEach>
+      </c:forEach> 
+ <%-- 	<c:forEach var="vo1" items="${review1 }" varStatus="status">
+
+${ vo1.hotelName }
+
+${ review2[status.index].reviewDate }
+${ review2[status.index].reviewRate }
+${ review2[status.index].reviewContents }
+	 <c:forEach var="vo2" items="${review2 }">
+				<div class="card mb-4" style="text-align: center; width: 800px; margin: 0 auto">
+					<div class="card-header">
+						<p>${vo1.hotelName }</p>
+						<p>작성일자 | ${ review2[status.index].reviewDate }</p>
+					</div>
+					<div class="card-body">
+						<p>⭐ ${ review2[status.index].reviewRate } ${ review2[status.index].reviewContents }</p>
+						<button>삭제</button>
+					</div>
+				</div>
+			</c:forEach>
+      </c:forEach>  --%>
+
+	
+	
 
 		<jsp:include page = "myHome.jsp"></jsp:include>
 </body>
