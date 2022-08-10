@@ -5,13 +5,36 @@
 <head>
 <meta charset="UTF-8">
 <title>리뷰작성</title>
-
 <style>
+ .star {
+    position: relative;
+    font-size: 2rem;
+    color: #ddd;
+  }
+  
+  .star input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .star span {
+    width: 0;
+    position: absolute; 
+    left: 0;
+    color: red;
+    overflow: hidden;
+    pointer-events: none;
+  }</style>
+<!-- <style>
 HTML CSSResult Skip Results Iframe
 EDIT ON
 .starpoint_wrap{display:inline-block;}
-.starpoint_box{position:relative;background:(C:\Users\duswj\git\Team-Project\team-project\src\main\webapp\image\0별.png) 0 0 no-repeat;font-size:0;}
-.starpoint_box .starpoint_bg{display:block;position:absolute;top:0;left:0;height:18px;background:()C:\Users\duswj\git\Team-Project\team-project\src\main\webapp\image\5별.png) 0 -20px no-repeat;pointer-events:none;}
+.starpoint_box{position:relative;background:(C:\Users\admin\git\Team-Project\team-project\src\main\webapp\image\0별.png) 0 0 no-repeat;font-size:0;}
+.starpoint_box .starpoint_bg{display:block;position:absolute;top:0;left:0;height:18px;background:(C:\Users\admin\git\Team-Project\team-project\src\main\webapp\image\5별.png) 0 -20px no-repeat;pointer-events:none;}
 .starpoint_box .label_star{display:inline-block;width:10px;height:18px;box-sizing:border-box;}
 .starpoint_box .star_radio{opacity:0;width:0;height:0;position:absolute;}
 .starpoint_box .star_radio:nth-of-type(1):hover ~ .starpoint_bg,
@@ -36,7 +59,7 @@ EDIT ON
 .starpoint_box .star_radio:nth-of-type(10):checked ~ .starpoint_bg{width:100%;}
 
 .blind{position:absolute;clip:rect(0 0 0 0);margin:-1px;width:1px;height: 1px;overflow:hidden;}
-</style>
+</style> -->
 </head>
 <body>
 	<h3>리뷰작성</h3>
@@ -45,7 +68,15 @@ EDIT ON
 		
 	<!-- 	별점 : <input type="number" step="0.5" max="5.0" min ="0.0" name="rate"><br>
 		 -->
-     <div class="starpoint_wrap">
+		 <span class="star">
+  ★★★★★
+  <span>★★★★★</span>
+  <input type="range" oninput="drawStar(this)" name = "rate" value="1" step="1" min="0" max="10">
+</span>
+<script> const drawStar = (target) => {
+    document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
+}</script>
+  <!--    <div class="starpoint_wrap">
       <div class="starpoint_box">
         <label for="starpoint_1" class="label_star" title="0.5"><span class="blind">0.5점</span></label>
         <label for="starpoint_2" class="label_star" title="1"><span class="blind">1점</span></label>
@@ -69,7 +100,7 @@ EDIT ON
         <input type="radio" name="rate" id="starpoint_10" class="star_radio">
         <span class="starpoint_bg"></span>
       </div>
-    </div>
+    </div> -->
 		<input type="hidden" name="hotelId" value="${reservation.hotelId}">
 		<input type="hidden" name="memberId" value="${reservation.memberId}">
 		<input type="hidden" name="hotelName" value="${reservation.hotelName}">
