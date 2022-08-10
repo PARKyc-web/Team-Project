@@ -18,8 +18,12 @@ public class ReservationDAO extends DAO {
 	// 숙박리스트 출력 : yj
 
 	public List<ReservationJoinHotelVO> getReservationList(String memberId) {
-		String sql = "select * from hotel h FULL OUTER JOIN reservation rn "
-				+ "ON (h.hotel_id = rn.hotel_id) where rn.member_id = ? order by reserv_id desc";
+		String sql = "SELECT rn.reserv_id, h.hotel_id, h.hotel_name, rn.member_id, TO_CHAR(in_date, 'yyyy-MM-dd') in_date, "
+			       + "TO_CHAR(out_date, 'yyyy-MM-dd') out_date, total_price, is_reserv "
+			       + "FROM hotel h FULL OUTER JOIN reservation rn " 
+			       + "ON (h.hotel_id = rn.hotel_id) "
+			       + "WHERE rn.member_id = ? order by reserv_id desc ";
+		
 		List<ReservationJoinHotelVO> list = new ArrayList<>();
 		connect();
 		try {
@@ -30,13 +34,15 @@ public class ReservationDAO extends DAO {
 			while (rs.next()) {
 				ReservationJoinHotelVO rhvo = new ReservationJoinHotelVO();
 				// 출력값
-				rhvo.setHotelName(rs.getString("hotel_name"));
+				rhvo.setReservationId(rs.getInt("reserv_id"));
 				rhvo.setHotelId(rs.getInt("hotel_id"));
-				rhvo.setInDate(rs.getDate("in_date"));
-				rhvo.setOutDate(rs.getDate("out_date"));
+				rhvo.setHotelName(rs.getString("hotel_name"));
+				rhvo.setInDate(Date.valueOf(rs.getString("in_date")));
+				rhvo.setOutDate(Date.valueOf(rs.getString("out_date")));
 				rhvo.setTotalPrice(rs.getInt("total_price"));
+				rhvo.setIsReserv(rs.getInt("is_reserv"));
 				rhvo.setMemberId(rs.getString("member_id"));
-
+				
 				list.add(rhvo);
 			}
 
@@ -46,9 +52,9 @@ public class ReservationDAO extends DAO {
 			disconnect();
 		}
     
-    return list;
-
+		return list;
 	}
+	
   // 특정 호텔의 예약된 날짜를 반환하는 함수입니다.
 		public List<Date> invalidDate(int hotelId) {
 			List<Date> invalidDateList = new ArrayList<Date>();
@@ -111,5 +117,30 @@ public class ReservationDAO extends DAO {
 				disconnect();
 			}
 			return result;
+		}
+		
+		public void reviewdReservation(int reservationId) {
+			
+			try {
+				connect();
+				
+				String sql = "UPDATE reservation "
+						   + "SET is_reserv = 4 "
+						   + "WHERE reserv_id = ?";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, reservationId);
+				
+				int result = pstmt.executeUpdate();
+						
+				System.out.println(result + "건 리뷰를 작성하였습니다");
+				
+			}catch(SQLException e) {
+				e.printStackTrace();
+				
+			}finally {
+				disconnect();
+			}
+			
 		}
 }

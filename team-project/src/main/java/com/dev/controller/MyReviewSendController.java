@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dev.common.Controller;
 import com.dev.common.Utils;
+import com.dev.service.ReservationService;
 import com.dev.service.ReviewService;
 import com.dev.vo.ReviewVO;
 
@@ -23,15 +24,28 @@ public class MyReviewSendController implements Controller {
 	      String memberId = req.getParameter("memberId");
 	      String hotelName = req.getParameter("hotelName");
 	      
+	      int reservationId = Integer.parseInt(req.getParameter("reservationId"));
+	      
 	      ReviewVO vo = new ReviewVO();// 
 	      vo.setReviewContents(contents);
 	      vo.setReviewRate(rate);// < 삽입할 4가지의 값만 담아서
 	      vo.setHotelId(hotelId);
 	      vo.setMemberId(memberId);
 	      
+	      System.out.println(vo.getMemberId());
+	      System.out.println(vo.getHotelId());
+	      System.out.println(vo.getReviewContents());
+	      System.out.println(vo.getReviewRate());
+	      
+	      System.out.println(reservationId);
 	   
+	      
+			System.out.println("MyReviewSendController======================");
+			System.out.println(memberId);
+	      
 	      //리스트가 아닌 리뷰 메소드를 만들어야하는지,,??
-	      ReviewService.getInstance().reviewWrite(vo);// 
+	      ReviewService.getInstance().reviewWrite(vo);// 	      
+	      ReservationService.getInstance().reviewdReservation(reservationId);
 	      
 	      Utils.forward(req, resp, "myPage/myReviewSendOutput.tiles");
 	}

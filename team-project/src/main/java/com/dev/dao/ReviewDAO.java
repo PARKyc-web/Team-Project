@@ -1,5 +1,6 @@
 package com.dev.dao;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -193,6 +194,7 @@ public class ReviewDAO extends DAO {
 				pstmt.setInt(2, vo.getHotelId());
 				pstmt.setString(3, vo.getReviewContents());
 				pstmt.setFloat(4, vo.getReviewRate());
+				
 				int r = pstmt.executeUpdate();
 				System.out.println(r + "건 입력됨");
 			
@@ -229,4 +231,46 @@ public class ReviewDAO extends DAO {
 			return null;
 
 		}
+		
+		public List<ReviewJoinReservationJoinHotelVO> getWritredReivew(String memberId) {
+						
+			List<ReviewJoinReservationJoinHotelVO> list = new ArrayList<>();			
+			try {
+				connect();
+				
+				String sql = "SELECT r.review_id, h.hotel_name, r.member_id, r.review_contents, "
+						   + "TO_CHAR(r.review_date, 'yyyy-MM-dd') review_date, r.review_rate "
+						   + "FROM review r JOIN hotel h "
+						   + "ON r.hotel_id = h.hotel_id "
+						   + "WHERE r.member_id = ? order by r.review_date desc ";
+				
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setString(1, memberId);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					ReviewJoinReservationJoinHotelVO vo = new ReviewJoinReservationJoinHotelVO();
+					
+					vo.setHotelName(rs.getString("hotel_name"));
+					vo.setMemberId(rs.getString("member_id"));
+					vo.setReviewContents(rs.getString("review_contents"));
+					vo.setReviewDate(Date.valueOf(rs.getString("review_date")));
+					vo.setReviewRate(rs.getFloat("review_rate"));
+					vo.setReviewId(rs.getInt("review_id"));
+					list.add(vo);
+				}				
+				
+			}catch(SQLException e) {
+				e.printStackTrace();
+				
+			}finally {
+				disconnect();
+			}
+			
+			return list;
+		}
+		
+		
+		
 }

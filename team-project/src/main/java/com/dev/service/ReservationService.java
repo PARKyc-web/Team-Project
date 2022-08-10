@@ -38,4 +38,8 @@ public class ReservationService {
 		return dao.insertReservation(memberId, hotelId, checkIn, checkOut, totalPrice);
 	}
 	
+	public void reviewdReservation(int reservationId) {
+		dao.reviewdReservation(reservationId);
+	}
+	
 }
