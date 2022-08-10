@@ -11,7 +11,7 @@
 	<h3>리뷰내역</h3>
 	 <c:forEach var="vo1" items="${review1 }">
 	 <c:forEach var="vo2" items="${review2 }">
-				<div class="card mb-4" style="text-align: center; width: 800px; margin: 0 auto">
+				<div class="card mb-4" style="text-align: center; width: 600px; margin: 0 auto">
 					<div class="card-header">
 						<p>${vo1.hotelName }</p>
 					</div>
