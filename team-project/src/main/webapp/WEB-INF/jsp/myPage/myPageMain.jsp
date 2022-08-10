@@ -4,6 +4,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 h3{
+	padding-top:5%;
 	text-align:center;
 
 }
@@ -16,6 +17,7 @@ a{
 	text-align:center;
 	display:flex;
 	flex-wrap:wrap;
+	padding-left:3%;
 }
 h3{
 	color:#616060;
@@ -29,13 +31,19 @@ h3{
 	border-radius: 5px;
 	box-shadow: 1px 1px 3px #f0f0f0;
 	margin: 1%;
-	padding: 5%;
+	padding: 6%;
+	
 	flex-direction : row;
-	font-size:16px;
+	font-size:17px;
+	font-weight:bold;
+	color:#2b2b2b;
+}
+.tab:hover{
+	background-color:#fc777b;
 }
 h6{
 text-align:center;
-padding:20px;
+padding-left:60%;
 }
 </style>
 </head>
