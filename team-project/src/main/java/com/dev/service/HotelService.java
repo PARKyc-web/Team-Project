@@ -90,15 +90,20 @@ public class HotelService {
 		return dao.sequenceCurval();
 	}
 	
-//	public int totalOwnHotelCount(String memberId) {
-//		
-//	}
-//	
-//	public List<HotelVO> getOwnHotel(String memberId, Criteria cri) {
-//		
-//	}
-//	
-//	public List<List<HotelPicVO>> getOwnHotelPic(List<HotelVO> list){
-//		
-//	}
+	public int totalOwnHotelCount(String memberId) {
+		return dao.getTotalOwnHotelCount(memberId);
+	}
+	
+	public List<HotelVO> getOwnHotel(String memberId, Criteria cri) {
+		return dao.getOwnHotel(memberId, cri);
+	}	
+	
+	public void hotelUpdate(HotelVO hvo) {
+		dao.updateHotel(hvo);
+	}
+	
+	public void hotelPicUpdate(HotelPicVO pvo) {
+		dao.addHotelPic(pvo);
+	}
+
 }
