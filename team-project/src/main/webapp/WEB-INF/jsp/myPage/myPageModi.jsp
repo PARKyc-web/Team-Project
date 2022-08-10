@@ -72,6 +72,9 @@
 		box-shadow: 1px 1px 2px #f0f0f0;
 		border-radius:5px;
     }	
+    #uploadImage{
+    padding-left: 100px;
+    }
     jsp:include.class{
      text-align: center;
     }
@@ -108,7 +111,7 @@
 	      <li><h3><span id="bold">회원정보 수정</span></h3></li>
           <li><br><img src="${memberModi.memberPic}" width="300px" height="300px" id="mypage_image" 
           	       name="mypage_image" onError="hotel_default.webp"></li>
-          <li><br><input class="upload-name" value="첨부파일"><label for="pic"></label>
+          <li><br><label for="pic"></label>
           <input type="file" accept="image/*" name="uploadImage" id="uploadImage" onchange="PreviewImage();"></li>
          
           <li><br><label for="id" ><span id="bold">아이디 </span></label>

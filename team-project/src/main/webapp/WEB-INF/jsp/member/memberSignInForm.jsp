@@ -9,15 +9,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
 body{
 font-family: 'Noto Sans KR', sans-serif;
+	background-image:url('image/bg.jpg');
+		background-repeat: no-repeat;
+  		background-position: center;
+  		background-size: cover;
 }
 #container{
-	margin:0 auto;
-	text-align:center;
-	background-image: url('image/bg.jpg');
-	background-repeat: no-repeat;
-  	background-position: center;
-  	background-size: cover;
-  	padding: 10%;
+	display:flex;
+	flex-wrap:wrap;
+	    width: 1200px;
+        background-color: rgba( 255, 255, 255, 0.95 );
+        margin: 0 auto;
+        margin-top:4%;
+        margin-bottom:4%;
+        border: 1px solid #f2f2f2;
+    	border-radius:10px;
+    	box-shadow: 1px 1px 2px #f0f0f0;
+    	padding:2%;
+}
+
+.left{
+width:50%;
+flex-direction : row;
+background-image: url('image/bg2.jpg');
+}
+.right{
+padding-top:13%;
+padding-bottom:13%;
+width:50%;
+flex-direction : row;
 }
 .form-style{
 margin: 0 auto; 
@@ -83,6 +103,8 @@ width:30%;
 
 <body>
 	<div id ="container">
+		<div class="left"></div>
+		<div class="right">
 		<form id="check" name="login" action="memberSignIn.do" method="post" style="margin:0px auto; padding:20px; text-align:center">
 				<h3>로그인</h3>
 				<input class="input-style" type="text" id="member_id" name="member_id" placeholder="아이디를 입력하세요"><br><br>
@@ -90,8 +112,9 @@ width:30%;
 				
 				<button class="submit" type="submit" onclick="formCheck()">로그인</button> 
 				<button class="submit" type="reset">취소</button>
-				<br><br><p><a href="memberJoin.do">뒤로가기</a></p>
+				<br><br><button class="submit" type="reset">취소</button>
 		</form>
+		</div>
 	</div>
 </body>
 </html>

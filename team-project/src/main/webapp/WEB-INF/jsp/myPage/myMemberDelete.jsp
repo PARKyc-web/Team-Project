@@ -32,7 +32,7 @@ body{
 	text-align: center;
 	position:relative;
 	margin-top:4%;
-	background-color:#fff;
+	background-color: rgba( 255, 255, 255, 0.95 );
 	border: 1px solid #f2f2f2;
 	border-radius:10px;
 	box-shadow: 1px 1px 2px #f0f0f0;

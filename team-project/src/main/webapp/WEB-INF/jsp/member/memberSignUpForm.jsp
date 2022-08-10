@@ -10,14 +10,28 @@ pageEncoding="UTF-8"%>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
 body{
 font-family: 'Noto Sans KR', sans-serif;
+	background-image:url('image/bg.jpg');
+		background-repeat: no-repeat;
+  		background-position: center;
+  		background-size: cover;
 }
 h3{
 padding:20px;
+font-weight:bold;
 }
 
-.container{
+#container{
 	display:flex;
 	flex-wrap:wrap;
+	    width: 1200px;
+        background-color: rgba( 255, 255, 255, 0.95 );
+        margin: 0 auto;
+        margin-top:3%;
+        margin-bottom:4%;
+        border: 1px solid #f2f2f2;
+    	border-radius:10px;
+    	box-shadow: 1px 1px 2px #f0f0f0;
+    	padding:2%;
 }
 .left{
 width:50%;
@@ -28,6 +42,27 @@ background-image: url('image/bg2.jpg');
 width:50%;
 flex-direction : row;
 }
+
+	#submit{
+		border: 1px solid #e6e6e6;
+		padding:1.5%;
+		background-color: #fc777b;
+		color: #fff;
+		box-shadow: 1px 1px 2px #f0f0f0;
+		border-radius:5px;
+	}
+	#submit:hover{
+		background-color:#fc6d71;
+	}
+	#out{
+		border: 1px solid #e6e6e6;
+		padding:1.5%;
+		background-color: #9c9c9c;
+		color: #fff;
+		box-shadow: 1px 1px 2px #f0f0f0;
+		border-radius:5px;
+	}
+    	
 
 </style>
 </head>
@@ -60,7 +95,7 @@ $(function () {
 					//alert("사용가능한 아이디입니다.");
 					$("#idCheck").val("checked");
 					$("#member_password").focus();
-					document.getElementById("idMsg").style.color = 'blue';
+					document.getElementById("idMsg").style.color = '#0015d1';
 			        document.getElementById('idMsg').innerText = '사용 가능한 아이디입니다';
 				}
 			},
@@ -120,15 +155,15 @@ $(function () {
 		}
 	
 </script>
-<div class="container">
-<div class="left">dd</div>
+<div id="container">
+<div class="left"></div>
 <div class="right">
 <form action="memberSignUp.do" id="check" method="post" style="margin:0px auto; padding:50px; text-align:center">
 <h3>회원가입</h3>
 
 	<div id="idMsg"></div>
 	아이디* <input type="text" id="member_id" name="member_id">&nbsp;
-		<input type="hidden" id="idCheck" name="idCheck" value="unChecked"></input><br><br>
+		<input type="hidden" id="idCheck" name="idCheck" value="unChecked" placeholder="id를 입력하세요"></input><br><br>
 		<div id="idMsg"></div>
 	
 	비밀번호* <input type="password" name="member_password" id="member_password"><br><br>
@@ -139,11 +174,9 @@ $(function () {
 	전화번호* <input type="text" id="phone" name="phone"><br><br>
 	이메일* <input type="email" id="email" name="email"><br><br>
 	회원유형* 
-		<div class="select">
 		<input type="radio" id="member_type" name="member_type" value="0" checked><label for="member_type">user</label>
-		<input type="radio" id="member_type2" name="member_type" value="1"><label for="member_type2">host <br><br></label>
-		</div>
-	<input type="button" value="가입" onclick="formCheck()">&nbsp;<input type="reset" value="취소">
+		<input type="radio" id="member_type2" name="member_type" value="1"><label for="member_type2">host <br></label>
+	<br><br><input type="button" id="submit" value="가입" onclick="formCheck()">&nbsp;<input type="reset" id="out" value="취소">
 	
 <br><br><a href="memberJoin.do">뒤로가기</a>
 </form>
