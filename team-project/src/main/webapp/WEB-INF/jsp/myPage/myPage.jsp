@@ -9,6 +9,7 @@
         margin: 0 auto;
     }
     h2{
+    	padding-top:5%;
         text-align: center;
         font-family: Georgia, "맑은 고딕", serif;
     }
