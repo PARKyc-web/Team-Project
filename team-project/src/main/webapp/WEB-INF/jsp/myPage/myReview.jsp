@@ -14,11 +14,11 @@
 				<div class="card mb-4" style="text-align: center; width: 800px; margin: 0 auto">
 					<div class="card-header">
 						<p>${vo1.hotelName }</p>
-						<p>작성일자 | ${vo2.reviewDate }</p>
 					</div>
 					<div class="card-body">
+						<p style="text-align: right">작성일자 | ${vo2.reviewDate }</p>
 						<p>⭐ ${vo2.reviewRate } ${vo2.reviewContents }</p>
-						<button>삭제</button>
+						<button>수정</button><button>${vo1.hotelId } 삭제</button>
 					</div>
 				</div>
 			</c:forEach>
