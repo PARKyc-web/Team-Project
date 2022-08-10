@@ -72,9 +72,10 @@
 
 	
 	<div class="recommend-hotel">
-	<h4><i> == Search Hotel List == </i></h4>
+	<h4> 검색된 숙소 </h4>
 	<small><b>(${word}의 검색결과 : ${page.total}개)</b></small>
 	</div>
+	<hr>
 	
 	
 	<c:choose>

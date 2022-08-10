@@ -46,6 +46,20 @@
    			.uploadLabel{
    				width:120px;
    			}
+   			
+			#real-body{
+   				height:auto;	
+				min-height:84vh;				
+				padding-bottom:70px;
+   			}
+   			
+   			#real-footer{
+   				height:70px;
+				position : relative;
+  				transform : translateY(0%);
+   			}
+
+   			
    		</style>   
     </head>
     
@@ -58,10 +72,14 @@
         <tiles:insertAttribute name="menu"></tiles:insertAttribute>
         
         <!-- Section-->
-        <tiles:insertAttribute name="body"></tiles:insertAttribute>    
-        
+		<div id="real-body">
+        	<tiles:insertAttribute name="body"></tiles:insertAttribute>
+		</div>
+		
         <!-- Footer-->
-		<tiles:insertAttribute name="foot"></tiles:insertAttribute>
+        <div id="real-footer">
+        	<tiles:insertAttribute name="foot"></tiles:insertAttribute>
+        </div>
 		
         <!-- Bootstrap core JS-->
         
