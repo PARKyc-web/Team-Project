@@ -45,14 +45,15 @@
 		padding-top: 15px;
 	}
 
-	input[type="text"]:hover{
-	border: none;
+	input[type="text"]:focus{
+		outline : none;
 	}
 	
 </style>
 </head>
 <body>
 	<h3>숙소 예약 내역</h3>
+
 
 	<c:forEach var="vo" items="${reservation}">				
 			<div id ="container">
