@@ -14,7 +14,7 @@ public class WishListDAO extends DAO{
 	// 나의 숙박위시리스트 : yj
 	public List<WishListJoinHotelVO> getWishList(String memberId) {
 		String sql = "select * from hotel h FULL OUTER JOIN wish_list w ON (h.hotel_id = w.hotel_id) "
-					+ "WHERE w.member_id = ? ";
+					+ "WHERE w.member_id = ? AND w.onOff = 0";
 		List<WishListJoinHotelVO> list = new ArrayList<>();
 		connect();
 		try {
@@ -63,7 +63,7 @@ public class WishListDAO extends DAO{
 	}
 	
 	public void insertWishList(String memberId, int hotelId) {
-		String sql = "insert into wish_list values(? , ?, 0)";
+		String sql = "insert into wish_list values(?, ?, 0)";
 		connect();
 		
 		try {
@@ -95,6 +95,7 @@ public class WishListDAO extends DAO{
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
 		} finally {
 			disconnect();
 		}
