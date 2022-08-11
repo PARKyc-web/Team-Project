@@ -103,7 +103,6 @@ input[type="text"]:focus {
 							<c:when test="${vo[i].isReserv eq 4 }">
 								<li><input type="submit" value="리뷰작성완료" disabled></li>
 							</c:when>
-
 							<c:when test="${vo[i].isReserv ne 4 and !canWrite[i]}">
 								<button type="button" onclick="clickDelete()">예약취소하기</button>
 								<script type="text/javascript">

@@ -364,11 +364,11 @@
 					<div class="card-header" style="text-align: center">숙소가 마음에
 						드시나요?</div>
 					<div class="card-body">
-						<p>
-							<b style="font-size: x-large;">₩${hotelInfo.hotelPrice }</b> /박 <span
-								style="font-size: small;">⭐ <b>${avgStar}</b> · <a
-								href="#review" style="color: gray">후기 ${countReview }개</a></span>
-						</p>
+						
+							<div style="float:left;"><b style="font-size: x-large;">₩${hotelInfo.hotelPrice }</b> /박</div>
+							<div style="float:right; display:inline-block;"><span style="font-size: small;">⭐ <b>${avgStar}</b>
+					 · <a href="#review" style="color: gray">후기 ${countReview }개</a></span></div><br><br>
+						
 
 						<script type="text/javascript">
 							$(function() {
@@ -459,20 +459,22 @@
 							
 							체크인 및 체크아웃 <input type="text" name="datefilter" id="inputDate" onchange="return changeEven()"
 								placeholder="여기를 눌러 선택하기"
-								style="width: 190px; text-align: center; border: none;" /><br>
+								style="width: 190px; text-align: center; border: none; float: right;" /><br>
 							인원 게스트 <input type="number" name="guestNum" min="1" value="1"
 								max=${hotelInfo.maxP }
 								style="width: 35px; border: none; text-align: right;">명<br>
-
+							<br>
+							<div style=" text-align: center;">
 							<input type="submit" value="예약하기" style="margin: 0 auto" />
-							
+							</div>
+							<br>
 							<p style="text-align: center;">예약 확정 전에는 요금이 청구되지 않습니다.</p>
-							<p>₩${hotelInfo.hotelPrice } x <span id='day'></span>
+							<div style="float:left;">₩${hotelInfo.hotelPrice } x <span id='day'></span>
 							
-							박 ₩<span id = 'totalPrice'></span></p>
-							<p>서비스 수수료 ₩0</p>
+							박</div> <div style="float:right; display:inline-block;">₩<span id = 'totalPrice'>0</span></div><br>
+							<div style="float:left;">서비스 수수료</div > <div style="float:right; display:inline-block;">₩0</div><br>
 							<hr>
-							<p>총 합계 ₩<span id = 'totalPrice2'></span></p>
+							<div style="float:left;">총 합계</div> <div style="float:right; display:inline-block;">₩<span id = 'totalPrice2'>0</span></div>
 						</form>
 					</div>
 
