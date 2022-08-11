@@ -118,10 +118,16 @@ font-family: 'Noto Sans KR', sans-serif;
 <div id="container">
 	<h3>숙소 예약 내역</h3>
 	
-	<c:set var="vo" value="${reservation }"></c:set>
+		<c:choose>
+		<c:when test="${size eq 0}">
+			<h3>예약된 내역이 없습니다</h3>
+			
+		</c:when>
+		<c:otherwise>
+	<%-- <c:set var="vo" value="${reservation }"></c:set>
 
 
-	<c:if test="${size ne 0}">
+	<c:if test="${size ne 0}"> --%>
 		<c:forEach var="i" begin="0" end="${size-1}" step="1">
 			<div id="container2">
 				<form action="${pageContext.request.contextPath }/myReviewWriter.do"
@@ -169,7 +175,9 @@ font-family: 'Noto Sans KR', sans-serif;
 				</form>
 			</div>
 		</c:forEach>
-	</c:if>
+		</c:otherwise>
+	<%-- </c:if> --%>
+	</c:choose>
 </div>
 </body>
 </html>
