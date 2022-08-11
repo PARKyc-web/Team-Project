@@ -4,6 +4,12 @@
 
 <head>
 	<style>
+	h3{
+	 
+    	padding-bottom:1%;
+        text-align: center;
+	
+	}
 	</style>
 
 </head>

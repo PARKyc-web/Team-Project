@@ -44,23 +44,19 @@
 		width: 450px;
 		padding-top: 15px;
 	}
-	input[type="text"]:hover{
-	border: none;
+	input[type="text"]:focus{
+		outline : none;
 	}
 </style>
 </head>
 <body>
 	<h3>숙소 예약 내역</h3>
-
 			<c:forEach var="vo" items="${reservation}">			
-
 	<div id ="container">
-
 				<form action="${pageContext.request.contextPath }/myReviewWriter.do"
 					method="post">
 					<ul>
 						<li><label for="name" class="field">숙소이름 : </label> <input name="name"
-
 							size="10" id="id" type="text" value="${vo.hotelName }" readonly></li>
 						<li><label for="in" class="field">체크인 : </label> <input name="in"
 							type="text" value="${vo.inDate }" readonly></li>
@@ -76,17 +72,10 @@
 						<c:if test="${vo.isReserv ne 4}">
 							<li><input type="submit" value="리뷰작성"></li>
 						</c:if>
-
 					</ul>
-					</div>
-				</div>
-				
-					
 				</form>
-
+					</div>
 			</c:forEach>
-
 	<jsp:include page="myHome.jsp"></jsp:include>
-</div>
 </body>
 </html>
