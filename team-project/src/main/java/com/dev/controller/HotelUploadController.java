@@ -109,9 +109,7 @@ public class HotelUploadController implements Controller {
 			hvo.setHotelOptionParking(Integer.parseInt(parameter.getOrDefault("hotel_option_parking", "0")));
 			hvo.setHotelOptionSwim(Integer.parseInt(parameter.getOrDefault("hotel_option_swim", "0")));
 			hvo.setHotelOptionWifi(Integer.parseInt(parameter.getOrDefault("hotel_option_WIFI", "0")));
-			hvo.setHotelOptionWpet(Integer.parseInt(parameter.getOrDefault("hotel_option_wPet", "0")));
-								
-
+			hvo.setHotelOptionWpet(Integer.parseInt(parameter.getOrDefault("hotel_option_wPet", "0")));								
 			
 			System.out.println(pvo.getPath());
 			System.out.println(pvo.getName());

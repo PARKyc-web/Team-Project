@@ -11,7 +11,7 @@
 	
 	}
 	</style>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
 		<br><br>
@@ -41,5 +41,6 @@
 				</div>
 		</c:forEach>
 
-	  <jsp:include page = "myHome.jsp"></jsp:include>
+	  <jsp:include page = "myHome.jsp"></jsp:include>	  
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
