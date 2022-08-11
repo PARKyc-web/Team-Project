@@ -61,6 +61,9 @@
 						<p class="fs-5 mb-4">게스트 ${guestNum }명</p>
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">결제 수단</h4>
+						<button class="fs-5 mb-4" style="background-color:white; border-radius: 5px; border-width: 1px; padding:15px">
+						💳 신용카드 또는 체크카드
+						</button>
 						
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">환불 정책</h4>
@@ -100,11 +103,9 @@
 						<h4 class="fw-bolder mb-4 mt-5">요금 세부 정보</h4>
 						<form name=>
 						<p>₩${hotelInfo.hotelPrice } x <span id="day"></span>박 ₩<span id ="totalPrice2"></span></p>
-						<p>청소비 ₩10,000</p> 
-						<p>서비스 수수료 ₩176,471</p>
-						<p>숙박세와 수수료 ₩17,647</p>
+						<p>서비스 수수료 ₩0</p>
 						<hr>
-						<p>총 합계 ₩1,444,118</p>
+						<p>총 합계 ₩<span id ="totalPrice3"></span></p>
 						</form>
 					</div>
 				</div>
@@ -129,6 +130,7 @@
 						document.getElementById('checkOut').value = checkOut;
 						document.getElementById('totalPrice').value = ${hotelInfo.hotelPrice } * day;
 						document.getElementById('totalPrice2').innerHTML = ${hotelInfo.hotelPrice } * day;
+						document.getElementById('totalPrice3').innerHTML = ${hotelInfo.hotelPrice } * day;
 						document.getElementById('day').innerHTML = day;
 					</script>
 

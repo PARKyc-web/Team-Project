@@ -23,7 +23,8 @@ public class ReservationDAO extends DAO {
 			       + "TO_CHAR(out_date, 'yyyy-MM-dd') out_date, total_price, is_reserv "
 			       + "FROM hotel h FULL OUTER JOIN reservation rn " 
 			       + "ON (h.hotel_id = rn.hotel_id) "
-			       + "WHERE rn.member_id = ? order by reserv_id desc ";
+			       + "WHERE rn.member_id = ? "
+			       + "order by reserv_id desc ";
 		
 		List<ReservationJoinHotelVO> list = new ArrayList<>();
 		connect();
