@@ -40,6 +40,4 @@
 					</div>
 				</div>
 		</c:forEach>
-
-	  <jsp:include page = "myHome.jsp"></jsp:include>
 </body>

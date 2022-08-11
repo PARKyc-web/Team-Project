@@ -18,6 +18,18 @@ a:hover{
 	text-decoration:none;
 	color:gray;
 }
+#container2{
+	    width: 90%;
+        background-color: rgba( 255, 255, 255, 0.95 );
+        margin: 0 auto;
+        margin-top:2%;
+        border: 1px solid #f2f2f2;
+    	border-radius:10px;
+    	box-shadow: 1px 1px 2px #f0f0f0;
+    	padding:2%;
+    	padding-bottom:7%;
+    	
+}
 .container{
 	margin: 0 auto;
 	text-align:center;
@@ -45,7 +57,7 @@ h3{
 	color:#2b2b2b;
 }
 .tab:hover{
-box-shadow: 1px 1px 3px #fc777b;
+/*box-shadow: 1px 1px 3px #fc777b;*/
 	/*background-color:#fc777b;*/
 }
 h6{
@@ -62,11 +74,14 @@ padding-bottom:10%;
   'FILL' 0,
   'wght' 700,
   'GRAD' 0,
-  'opsz' 48
+  'opsz' 48;
+  font-size: 50px;
+  color: #fc777b
 }
 </style>
 </head>
 <body>
+<div id="container2">
 	<h3>마이페이지</h3>
 	<div class="container">
 			<button class="tab" onclick="location.href='myPage.do'">
@@ -88,5 +103,5 @@ padding-bottom:10%;
 			<div class="tab"><a href="myWishList.do">위시리스트</a><br></div> -->
 			<!-- <a href="memberList.do">회원목록</a> -->
 	</div>
-			
+</div>			
 </body>

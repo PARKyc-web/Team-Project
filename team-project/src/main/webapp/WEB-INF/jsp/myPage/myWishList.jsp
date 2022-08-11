@@ -103,8 +103,6 @@ input[type="submit"] {
 				</c:forEach>
 			</c:when>
 		</c:choose>
-
-		<jsp:include page="myHome.jsp"></jsp:include>
 	</div>
 </body>
 </html>

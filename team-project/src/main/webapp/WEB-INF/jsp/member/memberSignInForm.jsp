@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
 body{
 font-family: 'Noto Sans KR', sans-serif;
-	background-image:url('image/bg2.jpg');
+	/*background-image:url('image/bg2.jpg');*/
 		background-repeat: no-repeat;
   		background-position: center;
   		background-size: cover;
@@ -17,7 +17,7 @@ font-family: 'Noto Sans KR', sans-serif;
 #container{
 	display:flex;
 	flex-wrap:wrap;
-	    width: 1200px;
+	    width: 70%;
         background-color: rgba( 255, 255, 255, 0.95 );
         margin: 0 auto;
         margin-top:5%;
@@ -120,6 +120,19 @@ a:hover{
     $('.left').css('background-image', ('url("'+imgPath+'")'));
      
     });
+       
+       
+       $(document).ready(function(){ 
+    	      
+    	    var numberOfImages=2; 
+    	      
+    	    var imageNum = Math.round(Math.random()*(numberOfImages-1))+1;
+    	     
+    	    var imgPath=('./image/bg'+imageNum+'.jpg');
+    	   
+    	    $('body').css('background-image', ('url("'+imgPath+'")'));
+    	     
+    	    });   
   </script>
 
 <script type="text/javascript">

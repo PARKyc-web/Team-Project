@@ -8,15 +8,43 @@
 
 <title>숙소 예약 내역</title>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
-	#container{
-		width: 600px;
-		margin : 0 auto;
-	font-family : Georgia, "맑은 고딕", serif;
+body{
 
+font-family: 'Noto Sans KR', sans-serif;
+	/*background-image:url('image/bg2.jpg');*/
+		background-repeat: no-repeat;
+  		background-position: center;
+  		background-size: cover;
+}
+#container{
+	
+	    width: 90%;
+        background-color: rgba( 255, 255, 255, 0.95 );
+        margin: 0 auto;
+        margin-top:2%;
+        margin-bottom:1%;
+        border: 1px solid #f2f2f2;
+    	border-radius:10px;
+    	box-shadow: 1px 1px 2px #f0f0f0;
+    	padding:2%;
+    	
+}
+	#container2{
+		position:relative;
+		width: 40%;
+		margin : 0 auto;
+		flex-direction : row;
+		padding: 2%;
+	}
+	#container2:hover{
+		border-left: 4px solid #fc777b;
 	}
 	h3{
 		text-align: center;
+		margin: 0 auto;
+		position:relative;
 	}
 	ul{
 		list-style: none;
@@ -32,13 +60,17 @@
 		text-align: center;
 		margin-right: 15px;
 	}
+	input{
+		text-align:center;
+	}
 	input[type="submit"]{
 		float: right;
 		border: 1px rgb(34, 160, 87);
 		border-radius: 12px;
-		background-color: rgb(80, 209, 134);
+		background-color: #fc777b;
 		font-weight: bold;
 		color : white;
+		padding:1%;
 		
 	}
 	input[type="text"]{
@@ -51,24 +83,44 @@
 		outline : none;
 	}
 	
+	#card{
+		margin: 0 auto;
+	}
+	hr{
+		margin: 0 auto;
+		width: 80%;
+		color: #cccccc;
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 700,
+  'GRAD' 0,
+  'opsz' 48;
+  font-size: 50px;
+}
+	
 </style>
 </head>
 <body>
-	<h3>숙소 예약 내역</h3>
+	<div id="container">
 
-
+	
+	<h3><span class="material-symbols-outlined">bookmark</span><br>숙소 예약 내역</h3>
+	<hr>
 	<c:forEach var="vo" items="${reservation}">				
-			<div id ="container">
-					<form action="${pageContext.request.contextPath }/myReviewWriter.do"
-						method="post">
+				<div id="container2">
+					<form id = "card" action="${pageContext.request.contextPath }/myReviewWriter.do" method="post">
 						<ul>
 							<li><label for="name" class="field">숙소이름 : </label> <input name="name"
 	
 								size="10" id="id" type="text" value="${vo.hotelName }" readonly></li>
-							<li><label for="in" class="field">체크인 : </label> <input name="in"
-								type="text" value="${vo.inDate }" readonly></li>
-							<li><label for="out" class="field">체크아웃 : </label> <input name="out"
-								id="mail" type="text" value="${vo.outDate }" readonly></li>
+							<li><label for="in" class="field">체크인 : </label> 
+								<input name="in" type="text" value="${vo.inDate }" readonly></li>
+							<li><label for="out" class="field">체크아웃 : </label> 
+								<input name="out" id="mail" type="text" value="${vo.outDate }" readonly></li>
 							<li><label for="cost" class="field">지불금액 : </label> 
 								<input name="cost" id="pic" type="text" value="${vo.totalPrice }" readonly>
 								<input type="hidden" name="hotelId" value="${vo.hotelId}">
@@ -81,9 +133,9 @@
 							</c:if>
 						</ul>
 					</form>
-			</div>
+				</div>
+			
 	</c:forEach>
-
-	<jsp:include page="myHome.jsp"></jsp:include>
+	</div>
 </body>
 </html>

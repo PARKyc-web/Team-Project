@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <script>
     $(document).ready(function(){
       $('.slider').bxSlider({
@@ -22,6 +23,26 @@
   .text-center{
   	font-family: 'Secular One', sans-serif;
   }
+	.material-symbols-outlined {
+	  font-variation-settings:
+	  'FILL' 0,
+	  'wght' 600,
+	  'GRAD' 0,
+	  'opsz' 48;
+	   font-size: 50px;
+  		color: #fc777b;
+  		padding-bottom: 1%;
+	 
+	}
+		#title{
+		font-size:80px;
+		font-weight:bold;
+		font-family: 'Secular One', sans-serif;
+		transition: color 0.5s ease-in-out;
+	}
+	#title:hover{
+		color:#fc777b;
+	}
   </style>  
 </head>
 
@@ -31,7 +52,7 @@
 	<div class="search-block">
 	</div>
 		<div class="text-center text-white">
-			<h1 class="display-4 fw-bolder">TEAM AirBnB</h1>
+			<h1 id="title">TEAM AirBnB</h1>
 			<p class="lead fw-normal text-white-50 mb-0">have fun with TEAM AirBnB</p><br>
 		<form action="searchHotel.do?pageNum=1&amount=12" method="post" class="search-form">
 			<input type="text" name="search_word" placeholder="어디로 떠나시나요?">
@@ -45,7 +66,8 @@
 <section class="py-5">
 
 	<div class="recommend-hotel">
-	<h4><i> == Recommend Hotel List == </i></h4>
+	<h4><span class="material-symbols-outlined">volunteer_activism</span>
+	<br>AirBnB가 추천하는 숙소 리스트</h4>
 	</div>
 	<div class="container px-4 px-lg-5 mt-5">
 		<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">

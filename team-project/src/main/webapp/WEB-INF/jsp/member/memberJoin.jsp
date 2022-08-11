@@ -13,7 +13,6 @@ font-family: 'Noto Sans KR', sans-serif;
 #container{
 	margin:0 auto;
 	text-align:center;
-	background-image: url('image/bg.jpg');
 	background-repeat: no-repeat;
   	background-position: center;
   	background-size: cover;
