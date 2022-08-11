@@ -79,7 +79,7 @@
 						<input type="hidden" name="totalPrice" id="totalPrice" value="" />
 						<input type="hidden" name="memberId" value="${member.memberId }" />
 						<input type="hidden" name="hotelId" value="${hotelInfo.hotelId }" />
-						<input type="submit" value="예약 요청" />
+						<div style="text-align: right;"><input type="submit" value="예약 요청" /></div>
 					</form>
 				</article>
 
@@ -102,10 +102,10 @@
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">요금 세부 정보</h4>
 						<form name=>
-						<p>₩${hotelInfo.hotelPrice } x <span id="day"></span>박 ₩<span id ="totalPrice2"></span></p>
-						<p>서비스 수수료 ₩0</p>
+						<div style="float:left;">₩${hotelInfo.hotelPrice } x <span id="day"></span>박</div> <div style="float:right; display:inline-block;">₩<span id ="totalPrice2"></span></div><br>
+						<div style="float:left;">서비스 수수료</div> <div style="float:right; display:inline-block;">₩0</div><br>
 						<hr>
-						<p>총 합계 ₩<span id ="totalPrice3"></span></p>
+						<div style="float:left;">총 합계</div> <div style="float:right; display:inline-block;">₩<span id ="totalPrice3"></span></div>
 						</form>
 					</div>
 				</div>
