@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 
 <title>숙소 예약 내역</title>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
@@ -128,14 +129,37 @@ font-family: 'Noto Sans KR', sans-serif;
 	
 							<li><input type="hidden" name="reservationId" value="${vo.reservationId}"></li>
 							
-							<c:if test="${vo.isReserv ne 4}">
+              	<c:choose>
+							<c:when test="${vo[i].isReserv ne 4 and canWrite[i]}">
 								<li><input type="submit" value="리뷰작성"></li>
-							</c:if>
+							</c:when>
+
+							<c:when test="${vo[i].isReserv eq 4 }">
+								<li><input type="submit" value="리뷰작성완료" disabled></li>
+							</c:when>
+							<c:when test="${vo[i].isReserv ne 4 and !canWrite[i]}">
+								<button type="button" onclick="clickDelete()">예약취소하기</button>
+								<script type="text/javascript">
+									function clickDelete() {
+										var id = document.getElementById("reservationId").value
+										if (confirm("정말로 예약을 취소하시겠습니까?")) {
+											location.href = "deleteReservation.do?reservationId="
+													+ id;
+										}
+									}
+								</script>
+							</c:when>
+						</c:choose>
+						
 						</ul>
+            
+					
+            
 					</form>
 				</div>
 			
 	</c:forEach>
 	</div>
+
 </body>
 </html>

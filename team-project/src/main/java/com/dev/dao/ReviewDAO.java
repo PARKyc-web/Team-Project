@@ -96,6 +96,8 @@ public class ReviewDAO extends DAO {
 					+ "                    ON h.hotel_id = r.hotel_id) hr "
 					+ "ON (hr.hotel_id = re.hotel_id) "
 					+ "where member_id = ?";
+			
+			
 			List<ReviewJoinReservationJoinHotelVO> list = new ArrayList<>();
 			connect();
 			try {

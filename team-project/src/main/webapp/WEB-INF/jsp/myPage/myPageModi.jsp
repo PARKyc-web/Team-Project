@@ -120,7 +120,7 @@
           <input name="call" id ="call" type="tel" value = "${memberModi.phone }"></li>
           <li><label for="mail"><span id="bold">이메일  </span></label>
           <input name="mail" id="mail" type="email" value = "${memberModi.email }"></li>
-          <li><br><input type ="submit" value = "수정">&nbsp;<input type ="reset" id="out" value = "취소"></li>
+          <li><br><input type ="submit" value = "수정">&nbsp;<input type ="reset" id="out" value = "취소" onclick="location.href='myPage.do'"></li>
       </ul>
        </form>
 	</div>

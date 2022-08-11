@@ -27,6 +27,10 @@
 }
 
 h3 {
+	
+	text-align: center;
+}
+h4 {
 	text-align: center;
 }
 
@@ -34,6 +38,7 @@ input[type="submit"] {
 	float: center;
 	jsp: include.class{
      text-align: center;
+}
 }
 
 </style>
@@ -65,8 +70,8 @@ input[type="submit"] {
 		<h3>나의 위시 숙소 리스트</h3>
 		<c:choose>
 			<c:when test="${size eq 0}">
-				<h2>즐겨찾기한 숙소가 없습니다</h2>
-				<h3>먼저 숙소 즐겨찾기를 해주세요!</h3>
+				<h4>마음에 드는 숙소리스트를 만들어보세요</h4>
+				
 			</c:when>
 
 			<c:when test="${size ne 0}">
@@ -104,5 +109,6 @@ input[type="submit"] {
 			</c:when>
 		</c:choose>
 	</div>
+	<jsp:include page="myHome.jsp"></jsp:include>
 </body>
 </html>

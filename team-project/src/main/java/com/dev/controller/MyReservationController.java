@@ -1,6 +1,10 @@
 package com.dev.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -30,8 +34,20 @@ public class MyReservationController implements Controller {
 		List<ReservationJoinHotelVO> reservation = ReservationService.getInstance().ReservationList(mvo.getMemberId());						
 		ReviewVO review = ReservationService.getInstance().getReview(vo);
 		// 공유
-
-		req.setAttribute("reservation", reservation);		
+		
+		Date today = Date.valueOf(LocalDate.now());
+		
+		System.out.println(reservation.get(0).getOutDate());
+		System.out.println(today);
+		
+		boolean[] canWrite= new boolean[reservation.size()];
+		for(int i=0; i<canWrite.length; i++) {
+			canWrite[i] = reservation.get(i).getOutDate().before(today);
+		}
+		
+		req.setAttribute("reservation", reservation);
+		req.setAttribute("canWrite", canWrite);
+		req.setAttribute("size", reservation.size());
 
 		Utils.forward(req, resp, "myPage/myReservation.tiles");
 	}

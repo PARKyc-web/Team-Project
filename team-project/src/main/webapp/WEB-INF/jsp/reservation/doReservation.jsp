@@ -61,6 +61,9 @@
 						<p class="fs-5 mb-4">게스트 ${guestNum }명</p>
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">결제 수단</h4>
+						<button class="fs-5 mb-4" style="background-color:white; border-radius: 5px; border-width: 1px; padding:15px">
+						💳 신용카드 또는 체크카드
+						</button>
 						
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">환불 정책</h4>
@@ -76,7 +79,7 @@
 						<input type="hidden" name="totalPrice" id="totalPrice" value="" />
 						<input type="hidden" name="memberId" value="${member.memberId }" />
 						<input type="hidden" name="hotelId" value="${hotelInfo.hotelId }" />
-						<input type="submit" value="예약 요청" />
+						<div style="text-align: right;"><input type="submit" value="예약 요청" /></div>
 					</form>
 				</article>
 
@@ -99,12 +102,10 @@
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">요금 세부 정보</h4>
 						<form name=>
-						<p>₩${hotelInfo.hotelPrice } x <span id="day"></span>박 ₩<span id ="totalPrice2"></span></p>
-						<p>청소비 ₩10,000</p> 
-						<p>서비스 수수료 ₩176,471</p>
-						<p>숙박세와 수수료 ₩17,647</p>
+						<div style="float:left;">₩${hotelInfo.hotelPrice } x <span id="day"></span>박</div> <div style="float:right; display:inline-block;">₩<span id ="totalPrice2"></span></div><br>
+						<div style="float:left;">서비스 수수료</div> <div style="float:right; display:inline-block;">₩0</div><br>
 						<hr>
-						<p>총 합계 ₩1,444,118</p>
+						<div style="float:left;">총 합계</div> <div style="float:right; display:inline-block;">₩<span id ="totalPrice3"></span></div>
 						</form>
 					</div>
 				</div>
@@ -129,6 +130,7 @@
 						document.getElementById('checkOut').value = checkOut;
 						document.getElementById('totalPrice').value = ${hotelInfo.hotelPrice } * day;
 						document.getElementById('totalPrice2').innerHTML = ${hotelInfo.hotelPrice } * day;
+						document.getElementById('totalPrice3').innerHTML = ${hotelInfo.hotelPrice } * day;
 						document.getElementById('day').innerHTML = day;
 					</script>
 
