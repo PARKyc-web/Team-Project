@@ -49,8 +49,8 @@
 	
 	.pagination a:hover:not(.active) {background-color: #ddd;}
 </style>
+<h1>나의 숙소</h1>
   <c:choose>
-  	
 	  <c:when test="${count eq 0 }">
 	  	<h2> 등록된 숙소가 없습니다.!</h2>
 	  </c:when>

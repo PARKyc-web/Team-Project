@@ -17,7 +17,7 @@
 		padding:5%;
 	}
 	.input-style{
-	  width:50%;
+	  width:55%;
 	  padding:15px;
 	  font-size:15px;
 	  font-weight:bold;
@@ -27,6 +27,17 @@
 	  text-align:center;
 	  box-shadow: 1px 1px 2px #e6e6e6;
 	}
+	.submit{
+border: 1px solid #e6e6e6;
+	padding:1.5%;
+	background-color: #fc777b;
+	color: #fff;
+	box-shadow: 1px 1px 2px #f0f0f0;
+	border-radius:5px;
+}
+.submit:hover{
+	background-color:#fc6d71;
+}
 </style>
 </head>
 <body>

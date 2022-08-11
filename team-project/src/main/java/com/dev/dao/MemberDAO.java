@@ -200,28 +200,32 @@ public class MemberDAO extends DAO {
 		}
 		
 		//비밀번호 찾기
-		public int searchPwd(String email) {
-			String sql = "select member_id from member_info where email=?";
-			int idCheck = 0;
+		public MemberVO searchPwd(String memberId, String email) {
+			String sql = "select member_password "
+					+ "from member_login l JOIN member_info i "
+					+ "ON l.member_id = i.member_id "
+					+ "WHERE l.member_id = ? AND i.email = ?";
+			MemberVO vo = null;
 			connect();
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, email);
+				pstmt.setString(1, memberId);
+				pstmt.setString(2, email);
 				
 				rs = pstmt.executeQuery();
 				
-				if(rs.next() || email.equals("")) {
-					idCheck = 0;
-				} else {
-					idCheck = 1;
-				}
+				if(rs.next()) {
+					vo = new MemberVO();
+					vo.setMemberPassword(rs.getString("member_password"));	
+				}			
 		
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} finally {
 				disconnect();
 			}
-			return idCheck;
+			return vo;
 		}
+		
 		
 }

@@ -44,16 +44,49 @@ body{
 display:inline-block;
 width:60%;
 }
+#comment{
+padding:20px;
+}
+#submit {
+  width:25%;
+  padding:15px;
+  color: #fff;
+  font-size:15px;
+  font-weight:bold;
+  border:none;
+  background-color: #dbdbdb;
+  border-radius:90px 0px 0px 90px;
+  margin-bottom:3%;
+}
+
+#submit-r {
+  width:25%;
+  padding:15px;
+  color: #fff;
+  font-size:15px;
+  font-weight:bold;
+  border:none;
+  background-color: #fc777b;
+  border-radius:0px 90px 90px 0px;
+  margin-bottom:3%;
+}
+
+#submit-r:hover{
+background-color:#fa5055;
+margin-bottom:3%;
+}
 
 </style>
 </head>
 <body>
 
 <div id="container">
+<div id="comment">
 <h3>정말 AirBnB에서 탈퇴하시겠습니까?</h3>
-<h4>이런숙소도있는데??</h4>
+<h4>멋진 숙소들이 기다리고 있습니다 !</h4>
+</div>
 <form action="myMemberDelete.do" id="form">
-<input type="submit" value="네">&nbsp;<button type="button" onclick="location.href='myPage.do'">아니오</button>
+<input id="submit" type="submit" value="네, 탈퇴할래요">&nbsp;<button id="submit-r" type="button" onclick="location.href='myPage.do'">아니오, 탈퇴 안함</button>
 <br><br>
 </form>
 
