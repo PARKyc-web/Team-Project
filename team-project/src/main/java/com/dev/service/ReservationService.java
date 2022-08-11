@@ -29,14 +29,7 @@ public class ReservationService {
 	public ReviewVO getReview(ReviewVO vo) {
 		return dao.searchReview(vo);
 	}
-
-	// 예약내역
-//	public List<ReservationJoinHotelVO> ReservationList1(String memberId){
-//		return dao.getHotelName(memberId);
-//	}
-//	public List<ReservationJoinHotelVO> ReservationList2(String memberId){
-//		return dao.getReserList(memberId);
-//	}
+	
 	public List<Date> invalidDate(int hotelId) {
 		return dao.invalidDate(hotelId);
 	}
@@ -44,11 +37,13 @@ public class ReservationService {
 	public int insertReservation(String memberId, int hotelId, String checkIn, String checkOut, int totalPrice) {
 		return dao.insertReservation(memberId, hotelId, checkIn, checkOut, totalPrice);
 	}
-
 	
 	public void reviewdReservation(int reservationId) {
 		dao.reviewdReservation(reservationId);
 	}
 	
+	public void deleteReservation(int reservationId) {
+		dao.deleteReservation(reservationId);
+	}
 
 }
