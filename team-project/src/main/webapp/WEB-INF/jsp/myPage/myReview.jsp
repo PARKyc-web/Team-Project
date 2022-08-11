@@ -10,10 +10,30 @@
         text-align: center;
 	
 	}
+		#container{
+        width: 800px;
+        background-color: #fff;
+        margin: 0 auto;
+        margin-top:4%;
+        margin-bottom:4%;
+        border: 1px solid #f2f2f2;
+    	border-radius:10px;
+    	box-shadow: 1px 1px 2px #f0f0f0;
+    	padding:2%;
+    }
+    a{
+    	color:gray;
+    	text-decoration:none;
+    }
+    a:hover{
+    	color:gray;
+    }
 	</style>
 
 </head>
 <body>
+<div id="container">
+<h6><a href='myPageMain.do'>마이페이지</a>&nbsp; > &nbsp;<a href='#'>리뷰 내역</a></h6>
 		<br><br>
 		<div class="center">
 			<h3>리뷰내역</h3>
@@ -51,5 +71,6 @@
 		</c:otherwise>
 	</c:choose>
 </div>  
+</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
