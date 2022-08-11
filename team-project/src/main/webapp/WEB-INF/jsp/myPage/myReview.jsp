@@ -17,8 +17,15 @@
 		<br><br>
 		<div class="center">
 			<h3>리뷰내역</h3>
-		</div>
-		<c:forEach var="vo" items="${list}">		
+		
+			<c:choose>
+			<c:when test="${list eq null}">
+				<h3>작성된 리뷰가 없습니다</h3>
+				
+			</c:when>
+			<c:otherwise>
+				<c:forEach var="vo" items="${list}">		
+			
 				<div class="card mb-4" style="text-align: center; width: 800px; margin: 0 auto">
 					<div class="card-header">
 						<p>${vo.hotelName }</p>
@@ -40,6 +47,11 @@
 					</div>
 				</div>
 		</c:forEach>
+		</c:otherwise>
+	</c:choose>
+	  <jsp:include page = "myHome.jsp"></jsp:include>
+</div>
+
 
 	  <jsp:include page = "myHome.jsp"></jsp:include>	  
 </body>
