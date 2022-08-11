@@ -12,10 +12,10 @@
 	#container{
 		width: 600px;
 		margin : 0 auto;
-	font-family : Georgia, "맑은 고딕", serif;
 
 	}
 	h3{
+		padding-top:3%;
 		text-align: center;
 	}
 	ul{
