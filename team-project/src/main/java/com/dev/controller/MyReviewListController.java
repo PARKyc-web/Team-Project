@@ -27,6 +27,7 @@ public class MyReviewListController implements Controller {
 		// DB에 접근해서 정보를 가져오는 부분이 있어야함.
 		List<ReviewJoinReservationJoinHotelVO> list = ReviewService.getInstance().getWritredReivew(mvo.getMemberId());
 		
+		req.setAttribute("size", list.size());
 		req.setAttribute("list", list);
 		Utils.forward(req, resp, "myPage/myReview.tiles");
 	}

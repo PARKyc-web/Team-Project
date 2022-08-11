@@ -19,7 +19,7 @@
 			<h3>리뷰내역</h3>
 		
 			<c:choose>
-			<c:when test="${list eq null}">
+			<c:when test="${size eq 0}">
 				<h3>작성된 리뷰가 없습니다</h3>
 				
 			</c:when>
@@ -50,9 +50,6 @@
 		</c:otherwise>
 	</c:choose>
 	  <jsp:include page = "myHome.jsp"></jsp:include>
-</div>
-
-
-	  <jsp:include page = "myHome.jsp"></jsp:include>	  
+</div>  
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
