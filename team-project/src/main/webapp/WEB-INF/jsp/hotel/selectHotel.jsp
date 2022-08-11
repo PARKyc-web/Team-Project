@@ -443,6 +443,7 @@
 													
 													document.getElementById('day').innerText = day
 													document.getElementById('totalPrice').innerText = ${hotelInfo.hotelPrice} * day;
+													document.getElementById('totalPrice2').innerText = ${hotelInfo.hotelPrice} * day;
 												});
 
 								$('input[name="datefilter"]').on(
@@ -471,7 +472,7 @@
 							박 ₩<span id = 'totalPrice'></span></p>
 							<p>서비스 수수료 ₩0</p>
 							<hr>
-							<p>총 합계 ₩${hotelInfo.hotelPrice * 5}</p>
+							<p>총 합계 ₩<span id = 'totalPrice2'></span></p>
 						</form>
 					</div>
 
