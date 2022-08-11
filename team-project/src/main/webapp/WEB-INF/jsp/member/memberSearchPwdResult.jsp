@@ -1,14 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
 	body{
 		overflow-x:hidden;
 		overflow-y:hidden;
-		color:#292929;
 	}
 	#container{
 		padding:10%;
@@ -17,7 +23,7 @@
 		padding:5%;
 	}
 	.input-style{
-	  width:55%;
+	  width:50%;
 	  padding:15px;
 	  font-size:15px;
 	  font-weight:bold;
@@ -27,7 +33,7 @@
 	  text-align:center;
 	  box-shadow: 1px 1px 2px #e6e6e6;
 	}
-	hr{
+		hr{
 		margin: 0 auto;
 		text-align:center;
 		width:70%;
@@ -42,16 +48,7 @@
 		font-weight:bold;
 		font-size:25px;
 	}
-	
-
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
-}
-.submit{
+	.submit{
 	border: 1px solid #e6e6e6;
 	padding:1.5%;
 	background-color: #fc777b;
@@ -63,18 +60,18 @@
 	background-color:#fc6d71;
 }
 	
+	
 </style>
 </head>
 <body>
-
-
 <div id ="container">
 
-		<form id="check" name="login" action="memberRealSearchId.do" method="post" style="margin:0px auto; text-align:center">
-				<h3>아이디 찾기</h3>
-				<input class="input-style" type="text" id="email" name="email" placeholder="이메일을 입력하세요"><br><br>
+		<form id="check" name="login" action="memberRealSearchPwd.do" method="post" style="margin:0px auto; text-align:center">
+				<h3>비밀번호 찾기</h3>
+				<input class="input-style" type="text" id="member_id" name="member_id" placeholder="아이디를 입력하세요"><br><br>
+				<input class="input-style" type="email" id="email" name="email" placeholder="이메일을 입력하세요"><br><br>
 				
-				<button type="submit" class="submit" onclick="location.href='memberRealSearchId.do'">검색</button> 
+				<button type="submit" class="submit" onclick="location.href='memberRealSearchPwd.do'">검색</button> 
 				
 		</form>
 		</div>
@@ -82,13 +79,15 @@
 	<hr>
 	<div id="result">
 	<span class="material-symbols-outlined">sentiment_very_dissatisfied</span>
-	<h3>해당 정보로 검색된<br>아이디가 없습니다.</h3>
+	<h3>해당 정보로 검색된<br>비밀번호가 없습니다.</h3>
 	</div>
 </c:if>
 
 <c:if test="${vo ne null }">
 	<hr>
-    <div id="result">회원님의 아이디는 <br><span id="big">${vo.memberId }</span><br>입니다.</div>
+    <div id="result">회원님의 비밀번호는 <br><span id="big">${vo.memberPassword}</span><br>입니다.</div>
 </c:if>
+		
+		
 </body>
 </html>

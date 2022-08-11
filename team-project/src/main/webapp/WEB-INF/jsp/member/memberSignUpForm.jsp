@@ -37,6 +37,9 @@ font-weight:bold;
 	width:50%;
 	flex-direction : row;
 	background-image: url('image/bg2.jpg');
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size : cover;
 }
 .right{
 	width:50%;
@@ -66,6 +69,20 @@ font-weight:bold;
 </style>
 </head>
 <body>
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script>
+       $(document).ready(function(){ 
+      
+    var numberOfImages=8; 
+      
+    var imageNum = Math.round(Math.random()*(numberOfImages-1))+1;
+     
+    var imgPath=('./image/ran_'+imageNum+'.jpg');
+   
+    $('.left').css('background-image', ('url("'+imgPath+'")'));
+     
+    });
+  </script>
 <script type="text/javascript">
 $(function () {
 	$('#member_id').change(function () {
@@ -90,6 +107,10 @@ $(function () {
 					$("#member_id").focus();
 					document.getElementById("idMsg").style.color = 'red';
 			        document.getElementById('idMsg').innerText = '이미 존재하는 아이디입니다';
+				} else if (data == "") {
+					$("#member_id").focus();
+					document.getElementById("idMsg").style.color = 'red';
+			        document.getElementById('idMsg').innerText = '아이디를 입력하세요';
 				} else {
 					//alert("사용가능한 아이디입니다.");
 					$("#idCheck").val("checked");

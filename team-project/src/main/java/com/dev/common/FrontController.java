@@ -23,6 +23,7 @@ import com.dev.controller.MemberIdCheckController;
 import com.dev.controller.MemberJoinController;
 import com.dev.controller.MemberLogoutController;
 import com.dev.controller.MemberRealSearchController;
+import com.dev.controller.MemberRealSearchPwdController;
 import com.dev.controller.MemberSearchIdController;
 import com.dev.controller.MemberSearchPwdController;
 import com.dev.controller.MemberSignInController;
@@ -86,9 +87,10 @@ public class FrontController extends HttpServlet{
 		mappings.put("/memberSignUp.do", new MemberSignUpController()); //회원가입
 		mappings.put("/memberSignUpForm.do", new MemberSignUpFormController()); // 회원가입 폼
 		mappings.put("/memberIdCheck.do", new MemberIdCheckController()); //아이디 중복 체크
-		mappings.put("/memberSearchId.do", new MemberSearchIdController()); //아이디 찾기
-		mappings.put("/memberSearchPwd.do", new MemberSearchPwdController()); //아이디 찾기
-		mappings.put("/memberRealSearchId.do", new MemberRealSearchController());
+		mappings.put("/memberSearchId.do", new MemberSearchIdController()); //아이디 찾기 (폼)
+		mappings.put("/memberRealSearchId.do", new MemberRealSearchController()); //아이디 찾기(기능)
+		mappings.put("/memberSearchPwd.do", new MemberSearchPwdController()); //비밀번호 찾기 (폼)
+		mappings.put("/memberRealSearchPwd.do", new MemberRealSearchPwdController()); //비밀번호 찾기 (폼)
 		
 		// Part of YR
 		mappings.put("/selectHotel.do", new SelectHotelController()); // 호텔 상세 페이지
