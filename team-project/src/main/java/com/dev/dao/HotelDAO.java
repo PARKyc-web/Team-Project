@@ -13,6 +13,29 @@ import com.dev.vo.HotelVO;
 public class HotelDAO extends DAO{	
 	
 	
+	public void disabledHotel(String memberId) {
+		
+		try {
+			connect();
+			
+			String sql = "UPDATE hotel "
+					   + "SET hotel_able = 1 "
+					   + "WHERE member_id = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			
+			int result = pstmt.executeUpdate();
+								
+		}catch(SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			disconnect();
+		}		
+	}
+	
+	
 	public void addHotelPic(HotelPicVO pvo) {
 		try {
 			connect();
@@ -235,7 +258,7 @@ public class HotelDAO extends DAO{
 		HotelVO vo = null;
 		connect();		
 		try {
-			String sql = "SELECT * FROM hotel where hotel_id = ?";
+			String sql = "SELECT * FROM hotel where hotel_id = ? AND hotel_able=0";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setLong(1, hotelId);
@@ -277,7 +300,7 @@ public class HotelDAO extends DAO{
 		connect();
 		try {
 			
-			String sql = "SELECT count(*) FROM hotel";
+			String sql = "SELECT count(*) FROM hotel WHERE hotel_able=0";
 			pstmt = conn.prepareStatement(sql);			
 			rs = pstmt.executeQuery();
 			

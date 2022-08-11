@@ -1,22 +1,14 @@
 package com.dev.service;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.dev.common.Utils;
+import com.dev.dao.HotelDAO;
 import com.dev.dao.MemberDAO;
-import com.dev.vo.HotelVO;
 import com.dev.vo.MemberVO;
-import com.dev.vo.ReviewVO;
-import com.dev.vo.WishListVO;
 
 public class MemberService {
 
 	private static MemberService instance = new MemberService();
 	MemberDAO dao = new MemberDAO();
+	HotelDAO hdao = new HotelDAO();
 	
 	private MemberService() {}
 	public static MemberService getInstance() {
@@ -47,6 +39,7 @@ public class MemberService {
 	//회원탈퇴(하영)
 	public void deleteMember(String id) {
 		dao.deleteMember(id);
+		hdao.disabledHotel(id);		
 	}
 	
 	//아이디중복체크(하영)
