@@ -7,7 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
+
 #heart {
 	font-size: xx-large;
 	background-color: white;
@@ -19,19 +21,13 @@
 	transform: rotateY(180deg);
 }
 
-h3 {
-	text-align: center;
-}
-
 #container {
-	font-family: Georgia, "맑은 고딕 ", serif;
 	width: 600px;
 	margin: 0 auto;
 }
 
 h3 {
 	text-align: center;
-	font-family: Georgia, "맑은 고딕", serif;
 }
 
 input[type="submit"] {

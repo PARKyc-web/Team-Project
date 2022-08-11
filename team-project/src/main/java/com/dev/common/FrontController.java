@@ -22,6 +22,9 @@ import com.dev.controller.MainController;
 import com.dev.controller.MemberIdCheckController;
 import com.dev.controller.MemberJoinController;
 import com.dev.controller.MemberLogoutController;
+import com.dev.controller.MemberRealSearchController;
+import com.dev.controller.MemberSearchIdController;
+import com.dev.controller.MemberSearchPwdController;
 import com.dev.controller.MemberSignInController;
 import com.dev.controller.MemberSignInFormController;
 import com.dev.controller.MemberSignUpController;
@@ -83,8 +86,10 @@ public class FrontController extends HttpServlet{
 		mappings.put("/memberSignUp.do", new MemberSignUpController()); //회원가입
 		mappings.put("/memberSignUpForm.do", new MemberSignUpFormController()); // 회원가입 폼
 		mappings.put("/memberIdCheck.do", new MemberIdCheckController()); //아이디 중복 체크
-		mappings.put("/memberIdSearch.do", new MemberIdSearchController());
-				
+		mappings.put("/memberSearchId.do", new MemberSearchIdController()); //아이디 찾기
+		mappings.put("/memberSearchPwd.do", new MemberSearchPwdController()); //아이디 찾기
+		mappings.put("/memberRealSearchId.do", new MemberRealSearchController());
+		
 		// Part of YR
 		mappings.put("/selectHotel.do", new SelectHotelController()); // 호텔 상세 페이지
 		// selectHotel.do에서 예약하기를 누른 후 이동하는 페이지

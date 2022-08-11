@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix ="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     $(document).ready(function(){
       $('.slider').bxSlider({
@@ -32,7 +33,7 @@ body{
 	text-align: center;
 	position:relative;
 	margin-top:4%;
-	background-color:#fff;
+	background-color: rgba( 255, 255, 255, 0.95 );
 	border: 1px solid #f2f2f2;
 	border-radius:10px;
 	box-shadow: 1px 1px 2px #f0f0f0;

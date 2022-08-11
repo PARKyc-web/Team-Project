@@ -48,6 +48,17 @@
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
+
+.recommend-hotel{
+	padding-top:1%;
+	padding-bottom:3%;
+}
+
+hr{
+	width:70%;
+	text-align:center;
+	margin: 0 auto;
+}
 </style>
   
   

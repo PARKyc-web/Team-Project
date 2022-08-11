@@ -5,7 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>숙소 예약 내역</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 	#container{
 		width: 600px;

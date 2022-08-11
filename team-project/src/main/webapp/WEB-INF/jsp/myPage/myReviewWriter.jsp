@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>리뷰작성</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 
 .star {

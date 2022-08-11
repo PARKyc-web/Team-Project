@@ -36,7 +36,7 @@ h3{
 #forms{
 margin:0 auto;
 width:60%;
-background-color:rgba(255,255,255,0.8);
+background-color: rgba( 255, 255, 255, 0.95 );
 padding:10%;
 border-radius:20px;
 }

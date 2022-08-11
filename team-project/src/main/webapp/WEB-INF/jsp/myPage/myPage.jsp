@@ -11,7 +11,7 @@
 	}
  	#container{
         width: 800px;
-        background-color:#fff;
+        background-color: #fff;
         margin: 0 auto;
         margin-top:4%;
         margin-bottom:4%;
@@ -53,6 +53,7 @@
         padding: 5px;
         margin: 10px 0;
         outline:none;
+        background-color:transparent;
     }
      input[type="text"]:hover{
      border-bottom: 1px solid #fc777b;
