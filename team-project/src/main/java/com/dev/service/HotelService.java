@@ -44,7 +44,7 @@ public class HotelService {
 			long rand = (long) ((Math.random()*1000)%size)+101;
 			HotelVO vo = dao.getHotelInfo(rand);
 						
-			if(vo == null ||set.contains(vo)) {
+			if(vo == null || set.contains(vo)) {
 				continue;
 			}			
 			set.add(vo);
