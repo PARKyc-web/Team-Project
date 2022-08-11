@@ -170,6 +170,26 @@ public class ReservationDAO extends DAO {
 				disconnect();
 			}
 			return null;
-
+		}
+		
+		public void deleteReservation(int reservationId) {
+			String sql = "delete from reservation where reserv_id = ?";
+			connect();
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, reservationId);
+				
+				int result = pstmt.executeUpdate();
+				if(result > 0) {
+					System.out.println("예약 내역이 " + result + "건 취소되었습니다.");
+				} else {
+					System.out.println("예약 내역 취소 실패");
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				disconnect();
+			}
 		}
 }

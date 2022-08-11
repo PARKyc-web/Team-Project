@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dev.controller.AjaxHeartColorController;
+import com.dev.controller.DeleteReservationController;
 import com.dev.controller.DeleteReviewController;
 import com.dev.controller.DoReservationController;
 import com.dev.controller.HotelDetailFormController;
@@ -99,6 +100,7 @@ public class FrontController extends HttpServlet{
 		mappings.put("/ajaxHeartColor.do", new AjaxHeartColorController());
 		
 		mappings.put("/deleteReview.do", new DeleteReviewController()); // 나의 리뷰 삭제
+		mappings.put("/deleteReservation.do", new DeleteReservationController());
 	}
 
 	
