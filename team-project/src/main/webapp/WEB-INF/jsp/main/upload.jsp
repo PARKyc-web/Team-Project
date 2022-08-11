@@ -35,6 +35,11 @@ body{
 	.d-flex{
 		margin: 0 auto;
 	}
+	
+	#ttar{
+		vertical-align:top;
+	}
+	
 </style>
 <div id="container">
 <section class="py-5">
@@ -57,7 +62,7 @@ body{
 					<input type="text" id="member_id" name="member_id" value="${member.memberId }" readonly></li>
 					<li><label class="uploadLabel"> 숙소 이름 </label><input type="text" name="hotel_name"></li>
 					<li><label class="uploadLabel"> 숙소 위치  </label><input type="text" name="hotel_location"></li>
-					<li><label class="uploadLabel"> 숙소 설명 </label><input type="text" name="hotel_desc"></li>
+					<li><label id="ttar" class="uploadLabel"> 숙소 설명 </label><textarea name="hotel_desc" cols="25" rows="7"></textarea>
 					<li><label class="uploadLabel"> 1박당 가격  </label><input type="text" name="hotel_price"></li>  
 					<li><label class="uploadLabel"> 숙소 종류 </label>  
 					<select name="hotel_type">

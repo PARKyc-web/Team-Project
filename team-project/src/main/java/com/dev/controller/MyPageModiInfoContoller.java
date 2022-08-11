@@ -95,7 +95,6 @@ public class MyPageModiInfoContoller implements Controller{
 		// 현재 세션에 있는 데이터가 있어서 멤버 사진의 경로가 안바뀌는거 같음 이거 변경해줘야함
 		
 		
-		
 		MemberVO temp = MemberService.getInstance().searchMember(parameter.get("id"));
 		mvo.setMemberType(temp.getMemberType());
 		

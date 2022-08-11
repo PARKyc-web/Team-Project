@@ -35,10 +35,7 @@ public class MyReservationController implements Controller {
 		ReviewVO review = ReservationService.getInstance().getReview(vo);
 		// 공유
 		
-		Date today = Date.valueOf(LocalDate.now());
-		
-		System.out.println(reservation.get(0).getOutDate());
-		System.out.println(today);
+		Date today = Date.valueOf(LocalDate.now());		
 		
 		boolean[] canWrite= new boolean[reservation.size()];
 		for(int i=0; i<canWrite.length; i++) {
