@@ -176,7 +176,31 @@ public class MemberDAO extends DAO {
 		}
 	
 		//아이디 찾기
-		public int searchId(String email) {
+		public MemberVO searchId(String email) {
+			String sql = "select member_id from member_info where email=?";
+			MemberVO vo = null;
+			connect();
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, email);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					vo = new MemberVO();
+					vo.setMemberId(rs.getString("member_id"));	
+				}			
+		
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				disconnect();
+			}
+			return vo;
+		}
+		
+		//비밀번호 찾기
+		public int searchPwd(String email) {
 			String sql = "select member_id from member_info where email=?";
 			int idCheck = 0;
 			connect();

@@ -20,45 +20,40 @@ font-family: 'Noto Sans KR', sans-serif;
 	    width: 1200px;
         background-color: rgba( 255, 255, 255, 0.95 );
         margin: 0 auto;
-        margin-top:4%;
-        margin-bottom:4%;
+        margin-top:5%;
+        margin-bottom:7%;
         border: 1px solid #f2f2f2;
     	border-radius:10px;
     	box-shadow: 1px 1px 2px #f0f0f0;
     	padding:2%;
 }
-
 .left{
 width:50%;
 flex-direction : row;
 background-image: url('image/bg2.jpg');
 }
 .right{
-padding-top:13%;
-padding-bottom:13%;
 width:50%;
 flex-direction : row;
+padding-top:13%;
+padding-bottom:13%;
 }
-.form-style{
-margin: 0 auto; 
-text-align:center; 
-padding:150px;
-}
+
 h3{
 	color:#616060;
 	font-weight:bold;
 	margin:20px;
+	padding:3%;
 }
-
 #forms{
 margin:0 auto;
 width:60%;
 background-color:rgba(255,255,255,0.5);
-padding:10%;
+padding:3%;
 border-radius:20px;
 }
 .input-style{
-width:30%;
+width:50%;
   padding:15px;
   font-size:15px;
   font-weight:bold;
@@ -66,18 +61,45 @@ width:30%;
   background-color: #fffff;
   border-radius:90px;
   text-align:center;
+  box-shadow: 1px 1px 2px #e6e6e6;
 
 }
 
 .submit {
-  width:7%;
-  padding:5px;
+  width:25%;
+  padding:15px;
   color: #fff;
-  font-size:10px;
+  font-size:15px;
   font-weight:bold;
   border:none;
   background-color: #fc777b;
-  border-radius:90px;
+  border-radius:90px 0px 0px 90px;
+}
+.submit:hover{
+ background-color:#fa5055;
+}
+
+
+.submit-r {
+  width:25%;
+  padding:15px;
+  color: #fff;
+  font-size:15px;
+  font-weight:bold;
+  border:none;
+  background-color: #fc777b;
+  border-radius:0px 90px 90px 0px;
+}
+
+.submit-r:hover{
+background-color:#fa5055;
+}
+h6{
+	padding:5%;
+	color: #707070;
+}
+a:hover{
+ color:red;
 }
 
 </style>
@@ -105,16 +127,27 @@ width:30%;
 	<div id ="container">
 		<div class="left"></div>
 		<div class="right">
-		<form id="check" name="login" action="memberSignIn.do" method="post" style="margin:0px auto; padding:20px; text-align:center">
+		<form id="check" name="login" action="memberSignIn.do" method="post" style="margin:0px auto; text-align:center">
 				<h3>로그인</h3>
 				<input class="input-style" type="text" id="member_id" name="member_id" placeholder="아이디를 입력하세요"><br><br>
 				<input class="input-style" type="password" id="member_password" name="member_password" placeholder="비밀번호를 입력하세요"><br><br>
 				
-				<button class="submit" type="submit" onclick="formCheck()">로그인</button> 
-				<button class="submit" type="reset">취소</button>
-				<br><br><button class="submit" type="reset">취소</button>
+				<button type="submit" class="submit" onclick="formCheck()">로그인</button> 
+				<button type="button" class="submit-r" onclick="location.href='memberSignUpForm.do'">회원가입</button>
+				<br><h6><a style="cursor:pointer" onclick="searchId()">아이디</a> · <a style="cursor:pointer" onclick="searchPwd()">비밀번호</a> 찾기</h6>
 		</form>
 		</div>
 	</div>
+	<script>
+		function searchId(){
+			window.open("memberSearchId.do", "PopupWin",'width=500, height=600, left=500, top=250')
+		}
+		
+		function searchPwd(){
+			window.open("memberSearchPwd.do", "PopupWin",'width=500, height=600, left=500, top=250')
+		}
+	
+		
+	</script>
 </body>
 </html>

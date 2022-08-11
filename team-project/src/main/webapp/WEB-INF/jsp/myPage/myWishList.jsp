@@ -7,19 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 h3{
 		text-align: center;
 	}
  #container {
- font-family: Georgia, "맑은 고딕 ", serif ;
 	width: 600px;
 	margin: 0 auto;
 }
 
 h3 {
 	text-align: center;
-	font-family: Georgia, "맑은 고딕", serif;
 }
 
 input[type="submit"] {

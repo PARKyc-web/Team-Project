@@ -23,45 +23,44 @@ font-weight:bold;
 #container{
 	display:flex;
 	flex-wrap:wrap;
-	    width: 1200px;
-        background-color: rgba( 255, 255, 255, 0.95 );
-        margin: 0 auto;
-        margin-top:3%;
-        margin-bottom:4%;
-        border: 1px solid #f2f2f2;
-    	border-radius:10px;
-    	box-shadow: 1px 1px 2px #f0f0f0;
-    	padding:2%;
+	width: 1200px;
+    background-color: rgba( 255, 255, 255, 0.95 );
+    margin: 0 auto;
+    margin-top:3%;
+	margin-bottom:4%;
+	border: 1px solid #f2f2f2;
+   	border-radius:10px;
+	box-shadow: 1px 1px 2px #f0f0f0;
+	padding:2%;
 }
 .left{
-width:50%;
-flex-direction : row;
-background-image: url('image/bg2.jpg');
+	width:50%;
+	flex-direction : row;
+	background-image: url('image/bg2.jpg');
 }
 .right{
-width:50%;
-flex-direction : row;
+	width:50%;
+	flex-direction : row;
 }
-
-	#submit{
-		border: 1px solid #e6e6e6;
-		padding:1.5%;
-		background-color: #fc777b;
-		color: #fff;
-		box-shadow: 1px 1px 2px #f0f0f0;
-		border-radius:5px;
-	}
-	#submit:hover{
-		background-color:#fc6d71;
-	}
-	#out{
-		border: 1px solid #e6e6e6;
-		padding:1.5%;
-		background-color: #9c9c9c;
-		color: #fff;
-		box-shadow: 1px 1px 2px #f0f0f0;
-		border-radius:5px;
-	}
+#submit{
+	border: 1px solid #e6e6e6;
+	padding:1.5%;
+	background-color: #fc777b;
+	color: #fff;
+	box-shadow: 1px 1px 2px #f0f0f0;
+	border-radius:5px;
+}
+#submit:hover{
+	background-color:#fc6d71;
+}
+#out{
+	border: 1px solid #e6e6e6;
+	padding:1.5%;
+	background-color: #9c9c9c;
+	color: #fff;
+	box-shadow: 1px 1px 2px #f0f0f0;
+	border-radius:5px;
+}
     	
 
 </style>
@@ -178,7 +177,7 @@ $(function () {
 		<input type="radio" id="member_type2" name="member_type" value="1"><label for="member_type2">host <br></label>
 	<br><br><input type="button" id="submit" value="가입" onclick="formCheck()">&nbsp;<input type="reset" id="out" value="취소">
 	
-<br><br><a href="memberJoin.do">뒤로가기</a>
+<br><br><a href="memberSignInForm.do">로그인</a>
 </form>
 </div>
 </div>
