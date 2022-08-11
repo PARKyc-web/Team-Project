@@ -27,7 +27,6 @@ public class WishListDAO extends DAO{
 				whvo.setHotelName(rs.getString("hotel_name"));
 				whvo.setMemberId(rs.getString("member_id"));
 				whvo.setOnOff(rs.getInt("onOff"));
-				
 
 				list.add(whvo);
 			}

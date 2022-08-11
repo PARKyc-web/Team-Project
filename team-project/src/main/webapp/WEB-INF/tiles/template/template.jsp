@@ -79,7 +79,7 @@
 		<div id="real-body">
         	<tiles:insertAttribute name="body"></tiles:insertAttribute>
 		</div>
-
+	
         <!-- Footer-->
         <div id="real-footer">
         	<tiles:insertAttribute name="foot"></tiles:insertAttribute>

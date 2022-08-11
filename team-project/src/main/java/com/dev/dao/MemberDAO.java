@@ -52,7 +52,6 @@ public class MemberDAO extends DAO {
 			disconnect();
 		}
 	}
-	
 
 
 
@@ -119,7 +118,8 @@ public class MemberDAO extends DAO {
 				pstmt.setInt(3, vo.getMemberAge());
 				pstmt.setString(4, vo.getPhone());
 				pstmt.setString(5, vo.getEmail());
-				pstmt.setString(6, vo.getMemberPic());			int r = pstmt.executeUpdate();
+				pstmt.setString(6, vo.getMemberPic());		
+				int r = pstmt.executeUpdate();
 				System.out.println("상세정보" + r + "건 입력");
 			} catch (SQLException e) {
 				e.printStackTrace();

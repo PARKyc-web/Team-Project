@@ -48,5 +48,9 @@ public class ReviewService {
 	public List<ReviewJoinReservationJoinHotelVO> getWritredReivew(String memberId){
 		return dao.getWritredReivew(memberId);
 	}
+	
+	public void deleteReview(int reviewId) {
+		dao.deleteReview(reviewId);
+	}
 
 }

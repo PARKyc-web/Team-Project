@@ -271,6 +271,24 @@ public class ReviewDAO extends DAO {
 			return list;
 		}
 		
-		
-		
+		public void deleteReview(int reviewId) {
+			String sql = "delete from review where review_id = ?";
+			connect();
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, reviewId);
+				
+				int result = pstmt.executeUpdate();
+				if(result > 0) {
+					System.out.println("나의 리뷰가 " + result + "건 삭제되었습니다.");
+				} else {
+					System.out.println("나의 리뷰 삭제에 실패하였습니다.");
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} finally {
+				disconnect();
+			}
+		}
 }
