@@ -8,7 +8,7 @@
 
     <head>    
         <meta charset="utf-8" />
-        <title>AirBnB</title>
+        <title>AirDnD</title>
         
         <!-- Favicon-->
         <link rel="icon" href="image/logo.png" />
