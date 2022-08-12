@@ -46,6 +46,7 @@ font-family: 'Noto Sans KR', sans-serif;
 		text-align: center;
 		margin: 0 auto;
 		position:relative;
+		padding-bottom:1%;
 	}
 	h4 {
 	text-align: center;
@@ -128,10 +129,10 @@ font-family: 'Noto Sans KR', sans-serif;
 			
 		</c:when>
 		<c:otherwise>
-	<%-- <c:set var="vo" value="${reservation }"></c:set>
+<c:set var="vo" value="${reservation }"></c:set>
 
 
-	<c:if test="${size ne 0}"> --%>
+<%-- 	<c:if test="${size ne 0}">  --%>
 		<c:forEach var="i" begin="0" end="${size-1}" step="1">
 			<div id="container2">
 				<form action="${pageContext.request.contextPath }/myReviewWriter.do"
