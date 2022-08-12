@@ -272,8 +272,7 @@
 						<h4 class="fw-bolder mb-4 mt-5">호스트: ${hostName }님</h4>
 						<p class="fs-5 mb-4">⭐ 후기 ${countReview }개 · ✅ 본인 인증 완료 · ❣️
 							슈퍼호스트</p>
-						<p class="fs-5 mb-4">2016년 봄 서울에서 제주로 이주했습니다. 제주에 와서 결혼하고 남편,
-							고양이와 살고 있어요. 제가 좋아하는 제주의 마을 김녕에서 작은 민박집을 운영합니다.</p>
+						<p class="fs-5 mb-4">안녕하세요? ${hotelInfo.hotelLocation } 에서 ${hotelInfo.hotelName}을(를) 운영하고 있는 호스트 ${hostName }입니다.</p>
 						<hr>
 						<h4 class="fw-bolder mb-4 mt-5">알아두어야 할 사항</h4>
 						<table>
