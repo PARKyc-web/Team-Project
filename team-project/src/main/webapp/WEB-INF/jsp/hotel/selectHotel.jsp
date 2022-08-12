@@ -482,7 +482,7 @@
 				<!-- Side widget-->
 				<div class="card mb-4" style="text-align: center">
 					<div class="card-header">❗ 알림</div>
-					<div class="card-body">흔치 않은 기회입니다! ${hostName }님의 에어비앤비 숙소는
+					<div class="card-body">흔치 않은 기회입니다! ${hostName }님의 에어디앤디 숙소는
 						보통 예약이 가득 차 있습니다.</div>
 				</div>
 			</div>

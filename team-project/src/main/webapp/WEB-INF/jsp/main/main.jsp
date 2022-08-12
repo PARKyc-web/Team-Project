@@ -35,7 +35,7 @@
 	 
 	}
 		#title{
-		font-size:80px;
+		font-size:70px;
 		font-weight:bold;
 		font-family: 'Secular One', sans-serif;
 		transition: color 0.5s ease-in-out;
@@ -52,8 +52,8 @@
 	<div class="search-block">
 	</div>
 		<div class="text-center text-white">
-			<h1 id="title">TEAM AirBnB</h1>
-			<p class="lead fw-normal text-white-50 mb-0">have fun with TEAM AirBnB</p><br>
+			<h1 id="title">TEAM AirDnD</h1>
+			<p class="lead fw-normal text-white-50 mb-0">have fun with TEAM AirDnD</p><br>
 		<form action="searchHotel.do?pageNum=1&amount=12" method="post" class="search-form">
 			<input type="text" name="search_word" placeholder="어디로 떠나시나요?">
 			<input type="submit" value="GO !">
@@ -67,7 +67,7 @@
 
 	<div class="recommend-hotel">
 	<h4><span class="material-symbols-outlined">volunteer_activism</span>
-	<br>AirBnB가 추천하는 숙소 리스트</h4>
+	<br>AirDnD가 추천하는 숙소 리스트</h4>
 	</div>
 	<div class="container px-4 px-lg-5 mt-5">
 		<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">

@@ -4,7 +4,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container px-4 px-lg-5">
 		<a href="main.do"><img src="image/logo.png" width="35px;"></a><a class="navbar-brand"
-			href="main.do">AirBnB</a>
+			href="main.do">AirDnD</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"

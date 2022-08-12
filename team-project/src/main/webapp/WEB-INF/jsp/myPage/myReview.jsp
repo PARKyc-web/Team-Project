@@ -11,7 +11,7 @@
 	
 	}
 		#container{
-        width: 800px;
+        width: 80%;
         background-color: #fff;
         margin: 0 auto;
         margin-top:4%;
@@ -28,6 +28,14 @@
     a:hover{
     	color:gray;
     }
+    	hr{
+		margin: 0 auto;
+		width: 80%;
+		color: #cccccc;
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+    
 	</style>
 
 </head>
@@ -37,6 +45,7 @@
 		<br><br>
 		<div class="center">
 			<h3>리뷰내역</h3>
+			<hr>
 		
 			<c:choose>
 			<c:when test="${size eq 0}">

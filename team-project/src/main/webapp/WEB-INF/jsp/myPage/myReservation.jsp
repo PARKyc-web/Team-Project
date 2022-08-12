@@ -21,7 +21,7 @@ font-family: 'Noto Sans KR', sans-serif;
 }
 #container{
 	
-	    width: 90%;
+	    width: 80%;
         background-color: rgba( 255, 255, 255, 0.95 );
         margin: 0 auto;
         margin-top:2%;
@@ -126,7 +126,7 @@ font-family: 'Noto Sans KR', sans-serif;
 <div id="container">
 	<h6><a href='myPageMain.do'>마이페이지</a>&nbsp; > &nbsp;<a href='#'>예약 내역</a></h6>
 	<h3>숙소 예약 내역</h3>
-	
+	<hr>
 	<c:set var="vo" value="${reservation }"></c:set>
 
 

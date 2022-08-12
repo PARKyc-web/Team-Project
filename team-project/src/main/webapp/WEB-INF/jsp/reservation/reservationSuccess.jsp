@@ -13,15 +13,22 @@
 
 body {
 	font-family: 'Noto Sans KR', sans-serif;
+	background-image:url('image/bg2.jpg');
+		background-repeat: no-repeat;
+  		background-position: center;
+  		background-size: cover;
 }
 
 #container {
-	margin: 0 auto;
-	text-align: center;
-	background-image: url('image/bg.jpg');
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
+    width: 70%;
+        background-color: rgba( 255, 255, 255, 0.8 );
+        margin: 0 auto;
+        margin-top:4%;
+        margin-bottom:4%;
+        border: 1px solid #f2f2f2;
+    	border-radius:10px;
+    	box-shadow: 1px 1px 2px #f0f0f0;
+    	padding:2%;
 }
 
 #form-style {
@@ -43,8 +50,7 @@ h3 {
 
 #forms {
 	margin: 0 auto;
-	width: 60%;
-	background-color: rgba(255, 255, 255, 0.5);
+	width: 80%;
 	padding: 10%;
 	border-radius: 20px;
 }

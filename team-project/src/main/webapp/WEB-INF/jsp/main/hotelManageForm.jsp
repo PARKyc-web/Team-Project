@@ -61,12 +61,17 @@
 	}
 	
 	.pagination a:hover:not(.active) {background-color: #ddd;}
+	
+	h3{
+		text-align: center;
+		padding:3%;
+	}
 </style>
 <div id="container">
 <h2 class="center">나의 숙소</h2>
   <c:choose>
 	  <c:when test="${count eq 0 }">
-	  	<br><h2> 등록된 숙소가 없습니다.!</h2>
+	  	<br><h3> 등록된 숙소가 없습니다 !</h3>
 	  </c:when>
 	  <c:when test="${count ne 0 }">
 	  <div class="container px-4 px-lg-5 mt-5">
