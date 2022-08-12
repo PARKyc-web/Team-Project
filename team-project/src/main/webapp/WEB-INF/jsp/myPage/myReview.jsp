@@ -10,6 +10,7 @@
         text-align: center;
 	
 	}
+
 		#container{
         width: 80%;
         background-color: #fff;
@@ -36,6 +37,12 @@
 		margin-bottom: 30px;
 	}
     
+
+	h4 {
+	text-align: center;
+}
+	
+
 	</style>
 
 </head>

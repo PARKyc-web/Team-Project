@@ -7,6 +7,7 @@
 <title>리뷰작성 결과페이지(myReviewSendOutput.jsp)</title>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
+
 #container{
 	
 	    width: 80%;
@@ -39,5 +40,6 @@ h3{
 	<h6><a href='myPageMain.do'>마이페이지</a>&nbsp; > &nbsp;<a href='/myReview.do'>나의 리뷰</a>&nbsp; > &nbsp;<a href='#'>리뷰 작성</a></h6>
 	<h3>여행지 리뷰가 작성되었습니다.</h3>
 </div>	
+
 </body>
 </html>

@@ -47,7 +47,12 @@ font-family: 'Noto Sans KR', sans-serif;
 		text-align: center;
 		margin: 0 auto;
 		position:relative;
+		padding-bottom:1%;
 	}
+	h4 {
+	text-align: center;
+}
+	
 	ul{
 		list-style: none;
 	}
@@ -127,10 +132,17 @@ font-family: 'Noto Sans KR', sans-serif;
 	<h6><a href='myPageMain.do'>마이페이지</a>&nbsp; > &nbsp;<a href='#'>예약 내역</a></h6>
 	<h3>숙소 예약 내역</h3>
 	<hr>
-	<c:set var="vo" value="${reservation }"></c:set>
+		<c:choose>
+		<c:when test="${size eq 0}">
+			<h4>예약된 내역이 없습니다</h4>
+			
+		</c:when>
+		<c:otherwise>
+<c:set var="vo" value="${reservation }"></c:set>
 
 
-	<c:if test="${size ne 0}">
+
+<%-- 	<c:if test="${size ne 0}">  --%>
 		<c:forEach var="i" begin="0" end="${size-1}" step="1">
 			<div id="container2">
 				<form action="${pageContext.request.contextPath }/myReviewWriter.do"
@@ -178,7 +190,9 @@ font-family: 'Noto Sans KR', sans-serif;
 				</form>
 			</div>
 		</c:forEach>
-	</c:if>
+		</c:otherwise>
+	<%-- </c:if> --%>
+	</c:choose>
 </div>
 </body>
 </html>

@@ -35,10 +35,11 @@
 }
 
 h3 {
-	
 	text-align: center;
+
 	padding:10px;
 	padding-bottom:3%;'
+
 }
 h4 {
 	text-align: center;

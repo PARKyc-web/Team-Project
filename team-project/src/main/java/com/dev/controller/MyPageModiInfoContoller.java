@@ -29,7 +29,9 @@ public class MyPageModiInfoContoller implements Controller{
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
+		HttpSession session = req.getSession();
+		MemberVO vo = (MemberVO) session.getAttribute("member");
+				
 		int max_size = 1024 * 1024 * 1024;
 		String charset = "UTF-8";
 		String root = req.getSession().getServletContext().getRealPath("/");
@@ -60,16 +62,20 @@ public class MyPageModiInfoContoller implements Controller{
 			for(FileItem it : items) {
 				
 				if(it.isFormField()) {
+					
+					System.out.println(it.getFieldName());
+					System.out.println(it.getString());
+					
 					parameter.put(it.getFieldName(), it.getString(charset));
 					
-				}else {					
+				}else {
 					if(it.getSize() > 0 ) {
 						int index = it.getName().lastIndexOf(separator);
 						fileName = it.getName().substring(index + 1);						
 						
 						extension = fileName.substring(fileName.lastIndexOf("."));
 						
-						uploadFolder = new File(file + separator + parameter.get("id") + extension);		
+						uploadFolder = new File(file + separator + vo.getMemberId() + extension);		
 						
 						System.out.println("uploadFolder : " + uploadFolder);
 						
@@ -83,29 +89,27 @@ public class MyPageModiInfoContoller implements Controller{
 			
 		}
 		
-		mvo = MemberService.getInstance().infoMember(parameter.get("id"));
+		mvo = MemberService.getInstance().infoMember(vo.getMemberId());
 		mvo.setEmail(parameter.get("mail"));
 		mvo.setPhone(parameter.get("call"));
 		
 		if(isImage) {
-			mvo.setMemberPic("user_image/" + parameter.get("id") + extension);
+			mvo.setMemberPic("user_image/" + vo.getMemberId() + extension);
 		}
 		
 		MemberService.getInstance().modifyMember(mvo);
 		// 현재 세션에 있는 데이터가 있어서 멤버 사진의 경로가 안바뀌는거 같음 이거 변경해줘야함
 		
-		
-		MemberVO temp = MemberService.getInstance().searchMember(parameter.get("id"));
+		MemberVO temp = MemberService.getInstance().searchMember(vo.getMemberId());
 		mvo.setMemberType(temp.getMemberType());
 		
 		req.getSession(true).invalidate();		
 		System.out.println("세선 삭제");
 		
-		HttpSession session = req.getSession(false);		
+		session = req.getSession(false);		
 		req.getSession().setAttribute("member", mvo);		
 		
 		System.out.println("세션 생성");
-		
 
 		resp.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = resp.getWriter();
@@ -117,8 +121,7 @@ public class MyPageModiInfoContoller implements Controller{
 
 		out.flush();
 		
-    Utils.forward(req, resp, "myPage/myPageModiOutput.tiles");		
-
+//		Utils.forward(req, resp, "myPage/myPageModiOutput.tiles");
 	}
 	
 }
