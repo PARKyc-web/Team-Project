@@ -163,7 +163,9 @@ font-family: 'Noto Sans KR', sans-serif;
 							name="memberId" value="${vo[i].memberId}"></li>
 
 						<li><input type="hidden" name="reservationId" id="reservationId"
-							value="${vo[i].reservationId}"></li>
+							value="${vo[i].reservationId}">
+							<c:set var="id" value="${vo[i].reservationId}"></c:set>
+							</li>
 
 						<c:choose>
 							<c:when test="${vo[i].isReserv ne 4 and canWrite[i]}">
@@ -177,7 +179,8 @@ font-family: 'Noto Sans KR', sans-serif;
 								<button id="submit" type="button" onclick="clickDelete()">예약취소하기</button>
 								<script type="text/javascript">
 									function clickDelete() {
-										var id = document.getElementById("reservationId").value
+										var id = ${id};
+										//var id = document.getElementById("reservationId").value
 										if (confirm("정말로 예약을 취소하시겠습니까?")) {
 											location.href = "deleteReservation.do?reservationId="
 													+ id;
