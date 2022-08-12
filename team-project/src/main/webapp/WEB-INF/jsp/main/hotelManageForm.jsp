@@ -19,6 +19,19 @@
     });
   </script>  
 <style>
+#container{
+	
+	    width: 90%;
+        background-color: rgba( 255, 255, 255, 0.95 );
+        margin: 0 auto;
+        margin-top:2%;
+        margin-bottom:1%;
+        border: 1px solid #f2f2f2;
+    	border-radius:10px;
+    	box-shadow: 1px 1px 2px #f0f0f0;
+    	padding:2%;
+    	
+}
 	.center {
 	  text-align: center;
 	}
@@ -48,11 +61,17 @@
 	}
 	
 	.pagination a:hover:not(.active) {background-color: #ddd;}
+	
+	h3{
+		text-align: center;
+		padding:3%;
+	}
 </style>
-<h1>나의 숙소</h1>
+<div id="container">
+<h2 class="center">나의 숙소</h2>
   <c:choose>
 	  <c:when test="${count eq 0 }">
-	  	<h2> 등록된 숙소가 없습니다.!</h2>
+	  	<br><h3> 등록된 숙소가 없습니다 !</h3>
 	  </c:when>
 	  <c:when test="${count ne 0 }">
 	  <div class="container px-4 px-lg-5 mt-5">
@@ -96,7 +115,7 @@
 				</c:forEach>			
 			</div>
 		</div>	 
-	
+		
 		<div class="center">
 		  <div class="pagination">
 		  <c:if test="${page.prev }">
@@ -115,3 +134,4 @@
 		</div>
 	</c:when>
 </c:choose>
+</div>

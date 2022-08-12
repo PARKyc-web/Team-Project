@@ -5,10 +5,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <style>
-h3{
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
+body{
+font-family: 'Noto Sans KR', sans-serif;
+}
+h2{
 	padding-top:5%;
 	text-align:center;
-
+	font-weight:bold;
 }
 a{
 	text-decoration:none;
@@ -82,7 +86,7 @@ padding-bottom:10%;
 </head>
 <body>
 <div id="container2">
-	<h3>마이페이지</h3>
+	<h2>마이페이지</h2>
 	<div class="container">
 			<button class="tab" onclick="location.href='myPage.do'">
 			<span class="material-symbols-outlined">mood</span><br>

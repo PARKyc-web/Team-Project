@@ -21,7 +21,7 @@ font-family: 'Noto Sans KR', sans-serif;
 }
 #container{
 	
-	    width: 90%;
+	    width: 80%;
         background-color: rgba( 255, 255, 255, 0.95 );
         margin: 0 auto;
         margin-top:2%;
@@ -38,6 +38,7 @@ font-family: 'Noto Sans KR', sans-serif;
 		margin : 0 auto;
 		flex-direction : row;
 		padding: 2%;
+		text-align:center;
 	}
 	#container2:hover{
 		border-left: 4px solid #fc777b;
@@ -109,6 +110,13 @@ font-family: 'Noto Sans KR', sans-serif;
 		margin-top: 30px;
 		margin-bottom: 30px;
 	}
+	 a{
+    	color:gray;
+    	text-decoration:none;
+    }
+    a:hover{
+    	color:gray;
+    }
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
@@ -121,8 +129,9 @@ font-family: 'Noto Sans KR', sans-serif;
 </head>
 <body>
 <div id="container">
+	<h6><a href='myPageMain.do'>마이페이지</a>&nbsp; > &nbsp;<a href='#'>예약 내역</a></h6>
 	<h3>숙소 예약 내역</h3>
-	
+	<hr>
 		<c:choose>
 		<c:when test="${size eq 0}">
 			<h4>예약된 내역이 없습니다</h4>
@@ -132,21 +141,22 @@ font-family: 'Noto Sans KR', sans-serif;
 <c:set var="vo" value="${reservation }"></c:set>
 
 
+
 <%-- 	<c:if test="${size ne 0}">  --%>
 		<c:forEach var="i" begin="0" end="${size-1}" step="1">
 			<div id="container2">
 				<form action="${pageContext.request.contextPath }/myReviewWriter.do"
 					method="post">
 					<ul>
-						<li><label for="name" class="field">숙소이름 : </label> <input
+						<li><label for="name" class="field"><b>숙소이름</b>  </label> <input
 							name="name" size="10" id="id" type="text"
 							value="${vo[i].hotelName }" readonly></li>
-						<li><label for="in" class="field">체크인 : </label> <input
+						<li><label for="in" class="field"><b>체크인</b>  </label> <input
 							name="in" type="text" value="${vo[i].inDate }" readonly></li>
-						<li><label for="out" class="field">체크아웃 : </label> <input
+						<li><label for="out" class="field"><b>체크아웃</b>  </label> <input
 							name="out" id="mail" type="text" value="${vo[i].outDate }"
 							readonly></li>
-						<li><label for="cost" class="field">지불금액 : </label> <input
+						<li><label for="cost" class="field"><b>지불금액</b>  </label> <input
 							name="cost" id="pic" type="text" value="${vo[i].totalPrice }"
 							readonly> <input type="hidden" name="hotelId"
 							value="${vo[i].hotelId}"> <input type="hidden"

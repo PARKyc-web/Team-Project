@@ -15,7 +15,7 @@ body{
 #container{
 	width: 70%;
 	margin: 0 auto;
-	padding: 2%;
+	padding: 1%;
 	text-align: center;
 	position:relative;
 	margin-top:4%;
@@ -38,6 +38,13 @@ body{
 	
 	#ttar{
 		vertical-align:top;
+	}
+	button{
+		margin: 0 auto;
+	}
+	#uploadImage{
+		padding-left:25%;
+		padding-bottom:10px;
 	}
 	
 </style>
@@ -76,19 +83,19 @@ body{
 					<li><label class="uploadLabel">최대 예약 인원 </label><input type="text" name="maxP"></li>
 					<br>
 					<hr>					
-					<h3> 숙소 옵션 </h3>					
+					<li><h3> 숙소 옵션 </h3></li>					
 					<li><label><input type="checkbox" name="hotel_option_WIFI" value="1">와이파이</label></li>
 					<li><label><input type="checkbox" name="hotel_option_swim" value="1">수영장</label></li>
 					<li><label><input type="checkbox" name="hotel_option_kitchen"	value="1">주방</label></li>
 					<li><label><input type="checkbox"	name="hotel_option_wPet" value="1">반려동물</label></li>
 					<li><label><input	type="checkbox" name="hotel_option_parking" value="1">주차장</label></li>
-				</ul>					
 					<hr>
-					<h3> 사진 등록 </h3>
+					<li><h3> 사진 등록 </h3></li>
+				</ul>					
 					<input type="file" accept="image/*" name="uploadImage" id="uploadImage" onchange="PreviewImage();">
 				 				
 				 	<br><br>
-				 	<
+				 	
 					<div class="d-flex">
 						<button class="btn btn-outline-dark flex-shrink-0" type="submit">
 							<i class="bi bi-house me-1"></i> 등록

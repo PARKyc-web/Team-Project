@@ -82,7 +82,7 @@ margin-bottom:3%;
 
 <div id="container">
 <div id="comment">
-<h3>정말 AirBnB에서 탈퇴하시겠습니까?</h3>
+<h3>정말 AirDnD에서 탈퇴하시겠습니까?</h3>
 <h4>멋진 숙소들이 기다리고 있습니다 !</h4>
 </div>
 <form action="myMemberDelete.do" id="form">

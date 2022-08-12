@@ -13,7 +13,26 @@
 	ul li label{		
 		vertical-align:top;
 	}
-		
+	
+	#container{
+	width: 70%;
+	margin: 0 auto;
+	padding: 1%;
+	text-align: center;
+	position:relative;
+	margin-top:4%;
+	background-color: rgba( 255, 255, 255, 0.95 );
+	border: 1px solid #f2f2f2;
+	border-radius:10px;
+	box-shadow: 1px 1px 2px #f0f0f0;
+
+}
+button{
+		margin: 0 auto;
+	}
+#ttar{
+		vertical-align:top;
+}
 </style>
   <script>
     $(document).ready(function(){
@@ -26,6 +45,7 @@
       });
     });
   </script>
+  <div id ="container">
 <section class="py-5">
 	<div class="container px-4 px-lg-5 my-5">
 		<div class="row gx-4 gx-lg-5 align-items-center">
@@ -48,17 +68,17 @@
 				<form action="hotelUpdate.do" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="hotel_id" value="${hotel.hotelId}">
 				<ul>
-					<li><label class ="uploadLabel">숙소주인 : </label>
+					<li><label class ="uploadLabel">숙소주인  </label>
 					<input type="text" id="member_id" name="member_id" value="${member.memberId }" readonly></li>
-					<li><label class="uploadLabel">숙소명 : </label>
+					<li><label class="uploadLabel">숙소명  </label>
 						<input type="text" name="hotel_name" value="${hotel.hotelName }" readonly></li>
-					<li><label class="uploadLabel">숙소위치	: </label>
+					<li><label class="uploadLabel">숙소위치	 </label>
 						<input type="text" name="hotel_location" value="${hotel.hotelLocation }"></li>
-					<li><label class="uploadLabel">숙소설명 : </label>
-						<textarea name="hotel_desc" cols="30" rows="10">${hotel.hotelDesc }</textarea></li>
-					<li><label class="uploadLabel">1박당 가격 : </label>
+					<li><label id="ttar" class="uploadLabel">숙소설명  </label>
+						<textarea name="hotel_desc" cols="25" rows="7">${hotel.hotelDesc }</textarea></li>
+					<li><label class="uploadLabel">1박당 가격  </label>
 						<input type="text" name="hotel_price" value="${hotel.hotelPrice }"></li>  
-					<li><label class="uploadLabel">숙소종류 : </label>  
+					<li><label class="uploadLabel">숙소종류  </label>  
 					<select name="hotel_type">
 						<option value="호텔" selected>호텔</option>
 						<option value="펜션">펜션</option>
@@ -67,17 +87,19 @@
 						<option value="아파트">아파트</option>
 						<option value="오피스텔">오피스텔</option>
 					</select></li>
-					<li><label class="uploadLabel">최대예약 인원 : </label>
+					<li><label class="uploadLabel">최대예약 인원  </label>
 						<input type="text" name="maxP" value="${hotel.maxP }"></li>
-					<br>					
-					<h3> == 숙소옵션 변경 == </h3>					
+					<br>	
+					<hr>				
+					<h3> 숙소옵션 변경 </h3>					
 					<li><label><input type="checkbox" name="hotel_option_WIFI" value="1">와이파이</label></li>
 					<li><label><input type="checkbox" name="hotel_option_swim" value="1">수영장</label></li>
 					<li><label><input type="checkbox" name="hotel_option_kitchen" value="1">주방</label></li>
 					<li><label><input type="checkbox" name="hotel_option_wPet" value="1">반려동물</label></li>
 					<li><label><input type="checkbox" name="hotel_option_parking" value="1">주차장</label></li>
-				</ul>					
-					<h3> == 사진 추가등록 == </h3>
+				</ul>		
+					<hr>			
+					<h3> 사진 추가등록 </h3>
 					<img src="#" id="user_image" width="320px" height="180px" onError="image/hotel_default.webp" alt=" ">
 					<input type="file" accept="image/*" name="uploadImage" id="uploadImage" onchange="PreviewImage();">
 				 				
@@ -93,6 +115,7 @@
 		</div>
 	</div>
 </section>
+</div>
 
 <script>
 	function PreviewImage() {

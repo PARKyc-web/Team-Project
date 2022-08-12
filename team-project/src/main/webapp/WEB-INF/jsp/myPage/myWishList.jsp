@@ -22,13 +22,24 @@
 }
 
 #container {
-	width: 600px;
-	margin: 0 auto;
+
+	    width: 70%;
+        background-color: rgba( 255, 255, 255, 0.95 );
+        margin: 0 auto;
+        margin-top:1%;
+        margin-bottom:7%;
+        border: 1px solid #f2f2f2;
+    	border-radius:10px;
+    	box-shadow: 1px 1px 2px #f0f0f0;
+    	padding:2%;
 }
 
 h3 {
 	text-align: center;
-	padding-bottom:1%;
+
+	padding:10px;
+	padding-bottom:3%;'
+
 }
 h4 {
 	text-align: center;
@@ -60,13 +71,22 @@ input[type="submit"] {
 		});
 	});
 </script>
-
+<style>
+ a{
+    	color:gray;
+    	text-decoration:none;
+    }
+    a:hover{
+    	color:gray;
+    }
+</style>
 </head>
 <body>
 	<br>
 	<br>
 	<br>
 	<div id="container">
+	<h6><a href='myPageMain.do'>마이페이지</a>&nbsp; > &nbsp;<a href='#'>위시리스트</a></h6>
 		<h3>나의 위시 숙소 리스트</h3>
 		<c:choose>
 			<c:when test="${size eq 0}">

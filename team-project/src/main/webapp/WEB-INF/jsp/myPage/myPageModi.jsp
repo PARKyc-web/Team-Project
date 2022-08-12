@@ -8,7 +8,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
  	body{
-		background-image:url('image/bg.jpg');
+		background-image:url('image/bg2.jpg');
 		background-repeat: no-repeat;
   		background-position: center;
   		background-size: cover;
