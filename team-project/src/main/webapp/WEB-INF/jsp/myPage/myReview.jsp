@@ -10,6 +10,10 @@
         text-align: center;
 	
 	}
+	h4 {
+	text-align: center;
+}
+	
 	</style>
 
 </head>
@@ -20,7 +24,7 @@
 		
 			<c:choose>
 			<c:when test="${size eq 0}">
-				<h3>작성된 리뷰가 없습니다</h3>
+				<h4>작성된 리뷰가 없습니다</h4>
 				
 			</c:when>
 			<c:otherwise>

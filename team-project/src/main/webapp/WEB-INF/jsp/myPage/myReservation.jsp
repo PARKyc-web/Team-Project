@@ -47,6 +47,10 @@ font-family: 'Noto Sans KR', sans-serif;
 		margin: 0 auto;
 		position:relative;
 	}
+	h4 {
+	text-align: center;
+}
+	
 	ul{
 		list-style: none;
 	}
@@ -120,7 +124,7 @@ font-family: 'Noto Sans KR', sans-serif;
 	
 		<c:choose>
 		<c:when test="${size eq 0}">
-			<h3>예약된 내역이 없습니다</h3>
+			<h4>예약된 내역이 없습니다</h4>
 			
 		</c:when>
 		<c:otherwise>
