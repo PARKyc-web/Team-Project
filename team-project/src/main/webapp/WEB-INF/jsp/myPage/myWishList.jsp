@@ -27,8 +27,8 @@
 }
 
 h3 {
-	
 	text-align: center;
+	padding-bottom:1%;
 }
 h4 {
 	text-align: center;
@@ -109,6 +109,5 @@ input[type="submit"] {
 			</c:when>
 		</c:choose>
 	</div>
-	<jsp:include page="myHome.jsp"></jsp:include>
 </body>
 </html>
