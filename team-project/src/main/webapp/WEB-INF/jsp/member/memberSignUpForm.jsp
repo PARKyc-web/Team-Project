@@ -87,6 +87,18 @@ input[type="text"]:active,[type="password"]:active,[type="email"]:active{
 	border:3px solid #fc777b;
 }
 
+input[type="radio"]{
+	margin-left: 2%;
+}
+input[id="member_type"]{
+	margin-left: 10%;
+}
+
+input::placeholder{
+	color:#e6e6e6;
+	font-size:10px;
+}
+
 .submit {
   width:25%;
   padding:15px;
@@ -267,6 +279,14 @@ $(function () {
 		check.submit();
 		}
 	
+	function pwlength(){
+		  var pw = document.getElementById('member_password').value;
+		    if(pw.length < 8 || pw.length>15){
+                window.alert('비밀번호를 8~15 자리로 입력하세요');
+                pw.value='';
+            }
+	}
+	
 </script>
 <div id="container">
 <div class="left"></div>
@@ -274,7 +294,7 @@ $(function () {
 <form action="memberSignUp.do" id="check" method="post" style="margin:0px auto; padding:50px; text-align:center">
 <h3>회원가입</h3>
 	<div id="user">
-	<span id="bold">회원유형  </span>
+	<span id="bold">회원유형 </span>
 		<input type="radio" id="member_type" name="member_type" value="0" checked><label for="member_type"> 일반회원 </label>
 		<input type="radio" id="member_type2" name="member_type" value="1"><label for="member_type2"> 호스트 <br></label>
 		</div>
@@ -283,8 +303,8 @@ $(function () {
 		<input type="hidden" id="idCheck" name="idCheck" value="unChecked" placeholder="id를 입력하세요"></input><br><br>
 		<div id="idMsg"></div>
 	
-	<span id="bold">비밀번호  </span><input type="password" name="member_password" id="member_password" minlength="8" maxlength="15" required><br><br>
-	<span id="bold">비밀번호 재확인  </span><input type="password" name="member_password2" id="member_password2" minlength="8" maxlength="15" required><br><br>
+	<span id="bold">비밀번호  </span><input type="password" name="member_password" id="member_password" onchange="pwlength()" maxlength="15" placeholder="8~15자리의 비밀번호를 입력하세요"><br><br>
+	<span id="bold">비밀번호 재확인  </span><input type="password" name="member_password2" id="member_password2" onchange="pwlength2()"maxlength="15" placeholder="8~15자리의 비밀번호를 입력하세요"><br><br>
 	<hr>
 	<span id="bold">이름  </span><input type="text" id="member_name" name="member_name"><br><br>
 	<span id="bold">나이	 </span><input type="text" id="member_age" name="member_age"><br><br>
