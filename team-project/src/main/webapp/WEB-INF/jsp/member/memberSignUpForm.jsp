@@ -283,7 +283,7 @@ $(function () {
 		  var pw = document.getElementById('member_password').value;
 		    if(pw.length < 8 || pw.length>15){
                 window.alert('비밀번호를 8~15 자리로 입력하세요');
-                pw.value='';
+                document.getElementById('member_password').value = null;
             }
 	}
 	
