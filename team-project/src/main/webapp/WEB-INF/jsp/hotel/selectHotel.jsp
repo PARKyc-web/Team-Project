@@ -315,9 +315,7 @@
 							<c:forEach var="vo" items="${reviewList }">
 								<div class="d-flex">
 									<div class="flex-shrink-0">
-										<img class="rounded-circle"
-											src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
-											alt="..." />
+										<img class="rounded-circle" src="user_image/default_pro.jpg" alt="..." style="width: 50px; height:50px"/>
 									</div>
 									<div class="ms-3">
 										<div class="fw-bold">게스트 이름: ${vo.memberId }</div>
