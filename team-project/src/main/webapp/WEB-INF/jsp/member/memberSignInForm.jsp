@@ -171,11 +171,11 @@ a:hover{
 	</div>
 	<script>
 		function searchId(){
-			window.open("memberSearchId.do", "PopupWin",'width=500, height=600, left=500, top=250')
+			window.open("memberSearchId.do", "PopupWin",'width=500, height=700, left=500, top=250')
 		}
 		
 		function searchPwd(){
-			window.open("memberSearchPwd.do", "PopupWin",'width=500, height=600, left=700, top=250')
+			window.open("memberSearchPwd.do", "PopupWin",'width=500, height=750, left=700, top=250')
 		}
 	
 		
