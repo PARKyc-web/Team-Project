@@ -37,7 +37,7 @@ h3{
 </head>
 <body>
 <div id="container">
-	<h6><a href='myPageMain.do'>마이페이지</a>&nbsp; > &nbsp;<a href='/myReview.do'>나의 리뷰</a>&nbsp; > &nbsp;<a href='#'>리뷰 작성</a></h6>
+	<h6><a href='myPageMain.do'>마이페이지</a>&nbsp; > &nbsp;<a href='myReview.do'>나의 리뷰</a>&nbsp; > &nbsp;<a href='#'>리뷰 작성</a></h6>
 	<h3>여행지 리뷰가 작성되었습니다.</h3>
 </div>	
 
