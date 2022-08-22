@@ -26,7 +26,7 @@
 	    width: 70%;
         background-color: rgba( 255, 255, 255, 0.95 );
         margin: 0 auto;
-        margin-top:1%;
+        margin-top:0.1%;
         margin-bottom:7%;
         border: 1px solid #f2f2f2;
     	border-radius:10px;
@@ -51,6 +51,14 @@ input[type="submit"] {
      text-align: center;
 }
 }
+hr{
+	margin: 0 auto;
+	width: 80%;
+	color: #cccccc;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
 
 </style>
 
@@ -88,6 +96,7 @@ input[type="submit"] {
 	<div id="container">
 	<h6><a href='myPageMain.do'>마이페이지</a>&nbsp; > &nbsp;<a href='#'>위시리스트</a></h6>
 		<h3>나의 위시 숙소 리스트</h3>
+		<hr>
 		<c:choose>
 			<c:when test="${size eq 0}">
 				<h4>마음에 드는 숙소리스트를 만들어보세요</h4>
