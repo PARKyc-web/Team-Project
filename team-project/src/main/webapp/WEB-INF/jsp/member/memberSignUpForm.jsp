@@ -95,7 +95,7 @@ input[id="member_type"]{
 }
 
 input::placeholder{
-	color:#e6e6e6;
+	color:#b5b5b5;
 	font-size:10px;
 }
 
