@@ -11,11 +11,11 @@
 	
 	}
 
-		#container{
+	#container{
         width: 80%;
         background-color: #fff;
         margin: 0 auto;
-        margin-top:4%;
+        margin-top:2%;
         margin-bottom:4%;
         border: 1px solid #f2f2f2;
     	border-radius:10px;
@@ -29,7 +29,7 @@
     a:hover{
     	color:gray;
     }
-    	hr{
+    hr{
 		margin: 0 auto;
 		width: 80%;
 		color: #cccccc;
