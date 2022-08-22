@@ -70,13 +70,13 @@
 						<p style="text-align: right">작성일자 | ${vo.reviewDate}</p>
 						<p>⭐ ${vo.reviewRate}</p>
 						<p style="text-align: left">${vo.reviewContents}</p>
-						<button type="button" onclick="clickDelete()" style="float: right;">삭제</button>
+						<button type="button" onclick="clickDelete(${vo.reviewId })" style="float: right;">삭제</button>
 						<input type="hidden" id="id" value=${vo.reviewId }>
 						<script type="text/javascript">
-						function clickDelete() {
-							var id = document.getElementById("id").value;
+						function clickDelete(hotelNum) {
+							//var id = document.getElementById("id").value;
 							if(confirm("정말로 삭제하시겠습니까?")) {
-								location.href = "deleteReview.do?reviewId=" + id;
+								location.href = "deleteReview.do?reviewId=" + hotelNum;
 							}
 						}
 						</script>

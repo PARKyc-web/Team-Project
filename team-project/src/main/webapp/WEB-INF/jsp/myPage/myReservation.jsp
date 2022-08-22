@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -140,9 +141,6 @@ font-family: 'Noto Sans KR', sans-serif;
 		<c:otherwise>
 <c:set var="vo" value="${reservation }"></c:set>
 
-
-
-<%-- 	<c:if test="${size ne 0}">  --%>
 		<c:forEach var="i" begin="0" end="${size-1}" step="1">
 			<div id="container2">
 				<form action="${pageContext.request.contextPath }/myReviewWriter.do"
@@ -165,6 +163,17 @@ font-family: 'Noto Sans KR', sans-serif;
 						<li><input type="hidden" name="reservationId" id="reservationId"
 							value="${vo[i].reservationId}">
 							<c:set var="id" value="${vo[i].reservationId}"></c:set>
+							<script type="text/javascript">
+									arr.push = ${vo[i].reservationId};
+									
+									function clickDelete(hotelNum) {
+										if (confirm("정말로 예약을 취소하시겠습니까?")) {
+											location.href = "deleteReservation.do?reservationId="
+													+ hotelNum;
+										}
+									}
+								</script>
+
 							</li>
 
 						<c:choose>
@@ -176,17 +185,7 @@ font-family: 'Noto Sans KR', sans-serif;
 								<li><input type="submit" value="리뷰작성완료" disabled></li>
 							</c:when>
 							<c:when test="${vo[i].isReserv ne 4 and !canWrite[i]}">
-								<button id="submit" type="button" onclick="clickDelete()">예약취소하기</button>
-								<script type="text/javascript">
-									function clickDelete() {
-										var id = ${id};
-										//var id = document.getElementById("reservationId").value
-										if (confirm("정말로 예약을 취소하시겠습니까?")) {
-											location.href = "deleteReservation.do?reservationId="
-													+ id;
-										}
-									}
-								</script>
+								<button id="submit" type="button" onclick="clickDelete(${vo[i].reservationId})">예약취소하기</button>
 							</c:when>
 						</c:choose>
 					</ul>
@@ -194,7 +193,6 @@ font-family: 'Noto Sans KR', sans-serif;
 			</div>
 		</c:forEach>
 		</c:otherwise>
-	<%-- </c:if> --%>
 	</c:choose>
 </div>
 </body>
